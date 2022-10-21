@@ -21,9 +21,17 @@ public class DollPlayerMovement : MonoBehaviour
     private DollPlayerStats playerStats;
     
     // // // // // //
+    // AIMING
+    //
+    private Vector2 _aimVector;
+   
+    
+    // // // // // //
     // RUNNING
     //
     private float _runSpeed;
+    
+    private float _maxSpeed;
     
     // // // // // //
     // JUMPING
@@ -59,6 +67,7 @@ public class DollPlayerMovement : MonoBehaviour
     {
         Walking,
         Attacking,
+        Jumping,
     }
     private PlayerState currentState;
 
@@ -75,6 +84,10 @@ public class DollPlayerMovement : MonoBehaviour
     private void Update()
     {
         _movement = _playerActions.InGamePlayer.Movement.ReadValue<Vector2>();
+
+        _aimVector = _playerActions.InGamePlayer.AimVector.ReadValue<Vector2>();
+
+        //  Debug.Log(_movement);
     }
 
     private void FixedUpdate()
@@ -87,10 +100,14 @@ public class DollPlayerMovement : MonoBehaviour
     // // // // // //
     // Running
     //
-
     private void HandleMovement()
     {
-        _rb.velocity += new Vector3(_movement.x * _runSpeed, 0f,0f);
+        _rb.velocity = new Vector3(_movement.x * _runSpeed, 0f,0f);
+        
+        if (_rb.velocity.magnitude > _maxSpeed)
+        {
+            _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+        }
     }
 
     // // // // // //
@@ -185,6 +202,7 @@ public class DollPlayerMovement : MonoBehaviour
         //get stats from PlayerStats
         playerStats = this.GetComponent<DollPlayerStats>();
         _runSpeed = playerStats.MyRunSpeed();
+        _maxSpeed = playerStats.MyMaxSpeed();
         _jumpForce = playerStats.MyJumpForce();
 
     }
@@ -199,8 +217,8 @@ public class DollPlayerMovement : MonoBehaviour
     // GIZMOS BABY
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+       // Gizmos.color = Color.red;
 
-        Gizmos.DrawSphere(_boxCenter, _circleSize);
+        //Gizmos.DrawSphere(_boxCenter, _circleSize);
     }
 }

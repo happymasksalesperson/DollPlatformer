@@ -37,6 +37,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""AimVector"",
+                    ""type"": ""Value"",
+                    ""id"": ""e288bc45-17b1-4e9f-8002-995cf5d1d956"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""fd33c9a9-15e9-43a8-a9c7-26676aacb9d2"",
@@ -66,28 +75,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""0143a6fc-5359-4594-8554-b83a84f065d1"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""8913f87e-f038-4de0-aede-e37eed65cbef"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -132,6 +119,61 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""c183236a-f297-447f-bb85-8032188bcb7c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""8159b26b-ab3b-4278-a39b-8a06250dbb9a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""37f981bb-c89d-4fb9-a468-82207cf575d8"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""d736bbd5-ae65-4486-972c-c48d6c95eb42"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2abdf489-38cf-484d-ae5e-dbd1be0a626e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -141,6 +183,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         // InGamePlayer
         m_InGamePlayer = asset.FindActionMap("InGamePlayer", throwIfNotFound: true);
         m_InGamePlayer_Movement = m_InGamePlayer.FindAction("Movement", throwIfNotFound: true);
+        m_InGamePlayer_AimVector = m_InGamePlayer.FindAction("AimVector", throwIfNotFound: true);
         m_InGamePlayer_Jump = m_InGamePlayer.FindAction("Jump", throwIfNotFound: true);
         m_InGamePlayer_Attack = m_InGamePlayer.FindAction("Attack", throwIfNotFound: true);
     }
@@ -203,6 +246,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_InGamePlayer;
     private IInGamePlayerActions m_InGamePlayerActionsCallbackInterface;
     private readonly InputAction m_InGamePlayer_Movement;
+    private readonly InputAction m_InGamePlayer_AimVector;
     private readonly InputAction m_InGamePlayer_Jump;
     private readonly InputAction m_InGamePlayer_Attack;
     public struct InGamePlayerActions
@@ -210,6 +254,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         private @PlayerActions m_Wrapper;
         public InGamePlayerActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_InGamePlayer_Movement;
+        public InputAction @AimVector => m_Wrapper.m_InGamePlayer_AimVector;
         public InputAction @Jump => m_Wrapper.m_InGamePlayer_Jump;
         public InputAction @Attack => m_Wrapper.m_InGamePlayer_Attack;
         public InputActionMap Get() { return m_Wrapper.m_InGamePlayer; }
@@ -224,6 +269,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnMovement;
+                @AimVector.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnAimVector;
+                @AimVector.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnAimVector;
+                @AimVector.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnAimVector;
                 @Jump.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnJump;
@@ -237,6 +285,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @AimVector.started += instance.OnAimVector;
+                @AimVector.performed += instance.OnAimVector;
+                @AimVector.canceled += instance.OnAimVector;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -250,6 +301,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     public interface IInGamePlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnAimVector(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
     }

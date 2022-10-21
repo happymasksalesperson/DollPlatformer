@@ -2,7 +2,7 @@
 
 -- added sprite renderer package to project, added rudimentary sprites, animation, events
 
--- added basic jump and movement (using new Input System...)
+-- added basic jump and movement (using new Input System...). Player uses ActionMap InGamePlayer
 
 -- created project, set up folders
 
@@ -11,4 +11,10 @@
 -- added custom gravity using Edy's post https://forum.unity.com/threads/why-does-rigidbody-3d-not-have-a-gravity-scale.440415/
 
 -- added jumping using Fernado's post https://medium.com/nerd-for-tech/implementing-a-jump-mechanic-unity-6420b106e47a (with tweaks for 3D Unity project)
+
+1.2
+
+-- fixed a _bug by removing PlayerInput y values (Player can now only move left and right)
+
+-- added Aim control to character (PlayerInput now reads WASD to aim). added Aim logic to DollPlayer.cs
 

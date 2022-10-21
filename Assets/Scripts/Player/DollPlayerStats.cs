@@ -7,15 +7,10 @@ public class DollPlayerStats : MonoBehaviour
     // // // // // //
     // DOLL STATS
 
-    [SerializeField] private int HP;
     [SerializeField] private int maxHP;
     [SerializeField] private float runSpeed;
     [SerializeField] private float jumpForce;
-
-    public int MyHP()
-    {
-        return HP;
-    }
+    [SerializeField] private float maxSpeed;
     
     public int MyMaxHP()
     {
@@ -25,6 +20,11 @@ public class DollPlayerStats : MonoBehaviour
     public float MyRunSpeed()
     {
         return runSpeed;
+    }
+    
+    public float MyMaxSpeed()
+    {
+        return maxSpeed;
     }
     
     public float MyJumpForce()
