@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(NPC01PatrolState))]
+[CustomEditor(typeof(NPC01_PatrolState))]
 
 public class NPC01PatrolStateEditor : Editor
 {
@@ -13,12 +13,12 @@ public class NPC01PatrolStateEditor : Editor
         
         if (GUILayout.Button("Attack"))
         {
-            (target as NPC01PatrolState)?.Attack();
+            (target as NPC01_PatrolState)?.Attack();
         }
 
         if (GUILayout.Button("Take Damage") && Application.isPlaying)
         {
-            (target as NPC01PatrolState)?.TakeDamage();
+            (target as NPC01_PatrolState)?.TakeDamage();
         }
         
         

@@ -18,3 +18,5 @@
 
 -- added Aim control to character (PlayerInput now reads WASD to aim). added Aim logic to DollPlayer.cs
 
+-- added NPC01
+
