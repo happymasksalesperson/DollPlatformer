@@ -1,17 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using NPC01;
 using UnityEngine;
 
 public class NPC01_AttackState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private StateManager _stateManager;
+
+    public NPC01_PatrolState _patrolState;
+
+    private StatsComponent _stats;
+
+    private float _attackTime;
+    private float _attackPower;
+    
+    private void OnEnable()
     {
+        _stateManager = GetComponent<StateManager>();
+        _stats = GetComponent<StatsComponent>();
+        _attackTime = _stats.MyAttackTime();
         
+        StartCoroutine(Jab());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Jab()
+    {
+        NPC01.EventManager.NPC01Attack01Function();
+        
+        yield return new WaitForSeconds(_attackTime);
+        
+        _stateManager.ChangeState(_patrolState);
+
+    }
+
+    private void OnDisable()
     {
         
     }

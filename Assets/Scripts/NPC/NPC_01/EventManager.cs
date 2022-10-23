@@ -39,6 +39,6 @@ namespace NPC01
                 NPC01PatrollingEvent();
             }
         }
-        
+
     }
 }

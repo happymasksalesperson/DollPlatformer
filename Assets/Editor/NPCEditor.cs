@@ -13,14 +13,12 @@ public class NPC01PatrolStateEditor : Editor
         
         if (GUILayout.Button("Attack"))
         {
-            (target as NPC01_PatrolState)?.Attack();
+           // (target as NPC01_PatrolState)?.Attack()
         }
 
         if (GUILayout.Button("Take Damage") && Application.isPlaying)
         {
-            (target as NPC01_PatrolState)?.TakeDamage();
+           // (target as NPC01_PatrolState)?.TakeDamage();
         }
-        
-        
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DollPlayerMovement : MonoBehaviour
+public class DollPlayerMovement : MonoBehaviour, IPlayer
 {
     // // // // // //
     // PLAYER OBJECT
@@ -212,6 +212,18 @@ public class DollPlayerMovement : MonoBehaviour
         _playerActions.InGamePlayer.Disable();
         
     }
+    
+    // // // // // //
+    // NPC DETECTION
+    public void DetectHP()
+    {
+        
+    }
+    
+    public void DetectPosition()
+    {
+    }
+    
     
     // // // // // //
     // GIZMOS BABY
