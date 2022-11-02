@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,21 +11,41 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // PLAYER OBJECT
     private Rigidbody _rb;
     
-    private BoxCollider _boxCollider;
-    private Vector2 _boxCenter;
-    private Vector2 _boxSize;
-    private float _circleSize;
+    public BoxCollider _boxCollider;
+
+    private GroundCheck _groundCheck;
     
     private PlayerActions _playerActions;
     private Vector2 _movement;
 
     private DollPlayerStats playerStats;
+
+    private DollPlayerAnimationStates _animStates;
     
+    //tracks player facing dir
+    private bool _facingRight;
+
+    public bool FacingRight()
+    {
+        return _facingRight;
+    }
+
     // // // // // //
     // AIMING
     //
     private Vector2 _aimVector;
-   
+    
+    // // // // // //
+    // ATTACKING
+    //
+    private float _attackTime;
+
+    private bool _isAttack;
+
+    public bool IsAttack()
+    {
+        return _isAttack;
+    }
     
     // // // // // //
     // RUNNING
@@ -58,24 +79,34 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     private bool _groundCheckEnabled = true;
 
     private WaitForSeconds _jumpWait;
-    
-    
+
+
     // // // // // //
     // PLAYER STATES
     // move this to a state machine later?
-    private enum PlayerState
+    public enum PlayerState
     {
-        Walking,
+        Idling,
+        Crouching,
+        Running,
         Attacking,
         Jumping,
+        TakeDamage,
     }
-    private PlayerState currentState;
+    public PlayerState currentState;
 
     private void Awake()
     {
-        _rb = this.GetComponent<Rigidbody>();
-        
-       // _defaultGravity = 
+        _rb = GetComponent<Rigidbody>();
+
+        _groundCheck = GetComponentInChildren<GroundCheck>();
+
+        currentState = PlayerState.Idling;
+
+        _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
+
+        _animStates.ChangeMoveInt(0);
+        // _defaultGravity = 
     }
 
     // // // // // //
@@ -102,12 +133,45 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void HandleMovement()
     {
-        _rb.velocity = new Vector3(_movement.x * _runSpeed, 0f,0f);
+        _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
         
         if (_rb.velocity.magnitude > _maxSpeed)
         {
             _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+        } 
+        
+        if(_jumping)
+                 _animStates.ChangeMoveInt(3);
+
+        if (_movement.x > 0)
+        {
+            _animStates.ChangeMoveInt(2);
+            _facingRight = false;
         }
+        else if (_movement.x < 0)
+        {
+            _animStates.ChangeMoveInt(2);
+            _facingRight = true;
+        }
+
+        else if (IsGrounded() && _aimVector == Vector2.down)
+            Crouch();
+
+        else if (IsGrounded() && _movement.y == 0)
+        {
+            _animStates.ChangeMoveInt(0);
+        }
+        
+       
+    }
+    
+    // // // // // //
+    // CROUCHING
+    //
+    // add crouch attack? idle animations? etc
+    private void Crouch()
+    {
+        _animStates.ChangeMoveInt(1);
     }
 
     // // // // // //
@@ -115,12 +179,33 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     public void Attack(InputAction.CallbackContext context)
     {
+        _isAttack = true;
+        if (_aimVector == Vector2.up)
+        {
+            _animStates.ChangeAttackInt(1);
+        }
+        
+        else if  (_aimVector == Vector2.down)
+        {
+            _animStates.ChangeAttackInt(2);
+        }
+        
+        else
+        _animStates.ChangeAttackInt(0);
+        
         StartCoroutine(Attacking());
     }
     private IEnumerator Attacking()
     {
+        Debug.Log("Hiyah");
+        
         currentState = PlayerState.Attacking;
-        yield break;
+        
+        _animStates.ChangeMoveInt(4);
+
+        yield return new WaitForSeconds(_attackTime);
+
+        _isAttack = false;
     }
     
     // // // // // //
@@ -130,7 +215,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         if (IsGrounded())
         {
-            _rb.velocity += Vector3.up * _jumpForce;
+            
+            _rb.AddForce(Vector3.up*_jumpForce);
             _jumping = true;
             StartCoroutine(GroundCheckAfterJump());
         }
@@ -138,21 +224,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private bool IsGrounded()
     {
-        _boxCenter = new Vector2(_boxCollider.bounds.center.x, _boxCollider.bounds.center.y) +
-                     (Vector2.down * (_boxCollider.bounds.extents.y + _groundCheckHeight / 2f));
-
-        _boxSize = new Vector2(_boxCollider.bounds.size.x, _groundCheckHeight);
-
-        _circleSize = _groundCheckHeight;
-
-       var groundBox = Physics.OverlapBox(_boxCenter, _boxSize, Quaternion.identity, _groundMask);
-
-        //var groundCircle = Physics.OverlapSphere(_boxCenter, _circleSize, _groundMask);
-        
-       if (groundBox != null)
-           return true;
-
-        return false;
+        //Debug.Log(_groundCheck.isGrounded);
+        return _groundCheck.isGrounded;
     }
 
     private IEnumerator GroundCheckAfterJump()
@@ -169,9 +242,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             _jumping = false;
         }
 
-        else if (_jumping && _rb.velocity.y < 0f)
+        else if (_jumping && _rb.velocity.y > 0f)
         {
-            _gravity.ChangeGravity(_defaultGravity * this._jumpFallGravityMultiply); 
+            _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply); 
         }
         else
         {
@@ -204,12 +277,13 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         _runSpeed = playerStats.MyRunSpeed();
         _maxSpeed = playerStats.MyMaxSpeed();
         _jumpForce = playerStats.MyJumpForce();
+        _attackTime = playerStats.MyAttackTime();
 
     }
 
     private void OnDisable()
     {
-        _playerActions.InGamePlayer.Disable();
+      //  _playerActions.InGamePlayer.Disable();
         
     }
     
@@ -217,11 +291,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // NPC DETECTION
     public void DetectHP()
     {
-        
+        //return current HP
     }
     
     public void DetectPosition()
     {
+        //return transform.position;
     }
     
     
@@ -229,8 +304,5 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // GIZMOS BABY
     private void OnDrawGizmos()
     {
-       // Gizmos.color = Color.red;
-
-        //Gizmos.DrawSphere(_boxCenter, _circleSize);
     }
 }

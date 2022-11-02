@@ -16,7 +16,6 @@ namespace NPC01
         private void Start()
         {
             ChangeState(_startingState);
-            Debug.Log(_currentState);
         }
 
         public void ChangeState(MonoBehaviour newState)
