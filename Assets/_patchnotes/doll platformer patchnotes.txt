@@ -41,3 +41,11 @@
 -- added Player sprites version 1.0. Added an animation state controller and linked up sprites
 
 -- added animation logic to Player Movement
+
+1.5
+
+-- created a new folder for Oscars tests
+
+-- made separate players movement and jumping to make it look more fluent and less janky
+
+-- havent included the animation logic as the movement should come first before the animation is included
