@@ -12,6 +12,8 @@ public class DollPlayerStats : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxSpeed;
     
+    [SerializeField] private float _attackTime;
+    
     public int MyMaxHP()
     {
         return maxHP;
@@ -30,6 +32,11 @@ public class DollPlayerStats : MonoBehaviour
     public float MyJumpForce()
     {
         return jumpForce;
+    }
+    
+    public float MyAttackTime()
+    {
+        return _attackTime;
     }
 
 }

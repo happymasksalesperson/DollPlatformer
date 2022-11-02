@@ -10,7 +10,7 @@
 
 -- added custom gravity using Edy's post https://forum.unity.com/threads/why-does-rigidbody-3d-not-have-a-gravity-scale.440415/
 
--- added jumping using Fernado's post https://medium.com/nerd-for-tech/implementing-a-jump-mechanic-unity-6420b106e47a  (with tweaks for 3D Unity project)
+-- added jumping using Fernado's post https://medium.com/nerd-for-tech/implementing-a-jump-mechanic-unity-6420b106e47a  (with tweaks for 3D Unity project) [removed]
 
 1.2
 
@@ -33,3 +33,11 @@
 – Add another State called “active patrol” when the NPC is aggroed and aggressively hunting the Player
 
 -- NPC has a simple State Manager with an Event Manager and an Animation Manager. will need tweaking lol.
+
+1.4
+
+-- added a GroundCheck class. Doll now detects ground properly. Jump is still janky, requires fix
+
+-- added Player sprites version 1.0. Added an animation state controller and linked up sprites
+
+-- added animation logic to Player Movement
