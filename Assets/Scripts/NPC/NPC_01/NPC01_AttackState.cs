@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NPC01_AttackState : MonoBehaviour
 {
-    private StateManager _stateManager;
+    private NPC01.StateManager _stateManager;
 
     public NPC01_PatrolState _patrolState;
 
@@ -17,7 +17,7 @@ public class NPC01_AttackState : MonoBehaviour
     
     private void OnEnable()
     {
-        _stateManager = GetComponent<StateManager>();
+        _stateManager = GetComponent<NPC01.StateManager>();
         _stats = GetComponent<StatsComponent>();
         _attackTime = _stats.MyAttackTime();
         

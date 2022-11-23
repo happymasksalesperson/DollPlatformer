@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class NPC01_PatrolState : MonoBehaviour
 {
-    private StateManager _stateManager;
+    private NPC01.StateManager _stateManager;
     
     public NPC01_AttackState _attackState;
     
