@@ -159,12 +159,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d6cba027e02e074583bda0fdfd848b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fca295dbfd0ba924e9651333e6a09921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.47, y: 6.34}
+  m_Size: {x: 6.05, y: 9.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 4229190615743623695}
+  _attackInt: 0
 --- !u!1 &4229190615743623920
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +278,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _disableGCTime: 0.25
+  currentState: 0
 --- !u!114 &4229190615743623692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +295,7 @@ MonoBehaviour:
   runSpeed: 500
   jumpForce: 50000
   maxSpeed: 2000
+  _attackTime: 0
 --- !u!114 &4229190615743623693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 4229190616419550212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4229190615743623923}

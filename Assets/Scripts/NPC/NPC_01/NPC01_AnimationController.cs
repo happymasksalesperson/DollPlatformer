@@ -10,14 +10,13 @@ public class NPC01_AnimationController : MonoBehaviour
 
     private Animator _anim;
     
-    
     private void OnEnable()
     {
         _rend = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
 
         NPC01.EventManager.NPC01Attack01Event += Attack;
-        NPC01.EventManager.NPC01TakingDamageEvent += TakeDamage;
+        NPC01.EventManager.NPC01TakeDamageEvent += TakeDamage;
         NPC01.EventManager.NPC01PatrollingEvent += Patrolling;
     }
 
@@ -41,7 +40,7 @@ public class NPC01_AnimationController : MonoBehaviour
     private void OnDisable()
     {
         NPC01.EventManager.NPC01Attack01Event -= Attack;
-        NPC01.EventManager.NPC01TakingDamageEvent -= TakeDamage;
+        NPC01.EventManager.NPC01TakeDamageEvent -= TakeDamage;
         NPC01.EventManager.NPC01PatrollingEvent -= Patrolling;
     }
 }

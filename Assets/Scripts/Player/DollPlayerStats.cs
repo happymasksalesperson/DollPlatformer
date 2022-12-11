@@ -7,36 +7,15 @@ public class DollPlayerStats : MonoBehaviour
     // // // // // //
     // DOLL STATS
 
-    [SerializeField] private int maxHP;
-    [SerializeField] private float runSpeed;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float maxSpeed;
-    
-    [SerializeField] private float _attackTime;
-    
-    public int MyMaxHP()
-    {
-        return maxHP;
-    }
-    
-    public float MyRunSpeed()
-    {
-        return runSpeed;
-    }
-    
-    public float MyMaxSpeed()
-    {
-        return maxSpeed;
-    }
-    
-    public float MyJumpForce()
-    {
-        return jumpForce;
-    }
-    
-    public float MyAttackTime()
-    {
-        return _attackTime;
-    }
+    public int maxHP;
+    public float runSpeed;
+    public float jumpForce;
+    public float maxSpeed;
 
+    public int attackPower;
+    
+    public float attack01Time;
+    public float attack02Time;
+    
+    public float jumpAttack01Time;
 }

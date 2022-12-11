@@ -49,3 +49,15 @@
 -- made separate players movement and jumping to make it look more fluent and less janky
 
 -- havent included the animation logic as the movement should come first before the animation is included
+
+1.6
+
+-- updated some boring stuff, added Health Component, fiddled with Player states
+
+-- added a Player Attack state with a hitbox
+
+-- added NPC02 (drum NPC)
+
+-- added NPC02 sprite, patrol, attack and take damage state
+
+-- using https://www.youtube.com/watch?v=rgYMRP0FzjM added a child camera and a TopLayer layMask (for rendering a Layer on top of everything else) currently Layer 30

@@ -19,13 +19,13 @@ namespace NPC01
         
         
         //event for NPC01 taking damage
-        public delegate void NPC01TakingDamage();
-        public static event NPC01TakingDamage NPC01TakingDamageEvent;
-        public static void NPC01TakingDamageFunction()
+        public delegate void NPC01TakeDamage();
+        public static event NPC01TakeDamage NPC01TakeDamageEvent;
+        public static void NPC01TakeDamageFunction()
         {
-            if(NPC01TakingDamageEvent!=null)
+            if(NPC01TakeDamageEvent!=null)
             {
-                NPC01TakingDamageEvent();
+                NPC01TakeDamageEvent();
             }
         }
         

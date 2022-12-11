@@ -12,10 +12,10 @@ public class HealthModelView : MonoBehaviour
         ChangeHealth?.Invoke(x);
     }
     
-    public event Action<int> ChangeState;
+    public event Action YouDied;
 
-    public void OnChangeState(int x)
+    public void OnYouDied()
     {
-        ChangeState?.Invoke(x);
+        YouDied?.Invoke();
     }
 }

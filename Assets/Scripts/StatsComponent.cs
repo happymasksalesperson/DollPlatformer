@@ -13,8 +13,6 @@ public class StatsComponent : MonoBehaviour
     
     [SerializeField] private float _maxSpeed;
 
-    [SerializeField] private float _attackPower;
-
     [SerializeField] private float _attackTime;
     
     [SerializeField] private float _sightDistance;
@@ -43,14 +41,9 @@ public class StatsComponent : MonoBehaviour
         return (_maxSpeed);
     }
     
-    public float MyAttackPower()
-    {
-        return (_attackPower);
-    }
-    
     public float MyAttackTime()
     {
-        return (_attackPower);
+        return (_attackTime);
     }
     
     public float MySightDistance()

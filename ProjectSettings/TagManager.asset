@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - OnTop
   - 
   m_SortingLayers:
   - name: Default

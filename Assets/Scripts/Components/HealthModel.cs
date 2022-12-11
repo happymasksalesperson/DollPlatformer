@@ -30,6 +30,7 @@ public class HealthModel : MonoBehaviour
             {
                 HP = 0;
                 isAlive = false;
+                modelView.OnYouDied();
             }
 
             modelView.OnChangeHealth(HP);

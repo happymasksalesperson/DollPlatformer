@@ -274,10 +274,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         
         //get stats from PlayerStats
         playerStats = this.GetComponent<DollPlayerStats>();
-        _runSpeed = playerStats.MyRunSpeed();
-        _maxSpeed = playerStats.MyMaxSpeed();
-        _jumpForce = playerStats.MyJumpForce();
-        _attackTime = playerStats.MyAttackTime();
+        _runSpeed = playerStats.runSpeed;
+        _maxSpeed = playerStats.maxSpeed;
+        _jumpForce = playerStats.jumpForce;
+        _attackTime = playerStats.attack01Time;
 
     }
 
