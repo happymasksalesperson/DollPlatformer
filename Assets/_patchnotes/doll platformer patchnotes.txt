@@ -61,3 +61,11 @@
 -- added NPC02 sprite, patrol, attack and take damage state
 
 -- using https://www.youtube.com/watch?v=rgYMRP0FzjM added a child camera and a TopLayer layMask (for rendering a Layer on top of everything else) currently Layer 30
+
+1.7
+
+-- began major refactoring of NPC scripts, condensing into reusable State Machines, States, Event Managers, Animation Controllers, etc
+
+-- added "Take Damage" sprite & anim to NPC02
+
+-- 

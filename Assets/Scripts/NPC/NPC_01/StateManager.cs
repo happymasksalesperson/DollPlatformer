@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
-namespace NPC01
-{
-
-    public class StateManager : MonoBehaviour
+public class StateManager : MonoBehaviour
     {
         public MonoBehaviour _startingState;
         public MonoBehaviour _currentState;
+        
+        public MonoBehaviour _patrolState;
 
         public MonoBehaviour _attackState;
 
@@ -18,6 +16,7 @@ namespace NPC01
             ChangeState(_startingState);
         }
 
+        //Cam's change state stuff:
         public void ChangeState(MonoBehaviour newState)
         {
             if (newState == _currentState)
@@ -32,10 +31,8 @@ namespace NPC01
 
             newState.enabled = true;
 
-            // New state swap over to incoming state
             _currentState = newState;
         }
         
         
     }
-}

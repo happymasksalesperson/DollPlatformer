@@ -1045,7 +1045,10 @@ MonoBehaviour:
   runSpeed: 0
   jumpForce: 0
   maxSpeed: 0
-  _attackTime: 0
+  attackPower: 0
+  attack01Time: 0
+  attack02Time: 0
+  jumpAttack01Time: 0
 --- !u!1 &1404451256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 4229190616419550212, guid: c3c984497e8e5df4eb32e6f2054760d3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229190616419550212, guid: c3c984497e8e5df4eb32e6f2054760d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229190616419550215, guid: c3c984497e8e5df4eb32e6f2054760d3, type: 3}
       propertyPath: m_RootOrder

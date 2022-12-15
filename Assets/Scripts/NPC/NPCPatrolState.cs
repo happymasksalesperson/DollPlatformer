@@ -5,17 +5,17 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class NPC01_PatrolState : MonoBehaviour
+public class NPCPatrolState : MonoBehaviour
 {
     private StateManager _stateManager;
-    
+
     public NPC01_AttackState _attackState;
-    
+
     //
-    
+
     RaycastHit hitInfo;
     private RaycastHit wallInfo;
-    
+
     private Rigidbody _rb;
 
     private SpriteRenderer _sprend;
@@ -23,7 +23,7 @@ public class NPC01_PatrolState : MonoBehaviour
     // // // // // //
     // STATS
     private StatsComponent _stats;
-    
+
     //floats for determing distance from Player
     //NPC01 speeds up when spotting the Player and attacks once within range
     private float _distanceToPlayer;
@@ -33,21 +33,21 @@ public class NPC01_PatrolState : MonoBehaviour
 
     private float _speed;
     private float _maxSpeed;
-    
+
     private float _sightDistance;
 
     private float _patrolTime;
     private float _idleTime;
-    
+
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private LayerMask wallMask;
-    
+
     //bool for which direction NPC is facing (false left, true right)
-    private bool _facingDir=false;
+    private bool _facingDir = false;
     private Vector3 _facingDirVector;
 
-    private NPCEventManager eventManager;
-    
+    public NPCEventManager eventManager;
+
     // //
     //
     private void Start()
@@ -68,11 +68,24 @@ public class NPC01_PatrolState : MonoBehaviour
         StartCoroutine(Patrolling());
     }
 
+    // // // // // //
+    // ON ENABLE / DISABLE
+
+    private void OnEnable()
+    {
+        eventManager.OnPatrol();
+        _rb = GetComponent<Rigidbody>();
+        _stateManager = GetComponent<StateManager>();
+    }
+
+    private void OnDisable()
+    {
+    }
 
     private void FixedUpdate()
     {
         HandleSight();
-        
+
         if (_moving)
         {
             HandleMovement();
@@ -81,9 +94,8 @@ public class NPC01_PatrolState : MonoBehaviour
         {
             _rb.velocity = new Vector3(0f, 0f, 0f);
         }
-        
     }
-    
+
     // // // // // //
     // MOVEMENT
 
@@ -92,27 +104,27 @@ public class NPC01_PatrolState : MonoBehaviour
         if (!_facingDir)
         {
             _facingDirVector = new Vector3(-1, 0, 0);
-            transform.eulerAngles = new Vector2(0,0);
+            transform.eulerAngles = new Vector2(0, 0);
         }
 
-        else if(_facingDir)
+        else if (_facingDir)
         {
             _facingDirVector = new Vector3(1, 0, 0);
-            transform.eulerAngles = new Vector2(0,180);
-            }
+            transform.eulerAngles = new Vector2(0, 180);
+        }
 
-        _rb.velocity = new Vector3(_facingDirVector.x * _speed, 0f,0f);
-        
+        _rb.velocity = new Vector3(_facingDirVector.x * _speed, 0f, 0f);
+
         if (_rb.velocity.magnitude > _maxSpeed)
         {
-             _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+            _rb.velocity = _rb.velocity.normalized * _maxSpeed;
         }
     }
 
     private IEnumerator Patrolling()
     {
         _moving = true;
-        
+
         yield return new WaitForSecondsRealtime(_patrolTime);
 
         _moving = false;
@@ -127,7 +139,7 @@ public class NPC01_PatrolState : MonoBehaviour
 
         StartCoroutine(Patrolling());
     }
-    
+
     // // // // // //
     // SIGHT
     //
@@ -145,19 +157,19 @@ public class NPC01_PatrolState : MonoBehaviour
         if (hit)
         {
             GameObject playerObj = hitInfo.transform.gameObject;
-                Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.red);
+            Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.red);
 
-                IPlayer player = playerObj.GetComponent<IPlayer>();
-                player.DetectPosition();
+            IPlayer player = playerObj.GetComponent<IPlayer>();
+            player.DetectPosition();
 
-                _maxSpeed = 250;
+            _maxSpeed = 250;
 
-                _distanceToPlayer = Vector3.Distance(transform.position, playerObj.transform.position);
-                
-                if (_distanceToPlayer < _minDist)
-                    _stateManager.ChangeState(_attackState);
+            _distanceToPlayer = Vector3.Distance(transform.position, playerObj.transform.position);
+
+            if (_distanceToPlayer < _minDist)
+                _stateManager.ChangeState(_attackState);
         }
-        
+
         wallInfo = new RaycastHit();
         bool wallHit = Physics.Raycast(transform.position, _facingDirVector, out wallInfo, _sightDistance, wallMask);
         if (wallHit)
@@ -167,33 +179,17 @@ public class NPC01_PatrolState : MonoBehaviour
 
         else
         {
-             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
+            Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
         }
     }
 
     // // // // // //
     // ATTACK
-    
+
     //(change to attack state)
-    
+
 
     // // // // // //
     // TAKEDAMAGE
     //change to take damage state
-    
-    
-    // // // // // //
-    // ON ENABLE / DISABLE
-
-    private void OnEnable()
-    {
-        eventManager.OnPatrol();
-        _rb = GetComponent<Rigidbody>();
-        _stateManager = GetComponent<StateManager>();
-    }
-
-    private void OnDisable()
-    {
-        
-    }
 }

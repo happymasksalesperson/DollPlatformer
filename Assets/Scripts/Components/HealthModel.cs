@@ -10,10 +10,12 @@ public class HealthModel : MonoBehaviour
 
     private bool isAlive=true;
 
-    public HealthModelView modelView;
+    private HealthModelView modelView;
 
     private void OnEnable()
     {
+        modelView = GetComponentInChildren<HealthModelView>();
+        
         ChangeHP(maxHP);
     }
 
@@ -35,10 +37,5 @@ public class HealthModel : MonoBehaviour
 
             modelView.OnChangeHealth(HP);
         }
-    }
-
-    public float GetHP()
-    {
-        return HP;
     }
 }

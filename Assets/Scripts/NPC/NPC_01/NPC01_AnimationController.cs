@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using NPC01;
 using UnityEngine;
 
-public class NPC01_AnimationController : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
+    private NPCEventManager eventManager;
+    
     private SpriteRenderer _rend;
 
     private Animator _anim;
@@ -14,10 +15,11 @@ public class NPC01_AnimationController : MonoBehaviour
     {
         _rend = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+        eventManager = GetComponentInChildren<NPCEventManager>();
 
-        NPC01.EventManager.NPC01Attack01Event += Attack;
-        NPC01.EventManager.NPC01TakeDamageEvent += TakeDamage;
-        NPC01.EventManager.NPC01PatrollingEvent += Patrolling;
+        eventManager.Attack01 += Attack;
+        eventManager.TakeDamage += TakeDamage;
+        eventManager.Patrol += Patrolling;
     }
 
     private void Attack()
@@ -39,8 +41,8 @@ public class NPC01_AnimationController : MonoBehaviour
 
     private void OnDisable()
     {
-        NPC01.EventManager.NPC01Attack01Event -= Attack;
-        NPC01.EventManager.NPC01TakeDamageEvent -= TakeDamage;
-        NPC01.EventManager.NPC01PatrollingEvent -= Patrolling;
+        eventManager.Attack01 -= Attack;
+        eventManager.TakeDamage -= TakeDamage;
+        eventManager.Patrol -= Patrolling;
     }
 }
