@@ -9,7 +9,7 @@ public class NPC01_AttackState : MonoBehaviour
 
     private NPCEventManager eventManager;
 
-    public NPC01_PatrolState _patrolState;
+    public NPCPatrolState _patrolState;
 
     private StatsComponent _stats;
 

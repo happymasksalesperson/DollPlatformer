@@ -4,34 +4,38 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class StateManager : MonoBehaviour
     {
-        public MonoBehaviour _startingState;
-        public MonoBehaviour _currentState;
-        
-        public MonoBehaviour _patrolState;
+        public MonoBehaviour startingState;
+        public MonoBehaviour currentState;
 
-        public MonoBehaviour _attackState;
+        public MonoBehaviour idleState;
+        
+        public MonoBehaviour patrolState;
+
+        public MonoBehaviour attackState;
+
+        public MonoBehaviour jumpState;
 
         private void Start()
         {
-            ChangeState(_startingState);
+            ChangeState(startingState);
         }
 
         //Cam's change state stuff:
         public void ChangeState(MonoBehaviour newState)
         {
-            if (newState == _currentState)
+            if (newState == currentState)
             {
                 return;
             }
 
-            if (_currentState != null)
+            if (currentState != null)
             {
-                _currentState.enabled = false;
+                currentState.enabled = false;
             }
 
             newState.enabled = true;
 
-            _currentState = newState;
+            currentState = newState;
         }
         
         

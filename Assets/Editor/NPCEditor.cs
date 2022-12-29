@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(NPC01_PatrolState))]
+[CustomEditor(typeof(NPCPatrolState))]
 
-public class NPC01PatrolStateEditor : Editor
+public class NPCPatrolStateEditor : Editor
 {
     public override void OnInspectorGUI()
     {

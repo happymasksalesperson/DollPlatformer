@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7862248698009601648}
   - component: {fileID: 7862248698009601649}
   - component: {fileID: 7862248698009601654}
-  - component: {fileID: 7862248698009601653}
+  - component: {fileID: 5969319398007672787}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -138,7 +138,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7862248698009601653
+--- !u!114 &5969319398007672787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,6 @@ GameObject:
   - component: {fileID: 7862248698248618468}
   - component: {fileID: 7862248698248618458}
   - component: {fileID: 7862248698248618459}
-  - component: {fileID: 7862248698248618469}
   - component: {fileID: 7862248698248618456}
   m_Layer: 0
   m_Name: Model
@@ -267,29 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934d4fc3769e8074187577afc3496298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingState: {fileID: 7862248698248618469}
+  _startingState: {fileID: 0}
   _currentState: {fileID: 0}
+  _patrolState: {fileID: 0}
   _attackState: {fileID: 7862248698248618456}
---- !u!114 &7862248698248618469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7862248698248618470}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20ff0aab4b7326f4aa70d9d5232f425e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackState: {fileID: 7862248698248618456}
-  _minDist: 50
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  wallMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &7862248698248618456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,4 +282,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11635fff23f8bc468caa8c64b045941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolState: {fileID: 7862248698248618469}
+  _patrolState: {fileID: 0}
