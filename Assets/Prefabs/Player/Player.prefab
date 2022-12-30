@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3161264602736384829}
+  - component: {fileID: 5465281291440301549}
   m_Layer: 0
   m_Name: ModelView
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 4229190615743623923}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5465281291440301549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075492878428684341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c819772454a85ab4796d207b848527fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4229190615285131213
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   runSpeed: 500
-  jumpForce: 50000
   maxSpeed: 2000
+  jumpForce: 50000
   attackPower: 0
   attack01Time: 0
   attack02Time: 0
@@ -286,10 +299,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934d4fc3769e8074187577afc3496298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingState: {fileID: 0}
-  _currentState: {fileID: 0}
-  _patrolState: {fileID: 0}
-  _attackState: {fileID: 0}
+  startingState: {fileID: 0}
+  currentState: {fileID: 0}
+  idleState: {fileID: 0}
+  patrolState: {fileID: 0}
+  attackState: {fileID: 0}
+  jumpState: {fileID: 0}
+  deathState: {fileID: 0}
 --- !u!1 &4229190616419550212
 GameObject:
   m_ObjectHideFlags: 0

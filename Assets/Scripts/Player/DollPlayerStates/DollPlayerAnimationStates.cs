@@ -11,6 +11,9 @@ public class DollPlayerAnimationStates : MonoBehaviour
     private Animator _anim;
 
     private SpriteRenderer _spr;
+    
+    //anim stuff
+    //refactor later w/states
 
     private bool _facingRight;
 
@@ -21,8 +24,14 @@ public class DollPlayerAnimationStates : MonoBehaviour
     private bool _isAttack;
 
     public int _attackInt;
+    
+    //
+    private HealthModelView modelView;
+    
     private void OnEnable()
     {
+        modelView = GetComponentInParent<HealthModelView>();
+        
         _anim = GetComponent<Animator>();
 
         _spr = GetComponent<SpriteRenderer>();

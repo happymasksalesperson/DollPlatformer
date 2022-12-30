@@ -9,7 +9,7 @@ public class NPCPatrolState : MonoBehaviour
 {
     private StateManager _stateManager;
 
-    public NPC01_AttackState _attackState;
+    public NPCAttack01State _attackState;
 
     //
 
@@ -46,14 +46,12 @@ public class NPCPatrolState : MonoBehaviour
     private bool _facingDir = false;
     private Vector3 _facingDirVector;
 
-    public NPCEventManager eventManager;
+    public NPCModelView modelView;
 
     // //
     //
     private void Start()
     {
-        
-        
         _stats = GetComponent<StatsComponent>();
 
         _sprend = GetComponent<SpriteRenderer>();
@@ -66,6 +64,8 @@ public class NPCPatrolState : MonoBehaviour
         _sightDistance = _stats.MySightDistance();
 
         StartCoroutine(Patrolling());
+        
+        modelView.OnPatrol();
     }
 
     // // // // // //
@@ -73,14 +73,12 @@ public class NPCPatrolState : MonoBehaviour
 
     private void OnEnable()
     {
-        eventManager = GetComponent<NPCEventManager>();
-        eventManager.OnPatrol();
+        
         _rb = GetComponent<Rigidbody>();
         _stateManager = GetComponent<StateManager>();
-    }
-
-    private void OnDisable()
-    {
+        
+        modelView = GetComponentInChildren<NPCModelView>();
+        modelView.OnPatrol();
     }
 
     private void FixedUpdate()
@@ -183,14 +181,4 @@ public class NPCPatrolState : MonoBehaviour
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
         }
     }
-
-    // // // // // //
-    // ATTACK
-
-    //(change to attack state)
-
-
-    // // // // // //
-    // TAKEDAMAGE
-    //change to take damage state
 }

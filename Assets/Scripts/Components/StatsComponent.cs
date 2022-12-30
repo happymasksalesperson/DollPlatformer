@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatsComponent : MonoBehaviour
+public class StatsComponent : MonoBehaviour, ITakeDamage
 {
 
     [SerializeField] private string _name;
     
-    [SerializeField] private float _maxHP;
+    [SerializeField] private int maxHP;
+    private int HP;
 
     [SerializeField] private float _moveSpeed;
     
@@ -21,6 +22,37 @@ public class StatsComponent : MonoBehaviour
     
     [SerializeField] private float _idleTime;
 
+    [SerializeField] private HealthModelView modelView;
+
+    private void OnEnable()
+    {
+        modelView = GetComponentInChildren<HealthModelView>();
+
+        HP = maxHP;
+    }
+
+    //changes HP
+    public void ChangeHP(int amount)
+    {
+        HP += amount;
+        if (HP >= maxHP)
+            HP = maxHP;
+
+        modelView.OnChangeHealth(amount);
+            
+        if (HP <= 0)
+        {
+            HP = 0;
+            modelView.OnYouDied();
+        }
+    }
+
+    //kills NPC
+    private void YouDied()
+    {
+        
+    }
+
     public string MyName()
     {
         return (_name);
@@ -28,7 +60,7 @@ public class StatsComponent : MonoBehaviour
     
     public float MyMaxHP()
     {
-        return (_maxHP);
+        return (maxHP);
     }
     
     public float MyMoveSpeed()

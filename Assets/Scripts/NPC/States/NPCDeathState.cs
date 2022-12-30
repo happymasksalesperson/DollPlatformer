@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NPCDeathState : MonoBehaviour
 {
+    private HealthModelView modelView;
+    
     private Rigidbody rb;
 
     private BoxCollider box;
@@ -28,6 +30,8 @@ public class NPCDeathState : MonoBehaviour
 
     private void OnEnable()
     {
+        modelView = GetComponentInChildren<HealthModelView>();
+        
         rb = GetComponent<Rigidbody>();
 
         box = GetComponent<BoxCollider>();
@@ -37,11 +41,13 @@ public class NPCDeathState : MonoBehaviour
         gravity = GetComponent<Gravity>();
         
         box.enabled = false;
-        
+
         rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
         
+        //unlocks faster spin
+        rb.maxAngularVelocity = 100000f;
+        
         //transform.hitDir (see above)
-        //can't seem to make it spin very fast?
         rb.AddTorque(transform.forward * torque * hitDir);
 
         gravity.enabled = true;
@@ -54,7 +60,10 @@ public class NPCDeathState : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         if (!rend.isVisible)
+        {
+            yield return new WaitForSeconds(1);
             Destroy(gameObject);
+        }
 
         else StartCoroutine(Die());
     }
