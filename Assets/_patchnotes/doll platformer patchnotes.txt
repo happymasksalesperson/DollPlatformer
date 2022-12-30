@@ -68,4 +68,14 @@
 
 -- added "Take Damage" sprite & anim to NPC02
 
--- 
+1.8
+
+-- Marcus added grapple point stuff
+
+1.9
+
+-- Started refactoring Player script(s) to use a State Machine
+
+2.0
+
+-- added NPCDeathState.cs. On death NPCs jump vertically, get pushed back, spin, and fall down. BoxCollider is disabled and once they fall out of sight they destroy themselves. Two problems: 1) setting pushback direction to be consistent either with their current facing position or the direction the Player is attacking from. 2) AddTorque doesn't make the rigidbody spin very much no matter how much the numbers are pumped. It also might be fun to make them move in Z space, becoming smaller if they are knocked away and larger if knocked towards the screen (ie like smash bros)

@@ -52,7 +52,7 @@ public class NPCPatrolState : MonoBehaviour
     //
     private void Start()
     {
-        eventManager = GetComponentInChildren<NPCEventManager>();
+        
         
         _stats = GetComponent<StatsComponent>();
 
@@ -73,6 +73,7 @@ public class NPCPatrolState : MonoBehaviour
 
     private void OnEnable()
     {
+        eventManager = GetComponent<NPCEventManager>();
         eventManager.OnPatrol();
         _rb = GetComponent<Rigidbody>();
         _stateManager = GetComponent<StateManager>();
