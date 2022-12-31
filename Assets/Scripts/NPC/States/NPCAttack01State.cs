@@ -13,11 +13,17 @@ public class NPCAttack01State : MonoBehaviour
     [SerializeField] private float attack01Time;
 
     [SerializeField] private float windup01Time;
+    
+    //
+    private bool conjoined;
 
     private void OnEnable()
     {
         _stateManager = GetComponent<StateManager>();
         _stats = GetComponent<StatsComponent>();
+
+        conjoined = _stats.conjoined;
+        
         attack01Time = _stats.MyAttackTime();
 
         modelView = GetComponentInChildren<NPCModelView>();
@@ -34,6 +40,20 @@ public class NPCAttack01State : MonoBehaviour
         modelView.OnAttack01();
         
         yield return new WaitForSeconds(attack01Time);
+
+        if (!conjoined)
+            StartCoroutine(CojoinedAttack01());
+        
+        else
+        _stateManager.ChangeStateString("idle");
+    }
+
+    private IEnumerator CojoinedAttack01()
+    {
+        _stateManager.ChangeStateString("idle");
+        
+        //wait for 2 windups + attacks
+        yield return new WaitForSeconds(4);
         
         _stateManager.ChangeStateString("patrol");
     }

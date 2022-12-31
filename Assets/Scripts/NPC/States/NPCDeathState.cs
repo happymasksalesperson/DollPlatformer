@@ -42,10 +42,12 @@ public class NPCDeathState : MonoBehaviour
         box = GetComponent<BoxCollider>();
         if(box)
             box.enabled = false;
-
-        sphere = GetComponent<SphereCollider>();
-        if (sphere)
-            sphere.enabled = false;
+        else
+        {
+            sphere = GetComponent<SphereCollider>();
+            if (sphere!=null)
+                sphere.enabled = false;
+        }
 
         rend = GetComponentInChildren<SpriteRenderer>();
 

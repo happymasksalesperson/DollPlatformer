@@ -24,6 +24,8 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     [SerializeField] private HealthModelView modelView;
 
+    [SerializeField] public bool conjoined;
+
     private void OnEnable()
     {
         modelView = GetComponentInChildren<HealthModelView>();

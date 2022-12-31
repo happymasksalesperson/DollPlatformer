@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 7351472035176131932}
   - component: {fileID: 7351472035176131927}
   - component: {fileID: 7351472035176131926}
+  - component: {fileID: 8723694009031517838}
   m_Layer: 0
   m_Name: NPC02_drum01
   m_TagString: Untagged
@@ -270,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc42d836cd59d94a86fca885658389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackState: {fileID: 0}
   _minDist: 5
   playerMask:
     serializedVersion: 2
@@ -365,3 +365,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4184105, y: 3.0219615, z: 1}
   m_Center: {x: 0.02836876, y: 0.022899343, z: 0}
+--- !u!114 &8723694009031517838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351472035176131880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

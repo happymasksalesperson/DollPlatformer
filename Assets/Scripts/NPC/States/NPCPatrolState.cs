@@ -8,17 +8,12 @@ using UnityEngine;
 public class NPCPatrolState : MonoBehaviour
 {
     private StateManager _stateManager;
-
-    public NPCAttack01State _attackState;
-
     //
 
     RaycastHit hitInfo;
     private RaycastHit wallInfo;
 
     private Rigidbody _rb;
-
-    private SpriteRenderer _sprend;
 
     // // // // // //
     // STATS
@@ -54,8 +49,6 @@ public class NPCPatrolState : MonoBehaviour
     {
         _stats = GetComponent<StatsComponent>();
 
-        _sprend = GetComponent<SpriteRenderer>();
-
         _maxSpeed = _stats.MyMaxSpeed();
         _speed = _stats.MyMoveSpeed();
         _idleTime = _stats.MyIdleTime();
@@ -64,8 +57,6 @@ public class NPCPatrolState : MonoBehaviour
         _sightDistance = _stats.MySightDistance();
 
         StartCoroutine(Patrolling());
-        
-        modelView.OnPatrol();
     }
 
     // // // // // //
@@ -73,6 +64,7 @@ public class NPCPatrolState : MonoBehaviour
 
     private void OnEnable()
     {
+        _moving = true;
         
         _rb = GetComponent<Rigidbody>();
         _stateManager = GetComponent<StateManager>();
@@ -89,10 +81,10 @@ public class NPCPatrolState : MonoBehaviour
         {
             HandleMovement();
         }
-        else
+        /*else
         {
             _rb.velocity = new Vector3(0f, 0f, 0f);
-        }
+        }*/
     }
 
     // // // // // //
@@ -100,23 +92,26 @@ public class NPCPatrolState : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (!_facingDir)
+        if (_moving)
         {
-            _facingDirVector = new Vector3(-1, 0, 0);
-            transform.eulerAngles = new Vector2(0, 0);
-        }
+            if (!_facingDir)
+            {
+                _facingDirVector = new Vector3(-1, 0, 0);
+                transform.eulerAngles = new Vector2(0, 0);
+            }
 
-        else if (_facingDir)
-        {
-            _facingDirVector = new Vector3(1, 0, 0);
-            transform.eulerAngles = new Vector2(0, 180);
-        }
+            else if (_facingDir)
+            {
+                _facingDirVector = new Vector3(1, 0, 0);
+                transform.eulerAngles = new Vector2(0, 180);
+            }
 
-        _rb.velocity = new Vector3(_facingDirVector.x * _speed, 0f, 0f);
+            _rb.velocity = new Vector3(_facingDirVector.x * _speed, 0f, 0f);
 
-        if (_rb.velocity.magnitude > _maxSpeed)
-        {
-            _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+            if (_rb.velocity.magnitude > _maxSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+            }
         }
     }
 
@@ -157,16 +152,14 @@ public class NPCPatrolState : MonoBehaviour
         {
             GameObject playerObj = hitInfo.transform.gameObject;
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.red);
-
+            
             IPlayer player = playerObj.GetComponent<IPlayer>();
             player.DetectPosition();
-
-            _maxSpeed = 250;
 
             _distanceToPlayer = Vector3.Distance(transform.position, playerObj.transform.position);
 
             if (_distanceToPlayer < _minDist)
-                _stateManager.ChangeState(_attackState);
+                _stateManager.ChangeStateString("attack");
         }
 
         wallInfo = new RaycastHit();
@@ -180,5 +173,13 @@ public class NPCPatrolState : MonoBehaviour
         {
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
         }
+    }
+    
+    // // // // // //
+    // 
+    private void OnDisable()
+    {
+        _rb.velocity = new Vector3(0, 0, 0);
+        _moving = false;
     }
 }

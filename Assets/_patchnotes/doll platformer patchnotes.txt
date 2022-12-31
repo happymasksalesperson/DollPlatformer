@@ -89,3 +89,11 @@
 2.1
 
 -- added NPC02_Drum02 and NPC02_Drum03 prefabs. Added sprites and animations (takes longer than you think) 
+
+TO DO: Make "Conjoined State" for drums
+
+add SFX
+
+fix patrol state
+
+add attack/take damage to work with player
