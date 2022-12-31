@@ -30,7 +30,7 @@ public class NPCAttack01State : MonoBehaviour
         modelView.OnAttack01Windup();
 
         yield return new WaitForSeconds(windup01Time);
-
+        
         modelView.OnAttack01();
         
         yield return new WaitForSeconds(attack01Time);

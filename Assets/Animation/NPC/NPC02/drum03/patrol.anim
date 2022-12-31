@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: attack01
+  m_Name: patrol
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: d81355c1b6a5bcf41aa7253a83046e12, type: 3}
+      value: {fileID: 21300000, guid: b13b3b0f84215624e98677d3d86b2ecf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -41,7 +41,7 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d81355c1b6a5bcf41aa7253a83046e12, type: 3}
+    - {fileID: 21300000, guid: b13b3b0f84215624e98677d3d86b2ecf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

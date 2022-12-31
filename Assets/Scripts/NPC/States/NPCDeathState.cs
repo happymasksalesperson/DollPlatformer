@@ -10,6 +10,8 @@ public class NPCDeathState : MonoBehaviour
 
     private BoxCollider box;
 
+    private SphereCollider sphere;
+
     private SpriteRenderer rend;
 
     //how much rb spins
@@ -34,14 +36,21 @@ public class NPCDeathState : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
 
+        //detects colliders and turns them off
+        //here I leave an intentional null reference...? investigate further
+        //have to add a seperate check for spheres vs boxes
         box = GetComponent<BoxCollider>();
+        if(box)
+            box.enabled = false;
+
+        sphere = GetComponent<SphereCollider>();
+        if (sphere)
+            sphere.enabled = false;
 
         rend = GetComponentInChildren<SpriteRenderer>();
 
         gravity = GetComponent<Gravity>();
         
-        box.enabled = false;
-
         rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
         
         //unlocks faster spin
