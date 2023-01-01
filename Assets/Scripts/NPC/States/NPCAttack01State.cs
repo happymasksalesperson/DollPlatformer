@@ -53,7 +53,7 @@ public class NPCAttack01State : MonoBehaviour
         _stateManager.ChangeStateString("idle");
         
         //wait for 2 windups + attacks
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
         
         _stateManager.ChangeStateString("patrol");
     }

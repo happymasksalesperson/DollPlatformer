@@ -46,7 +46,7 @@ public class NPC02ConjoinedState : MonoBehaviour
             
             stateMan02.ChangeStateString("attack");
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             
             stateMan01.ChangeStateString("attack");
         }
