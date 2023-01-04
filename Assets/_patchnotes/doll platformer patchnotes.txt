@@ -107,3 +107,13 @@ add attack/take damage to work with player
 -- added NPC03_CymbalMonkey. Added sprites and animation. CymbalMonkey uses identical logic to NPC02
 
 -- updated DeathState. The direction of the spinning is now randomised and enemies are knocked back in the direction they are facing
+
+2.4
+
+-- begun elevator, created the base model and view, no real functionality
+
+TO DO: create states for functionality
+
+Create Elevator Music
+
+Add placeholder SFX
