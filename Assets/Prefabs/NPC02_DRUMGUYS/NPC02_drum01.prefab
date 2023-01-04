@@ -154,7 +154,7 @@ Animator:
   m_GameObject: {fileID: 7351472034570514432}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 020ff1ba862dc8f42b01aeec92bd5912, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5d5284cbcf9f0f24f958b42373b0a650, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   _patrolTime: 5
   _idleTime: 1
   modelView: {fileID: 0}
+  conjoined: 0
 --- !u!114 &7351472035176131925
 MonoBehaviour:
   m_ObjectHideFlags: 0

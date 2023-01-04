@@ -36,25 +36,30 @@ public class NPCAttack01State : MonoBehaviour
         modelView.OnAttack01Windup();
 
         yield return new WaitForSeconds(windup01Time);
-        
+
+        if (conjoined)
+        {
+            StartCoroutine(CojoinedAttack01());
+            yield break;
+        }
+
         modelView.OnAttack01();
         
         yield return new WaitForSeconds(attack01Time);
-
-        if (!conjoined)
-            StartCoroutine(CojoinedAttack01());
         
-        else
-        _stateManager.ChangeStateString("idle");
+        _stateManager.ChangeStateString("patrol");
     }
 
     private IEnumerator CojoinedAttack01()
     {
+        _stateManager.ChangeStateString("attack");
+        
+        modelView.OnAttack01();
+        
+        yield return new WaitForSeconds(attack01Time);
+        
+        modelView.OnIdle();
+        
         _stateManager.ChangeStateString("idle");
-        
-        //wait for 2 windups + attacks
-        yield return new WaitForSeconds(1);
-        
-        _stateManager.ChangeStateString("patrol");
     }
 }

@@ -97,3 +97,11 @@ add SFX
 fix patrol state
 
 add attack/take damage to work with player
+
+2.2
+
+-- began work on a "Conjoined" variation of the drum NPC's where they start stacked on top of each other. Added ConjoinedState. Added conjoined bool to statsComp. Currently, the conjoined leader can trigger itself and its conjoined bros to attack in sequence
+
+2.3
+
+-- added NPC03_CymbalMonkey. Added sprites and animation. CymbalMonkey uses identical logic to NPC02

@@ -12,7 +12,7 @@ public class NPCModelView : MonoBehaviour
     {
         Attack01?.Invoke();
     }
-    
+
     //attack 01 wind up
     public event Action Attack01Windup;
 
@@ -21,12 +21,12 @@ public class NPCModelView : MonoBehaviour
         Attack01Windup?.Invoke();
     }
 
-    //event for NPC taking damage
-    public event Action TakeDamage;
+    //idle
+    public event Action Idle;
 
-    public void OnTakeDamage()
+    public void OnIdle()
     {
-        TakeDamage?.Invoke();
+        Idle?.Invoke();
     }
 
     //event for NPC01 patrolling
@@ -35,5 +35,13 @@ public class NPCModelView : MonoBehaviour
     public void OnPatrol()
     {
         Patrol?.Invoke();
+    }
+
+    //event for NPC taking damage
+    public event Action TakeDamage;
+
+    public void OnTakeDamage()
+    {
+        TakeDamage?.Invoke();
     }
 }
