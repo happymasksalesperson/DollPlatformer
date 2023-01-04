@@ -105,3 +105,5 @@ add attack/take damage to work with player
 2.3
 
 -- added NPC03_CymbalMonkey. Added sprites and animation. CymbalMonkey uses identical logic to NPC02
+
+-- updated DeathState. The direction of the spinning is now randomised and enemies are knocked back in the direction they are facing

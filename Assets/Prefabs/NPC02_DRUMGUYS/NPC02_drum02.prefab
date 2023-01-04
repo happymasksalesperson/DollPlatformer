@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 762725751722798989}
   - component: {fileID: 762725751722798983}
   - component: {fileID: 1410048494336649313}
+  - component: {fileID: 1324864135218171764}
   m_Layer: 0
   m_Name: NPC02_drum02
   m_TagString: Untagged
@@ -39,6 +40,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 762725752946555584}
+  - {fileID: 175390415215277056}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80,9 +82,13 @@ MonoBehaviour:
   _maxSpeed: 3
   _attackTime: 1
   _sightDistance: 50
+  _minDist: 0
   _patrolTime: 5
   _idleTime: 1.5
   modelView: {fileID: 0}
+  vulnerable: 0
+  conjoined: 0
+  facingDirection: 0
 --- !u!114 &762725751722798991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +125,7 @@ MonoBehaviour:
   verticalDist: 1000
   horizontalDist: 100
   hitDir: -1
+  facingDir: 0
 --- !u!114 &762725751722798984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +208,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1324864135218171764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762725751722799090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e20624bd5591c478afc95dfcc2a537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalDist: 0
+  verticalDist: 100
 --- !u!1 &762725752592790234
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,3 +398,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c819772454a85ab4796d207b848527fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5263598048002180022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175390415215277056}
+  - component: {fileID: 7690743756381306336}
+  - component: {fileID: 277407153348801049}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &175390415215277056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263598048002180022}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.4660004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 762725751722799091}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7690743756381306336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263598048002180022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &277407153348801049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263598048002180022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0

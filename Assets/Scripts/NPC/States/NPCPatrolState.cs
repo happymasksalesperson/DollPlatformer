@@ -19,7 +19,7 @@ public class NPCPatrolState : MonoBehaviour
     // STATS
     private StatsComponent _stats;
 
-    //floats for determing distance from Player
+    //floats for determining distance from Player
     //NPC01 speeds up when spotting the Player and attacks once within range
     private float _distanceToPlayer;
     [SerializeField] private float _minDist;
@@ -81,10 +81,6 @@ public class NPCPatrolState : MonoBehaviour
         {
             HandleMovement();
         }
-        /*else
-        {
-            _rb.velocity = new Vector3(0f, 0f, 0f);
-        }*/
     }
 
     // // // // // //
@@ -141,6 +137,7 @@ public class NPCPatrolState : MonoBehaviour
     private void Flip()
     {
         _facingDir = !_facingDir;
+        _stats.ChangeFacingDirection(_facingDir);
     }
 
     private void HandleSight()

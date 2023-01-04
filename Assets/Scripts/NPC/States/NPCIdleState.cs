@@ -12,6 +12,6 @@ public class NPCIdleState : MonoBehaviour
     private void OnEnable()
     {
         modelView = GetComponentInChildren<NPCModelView>();
-        modelView.OnPatrol();
+        modelView.OnIdle();
     }
 }

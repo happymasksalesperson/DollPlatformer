@@ -16,7 +16,13 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     [SerializeField] private float _attackTime;
     
+    // // // // // //
+    //
+    // sightDistance determines how far Character can see
+    // minDist is used for triggering Attacks when in range
     [SerializeField] private float _sightDistance;
+    
+    [SerializeField] private float _minDist;
 
     [SerializeField] private float _patrolTime;
     
@@ -25,8 +31,10 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
     [SerializeField] private HealthModelView modelView;
 
     [SerializeField] public bool vulnerable;
+    
+    public bool conjoined;
 
-    [SerializeField] public bool conjoined;
+    public bool facingDirection;
 
     private void OnEnable()
     {
@@ -95,5 +103,13 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
     public float MyIdleTime()
     {
         return (_idleTime);
+    }
+    
+    //changes facing direction
+    //currently used in DeathState to determine which way enemy is bumped back on death
+    public void ChangeFacingDirection(bool dir)
+    {
+        //left falst right true
+        facingDirection = dir;
     }
 }
