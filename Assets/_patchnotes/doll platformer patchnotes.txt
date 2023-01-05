@@ -117,3 +117,11 @@ TO DO: create states for functionality
 Create Elevator Music
 
 Add placeholder SFX
+
+2.5
+
+-- added PaddyBoi's Snare Monster SFX
+
+-- added the best to NPC02SFX.cs, added rudimentary audio source and loader (refactor later)
+
+-- added SFX logic to states & prefabs

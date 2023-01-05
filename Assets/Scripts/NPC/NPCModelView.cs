@@ -29,7 +29,7 @@ public class NPCModelView : MonoBehaviour
         Idle?.Invoke();
     }
 
-    //event for NPC01 patrolling
+    //patrolling
     public event Action Patrol;
 
     public void OnPatrol()
@@ -43,5 +43,13 @@ public class NPCModelView : MonoBehaviour
     public void OnTakeDamage()
     {
         TakeDamage?.Invoke();
+    }
+    
+    //Death
+    public event Action Death;
+
+    public void OnDeath()
+    {
+        Death?.Invoke();
     }
 }

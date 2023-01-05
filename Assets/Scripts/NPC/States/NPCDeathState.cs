@@ -8,7 +8,7 @@ public class NPCDeathState : MonoBehaviour
 {
     private StatsComponent stats;
 
-    private HealthModelView modelView;
+    private NPCModelView modelView;
 
     private Rigidbody rb;
 
@@ -40,7 +40,9 @@ public class NPCDeathState : MonoBehaviour
     {
         stats = GetComponent<StatsComponent>();
         
-        modelView = GetComponentInChildren<HealthModelView>();
+        modelView = GetComponentInChildren<NPCModelView>();
+        
+        modelView.OnDeath();
         
         rb = GetComponent<Rigidbody>();
 
@@ -92,11 +94,10 @@ public class NPCDeathState : MonoBehaviour
     //destroys gameobject once renderer is out of sight
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
 
         if (!rend.isVisible)
         {
-            yield return new WaitForSeconds(1);
             Destroy(gameObject);
         }
 

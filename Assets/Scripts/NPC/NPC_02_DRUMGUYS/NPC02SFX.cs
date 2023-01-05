@@ -1,0 +1,179 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class NPC02SFX : MonoBehaviour
+{
+    private NPCModelView modelView;
+
+    public static AudioClip
+        NPC02_Charge01,
+        NPC02_Charge02,
+        NPC02_Charge03,
+        NPC02_Death01,
+        NPC02_Death02,
+        NPC02_Death03,
+        NPC02_HardHit,
+        NPC02_HardRoll01,
+        NPC02_HardRoll02,
+        NPC02_MidRoll,
+        NPC02_SoftRoll01,
+        NPC02_SoftRoll02;
+
+    static AudioSource audioSrc;
+
+    void Awake()
+    {
+        audioSrc = GetComponent<AudioSource>();
+        
+        //example = Resources.Load<AudioClip>("example");
+        //doesn't need NPC_02 in string
+        NPC02_Charge01 = Resources.Load<AudioClip>("NPC02_Charge01");
+        NPC02_Charge02 = Resources.Load<AudioClip>("NPC02_Charge02");
+        NPC02_Charge03 = Resources.Load<AudioClip>("NPC02_Charge03");
+        NPC02_Death01 = Resources.Load<AudioClip>("NPC02_Death01");
+        NPC02_Death02 = Resources.Load<AudioClip>("NPC02_Death02");
+        NPC02_Death03 = Resources.Load<AudioClip>("NPC02_Death03");
+        NPC02_HardHit = Resources.Load<AudioClip>("NPC02_HardHit");
+        NPC02_HardRoll01 = Resources.Load<AudioClip>("NPC02_HardRoll01");
+        NPC02_HardRoll02 = Resources.Load<AudioClip>("NPC02_HardRoll02");
+        NPC02_MidRoll = Resources.Load<AudioClip>("NPC02_MidRoll");
+        NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02_SoftRoll01");
+        NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
+    }
+
+    private void OnEnable()
+    {
+        modelView = GetComponentInParent<NPCModelView>();
+
+        modelView.Attack01Windup += Attack01Windup;
+        modelView.Attack01 += Attack01;
+
+        //modelView.Patrol += Patrol;
+
+        modelView.TakeDamage += TakeDamage;
+
+        modelView.Death += Death;
+    }
+
+    private void Attack01Windup()
+    {
+        float rand = Random.value;
+        if (rand < 0.3f)
+            PlaySound("NPC02_Charge01");
+
+        if (rand > 0.33f && rand < 0.66f)
+            PlaySound("NPC02_Charge02");
+
+        else
+            PlaySound("NPC02_Charge03");
+    }
+
+    private void Attack01()
+    {
+        PlaySound("NPC02_HardHit");
+    }
+
+    private void Patrol()
+    {
+        if (Random.value < 0.5f)
+            PlaySound("NPC02_SoftRoll01");
+
+        else
+            PlaySound("NPC02_SoftRoll02");
+    }
+
+    private void TakeDamage()
+    {
+        float rand = Random.value;
+        if (rand < 0.3f)
+            PlaySound("NPC02_MidRoll");
+
+        if (rand > 0.33f && rand < 0.66f)
+            PlaySound("NPC02_HardRoll01");
+
+        else
+            PlaySound("NPC02_HardRoll02");
+    }
+
+    private void Death()
+    {
+        float rand = Random.value;
+        if (rand < 0.3f)
+            PlaySound("NPC02_Death01");
+
+        if (rand > 0.33f && rand < 0.66f)
+            PlaySound("NPC02_Death02");
+
+        else
+            PlaySound("NPC02_Death03");
+        
+        Debug.Log("Death");
+    }
+
+    public static void PlaySound(string clipName)
+    {
+        switch (clipName)
+        {
+            case "NPC02_Charge01":
+                audioSrc.PlayOneShot(NPC02_Charge01);
+                break;
+
+            case "NPC02_Charge02":
+                audioSrc.PlayOneShot(NPC02_Charge02);
+                break;
+
+            case "NPC02_Charge03":
+                audioSrc.PlayOneShot(NPC02_Charge03);
+                break;
+
+            case "NPC02_Death01":
+                audioSrc.PlayOneShot(NPC02_Death01);
+                break;
+
+            case "NPC02_Death02":
+                audioSrc.PlayOneShot(NPC02_Death02);
+                break;
+
+            case "NPC02_Death03":
+                audioSrc.PlayOneShot(NPC02_Death03);
+                break;
+
+            case "NPC02_HardHit":
+                audioSrc.PlayOneShot(NPC02_HardHit);
+                break;
+
+            case "NPC02_HardRoll01":
+                audioSrc.PlayOneShot(NPC02_HardRoll01);
+                break;
+
+            case "NPC02_HardRoll02":
+                audioSrc.PlayOneShot(NPC02_HardRoll02);
+                break;
+
+            case "NPC02_MidRoll":
+                audioSrc.PlayOneShot(NPC02_MidRoll);
+                break;
+
+            case "NPC02_SoftRoll01":
+                audioSrc.PlayOneShot(NPC02_SoftRoll01);
+                break;
+
+            case "NPC02_SoftRoll02":
+                audioSrc.PlayOneShot(NPC02_SoftRoll02);
+                break;
+        }
+    }
+
+    private void OnDisable()
+    {
+        modelView.Attack01Windup -= Attack01Windup;
+        modelView.Attack01 -= Attack01;
+
+        modelView.Patrol -= Patrol;
+
+        modelView.Death -= Death;
+    }
+}

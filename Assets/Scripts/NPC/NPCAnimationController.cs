@@ -27,27 +27,22 @@ public class NPCAnimationController : MonoBehaviour
 
     private void Attack()
     {
-        _anim.SetTrigger("Attack01");
+        _anim.Play("attack01");
     }
 
     private void Attack01Windup()
     {
-        _anim.ResetTrigger("Patrol");
-        _anim.SetTrigger("Attack01Windup");
+        _anim.Play("attack01windup");
     }
 
     private void TakeDamage()
     {
-        _anim.ResetTrigger("Patrol");
-        _anim.SetTrigger("TakeDamage");
+        _anim.Play("takeDamage");
     }
 
     private void Patrolling()
     {
-        _anim.ResetTrigger("TakeDamage");
-        _anim.ResetTrigger("Attack01");
-        _anim.ResetTrigger("Attack01Windup");
-        _anim.SetTrigger("Patrol");
+        _anim.Play("patrol");
     }
 
     private void OnDisable()
