@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class StatsComponent : MonoBehaviour, ITakeDamage
@@ -38,6 +39,9 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     private void OnEnable()
     {
+        GameObject gameObj = gameObject;
+        LevelManager.levelManager.SFX.AddToList(gameObj);
+        
         modelView = GetComponentInChildren<HealthModelView>();
 
         HP = maxHP;

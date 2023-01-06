@@ -12,35 +12,41 @@ public class NPC02ConjoinedKnockback : MonoBehaviour
     private bool grounded = false;
 
     private Rigidbody rb;
-    
+
     [SerializeField] private float verticalDist;
 
     [SerializeField] private float horizontalDist;
-    
+
     private void OnEnable()
     {
         groundCheck = GetComponentInChildren<GroundCheck>();
+        if (groundCheck != null)
+        {
+            if (!groundCheck.enabled)
+                groundCheck.enabled = true;
+        }
 
         stateManager = GetComponent<StateManager>();
 
         rb = GetComponent<Rigidbody>();
         rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
-        
+
         StartCoroutine(WaitUntilGrounded());
-        
+
         IEnumerator WaitUntilGrounded()
         {
             while (!grounded)
             {
                 yield return null;
             }
-            
+
             stateManager.ChangeStateString("patrol");
         }
     }
 
     private void FixedUpdate()
     {
-        grounded = groundCheck.isGrounded;
+        if ((groundCheck != null) && (groundCheck.enabled))
+            grounded = groundCheck.isGrounded;
     }
 }

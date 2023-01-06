@@ -98,6 +98,7 @@ public class NPCDeathState : MonoBehaviour
 
         if (!rend.isVisible)
         {
+            LevelManager.levelManager.SFX.Unsubscribe(gameObject);
             Destroy(gameObject);
         }
 

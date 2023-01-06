@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class NPC02SFX : MonoBehaviour
 {
     private NPCModelView modelView;
+    public List<GameObject> NPC02List = new List<GameObject>();
 
     public static AudioClip
         NPC02_Charge01,
@@ -27,7 +28,6 @@ public class NPC02SFX : MonoBehaviour
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
-        
         //example = Resources.Load<AudioClip>("example");
         //doesn't need NPC_02 in string
         NPC02_Charge01 = Resources.Load<AudioClip>("NPC02_Charge01");
@@ -44,18 +44,44 @@ public class NPC02SFX : MonoBehaviour
         NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
     }
 
-    private void OnEnable()
+    public void AddToList(GameObject gameObject)
     {
-        modelView = GetComponentInParent<NPCModelView>();
+        NPC02List.Add(gameObject);
+        Subscribe();
+    }
 
-        modelView.Attack01Windup += Attack01Windup;
-        modelView.Attack01 += Attack01;
+    public void Unsubscribe(GameObject gameObject)
+    {
+        NPC02List.Remove(gameObject);
+        if (gameObject.GetComponentInChildren<NPCModelView>() != null)
+        {
+            modelView =gameObject.GetComponentInChildren<NPCModelView>();
 
-        //modelView.Patrol += Patrol;
+            modelView.Attack01Windup -= Attack01Windup;
+            modelView.Attack01 -= Attack01;
+            modelView.Patrol -= Patrol;
+            modelView.Death -= Death;
+        }
+    }
 
-        modelView.TakeDamage += TakeDamage;
+    private void Subscribe()
+    {
+        foreach (GameObject npcModelView in NPC02List)
+        {
+            if (npcModelView.GetComponentInChildren<NPCModelView>() != null)
+            {
+                modelView = npcModelView.GetComponentInChildren<NPCModelView>();
+                    
+                modelView.Attack01Windup += Attack01Windup;
+                modelView.Attack01 += Attack01;
 
-        modelView.Death += Death;
+                //modelView.Patrol += Patrol;
+
+                modelView.TakeDamage += TakeDamage;
+
+                modelView.Death += Death;
+            }
+        }
     }
 
     private void Attack01Windup()
@@ -109,8 +135,6 @@ public class NPC02SFX : MonoBehaviour
 
         else
             PlaySound("NPC02_Death03");
-        
-        Debug.Log("Death");
     }
 
     public static void PlaySound(string clipName)
@@ -169,11 +193,5 @@ public class NPC02SFX : MonoBehaviour
 
     private void OnDisable()
     {
-        modelView.Attack01Windup -= Attack01Windup;
-        modelView.Attack01 -= Attack01;
-
-        modelView.Patrol -= Patrol;
-
-        modelView.Death -= Death;
     }
 }

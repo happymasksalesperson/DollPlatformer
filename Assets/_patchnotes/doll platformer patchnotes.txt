@@ -125,3 +125,11 @@ Add placeholder SFX
 -- added the best to NPC02SFX.cs, added rudimentary audio source and loader (refactor later)
 
 -- added SFX logic to states & prefabs
+
+2.6
+
+-- refactored NPC02SFX.cs into a single script. Script is placed on an object w/audio source. Contains a List of NPC02 GameObjects. When added NPC02 adds itself to the List which is then subscribes itself to listening to ModelView events
+
+-- any GameObject with a StatsComponent.cs now add themselves to the subscription on spawn and unsub on death
+
+-- 
