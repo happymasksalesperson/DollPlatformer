@@ -722,6 +722,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCenter: {x: 0, y: 0, z: 0}
   Attack01Box: {x: 0, y: 0, z: 0}
+--- !u!114 &572165222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572165220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11695a2e370e4994c8b7d5762aac92f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &572165223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572165220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f7857826792384aaef96ae294f707f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &573025150
 GameObject:
   m_ObjectHideFlags: 0

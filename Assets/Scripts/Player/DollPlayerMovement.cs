@@ -20,6 +20,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     private DollPlayerStats playerStats;
 
     private DollPlayerAnimationStates _animStates;
+
+    private StateManager stateManager;
     
     //tracks player facing dir
     private bool _facingRight;
@@ -79,30 +81,15 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private WaitForSeconds _jumpWait;
 
-
-    // // // // // //
-    // PLAYER STATES
-    // move this to a state machine later?
-    public enum PlayerState
-    {
-        Idling,
-        Crouching,
-        Running,
-        Attacking,
-        Jumping,
-        TakeDamage,
-    }
-    public PlayerState currentState;
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
 
         _groundCheck = GetComponentInChildren<GroundCheck>();
 
-        currentState = PlayerState.Idling;
-
         _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
+
+        stateManager = GetComponent<StateManager>();
 
         _animStates.ChangeMoveInt(0);
         // _defaultGravity = 
@@ -160,8 +147,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         {
             _animStates.ChangeMoveInt(0);
         }
-        
-       
     }
     
     // // // // // //
@@ -196,10 +181,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     }
     private IEnumerator Attacking()
     {
-        Debug.Log("Hiyah");
-        
-        currentState = PlayerState.Attacking;
-        
         _animStates.ChangeMoveInt(4);
 
         yield return new WaitForSeconds(_attackTime);
@@ -214,16 +195,14 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         if (IsGrounded())
         {
-            
-            _rb.AddForce(Vector3.up*_jumpForce);
             _jumping = true;
+
             StartCoroutine(GroundCheckAfterJump());
         }
     }
 
     private bool IsGrounded()
     {
-        //Debug.Log(_groundCheck.isGrounded);
         return _groundCheck.isGrounded;
     }
 
@@ -272,7 +251,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         _playerActions.InGamePlayer.Enable();
         
         //get stats from PlayerStats
-        playerStats = this.GetComponent<DollPlayerStats>();
+        playerStats = GetComponent<DollPlayerStats>();
         _runSpeed = playerStats.runSpeed;
         _maxSpeed = playerStats.maxSpeed;
         _jumpForce = playerStats.jumpForce;

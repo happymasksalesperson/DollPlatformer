@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DollPlayerJumpState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Rigidbody rb;
 
-    // Update is called once per frame
-    void Update()
+    private float jumpForce;
+
+    private DollPlayerStats stats;
+
+    private void OnEnable()
     {
+        stats = GetComponent<DollPlayerStats>();
+
+        jumpForce = stats.jumpForce;
         
+        rb.AddForce(Vector3.up*jumpForce);
     }
 }

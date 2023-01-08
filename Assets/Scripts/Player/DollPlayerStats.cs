@@ -20,17 +20,20 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     
     [Header("ATTACK POWER")]
     public int attackPower;
-    
+
+    [Header("ATTACK RADIUS SIZE")] public float radius;
+
     [Header("ATTACK TIME VALUES")]
     public float attack01Time;
     public float attack02Time;
     
+    [Header("JUMP ATTACK TIMES")]
     public float jumpAttack01Time;
     
     // // // // // //
     // 
 
-    [SerializeField] private HealthModelView modelView;
+    private HealthModelView modelView;
     
     // // // // // //
     // 
