@@ -11,9 +11,14 @@ public class StateManagerEditor : Editor
     {
         base.OnInspectorGUI();
         
-        if (GUILayout.Button("Attack"))
+        if (GUILayout.Button("Attack01"))
         {
-            (target as StateManager)?.ChangeStateString("attack"); 
+            (target as StateManager)?.ChangeStateString("attack01"); 
+        }
+        
+        if (GUILayout.Button("Jump"))
+        {
+            (target as StateManager)?.ChangeStateString("jump"); 
         }
 
         if (GUILayout.Button("Take Damage"))

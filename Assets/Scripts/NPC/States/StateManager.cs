@@ -8,6 +8,8 @@ public class StateManager : MonoBehaviour
     public MonoBehaviour startingState;
     public MonoBehaviour currentState;
 
+    public MonoBehaviour crouchState;
+
     public MonoBehaviour idleState;
 
     public MonoBehaviour patrolState;
@@ -50,6 +52,10 @@ public class StateManager : MonoBehaviour
     {
         switch (state)
         {
+            case ("crouch"):
+                ChangeState(idleState);
+                break;
+            
             case ("idle"):
                 ChangeState(idleState);
                 break;
@@ -58,7 +64,7 @@ public class StateManager : MonoBehaviour
                 ChangeState(patrolState);
                 break;
 
-            case ("attack"):
+            case ("attack01"):
                 ChangeState(attackState);
                 break;
             

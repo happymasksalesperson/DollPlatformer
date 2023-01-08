@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
 
-        _animStates.ChangeMoveInt(0);
+        //_animStates.ChangeMoveInt(0);
     }
 
     void Start()

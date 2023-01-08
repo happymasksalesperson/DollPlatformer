@@ -132,4 +132,8 @@ Add placeholder SFX
 
 -- any GameObject with a StatsComponent.cs now add themselves to the subscription on spawn and unsub on death
 
--- 
+2.7
+
+-- further reworked the Player into using State machine itself
+
+-- converted all animation logic into using states and Play.clip

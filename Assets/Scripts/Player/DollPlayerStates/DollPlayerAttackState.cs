@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class DollPlayerAttackState : MonoBehaviour
 {
+    private DollPlayerMovement playerMovement;
+    
     private DollPlayerModelView modelView;
 
     private DollPlayerStats stats;
@@ -41,6 +44,8 @@ public class DollPlayerAttackState : MonoBehaviour
 
             //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 
+            //note the 10 is the max amount of returns per overlapsphere
+            //change at will
             Collider[] hits = new Collider[10];
 
             // Call Physics.OverlapSphereNonAlloc and pass in the center point of the sphere, the radius of the sphere,
@@ -59,5 +64,12 @@ public class DollPlayerAttackState : MonoBehaviour
 
             yield return new WaitForSeconds(attack01Time);
         }
+        
+        stateManager.ChangeStateString("idle");
+    }
+
+    private void OnDisable()
+    {
+        playerMovement.StopAttack();
     }
 }

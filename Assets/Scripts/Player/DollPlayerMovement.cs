@@ -19,17 +19,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private DollPlayerStats playerStats;
 
-    private DollPlayerAnimationStates _animStates;
+    private DollPlayerModelView modelView;
 
     private StateManager stateManager;
     
     //tracks player facing dir
-    private bool _facingRight;
-
-    public bool FacingRight()
-    {
-        return _facingRight;
-    }
+    public bool facingRight;
 
     // // // // // //
     // AIMING
@@ -39,14 +34,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // // // // // //
     // ATTACKING
     //
-    private float _attackTime;
-
-    private bool _isAttack;
-
-    public bool IsAttack()
-    {
-        return _isAttack;
-    }
+    private bool attacking;
     
     // // // // // //
     // RUNNING
@@ -59,8 +47,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // JUMPING
     //
     private Gravity _gravity;
-    
-    private float _jumpForce;
 
     [SerializeField]
     [Range(1f, 5f)]
@@ -81,19 +67,37 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private WaitForSeconds _jumpWait;
 
-    private void Awake()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody>();
 
         _groundCheck = GetComponentInChildren<GroundCheck>();
+        
+        _gravity = GetComponent<Gravity>();
+        _defaultGravity = _gravity.CurrentGravity();
 
-        _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
+        _boxCollider = GetComponent<BoxCollider>();
+
+        _jumpWait = new WaitForSeconds(_disableGCTime);
+        
+        _playerActions = new PlayerActions();
+
+        _playerActions.InGamePlayer.Jump.performed += Jump;
+        _playerActions.InGamePlayer.Attack.performed += Attack01;
+        
+        _playerActions.InGamePlayer.Enable();
+        
+        //get stats from PlayerStats
+        playerStats = GetComponent<DollPlayerStats>();
+        _runSpeed = playerStats.runSpeed;
+        _maxSpeed = playerStats.maxSpeed;
+
+        modelView = GetComponentInChildren<DollPlayerModelView>();
 
         stateManager = GetComponent<StateManager>();
-
-        _animStates.ChangeMoveInt(0);
         // _defaultGravity = 
     }
+
 
     // // // // // //
     // UPDATE
@@ -127,17 +131,17 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         } 
         
         if(_jumping)
-                 _animStates.ChangeMoveInt(3);
+                stateManager.ChangeStateString("jump");
 
         if (_movement.x > 0)
         {
-            _animStates.ChangeMoveInt(2);
-            _facingRight = false;
+            modelView.OnRun();
+            facingRight = false;
         }
         else if (_movement.x < 0)
         {
-            _animStates.ChangeMoveInt(2);
-            _facingRight = true;
+            modelView.OnRun();
+            facingRight = true;
         }
 
         else if (IsGrounded() && _aimVector == Vector2.down)
@@ -145,8 +149,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         else if (IsGrounded() && _movement.y == 0)
         {
-            _animStates.ChangeMoveInt(0);
+            stateManager.ChangeStateString("idle");
         }
+        
+        modelView.OnFacingRight(facingRight);
     }
     
     // // // // // //
@@ -155,39 +161,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // add crouch attack? idle animations? etc
     private void Crouch()
     {
-        _animStates.ChangeMoveInt(1);
+        stateManager.ChangeStateString("crouch");
     }
 
-    // // // // // //
-    // ATTACKING
-    //
-    public void Attack(InputAction.CallbackContext context)
-    {
-        _isAttack = true;
-        if (_aimVector == Vector2.up)
-        {
-            _animStates.ChangeAttackInt(1);
-        }
-        
-        else if  (_aimVector == Vector2.down)
-        {
-            _animStates.ChangeAttackInt(2);
-        }
-        
-        else
-        _animStates.ChangeAttackInt(0);
-        
-        StartCoroutine(Attacking());
-    }
-    private IEnumerator Attacking()
-    {
-        _animStates.ChangeMoveInt(4);
-
-        yield return new WaitForSeconds(_attackTime);
-
-        _isAttack = false;
-    }
-    
     // // // // // //
     // JUMPING
     //
@@ -195,8 +171,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         if (IsGrounded())
         {
+            stateManager.ChangeStateString("jump");
+            
             _jumping = true;
-
             StartCoroutine(GroundCheckAfterJump());
         }
     }
@@ -218,51 +195,32 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         if (_groundCheckEnabled && IsGrounded())
         {
             _jumping = false;
+            
+            stateManager.ChangeStateString("idle");
         }
 
         else if (_jumping && _rb.velocity.y > 0f)
         {
-            _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply); 
+            _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply);
         }
         else
         {
             _gravity.ChangeGravity(_defaultGravity);
         }
-        
-    }
-    
-    
-    // // // // // //
-    // ON ENABLE / DISABLE
-    private void OnEnable()
-    {
-        _gravity = GetComponent<Gravity>();
-        _defaultGravity = _gravity.CurrentGravity();
-
-        _boxCollider = GetComponent<BoxCollider>();
-
-        _jumpWait = new WaitForSeconds(_disableGCTime);
-        
-        _playerActions = new PlayerActions();
-
-        _playerActions.InGamePlayer.Jump.performed += Jump;
-        _playerActions.InGamePlayer.Attack.performed += Attack;
-        
-        _playerActions.InGamePlayer.Enable();
-        
-        //get stats from PlayerStats
-        playerStats = GetComponent<DollPlayerStats>();
-        _runSpeed = playerStats.runSpeed;
-        _maxSpeed = playerStats.maxSpeed;
-        _jumpForce = playerStats.jumpForce;
-        _attackTime = playerStats.attack01Time;
-
     }
 
-    private void OnDisable()
+    private void Attack01(InputAction.CallbackContext context)
     {
-      //  _playerActions.InGamePlayer.Disable();
-        
+        if (!attacking)
+        {
+            stateManager.ChangeStateString("attack01");
+            attacking = true;
+        }
+    }
+
+    public void StopAttack()
+    {
+        attacking = false;
     }
     
     // // // // // //

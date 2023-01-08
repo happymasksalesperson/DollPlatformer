@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class DollPlayerModelView : MonoBehaviour
 {
+    //attack 01 wind up
+    public event Action Attack01Windup;
+
+    public void OnAttack01Windup()
+    {
+        Attack01Windup?.Invoke();
+    }
+
     //attack 01 implies the existence of attack 02 etc later
     public event Action Attack01;
 
@@ -13,12 +21,12 @@ public class DollPlayerModelView : MonoBehaviour
         Attack01?.Invoke();
     }
 
-    //attack 01 wind up
-    public event Action Attack01Windup;
+    //crouch
+    public event Action Crouch;
 
-    public void OnAttack01Windup()
+    public void OnCrouch()
     {
-        Attack01Windup?.Invoke();
+        Crouch?.Invoke();
     }
 
     //idle
@@ -29,19 +37,68 @@ public class DollPlayerModelView : MonoBehaviour
         Idle?.Invoke();
     }
 
-    //event for NPC taking damage
+    // // // //
+    // JUMPING
+
+    //neutral jump
+    //add direction / falling later?
+    public event Action Jump;
+
+    public void OnJump()
+    {
+        Jump?.Invoke();
+    }
+
+    public event Action JumpUpAttack01;
+
+    public void OnJumpUpAttack01()
+    {
+        JumpUpAttack01?.Invoke();
+    }
+
+    public event Action JumpNeutralAttack01;
+
+    public void OnJumpNeutralAttack01()
+    {
+        JumpNeutralAttack01?.Invoke();
+    }
+
+    public event Action JumpDownAttack01;
+
+    public void OnJumpDownAttack01()
+    {
+        JumpDownAttack01?.Invoke();
+    }
+    
+    //idle
+    public event Action Run;
+
+    public void OnRun()
+    {
+        Run?.Invoke();
+    }
+
+    //takedamage
     public event Action TakeDamage;
 
     public void OnTakeDamage()
     {
         TakeDamage?.Invoke();
     }
-    
+
     //Death
     public event Action Death;
 
     public void OnDeath()
     {
         Death?.Invoke();
+    }
+    
+    //
+    public event Action<bool> FacingRight; 
+
+    public void OnFacingRight(bool facingRight)
+    {
+        FacingRight?.Invoke(facingRight);
     }
 }

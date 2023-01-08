@@ -9,47 +9,95 @@ public class DollPlayerAnimationController : MonoBehaviour
 
     private HealthModelView healthModelView;
 
-    private SpriteRenderer _rend;
+    private SpriteRenderer sprend;
 
-    private Animator _anim;
+    private Animator anim;
 
     private void OnEnable()
     {
-        _rend = GetComponent<SpriteRenderer>();
-        _anim = GetComponent<Animator>();
+        sprend = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         modelView = GetComponentInParent<DollPlayerModelView>();
 
-        modelView.Attack01 += Attack;
-        modelView.Attack01Windup += Attack01Windup;
+        modelView.Jump += Jump;
+        modelView.JumpUpAttack01 += JumpUpAttack01;
+        modelView.JumpNeutralAttack01 += JumpNeutralAttack01;
+        modelView.JumpDownAttack01 += JumpDownAttack01;
+
+        modelView.Attack01 += Attack01;
+        modelView.Attack01Windup += AttackWindup01;
         modelView.TakeDamage += TakeDamage;
         modelView.Idle += Idle;
+
+        modelView.FacingRight += FlipSpriteX;
+        
     }
 
-    private void Attack()
+    public void FlipSpriteX(bool facingRight)
     {
-        _anim.Play("attack01");
+        if (facingRight)
+            sprend.flipX = true;
+
+        else
+        {
+            sprend.flipX = false;
+        }
     }
 
-    private void Attack01Windup()
+    //jumping
+    
+    private void Jump()
     {
-        _anim.Play("attack01windup");
+        anim.Play("Jump");
+    }
+    
+    private void JumpNeutralAttack01()
+    {
+        anim.Play("JumpNeutralAttack01");
+    }
+    
+    private void JumpUpAttack01()
+    {
+        anim.Play("JumpAttack01");
+    }
+    
+    private void JumpDownAttack01()
+    {
+        anim.Play("JumpDownAttack01");
+    }
+
+    private void AttackWindup01()
+    {
+        anim.Play("AttackWindup01");
+    }
+
+    private void Attack01()
+    {
+        anim.Play("Attack01");
     }
 
     private void TakeDamage()
     {
-        _anim.Play("takeDamage");
+        anim.Play("TakeDamage");
     }
 
     private void Idle()
     {
-        _anim.Play("idle");
+        anim.Play("Idle");
     }
 
     private void OnDisable()
     {
-        modelView.Attack01 -= Attack;
-        modelView.Attack01Windup -= Attack01Windup;
+        modelView.Jump += Jump;
+        modelView.JumpUpAttack01 += JumpUpAttack01;
+        modelView.JumpNeutralAttack01 += JumpNeutralAttack01;
+        modelView.JumpDownAttack01 += JumpDownAttack01;
+        
+        modelView.Attack01 -= Attack01;
+        modelView.Attack01Windup -= AttackWindup01;
+        
         modelView.TakeDamage -= TakeDamage;
+        
         modelView.Idle -= Idle;
     }
 }

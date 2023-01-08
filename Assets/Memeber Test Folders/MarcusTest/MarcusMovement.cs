@@ -108,7 +108,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
         _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
 
-        _animStates.ChangeMoveInt(0);
+        //_animStates.ChangeMoveInt(0);
         // _defaultGravity = 
     }
 
@@ -144,16 +144,16 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         } 
         
         if(_jumping)
-            _animStates.ChangeMoveInt(3);
+            /*_animStates.ChangeMoveInt(3);*/
 
         if (_movement.x > 0)
         {
-            _animStates.ChangeMoveInt(2);
+            /*_animStates.ChangeMoveInt(2);*/
             _facingRight = false;
         }
         else if (_movement.x < 0)
         {
-            _animStates.ChangeMoveInt(2);
+            /*_animStates.ChangeMoveInt(2);*/
             _facingRight = true;
         }
 
@@ -162,7 +162,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
         else if (IsGrounded() && _movement.y == 0)
         {
-            _animStates.ChangeMoveInt(0);
+            /*_animStates.ChangeMoveInt(0);*/
         }
         
        
@@ -174,7 +174,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     // add crouch attack? idle animations? etc
     private void Crouch()
     {
-        _animStates.ChangeMoveInt(1);
+        /*_animStates.ChangeMoveInt(1);*/
     }
 
     // // // // // //
@@ -185,16 +185,16 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         _isAttack = true;
         if (_aimVector == Vector2.up)
         {
-            _animStates.ChangeAttackInt(1);
+            /*_animStates.ChangeAttackInt(1);*/
         }
         
         else if  (_aimVector == Vector2.down)
         {
-            _animStates.ChangeAttackInt(2);
+          //  _animStates.ChangeAttackInt(2);
         }
         
         else
-            _animStates.ChangeAttackInt(0);
+          //  _animStates.ChangeAttackInt(0);
         
         StartCoroutine(Attacking());
     }
@@ -204,7 +204,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         
         currentState = PlayerState.Attacking;
         
-        _animStates.ChangeMoveInt(4);
+       // _animStates.ChangeMoveInt(4);
 
         yield return new WaitForSeconds(_attackTime);
 
