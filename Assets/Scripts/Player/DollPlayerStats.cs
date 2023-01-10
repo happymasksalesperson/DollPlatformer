@@ -15,15 +15,18 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     public float runSpeed;
     public float maxSpeed;
     
-    [Header("HP")]
+    [Header("JUMP VERTICAL POWER")]
     public float jumpForce;
+
+    [Header("Horizontal Jump Speed Multiplier (0.5 sets speed to half)")]
+    public float jumpSpeedMultipler;
     
-    [Header("ATTACK POWER")]
-    public int attackPower;
+    [Header("ATTACK01 POWER")]
+    public int attack01Power;
 
-    [Header("ATTACK RADIUS SIZE")] public float radius;
+    [Header("ATTACK01 RADIUS SIZE")] public float attack01Radius;
 
-    [Header("ATTACK TIME VALUES")]
+    [Header("ATTACK01 TIME VALUES")]
     public float attack01Time;
     public float attack02Time;
     

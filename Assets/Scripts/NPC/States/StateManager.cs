@@ -53,7 +53,7 @@ public class StateManager : MonoBehaviour
         switch (state)
         {
             case ("crouch"):
-                ChangeState(idleState);
+                ChangeState(crouchState);
                 break;
             
             case ("idle"):

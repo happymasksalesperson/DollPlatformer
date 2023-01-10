@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -9,11 +10,13 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // // // // // //
     // PLAYER OBJECT
     private Rigidbody _rb;
-    
-    public BoxCollider _boxCollider;
+
+    private BoxCollider _boxCollider;
 
     private GroundCheck _groundCheck;
-    
+
+    public bool grounded;
+
     private PlayerActions _playerActions;
     private Vector2 _movement;
 
@@ -22,7 +25,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     private DollPlayerModelView modelView;
 
     private StateManager stateManager;
-    
+
     //tracks player facing dir
     public bool facingRight;
 
@@ -30,36 +33,34 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // AIMING
     //
     private Vector2 _aimVector;
-    
+
     // // // // // //
     // ATTACKING
     //
-    private bool attacking;
-    
+    public bool attacking = false;
+
     // // // // // //
     // RUNNING
     //
     private float _runSpeed;
-    
+
     private float _maxSpeed;
-    
+
     // // // // // //
     // JUMPING
     //
     private Gravity _gravity;
 
-    [SerializeField]
-    [Range(1f, 5f)]
-    private float _jumpFallGravityMultiply;
+    [SerializeField] [Range(1f, 5f)] private float _jumpFallGravityMultiply;
 
-    [SerializeField]private float _groundCheckHeight;
+    [SerializeField] private float _groundCheckHeight;
 
-    [SerializeField]private LayerMask _groundMask;
+    [SerializeField] private LayerMask _groundMask;
+
+    public bool jumping;
 
     //"disable Ground Check Time"
     [SerializeField] private float _disableGCTime;
-
-    private bool _jumping;
 
     private float _defaultGravity;
 
@@ -72,21 +73,21 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         _rb = GetComponent<Rigidbody>();
 
         _groundCheck = GetComponentInChildren<GroundCheck>();
-        
+
         _gravity = GetComponent<Gravity>();
         _defaultGravity = _gravity.CurrentGravity();
 
         _boxCollider = GetComponent<BoxCollider>();
 
         _jumpWait = new WaitForSeconds(_disableGCTime);
-        
+
         _playerActions = new PlayerActions();
 
         _playerActions.InGamePlayer.Jump.performed += Jump;
         _playerActions.InGamePlayer.Attack.performed += Attack01;
-        
+
         _playerActions.InGamePlayer.Enable();
-        
+
         //get stats from PlayerStats
         playerStats = GetComponent<DollPlayerStats>();
         _runSpeed = playerStats.runSpeed;
@@ -104,6 +105,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void Update()
     {
+        grounded = IsGrounded();
+
         _movement = _playerActions.InGamePlayer.Movement.ReadValue<Vector2>();
 
         _aimVector = _playerActions.InGamePlayer.AimVector.ReadValue<Vector2>();
@@ -117,44 +120,51 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         HandleGravity();
     }
-    
+
     // // // // // //
     // Running
     //
     private void HandleMovement()
     {
-        _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
-        
-        if (_rb.velocity.magnitude > _maxSpeed)
+        if (IsGrounded() && !attacking && !jumping)
         {
-            _rb.velocity = _rb.velocity.normalized * _maxSpeed;
-        } 
-        
-        if(_jumping)
-                stateManager.ChangeStateString("jump");
+            _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
 
-        if (_movement.x > 0)
-        {
-            modelView.OnRun();
-            facingRight = false;
+            if (_rb.velocity.magnitude > _maxSpeed)
+            {
+                _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+            }
+
+
+            if (_movement.x > 0)
+            {
+                modelView.OnRun();
+                facingRight = false;
+            }
+            else if (_movement.x < 0)
+            {
+                modelView.OnRun();
+                facingRight = true;
+            }
+
+            if (IsGrounded() && _aimVector == Vector2.down)
+                Crouch();
+
+            if (IsGrounded() && _aimVector == Vector2.zero)
+                stateManager.ChangeStateString("idle");
+            
+            
         }
-        else if (_movement.x < 0)
+        
+        else if (_rb.velocity.x == 0 && IsGrounded())
         {
-            modelView.OnRun();
-            facingRight = true;
-        }
-
-        else if (IsGrounded() && _aimVector == Vector2.down)
-            Crouch();
-
-        else if (IsGrounded() && _movement.y == 0)
-        {
+            _rb.velocity = Vector3.zero;
             stateManager.ChangeStateString("idle");
         }
-        
+
         modelView.OnFacingRight(facingRight);
     }
-    
+
     // // // // // //
     // CROUCHING
     //
@@ -169,17 +179,20 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     public void Jump(InputAction.CallbackContext context)
     {
-        if (IsGrounded())
+        if (IsGrounded() && !jumping)
         {
-            stateManager.ChangeStateString("jump");
             
-            _jumping = true;
+            stateManager.ChangeStateString("jump");
+
             StartCoroutine(GroundCheckAfterJump());
+            
+            jumping = true;
         }
     }
 
     private bool IsGrounded()
     {
+        grounded = _groundCheck.isGrounded;
         return _groundCheck.isGrounded;
     }
 
@@ -192,14 +205,14 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private void HandleGravity()
     {
+        _rb.useGravity = true;
+
         if (_groundCheckEnabled && IsGrounded())
         {
-            _jumping = false;
-            
-            stateManager.ChangeStateString("idle");
+            _rb.useGravity = false;
         }
 
-        else if (_jumping && _rb.velocity.y > 0f)
+        else if (jumping && _rb.velocity.y > 0f)
         {
             _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply);
         }
@@ -213,29 +226,24 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         if (!attacking)
         {
-            stateManager.ChangeStateString("attack01");
             attacking = true;
+            stateManager.ChangeStateString("attack01");
         }
     }
 
-    public void StopAttack()
-    {
-        attacking = false;
-    }
-    
     // // // // // //
     // NPC DETECTION
     public void DetectHP()
     {
         //return current HP
     }
-    
+
     public void DetectPosition()
     {
         //return transform.position;
     }
-    
-    
+
+
     // // // // // //
     // GIZMOS BABY
     private void OnDrawGizmos()

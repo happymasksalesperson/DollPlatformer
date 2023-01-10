@@ -16,22 +16,24 @@ public class DollPlayerAttackState : MonoBehaviour
 
     private float attack01Time;
 
-    private int attackPower;
+    private int attack01Power;
 
-    private float attackRadius;
-
-    [SerializeField] private Vector3 attackCenter;
-
-    [SerializeField] private Vector3 Attack01Box;
+    private float attack01Radius;
 
     private void OnEnable()
     {
+        playerMovement = GetComponent<DollPlayerMovement>();
+        
         modelView = GetComponentInChildren<DollPlayerModelView>();
 
         modelView.OnAttack01();
 
         stateManager = GetComponent<StateManager>();
         stats = GetComponent<DollPlayerStats>();
+
+        attack01Power = stats.attack01Power;
+
+        attack01Radius = stats.attack01Radius;
 
         attack01Time = stats.attack01Time;
         StartCoroutine(GroundAttack01());
@@ -40,8 +42,6 @@ public class DollPlayerAttackState : MonoBehaviour
     private IEnumerator GroundAttack01()
     {
         {
-            attackCenter = transform.position;
-
             //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 
             //note the 10 is the max amount of returns per overlapsphere
@@ -50,7 +50,7 @@ public class DollPlayerAttackState : MonoBehaviour
 
             // Call Physics.OverlapSphereNonAlloc and pass in the center point of the sphere, the radius of the sphere,
             // the array you declared, and an optional layer mask
-            int numHits = Physics.OverlapSphereNonAlloc(transform.position, attackRadius, hits);
+            int numHits = Physics.OverlapSphereNonAlloc(transform.position, attack01Radius, hits);
 
             // Iterate through the array of Colliders and do something with each one
             for (int i = 0; i < numHits; i++)
@@ -58,18 +58,20 @@ public class DollPlayerAttackState : MonoBehaviour
                 ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
                 if (damageable != null)
                 {
-                    damageable.ChangeHP(attackPower);
+                    damageable.ChangeHP(attack01Power);
                 }
             }
 
+            Debug.Log(attack01Time);
             yield return new WaitForSeconds(attack01Time);
         }
         
+        Debug.Log("Done");
         stateManager.ChangeStateString("idle");
     }
 
     private void OnDisable()
     {
-        playerMovement.StopAttack();
+        playerMovement.attacking = false;
     }
 }

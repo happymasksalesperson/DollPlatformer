@@ -9,7 +9,7 @@ public class DollPlayerCrouchState : MonoBehaviour
     
     private void OnEnable()
     {
-        modelView = GetComponent<DollPlayerModelView>();
+        modelView = GetComponentInChildren<DollPlayerModelView>();
         
         modelView.OnCrouch();
     }

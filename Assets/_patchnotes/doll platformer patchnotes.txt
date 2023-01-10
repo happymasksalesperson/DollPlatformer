@@ -137,3 +137,16 @@ Add placeholder SFX
 -- further reworked the Player into using State machine itself
 
 -- converted all animation logic into using states and Play.clip
+
+2.8
+
+-- completed refactoring Player states
+
+-- fiddled with rigidbody stuff to make the jump stuff actually work
+
+-- (hack update will need further polishing)
+
+-- TO DO: continue refactoring jump / movement
+
+-- kill an NPC with an attack!!
+

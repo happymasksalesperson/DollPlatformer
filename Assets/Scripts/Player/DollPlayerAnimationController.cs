@@ -18,16 +18,22 @@ public class DollPlayerAnimationController : MonoBehaviour
         sprend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         modelView = GetComponentInParent<DollPlayerModelView>();
+        
+        modelView.Attack01 += Attack01;
+        modelView.Attack01Windup += AttackWindup01;
 
+        modelView.Crouch += Crouch;
+        
+        modelView.Idle += Idle;
+        
         modelView.Jump += Jump;
         modelView.JumpUpAttack01 += JumpUpAttack01;
         modelView.JumpNeutralAttack01 += JumpNeutralAttack01;
         modelView.JumpDownAttack01 += JumpDownAttack01;
 
-        modelView.Attack01 += Attack01;
-        modelView.Attack01Windup += AttackWindup01;
+        modelView.Run += Run;
+        
         modelView.TakeDamage += TakeDamage;
-        modelView.Idle += Idle;
 
         modelView.FacingRight += FlipSpriteX;
         
@@ -43,7 +49,25 @@ public class DollPlayerAnimationController : MonoBehaviour
             sprend.flipX = false;
         }
     }
+    private void AttackWindup01()
+    {
+        anim.Play("AttackWindup01");
+    }
 
+    private void Attack01()
+    {
+        anim.Play("Attack01");
+    }
+
+    private void Crouch()
+    {
+        anim.Play("Crouch");
+    }
+    
+    private void Idle()
+         {
+             anim.Play("Idle");
+         }
     //jumping
     
     private void Jump()
@@ -65,15 +89,11 @@ public class DollPlayerAnimationController : MonoBehaviour
     {
         anim.Play("JumpDownAttack01");
     }
+    
 
-    private void AttackWindup01()
+    private void Run()
     {
-        anim.Play("AttackWindup01");
-    }
-
-    private void Attack01()
-    {
-        anim.Play("Attack01");
+        anim.Play("Run");
     }
 
     private void TakeDamage()
@@ -81,10 +101,7 @@ public class DollPlayerAnimationController : MonoBehaviour
         anim.Play("TakeDamage");
     }
 
-    private void Idle()
-    {
-        anim.Play("Idle");
-    }
+
 
     private void OnDisable()
     {
