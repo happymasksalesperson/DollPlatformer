@@ -11,6 +11,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // PLAYER OBJECT
     private Rigidbody _rb;
 
+    //
+    // change size during different states
     private BoxCollider _boxCollider;
 
     private GroundCheck _groundCheck;
@@ -51,7 +53,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private Gravity _gravity;
 
-    [SerializeField] [Range(1f, 5f)] private float _jumpFallGravityMultiply;
+    [SerializeField] [Range(1f, 50f)] private float _jumpFallGravityMultiply;
 
     [SerializeField] private float _groundCheckHeight;
 
@@ -126,7 +128,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void HandleMovement()
     {
-        if (IsGrounded() && !attacking && !jumping)
+        if (grounded && !attacking)
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
 
@@ -134,7 +136,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             {
                 _rb.velocity = _rb.velocity.normalized * _maxSpeed;
             }
-
 
             if (_movement.x > 0)
             {
@@ -147,21 +148,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
                 facingRight = true;
             }
 
-            if (IsGrounded() && _aimVector == Vector2.down)
+            if (_aimVector == Vector2.down)
                 Crouch();
-
-            if (IsGrounded() && _aimVector == Vector2.zero)
-                stateManager.ChangeStateString("idle");
-            
-            
         }
         
-        else if (_rb.velocity.x == 0 && IsGrounded())
-        {
-            _rb.velocity = Vector3.zero;
-            stateManager.ChangeStateString("idle");
-        }
-
         modelView.OnFacingRight(facingRight);
     }
 
@@ -179,14 +169,14 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     public void Jump(InputAction.CallbackContext context)
     {
-        if (IsGrounded() && !jumping)
+        if (grounded && !jumping && !attacking)
         {
-            
+            jumping = true;
             stateManager.ChangeStateString("jump");
 
             StartCoroutine(GroundCheckAfterJump());
             
-            jumping = true;
+            
         }
     }
 
@@ -210,6 +200,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         if (_groundCheckEnabled && IsGrounded())
         {
             _rb.useGravity = false;
+            jumping = false;
         }
 
         else if (jumping && _rb.velocity.y > 0f)

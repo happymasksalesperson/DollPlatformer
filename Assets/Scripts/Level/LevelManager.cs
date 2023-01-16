@@ -6,10 +6,13 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager { get; private set; }
     public NPC02SFX SFX { get; private set; }
-    
+
     //public EXAMPLESCRIPT ExampleRef { get; private set; }
-    
-    private void Awake()
+
+    public List<Transform> spawnPoints = new List<Transform>();
+
+    public List<GameObject> NPC = new List<GameObject>();
+        private void Awake()
     {
         if (levelManager != null && levelManager != this)
         {
@@ -20,5 +23,18 @@ public class LevelManager : MonoBehaviour
         levelManager = this;
         
         SFX = GetComponentInChildren<NPC02SFX>();
+
+        SpawnNPC();
+    }
+
+    private void SpawnNPC()
+    {
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            for (int j = 0; j < NPC.Count; j++)
+            {
+                Instantiate(NPC[j], spawnPoints[i].position, spawnPoints[i].rotation);
+            }
+        }
     }
 }

@@ -140,7 +140,7 @@ Add placeholder SFX
 
 2.8
 
--- completed refactoring Player states
+-- almost completed refactoring Player states
 
 -- fiddled with rigidbody stuff to make the jump stuff actually work
 
@@ -150,3 +150,10 @@ Add placeholder SFX
 
 -- kill an NPC with an attack!!
 
+2.9
+
+-- added SpawnNPC function to Level Manager to fix an issue with NPC's not detecting the SFX script properly. this spawn logic will need further updating later
+
+-- Player Attack state now correctly hits NPCs and ChangeHP() thru ITakeDamage
+
+-- general bug fixes

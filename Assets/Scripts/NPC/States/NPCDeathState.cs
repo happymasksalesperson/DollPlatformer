@@ -78,6 +78,7 @@ public class NPCDeathState : MonoBehaviour
         else
             hitDir = 1;
 
+        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePositionZ;
 
         rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
         

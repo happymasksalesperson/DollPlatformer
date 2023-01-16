@@ -62,6 +62,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6117092575864828451
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingState: {fileID: 6117092576193084029}
   currentState: {fileID: 6117092576193084024}
+  crouchState: {fileID: 0}
   idleState: {fileID: 0}
   patrolState: {fileID: 6117092576193084029}
   attackState: {fileID: 6117092576193084024}
@@ -360,7 +364,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &6117092576193084007
 BoxCollider:

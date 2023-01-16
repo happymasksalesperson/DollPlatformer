@@ -37,14 +37,19 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     public bool facingDirection;
 
+    private StateManager stateManager;
+
     private void OnEnable()
     {
         GameObject gameObj = gameObject;
-        LevelManager.levelManager.SFX.AddToList(gameObj);
+
+        stateManager = GetComponent<StateManager>();
         
         modelView = GetComponentInChildren<HealthModelView>();
 
-        HP = maxHP;
+        HP = maxHP; 
+        
+        LevelManager.levelManager.SFX.AddToList(gameObj);
     }
 
     //changes HP
@@ -59,7 +64,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
         if (HP <= 0)
         {
             HP = 0;
-            modelView.OnYouDied();
+            stateManager.ChangeStateString("death");
         }
     }
 

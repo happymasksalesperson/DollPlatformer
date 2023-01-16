@@ -6,28 +6,24 @@ using UnityEngine;
 
 public class DollPlayerJumpState : MonoBehaviour
 {
-    private StateManager stateManager;
-    
-    private DollPlayerMovement playerMovement;
-    
     private Rigidbody rb;
 
     public float jumpForce;
 
     private DollPlayerStats stats;
 
+    private DollPlayerMovement playerMovement;
+
     private DollPlayerModelView modelView;
 
-    private bool grounded=false;
-    
     public float jumpSpeedMultiplier;
+
+    private StateManager stateManager;
 
     private void OnEnable()
     {
-        playerMovement = GetComponent<DollPlayerMovement>();
-        
         stateManager = GetComponent<StateManager>();
-        
+
         rb = GetComponent<Rigidbody>();
 
         stats = GetComponent<DollPlayerStats>();
@@ -35,33 +31,28 @@ public class DollPlayerJumpState : MonoBehaviour
         jumpForce = stats.jumpForce;
 
         jumpSpeedMultiplier = stats.jumpSpeedMultipler;
-        
+
+        playerMovement = GetComponent<DollPlayerMovement>();
+
         modelView = GetComponentInChildren<DollPlayerModelView>();
-        
+
         modelView?.OnJump();
-        
-        
+
         //BOING!!
         //
-        rb.AddForce((Vector3.up * jumpForce) + (rb.velocity * jumpSpeedMultiplier), ForceMode.Impulse);
-        
-        rb.AddForce(Vector3.up*jumpForce);
+        if (rb.velocity == Vector3.zero)
+            rb.AddForce((Vector3.up * jumpForce), ForceMode.Impulse);
+
+        else
+            rb.AddForce((Vector3.up * jumpForce) + (rb.velocity * jumpSpeedMultiplier), ForceMode.Impulse);
 
         StartCoroutine(Jump());
     }
 
     private IEnumerator Jump()
     {
-        grounded = playerMovement.grounded;
-        
-        while (!grounded)
-            yield return null;
-        
-        playerMovement.jumping = false;
-    }
+        yield return new WaitUntil(() => !playerMovement.grounded);
 
-    private void OnDisable()
-    {
         stateManager.ChangeStateString("idle");
     }
 }

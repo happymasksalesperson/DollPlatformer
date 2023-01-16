@@ -40,7 +40,7 @@ Transform:
   m_Children:
   - {fileID: 5858257353523337049}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5858257352297611881
 MonoBehaviour:
@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingState: {fileID: 5858257352297611798}
   currentState: {fileID: 5858257352297611792}
+  crouchState: {fileID: 0}
   idleState: {fileID: 5645776296058800589}
   patrolState: {fileID: 5858257352297611798}
   attackState: {fileID: 5858257352297611792}
@@ -80,11 +81,13 @@ MonoBehaviour:
   _maxSpeed: 5
   _attackTime: 1
   _sightDistance: 45
+  _minDist: 0
   _patrolTime: 5
   _idleTime: 1
   modelView: {fileID: 0}
   vulnerable: 0
   conjoined: 0
+  facingDirection: 0
 --- !u!114 &5858257352297611798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +124,7 @@ MonoBehaviour:
   verticalDist: 1000
   horizontalDist: 100
   hitDir: -1
+  facingDir: 0
 --- !u!114 &5858257352297611793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +180,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &5858257352297611797
 BoxCollider:

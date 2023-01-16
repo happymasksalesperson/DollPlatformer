@@ -8,18 +8,18 @@ public class Gravity : MonoBehaviour
  
     public float globalGravity;
  
-    Rigidbody m_rb;
+    Rigidbody rb;
  
     void OnEnable ()
     {
-        m_rb = GetComponent<Rigidbody>();
-        m_rb.useGravity = false;
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
     }
  
     void FixedUpdate ()
     {
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
-        m_rb.AddForce(gravity, ForceMode.Acceleration);
+        rb.AddForce(gravity, ForceMode.Acceleration);
     }
 
     public void ChangeGravity(float amount)

@@ -6,29 +6,30 @@ using UnityEngine;
 
 public class DollPlayerAttackState : MonoBehaviour
 {
+    private StateManager stateManager;
+    
     private DollPlayerMovement playerMovement;
     
     private DollPlayerModelView modelView;
 
     private DollPlayerStats stats;
 
-    private StateManager stateManager;
-
-    private float attack01Time;
+    public float attack01Time;
 
     private int attack01Power;
 
-    private float attack01Radius;
+    public float attack01Radius;
 
     private void OnEnable()
     {
+        stateManager = GetComponent<StateManager>();
+        
         playerMovement = GetComponent<DollPlayerMovement>();
         
         modelView = GetComponentInChildren<DollPlayerModelView>();
 
         modelView.OnAttack01();
 
-        stateManager = GetComponent<StateManager>();
         stats = GetComponent<DollPlayerStats>();
 
         attack01Power = stats.attack01Power;
@@ -61,13 +62,17 @@ public class DollPlayerAttackState : MonoBehaviour
                     damageable.ChangeHP(attack01Power);
                 }
             }
-
-            Debug.Log(attack01Time);
+            
             yield return new WaitForSeconds(attack01Time);
+            
+            stateManager.ChangeStateString("idle");
         }
-        
-        Debug.Log("Done");
-        stateManager.ChangeStateString("idle");
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, attack01Radius);
     }
 
     private void OnDisable()
