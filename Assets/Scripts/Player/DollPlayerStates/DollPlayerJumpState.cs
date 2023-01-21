@@ -6,53 +6,92 @@ using UnityEngine;
 
 public class DollPlayerJumpState : MonoBehaviour
 {
-    private Rigidbody rb;
-
-    public float jumpForce;
-
-    private DollPlayerStats stats;
-
     private DollPlayerMovement playerMovement;
+    private DollPlayerStats playerStats;
+    private StateManager stateManager;
 
     private DollPlayerModelView modelView;
 
-    public float jumpSpeedMultiplier;
+    private Gravity gravity;
+    public float gravityScale;
+    private float defaultScale;
+    public float gravityMultiplier;
 
-    private StateManager stateManager;
+    public AnimationCurve jumpCurve;
+    public float jumpForce;
+    public float jumpTime;
+
+    public Rigidbody rb;
+    public bool holdingJump;
+    private float timeElapsed;
+
+    public bool grounded;
 
     private void OnEnable()
     {
-        stateManager = GetComponent<StateManager>();
+        grounded = false;
+
+        holdingJump = true;
 
         rb = GetComponent<Rigidbody>();
 
-        stats = GetComponent<DollPlayerStats>();
-
-        jumpForce = stats.jumpForce;
-
-        jumpSpeedMultiplier = stats.jumpSpeedMultipler;
-
         playerMovement = GetComponent<DollPlayerMovement>();
-
+        playerStats = GetComponent<DollPlayerStats>();
+        stateManager = GetComponent<StateManager>();
+        gravity = GetComponent<Gravity>();
+        defaultScale = gravity.CurrentGravity();
         modelView = GetComponentInChildren<DollPlayerModelView>();
+        modelView.OnJump();
 
-        modelView?.OnJump();
+        jumpForce = playerStats.jumpForce;
 
-        //BOING!!
-        //
-        if (rb.velocity == Vector3.zero)
-            rb.AddForce((Vector3.up * jumpForce), ForceMode.Impulse);
+        timeElapsed = 0f;
 
-        else
-            rb.AddForce((Vector3.up * jumpForce) + (rb.velocity * jumpSpeedMultiplier), ForceMode.Impulse);
-
-        StartCoroutine(Jump());
+        Jump();
+        StartCoroutine(WaitForGrounded());
     }
 
-    private IEnumerator Jump()
+    IEnumerator WaitForGrounded()
     {
-        yield return new WaitUntil(() => !playerMovement.grounded);
+        while (!grounded)
+        {
+            yield return null;
+        }
 
+        playerMovement.JumpEnd();
         stateManager.ChangeStateString("idle");
+    }
+
+    private void Update()
+    {
+    }
+
+    void FixedUpdate()
+    {
+        grounded = playerMovement.grounded;
+        holdingJump = playerMovement.holdingJump;
+        if (holdingJump)
+        {
+            gravityScale = defaultScale * gravityMultiplier;
+
+            gravity.ChangeGravity(gravityScale);
+        }
+    }
+
+    private void Jump()
+    {
+        timeElapsed += Time.deltaTime;
+        if (holdingJump && timeElapsed < jumpTime)
+        {
+            float jumpForceMultiplier = jumpCurve.Evaluate(timeElapsed / jumpTime);
+            rb.AddForce(Vector3.up * jumpForce * jumpForceMultiplier, ForceMode.Acceleration);
+        }
+    }
+
+    private void OnDisable()
+    {
+        holdingJump = false;
+        grounded = false;
+        gravity.ChangeGravity(defaultScale);
     }
 }

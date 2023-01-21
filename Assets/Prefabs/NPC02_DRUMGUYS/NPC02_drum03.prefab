@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4847900247939493081}
   - component: {fileID: 7704077289382042979}
   - component: {fileID: 8206697646671095302}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 6117092575864828455}
   - component: {fileID: 6117092575864828452}
   - component: {fileID: 6117092575864828453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 6117092576193084006}
   - component: {fileID: 6117092576193084007}
   - component: {fileID: 380527723606808287}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPC02_drum03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 6117092576193084004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 50, y: 50, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4847900247939493081}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 6117092576666666036}
   - component: {fileID: 6117092576666666038}
   - component: {fileID: 6117092576666666039}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}

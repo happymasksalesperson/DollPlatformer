@@ -6,7 +6,7 @@ public class GroundCheck : MonoBehaviour
 {
     [SerializeField] private LayerMask _groundLayer;
 
-    public bool isGrounded=true;
+    public bool isGrounded = true;
 
     private void OnTriggerStay(Collider col)
     {
@@ -17,21 +17,24 @@ public class GroundCheck : MonoBehaviour
     {
         isGrounded = false;
     }
-    
+
     public LayerMask groundLayer;
 
-    
+
     //CHAT GPT WROTE THE BELOW CODE :)
     //
     private Rigidbody rb;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnCollisionStay(Collision collision) {
+    void OnCollisionStay(Collision collision)
+    {
         // Check if the collision is with a game object on the ground layer
-        if (((1 << collision.gameObject.layer) & groundLayer) != 0) {
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
             // Disable gravity on the Rigidbody
             rb.useGravity = false;
 
@@ -40,9 +43,11 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision collision) {
+    void OnCollisionExit(Collision collision)
+    {
         // Check if the collision is with a game object on the ground layer
-        if (((1 << collision.gameObject.layer) & groundLayer) != 0) {
+        if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+        {
             // Enable gravity on the Rigidbody
             rb.useGravity = true;
         }

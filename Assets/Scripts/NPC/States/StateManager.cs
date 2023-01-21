@@ -55,7 +55,7 @@ public class StateManager : MonoBehaviour
             case ("crouch"):
                 ChangeState(crouchState);
                 break;
-            
+
             case ("idle"):
                 ChangeState(idleState);
                 break;
@@ -67,7 +67,7 @@ public class StateManager : MonoBehaviour
             case ("attack01"):
                 ChangeState(attackState);
                 break;
-            
+
             case ("takeDamage"):
                 ChangeState(takeDamageState);
                 break;

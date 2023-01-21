@@ -69,7 +69,7 @@ public class DollPlayerModelView : MonoBehaviour
     {
         JumpDownAttack01?.Invoke();
     }
-    
+
     //idle
     public event Action Run;
 
@@ -93,9 +93,9 @@ public class DollPlayerModelView : MonoBehaviour
     {
         Death?.Invoke();
     }
-    
+
     //
-    public event Action<bool> FacingRight; 
+    public event Action<bool> FacingRight;
 
     public void OnFacingRight(bool facingRight)
     {

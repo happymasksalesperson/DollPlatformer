@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7105655809860102143}
   - component: {fileID: 7831960733918317984}
   - component: {fileID: 4646606281121517860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7351472034254501914}
   - component: {fileID: 7351472034254501915}
   - component: {fileID: 7351472034254501892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7351472034570514434}
   - component: {fileID: 7351472034570514435}
   - component: {fileID: 7351472034570514444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8723694009031517838}
   - component: {fileID: 3105200445816942715}
   - component: {fileID: 2723207176149425915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPC02_drum01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7351472035176131880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35, y: 78.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -8,13 +8,13 @@ public class NPC02ConjoinedIdle : MonoBehaviour
     public MonoBehaviour conjoinedKnockback;
 
     public StateManager stateManager;
-        
+
     private NPCModelView modelView;
 
     private void OnEnable()
     {
         conjoinedKnockback = GetComponent<NPC02ConjoinedKnockback>();
-        
+
         modelView = GetComponentInChildren<NPCModelView>();
         modelView.OnIdle();
 

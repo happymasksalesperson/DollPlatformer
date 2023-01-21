@@ -13,7 +13,7 @@ public class NPCAttack01State : MonoBehaviour
     [SerializeField] private float attack01Time;
 
     [SerializeField] private float windup01Time;
-    
+
     //
     private bool conjoined;
 
@@ -23,11 +23,11 @@ public class NPCAttack01State : MonoBehaviour
         _stats = GetComponent<StatsComponent>();
 
         conjoined = _stats.conjoined;
-        
+
         attack01Time = _stats.MyAttackTime();
 
         modelView = GetComponentInChildren<NPCModelView>();
-        
+
         StartCoroutine(Jab());
     }
 
@@ -44,22 +44,22 @@ public class NPCAttack01State : MonoBehaviour
         }
 
         modelView.OnAttack01();
-        
+
         yield return new WaitForSeconds(attack01Time);
-        
+
         _stateManager.ChangeStateString("patrol");
     }
 
     private IEnumerator CojoinedAttack01()
     {
         _stateManager.ChangeStateString("attack");
-        
+
         modelView.OnAttack01();
-        
+
         yield return new WaitForSeconds(attack01Time);
-        
+
         modelView.OnIdle();
-        
+
         _stateManager.ChangeStateString("idle");
     }
 }

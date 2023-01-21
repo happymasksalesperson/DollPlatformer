@@ -157,3 +157,10 @@ Add placeholder SFX
 -- Player Attack state now correctly hits NPCs and ChangeHP() thru ITakeDamage
 
 -- general bug fixes
+
+3.0
+
+-- completed overhauling Player Movement and Player States. there is an additional state machine within PlayerMovement.cs to track all this nonsense. Tonnes of tweaking and updating. Lots of bug fixes.
+
+-- changed DollPlayerJumpState to use animation curve jump style (still needs tweaking)
+

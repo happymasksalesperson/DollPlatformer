@@ -2,20 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    
+
 public class HealthModel : MonoBehaviour
 {
     [SerializeField] private int maxHP;
     public int HP;
 
-    private bool isAlive=true;
+    private bool isAlive = true;
 
     private HealthModelView modelView;
 
     private void OnEnable()
     {
         modelView = GetComponentInChildren<HealthModelView>();
-        
+
         ChangeHP(maxHP);
     }
 

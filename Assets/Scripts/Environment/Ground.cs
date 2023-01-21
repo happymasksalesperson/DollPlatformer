@@ -5,12 +5,12 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     private Renderer rend;
+
     void Start()
     {
         rend = this.GetComponent<Renderer>();
-      
     }
-    
+
     void OnEnable()
     {
         DollEventManager.DollSafeEvent += ChangeColour;
@@ -23,7 +23,6 @@ public class Ground : MonoBehaviour
 
     private void ChangeColour()
     {
-          rend.material.SetColor("_Color", Color.green);
+        rend.material.SetColor("_Color", Color.green);
     }
-
 }

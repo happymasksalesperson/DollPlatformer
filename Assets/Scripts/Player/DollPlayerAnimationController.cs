@@ -68,7 +68,7 @@ public class DollPlayerAnimationController : MonoBehaviour
     {
         anim.Play("Idle");
     }
-    
+
     private void Jump()
     {
         anim.Play("Jump");

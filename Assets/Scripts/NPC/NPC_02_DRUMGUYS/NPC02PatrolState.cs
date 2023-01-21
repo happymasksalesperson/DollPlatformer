@@ -7,6 +7,5 @@ public class NPC02PatrolState : MonoBehaviour
 {
     private void OnEnable()
     {
-        
     }
 }

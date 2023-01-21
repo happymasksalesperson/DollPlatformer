@@ -71,6 +71,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ccbb896-8d6f-405b-a0fb-5d1043e0d742"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -86,28 +95,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""a95eeb4b-1161-406c-8d32-a0548614c6d7"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""c406f238-0357-419a-bc05-71c11f125300"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""left"",
                     ""id"": ""e84704f1-845e-4a61-b1d1-6f7f2276435d"",
                     ""path"": ""<Keyboard>/a"",
@@ -119,9 +106,31 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""left"",
+                    ""id"": ""4431d1c7-9f93-48ce-80d2-9ecb1713fe7e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""right"",
                     ""id"": ""55454851-fc8d-471c-b02d-5183bcdf08bc"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""51522e96-dcb0-450c-bbc3-d142004372b8"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -174,9 +183,31 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""b9b02d1c-b182-4bbb-adce-1c1bc87f0881"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""down"",
                     ""id"": ""37f981bb-c89d-4fb9-a468-82207cf575d8"",
                     ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5ce7ba42-1863-4b76-8634-99ee227fba96"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -196,9 +227,31 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""left"",
+                    ""id"": ""5ca6d340-c06f-482c-8e8d-8c95fcc5a31e"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""right"",
                     ""id"": ""2abdf489-38cf-484d-ae5e-dbd1be0a626e"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""bfaea825-f6ee-43b9-aac6-3ae853d98dd6"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -216,6 +269,28 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af02a016-d521-4f6c-8d53-5c11fd4fcaf3"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ca10d6a-8243-448a-a293-b235a2d71413"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +304,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_InGamePlayer_Jump = m_InGamePlayer.FindAction("Jump", throwIfNotFound: true);
         m_InGamePlayer_Attack = m_InGamePlayer.FindAction("Attack", throwIfNotFound: true);
         m_InGamePlayer_Grapple = m_InGamePlayer.FindAction("Grapple", throwIfNotFound: true);
+        m_InGamePlayer_Crouch = m_InGamePlayer.FindAction("Crouch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +369,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGamePlayer_Jump;
     private readonly InputAction m_InGamePlayer_Attack;
     private readonly InputAction m_InGamePlayer_Grapple;
+    private readonly InputAction m_InGamePlayer_Crouch;
     public struct InGamePlayerActions
     {
         private @PlayerActions m_Wrapper;
@@ -302,6 +379,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_InGamePlayer_Jump;
         public InputAction @Attack => m_Wrapper.m_InGamePlayer_Attack;
         public InputAction @Grapple => m_Wrapper.m_InGamePlayer_Grapple;
+        public InputAction @Crouch => m_Wrapper.m_InGamePlayer_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_InGamePlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -326,6 +404,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Grapple.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnGrapple;
                 @Grapple.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnGrapple;
                 @Grapple.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnGrapple;
+                @Crouch.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
             }
             m_Wrapper.m_InGamePlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -345,6 +426,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Grapple.started += instance.OnGrapple;
                 @Grapple.performed += instance.OnGrapple;
                 @Grapple.canceled += instance.OnGrapple;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
             }
         }
     }
@@ -356,5 +440,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }

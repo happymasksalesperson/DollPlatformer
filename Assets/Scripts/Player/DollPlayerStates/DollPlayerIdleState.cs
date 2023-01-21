@@ -11,13 +11,13 @@ public class DollPlayerIdleState : MonoBehaviour
 
     private DollPlayerModelView modelView;
 
-    [Header("HOW LONG PLAYER WAITS UNTIL IDLE ANIM")]
-    [SerializeField] private float idleWait;
+    [Header("HOW LONG PLAYER WAITS UNTIL IDLE ANIM")] [SerializeField]
+    private float idleWait;
 
     private void OnEnable()
     {
         modelView = GetComponentInChildren<DollPlayerModelView>();
-        
+
         modelView.OnIdle();
 
         StartCoroutine(IdleWait());

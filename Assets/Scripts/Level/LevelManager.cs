@@ -12,16 +12,17 @@ public class LevelManager : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>();
 
     public List<GameObject> NPC = new List<GameObject>();
-        private void Awake()
+
+    private void Awake()
     {
         if (levelManager != null && levelManager != this)
         {
             Destroy(this);
             return;
         }
-        
+
         levelManager = this;
-        
+
         SFX = GetComponentInChildren<NPC02SFX>();
 
         SpawnNPC();

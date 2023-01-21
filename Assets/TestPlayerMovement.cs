@@ -5,7 +5,7 @@ using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DollPlayerMovement : MonoBehaviour, IPlayer
+public class TestPlayerMovement : MonoBehaviour, IPlayer
 {
     //
     // Player controls
@@ -90,7 +90,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private float _defaultGravity;
 
-    [SerializeField] private float _jumpFallMultiply;
+    private float _jumpFallMultiply;
 
     private bool _groundCheckEnabled = true;
 
@@ -123,9 +123,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         _playerActions.InGamePlayer.Jump.performed += Jump;
         _playerActions.InGamePlayer.Jump.canceled += JumpCancel;
-
-        _playerActions.InGamePlayer.Crouch.performed += Crouch;
-        _playerActions.InGamePlayer.Crouch.canceled += CrouchCancel;
 
         _playerActions.InGamePlayer.Attack.performed += Attack01;
 
@@ -209,9 +206,25 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             else if (_movement.x == 0)
             {
                 running = false;
-                currentState = PlayerState.idle;
-                modelView.OnIdle();
             }
+
+            // // // // // //
+            // CROUCH
+            //
+            // Crouch by holding down or S through PlayerActions
+            //
+            if (!running && _aimVector.y < 0)
+            {
+                crouching = true;
+                currentState = PlayerState.crouch;
+                modelView.OnCrouch();
+            }
+        }
+
+        if (!running)
+        {
+            currentState = PlayerState.idle;
+            modelView.OnIdle();
         }
 
         ChangeMovementState(currentState);
@@ -225,50 +238,21 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         holdingJump = true;
 
-        if (currentState == PlayerState.idle || currentState == PlayerState.run)
+        if (grounded && !jumping && !attacking)
         {
-            grounded = false;
-            _lastCheck = grounded;
-            
             jumping = true;
 
             StartCoroutine(GroundCheckAfterJump());
 
+            modelView.OnJump();
+
             currentState = PlayerState.jump;
-            ChangeMovementState(currentState);
         }
     }
 
     public void JumpCancel(InputAction.CallbackContext context)
     {
         holdingJump = false;
-    }
-
-    public void JumpEnd()
-    {
-        jumping = false;
-        _lastCheck = grounded;
-
-        if (running)
-            currentState = PlayerState.run;
-
-        else
-        currentState = PlayerState.idle;
-        ChangeMovementState(currentState);
-    }
-
-    public void Crouch(InputAction.CallbackContext context)
-    {
-        // // // // // //
-        // CROUCH
-        //
-        // Crouch by holding down or S through PlayerActions
-        //
-        if (currentState == PlayerState.idle)
-        {
-            crouching = true;
-            currentState = PlayerState.crouch;
-        }
     }
 
     private bool IsGrounded()
@@ -285,16 +269,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         jumping = false;
         _groundCheckEnabled = true;
     }
-
-    public void CrouchCancel(InputAction.CallbackContext context)
-    {
-        if (currentState == PlayerState.crouch)
-        {
-            crouching = false;
-            currentState = PlayerState.idle;
-        }
-    }
-
 
     private void HandleGravity()
     {
@@ -318,20 +292,11 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private void Attack01(InputAction.CallbackContext context)
     {
-        attacking = true;
-
-        currentState = PlayerState.attack01;
-
-        if (jumping)
+        if (!attacking)
         {
-            currentState = PlayerState.jumpAttack;
+            attacking = true;
+            stateManager.ChangeStateString("attack01");
         }
-    }
-
-    public void AttackEnd()
-    {
-        attacking = false;
-        currentState = PlayerState.idle;
     }
 
     // // // // // //

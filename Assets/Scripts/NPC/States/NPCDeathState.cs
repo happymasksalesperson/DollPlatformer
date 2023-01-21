@@ -33,29 +33,29 @@ public class NPCDeathState : MonoBehaviour
     [SerializeField] private int hitDir;
 
     [SerializeField] private bool facingDir;
-    
+
     private Gravity gravity;
 
     private void OnEnable()
     {
         stats = GetComponent<StatsComponent>();
-        
+
         modelView = GetComponentInChildren<NPCModelView>();
-        
+
         modelView.OnDeath();
-        
+
         rb = GetComponent<Rigidbody>();
 
         //detects colliders and turns them off
         //here I leave an intentional null reference...? investigate further
         //have to add a separate check for spheres vs boxes
         box = GetComponent<BoxCollider>();
-        if(box)
+        if (box)
             box.enabled = false;
         else
         {
             sphere = GetComponent<SphereCollider>();
-            if (sphere!=null)
+            if (sphere != null)
                 sphere.enabled = false;
         }
 
@@ -81,10 +81,10 @@ public class NPCDeathState : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePositionZ;
 
         rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
-        
+
         //unlocks faster spin
         rb.maxAngularVelocity = 100000f;
-        
+
         //transform.hitDir (see above)
         rb.AddTorque(transform.forward * torque * hitDir);
 

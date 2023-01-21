@@ -65,10 +65,10 @@ public class NPCPatrolState : MonoBehaviour
     private void OnEnable()
     {
         _moving = true;
-        
+
         _rb = GetComponent<Rigidbody>();
         _stateManager = GetComponent<StateManager>();
-        
+
         modelView = GetComponentInChildren<NPCModelView>();
         modelView.OnPatrol();
     }
@@ -149,7 +149,7 @@ public class NPCPatrolState : MonoBehaviour
         {
             GameObject playerObj = hitInfo.transform.gameObject;
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.red);
-            
+
             IPlayer player = playerObj.GetComponent<IPlayer>();
             player.DetectPosition();
 
@@ -171,7 +171,7 @@ public class NPCPatrolState : MonoBehaviour
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
         }
     }
-    
+
     // // // // // //
     // 
     private void OnDisable()

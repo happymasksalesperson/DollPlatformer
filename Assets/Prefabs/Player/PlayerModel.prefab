@@ -60,14 +60,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   facingRight: 0
+  currentState: 0
+  _aimVector: {x: 0, y: 0}
   attacking: 0
-  _jumpFallGravityMultiply: 2
+  running: 0
+  jumping: 0
   _groundCheckHeight: 20
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
-  jumping: 0
+  holdingJump: 0
   _disableGCTime: 0.25
+  _jumpFallMultiply: 0
+  crouching: 0
 --- !u!114 &845691806028509509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56aa248ac991bd4c8f6b04dd5950b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack01Time: 0
+  attack01Radius: 0
+  offsetDist: 0
 --- !u!114 &2453433366020296675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,8 +182,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11695a2e370e4994c8b7d5762aac92f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityScale: 0
+  gravityMultiplier: 0
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   jumpForce: 0
-  jumpSpeedMultiplier: 0
+  jumpTime: 0
+  rb: {fileID: 0}
+  holdingJump: 0
+  grounded: 0
 --- !u!114 &4879205016625659362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +498,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.300033, z: 1}
+  m_Size: {x: 1.4, y: 1.300033, z: 1}
   m_Center: {x: 0, y: -0.1400165, z: 0}
 --- !u!114 &4253227359949173149
 MonoBehaviour:

@@ -55,7 +55,7 @@ public class NPC02SFX : MonoBehaviour
         NPC02List.Remove(gameObject);
         if (gameObject.GetComponentInChildren<NPCModelView>() != null)
         {
-            modelView =gameObject.GetComponentInChildren<NPCModelView>();
+            modelView = gameObject.GetComponentInChildren<NPCModelView>();
 
             modelView.Attack01Windup -= Attack01Windup;
             modelView.Attack01 -= Attack01;
@@ -71,7 +71,7 @@ public class NPC02SFX : MonoBehaviour
             if (npcModelView.GetComponentInChildren<NPCModelView>() != null)
             {
                 modelView = npcModelView.GetComponentInChildren<NPCModelView>();
-                    
+
                 modelView.Attack01Windup += Attack01Windup;
                 modelView.Attack01 += Attack01;
 

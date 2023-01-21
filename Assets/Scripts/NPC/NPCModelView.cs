@@ -44,7 +44,7 @@ public class NPCModelView : MonoBehaviour
     {
         TakeDamage?.Invoke();
     }
-    
+
     //Death
     public event Action Death;
 
