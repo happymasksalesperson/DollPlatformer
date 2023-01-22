@@ -79,11 +79,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC02_drum02
   maxHP: 1
-  _moveSpeed: 5
-  _maxSpeed: 3
+  _moveSpeed: 40
+  _maxSpeed: 50
   _attackTime: 1
-  _sightDistance: 50
-  _minDist: 0
+  attack01Power: -1
+  attack01Radius: 100
+  _sightDistance: 200
+  _minDist: 100
   _patrolTime: 5
   _idleTime: 1.5
   modelView: {fileID: 0}
@@ -457,10 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  grounded: 0

@@ -16,13 +16,17 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     [SerializeField] private float _attackTime;
 
+    public int attack01Power;
+
+    public float attack01Radius;
+
     // // // // // //
     //
     // sightDistance determines how far Character can see
     // minDist is used for triggering Attacks when in range
     [SerializeField] private float _sightDistance;
 
-    [SerializeField] private float _minDist;
+    public float _minDist;
 
     [SerializeField] private float _patrolTime;
 

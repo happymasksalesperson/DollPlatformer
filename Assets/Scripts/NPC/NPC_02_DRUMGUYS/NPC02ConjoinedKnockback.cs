@@ -47,6 +47,6 @@ public class NPC02ConjoinedKnockback : MonoBehaviour
     private void FixedUpdate()
     {
         if ((groundCheck != null) && (groundCheck.enabled))
-            grounded = groundCheck.isGrounded;
+            grounded = groundCheck.grounded;
     }
 }

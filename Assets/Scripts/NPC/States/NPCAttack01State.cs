@@ -14,6 +14,10 @@ public class NPCAttack01State : MonoBehaviour
 
     [SerializeField] private float windup01Time;
 
+    private float attack01Radius;
+
+    private int attack01Power;
+
     //
     private bool conjoined;
 
@@ -21,6 +25,10 @@ public class NPCAttack01State : MonoBehaviour
     {
         _stateManager = GetComponent<StateManager>();
         _stats = GetComponent<StatsComponent>();
+
+        attack01Power = _stats.attack01Power;
+
+        attack01Radius = _stats.attack01Radius;
 
         conjoined = _stats.conjoined;
 
@@ -44,6 +52,33 @@ public class NPCAttack01State : MonoBehaviour
         }
 
         modelView.OnAttack01();
+        
+        
+        
+                //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
+
+                //note the 10 is the max amount of returns per overlapsphere
+                //change at will
+                Collider[] hits = new Collider[10];
+
+                // Call Physics.OverlapSphereNonAlloc and pass in the center point of the sphere, the radius of the sphere,
+                // the array you declared, and an optional layer mask
+                int numHits = Physics.OverlapSphereNonAlloc(transform.position, attack01Radius, hits);
+
+                // Iterate through the array of Colliders and do something with each one
+                for (int i = 0; i < numHits; i++)
+                {
+                        IPlayer player = hits[i].GetComponent<IPlayer>();
+                        if (player != null)
+                        {
+                        ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
+                        if (damageable != null)
+                        {
+                            damageable.ChangeHP(attack01Power);
+                        }
+                    }
+                }
+
 
         yield return new WaitForSeconds(attack01Time);
 
@@ -61,5 +96,16 @@ public class NPCAttack01State : MonoBehaviour
         modelView.OnIdle();
 
         _stateManager.ChangeStateString("idle");
+    }
+    
+    private void OnDrawGizmos()
+    {
+       // Gizmos.color = Color.red;
+       // Gizmos.DrawSphere(transform.position, attack01Radius);
+    }
+
+    private void OnDisable()
+    {
+        
     }
 }

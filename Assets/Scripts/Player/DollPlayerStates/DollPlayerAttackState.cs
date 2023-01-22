@@ -27,8 +27,18 @@ public class DollPlayerAttackState : MonoBehaviour
 
     private bool facingRight;
 
+    private Rigidbody rb;
+
+    private Vector3 originalVelocity;
+
+    private Gravity gravity;
+
     private void OnEnable()
     {
+        gravity = GetComponent<Gravity>();
+        
+        rb = GetComponent<Rigidbody>();
+        
         stateManager = GetComponent<StateManager>();
 
         playerMovement = GetComponent<DollPlayerMovement>();
@@ -46,26 +56,41 @@ public class DollPlayerAttackState : MonoBehaviour
         attack01Radius = stats.attack01Radius;
 
         attack01Time = stats.attack01Time;
+        
+        if (playerMovement.grounded)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            gravity.enabled = false;
+            originalVelocity = rb.velocity;
+            rb.velocity = Vector3.zero;
+        }
+        
         StartCoroutine(GroundAttack01());
     }
 
-    void CheckOffset(Transform transform, float offset, bool shouldBePositive)
+    //CHAT GPT wrote this for me! :)
+    void CheckOffset(Transform transform, float offset, bool facingRight)
     {
-        offsetDist = CheckSign(offset, facingRight);
         Vector3 offsetVector = Vector3.right * offset;
-        offsetPosition = transform.position += offsetVector;
-    }
-
-    //AI wrote this
-    float CheckSign(float value, bool shouldBePositive)
-    {
-        return shouldBePositive ? value : -value;
+        if(facingRight)
+            offsetVector = -offsetVector;
+        offsetPosition = transform.position + offsetVector;
     }
 
     private IEnumerator GroundAttack01()
     {
         CheckOffset(transform, offsetDist, facingRight);
         {
+            
+            int playerLayer = 3;
+            int targetLayer = 8;
+
+            int layerMask = 1 << targetLayer;
+            layerMask = ~(1 << playerLayer);
+            
             //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 
             //note the 10 is the max amount of returns per overlapsphere
@@ -74,16 +99,16 @@ public class DollPlayerAttackState : MonoBehaviour
 
             // Call Physics.OverlapSphereNonAlloc and pass in the center point of the sphere, the radius of the sphere,
             // the array you declared, and an optional layer mask
-            int numHits = Physics.OverlapSphereNonAlloc(transform.position, attack01Radius, hits);
+            int numHits = Physics.OverlapSphereNonAlloc(offsetPosition, attack01Radius, hits, layerMask);
 
             // Iterate through the array of Colliders and do something with each one
             for (int i = 0; i < numHits; i++)
             {
                 ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
-                if (damageable != null)
-                {
-                    damageable.ChangeHP(attack01Power);
-                }
+                    if (damageable != null)
+                    {
+                        damageable.ChangeHP(attack01Power);
+                    }
             }
 
             yield return new WaitForSeconds(attack01Time);
@@ -94,12 +119,17 @@ public class DollPlayerAttackState : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, attack01Radius);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawSphere(offsetPosition, attack01Radius);
     }
 
     private void OnDisable()
     {
+        gravity.enabled = true;
         playerMovement.AttackEnd();
+        if(!playerMovement.grounded){
+            rb.velocity = originalVelocity;
+        }
     }
+    
 }

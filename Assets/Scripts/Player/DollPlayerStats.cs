@@ -8,7 +8,7 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     // DOLL STATS
 
     [Header("HEALTH POINTS")] public int maxHP;
-    private int HP;
+    public int HP;
 
     [Header("RUN SPEED")] public float runSpeed;
     public float maxSpeed;
@@ -27,6 +27,8 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
 
     [Header("JUMP ATTACK TIMES")] public float jumpAttack01Time;
 
+    private StateManager stateManager;
+
     // // // // // //
     // 
 
@@ -38,6 +40,10 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     private void OnEnable()
     {
         modelView = GetComponentInChildren<HealthModelView>();
+
+        stateManager = GetComponent<StateManager>();
+        
+        ChangeHP(maxHP);
     }
 
     public void ChangeHP(int amount)
@@ -52,6 +58,7 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
         {
             HP = 0;
             modelView.OnYouDied();
+            stateManager.ChangeStateString("death");
         }
     }
 }

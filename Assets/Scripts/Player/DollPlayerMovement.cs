@@ -273,9 +273,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private bool IsGrounded()
     {
-        grounded = _groundCheck.isGrounded;
+        grounded = _groundCheck.grounded;
         _lastCheck = grounded;
-        return _groundCheck.isGrounded;
+        return _groundCheck.grounded;
     }
 
     private IEnumerator GroundCheckAfterJump()
@@ -321,11 +321,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         attacking = true;
 
         currentState = PlayerState.attack01;
-
-        if (jumping)
-        {
-            currentState = PlayerState.jumpAttack;
-        }
     }
 
     public void AttackEnd()

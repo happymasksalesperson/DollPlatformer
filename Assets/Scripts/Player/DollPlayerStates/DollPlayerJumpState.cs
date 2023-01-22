@@ -62,10 +62,6 @@ public class DollPlayerJumpState : MonoBehaviour
         stateManager.ChangeStateString("idle");
     }
 
-    private void Update()
-    {
-    }
-
     void FixedUpdate()
     {
         grounded = playerMovement.grounded;

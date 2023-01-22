@@ -22,7 +22,7 @@ public class NPCPatrolState : MonoBehaviour
     //floats for determining distance from Player
     //NPC01 speeds up when spotting the Player and attacks once within range
     private float _distanceToPlayer;
-    [SerializeField] private float _minDist;
+    public float _minDist;
 
     private bool _moving;
 
@@ -53,6 +53,7 @@ public class NPCPatrolState : MonoBehaviour
         _speed = _stats.MyMoveSpeed();
         _idleTime = _stats.MyIdleTime();
         _patrolTime = _stats.MyPatrolTime();
+        _minDist = _stats._minDist;
 
         _sightDistance = _stats.MySightDistance();
 
@@ -149,14 +150,13 @@ public class NPCPatrolState : MonoBehaviour
         {
             GameObject playerObj = hitInfo.transform.gameObject;
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.red);
-
+            
             IPlayer player = playerObj.GetComponent<IPlayer>();
-            player.DetectPosition();
-
-            _distanceToPlayer = Vector3.Distance(transform.position, playerObj.transform.position);
-
+            _distanceToPlayer = Vector3.Distance(transform.position, hitInfo.transform.position);
             if (_distanceToPlayer < _minDist)
-                _stateManager.ChangeStateString("attack");
+            {
+                _stateManager.ChangeStateString("attack01");
+            }
         }
 
         wallInfo = new RaycastHit();

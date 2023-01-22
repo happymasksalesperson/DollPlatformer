@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
+  HP: 0
   runSpeed: 500
   maxSpeed: 2000
   jumpForce: 50000
@@ -219,6 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3528b7503230b140b2d678e90f52805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torque: 100000
+  verticalDist: 1000
+  horizontalDist: 100
+  hitDir: -1
+  facingDir: 0
 --- !u!54 &845691806028509511
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,7 +252,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.163167, y: 9.021152, z: 1}
+  m_Size: {x: 4.163167, y: 9.021152, z: 50}
   m_Center: {x: -0.06390228, y: -0.07257614, z: 0}
 --- !u!114 &515708071243029877
 MonoBehaviour:
@@ -407,7 +413,7 @@ GameObject:
   - component: {fileID: 1932760204781787252}
   - component: {fileID: 8850996183485310628}
   - component: {fileID: 3641292531868323773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +471,7 @@ GameObject:
   - component: {fileID: 7884119115657310806}
   - component: {fileID: 4003724768354045085}
   - component: {fileID: 4253227359949173149}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,10 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  grounded: 0

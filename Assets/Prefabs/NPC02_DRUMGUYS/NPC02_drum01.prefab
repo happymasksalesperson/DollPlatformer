@@ -58,13 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  grounded: 0
 --- !u!1 &7351472034254501913
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,11 +318,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC02
   maxHP: 1
-  _moveSpeed: 20
-  _maxSpeed: 5
+  _moveSpeed: 50
+  _maxSpeed: 50
   _attackTime: 1
-  _sightDistance: 45
-  _minDist: 0
+  attack01Power: -1
+  attack01Radius: 100
+  _sightDistance: 200
+  _minDist: 100
   _patrolTime: 5
   _idleTime: 1
   modelView: {fileID: 0}

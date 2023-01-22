@@ -164,3 +164,9 @@ Add placeholder SFX
 
 -- changed DollPlayerJumpState to use animation curve jump style (still needs tweaking)
 
+-- added an offset to attackstate dependant on the facingRight bool
+
+-- added controller/gamepad controls
+
+-- NPCs now properly damage and kill the Player too
+

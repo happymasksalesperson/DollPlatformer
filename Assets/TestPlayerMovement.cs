@@ -257,13 +257,13 @@ public class TestPlayerMovement : MonoBehaviour, IPlayer
 
     private bool IsGrounded()
     {
-        grounded = _groundCheck.isGrounded;
+        grounded = _groundCheck.grounded;
         _lastCheck = grounded;
-        return _groundCheck.isGrounded;
+        return _groundCheck.grounded;
     }
 
     private IEnumerator GroundCheckAfterJump()
-    {
+    {   
         _groundCheckEnabled = false;
         yield return _jumpWait;
         jumping = false;
