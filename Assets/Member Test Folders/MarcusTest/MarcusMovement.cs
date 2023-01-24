@@ -13,18 +13,18 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     // // // // // //
     // PLAYER OBJECT
     private Rigidbody _rb;
-    
+
     public BoxCollider _boxCollider;
 
     private GroundCheck _groundCheck;
-    
+
     private PlayerActions _playerActions;
     private Vector2 _movement;
 
     private DollPlayerStats playerStats;
 
     private DollPlayerAnimationStates _animStates;
-    
+
     //tracks player facing dir
     private bool _facingRight;
 
@@ -37,7 +37,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     // AIMING
     //
     private Vector2 _aimVector;
-    
+
     // // // // // //
     // ATTACKING
     //
@@ -49,28 +49,26 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     {
         return _isAttack;
     }
-    
+
     // // // // // //
     // RUNNING
     //
     private float _runSpeed;
-    
+
     private float _maxSpeed;
-    
+
     // // // // // //
     // JUMPING
     //
     private Gravity _gravity;
-    
+
     private float _jumpForce;
 
-    [SerializeField]
-    [Range(1f, 5f)]
-    private float _jumpFallGravityMultiply;
+    [SerializeField] [Range(1f, 5f)] private float _jumpFallGravityMultiply;
 
-    [SerializeField]private float _groundCheckHeight;
+    [SerializeField] private float _groundCheckHeight;
 
-    [SerializeField]private LayerMask _groundMask;
+    [SerializeField] private LayerMask _groundMask;
 
     //"disable Ground Check Time"
     [SerializeField] private float _disableGCTime;
@@ -96,6 +94,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         Jumping,
         TakeDamage,
     }
+
     public PlayerState currentState;
 
     private void Awake()
@@ -130,44 +129,42 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
         HandleGravity();
     }
-    
+
     // // // // // //
     // Running
     //
     private void HandleMovement()
     {
         _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
-        
+
         if (_rb.velocity.magnitude > _maxSpeed)
         {
             _rb.velocity = _rb.velocity.normalized * _maxSpeed;
-        } 
-        
-        if(_jumping)
+        }
+
+        if (_jumping)
             /*_animStates.ChangeMoveInt(3);*/
 
-        if (_movement.x > 0)
-        {
-            /*_animStates.ChangeMoveInt(2);*/
-            _facingRight = false;
-        }
-        else if (_movement.x < 0)
-        {
-            /*_animStates.ChangeMoveInt(2);*/
-            _facingRight = true;
-        }
+            if (_movement.x > 0)
+            {
+                /*_animStates.ChangeMoveInt(2);*/
+                _facingRight = false;
+            }
+            else if (_movement.x < 0)
+            {
+                /*_animStates.ChangeMoveInt(2);*/
+                _facingRight = true;
+            }
 
-        else if (IsGrounded() && _aimVector == Vector2.down)
-            Crouch();
+            else if (IsGrounded() && _aimVector == Vector2.down)
+                Crouch();
 
-        else if (IsGrounded() && _movement.y == 0)
-        {
-            /*_animStates.ChangeMoveInt(0);*/
-        }
-        
-       
+            else if (IsGrounded() && _movement.y == 0)
+            {
+                /*_animStates.ChangeMoveInt(0);*/
+            }
     }
-    
+
     // // // // // //
     // CROUCHING
     //
@@ -187,30 +184,31 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         {
             /*_animStates.ChangeAttackInt(1);*/
         }
-        
-        else if  (_aimVector == Vector2.down)
+
+        else if (_aimVector == Vector2.down)
         {
-          //  _animStates.ChangeAttackInt(2);
+            //  _animStates.ChangeAttackInt(2);
         }
-        
+
         else
-          //  _animStates.ChangeAttackInt(0);
-        
-        StartCoroutine(Attacking());
+            //  _animStates.ChangeAttackInt(0);
+
+            StartCoroutine(Attacking());
     }
+
     private IEnumerator Attacking()
     {
         Debug.Log("Hiyah");
-        
+
         currentState = PlayerState.Attacking;
-        
-       // _animStates.ChangeMoveInt(4);
+
+        // _animStates.ChangeMoveInt(4);
 
         yield return new WaitForSeconds(_attackTime);
 
         _isAttack = false;
     }
-    
+
     // // // // // //
     // JUMPING
     //
@@ -218,8 +216,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     {
         if (IsGrounded())
         {
-            
-            _rb.AddForce(Vector3.up*_jumpForce);
+            _rb.AddForce(Vector3.up * _jumpForce);
             _jumping = true;
             StartCoroutine(GroundCheckAfterJump());
         }
@@ -228,7 +225,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     private bool IsGrounded()
     {
         //Debug.Log(_groundCheck.isGrounded);
-        return _groundCheck.isGrounded;
+        return _groundCheck.grounded;
     }
 
     private IEnumerator GroundCheckAfterJump()
@@ -247,13 +244,12 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
         else if (_jumping && _rb.velocity.y > 0f)
         {
-            _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply); 
+            _gravity.ChangeGravity(_defaultGravity * _jumpFallGravityMultiply);
         }
         else
         {
             _gravity.ChangeGravity(_defaultGravity);
         }
-        
     }
 
     // // // // // //
@@ -262,13 +258,13 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     {
         //return current HP
     }
-    
+
     public void DetectPosition()
     {
         //return transform.position;
     }
-    
-    
+
+
     // // // // // //
     // GIZMOS BABY
     private void OnDrawGizmos()
@@ -291,7 +287,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         _boxCollider = GetComponent<BoxCollider>();
 
         _jumpWait = new WaitForSeconds(_disableGCTime);
-        
+
         _playerActions = new PlayerActions();
 
         _playerActions.InGamePlayer.Jump.performed += Jump;
@@ -300,16 +296,15 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
         grappleDetction.OnTriggerEnterEvent += AddGrappleAnchor;
         grappleDetction.OnTriggerExitEvent += RemoveGrappleAnchor;
-        
+
         _playerActions.InGamePlayer.Enable();
-        
+
         //get stats from PlayerStats
         playerStats = this.GetComponent<DollPlayerStats>();
         _runSpeed = playerStats.runSpeed;
         _maxSpeed = playerStats.maxSpeed;
         _jumpForce = playerStats.jumpForce;
         _attackTime = playerStats.attack01Time;
-
     }
 
     private void OnDisable()
@@ -320,9 +315,10 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     public void Grapple(InputAction.CallbackContext context)
     {
         Vector3 grapplePos = grapples[0].transform.position;
-        
-        if ((grapplePos.x > transform.position.x && _facingRight) || (grapplePos.x < transform.position.x && !_facingRight))
-        { 
+
+        if ((grapplePos.x > transform.position.x && _facingRight) ||
+            (grapplePos.x < transform.position.x && !_facingRight))
+        {
             Vector3.MoveTowards(grapplePos, grapplePos, 0.4f);
         }
         else
@@ -330,7 +326,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
             grapples.Remove(grapples[0]);
         }
     }
-    
+
     private void AddGrappleAnchor(Collider obj)
     {
         if (obj.GetComponent<GrapplePoint>() != null)
@@ -338,7 +334,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
             grapples.Add(obj.gameObject);
         }
     }
-    
+
     private void RemoveGrappleAnchor(Collider obj)
     {
         if (obj.GetComponent<GrapplePoint>() != null)

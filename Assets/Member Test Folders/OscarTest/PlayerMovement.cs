@@ -11,20 +11,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Vector2 movementInput = Vector2.zero;
-    
+
     [SerializeField] private float playerSpeed = 3.0f;
     [SerializeField] private float jumpHeight = 6f;
     [SerializeField] private LayerMask jumpableGround;
-    
+
     private BoxCollider2D coll;
     private bool jumped = false;
-    
+
     //tracks player facing dir
     private bool _facingRight;
+
     public bool FacingRight()
     {
         return _facingRight;
     }
+
     public enum PlayerState
     {
         Idling,
@@ -34,8 +36,9 @@ public class PlayerMovement : MonoBehaviour
         Jumping,
         TakeDamage,
     }
+
     public PlayerState currentState;
-    
+
     private DollPlayerAnimationStates _animStates;
 
     private void Awake()
@@ -67,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
             jumped = true;
         }
     }
-    
+
     private bool IsGrounded()
     {
         //create a box to detect whether the player is standing on the ground or not.
@@ -79,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         //for the player movement left and right.
         Vector3 move = new Vector3(movementInput.x, 0, 0);
         rb.AddRelativeForce(move * playerSpeed);
-        
+
         //if jumped is true then make the players rb jump.
         if (jumped == true)
         {
@@ -87,5 +90,4 @@ public class PlayerMovement : MonoBehaviour
             jumped = false;
         }
     }
-
 }

@@ -14,7 +14,7 @@ public class ElevatorEditor : Editor
         {
             (target as Elevator_Model)?.Up();
         }
-        
+
         if (GUILayout.Button("Going Down"))
         {
             (target as Elevator_Model)?.Down();

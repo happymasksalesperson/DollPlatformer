@@ -32,6 +32,20 @@ public class DollPlayerAttackState : MonoBehaviour
     private Vector3 originalVelocity;
 
     private Gravity gravity;
+    
+    //Attack dictionary stuff
+    //currently in progress
+    //ask Cam how to approach multiple attacks w/state machine style logic
+    
+    /*private Dictionary<int, Action> attackDictionary = new Dictionary<int, Action>()
+    {
+        { 0, GroundAttack01 },
+    };
+    
+    public void PerformAttack(int attackInt)
+    {
+        attackDictionary[attackInt].Invoke();
+    }*/
 
     private void OnEnable()
     {
@@ -91,17 +105,13 @@ public class DollPlayerAttackState : MonoBehaviour
             int layerMask = 1 << targetLayer;
             layerMask = ~(1 << playerLayer);
             
-            //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
-
-            //note the 10 is the max amount of returns per overlapsphere
-            //change at will
+            // // // // //
+            // note the 10 is the max amount of returns per overlapsphere
+            // change at will
             Collider[] hits = new Collider[10];
-
-            // Call Physics.OverlapSphereNonAlloc and pass in the center point of the sphere, the radius of the sphere,
-            // the array you declared, and an optional layer mask
+            
             int numHits = Physics.OverlapSphereNonAlloc(offsetPosition, attack01Radius, hits, layerMask);
-
-            // Iterate through the array of Colliders and do something with each one
+            
             for (int i = 0; i < numHits; i++)
             {
                 ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
@@ -131,5 +141,4 @@ public class DollPlayerAttackState : MonoBehaviour
             rb.velocity = originalVelocity;
         }
     }
-    
 }

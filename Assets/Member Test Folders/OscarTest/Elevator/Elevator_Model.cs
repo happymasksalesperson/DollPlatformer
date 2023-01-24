@@ -8,8 +8,9 @@ namespace Oscar
     public class Elevator_Model : MonoBehaviour
     {
         bool ElevatorGoingUp;
-        
+
         public event Action ElevatorGoUpEvent;
+
         public void Up()
         {
             if (!ElevatorGoingUp)
@@ -18,9 +19,10 @@ namespace Oscar
                 ElevatorGoingUp = true;
             }
         }
-        
-        
+
+
         public event Action ElevatorGoDownEvent;
+
         public void Down()
         {
             if (ElevatorGoingUp)
@@ -31,4 +33,3 @@ namespace Oscar
         }
     }
 }
-

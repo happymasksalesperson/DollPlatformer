@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     public PlayerMovement Movement;
-    
+
     private Animator _anim;
 
     private SpriteRenderer _spr;
@@ -15,7 +15,7 @@ public class PlayerAnimator : MonoBehaviour
     private int _moveInt;
 
     private bool _jumping;
-    
+
     private void OnEnable()
     {
         _anim = GetComponent<Animator>();
@@ -35,15 +35,15 @@ public class PlayerAnimator : MonoBehaviour
             case 0:
                 _anim.SetInteger("moveInt", 0);
                 break;
-            
+
             case 1:
                 _anim.SetInteger("moveInt", 1);
                 break;
-            
+
             case 2:
                 _anim.SetInteger("moveInt", 2);
                 break;
-            
+
             case 3:
                 _anim.SetInteger("moveInt", 3);
                 break;
@@ -52,11 +52,11 @@ public class PlayerAnimator : MonoBehaviour
         _facingRight = Movement.FacingRight();
         if (_facingRight)
         {
-            _spr.flipX=true;
+            _spr.flipX = true;
         }
         else
         {
-            _spr.flipX=false;
+            _spr.flipX = false;
         }
     }
 }

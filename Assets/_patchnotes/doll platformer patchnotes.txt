@@ -170,3 +170,10 @@ Add placeholder SFX
 
 -- NPCs now properly damage and kill the Player too
 
+3.1
+
+-- added NPC05 Hanging Doll, default sprite and prefab. Added NPC05MoveState.cs. When entering Move State Hanging Doll fires a Raycast down and moves towards the first Ground layer point it hits
+
+-- added Rope object. Rope object will extend with Hanging Doll and be swung from later
+
+-- added Dpad support to controls
