@@ -181,6 +181,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void HandleMovement()
     {
+        if (!grounded && !attacking)
+            modelView.OnFall();
+        
         if (grounded && !attacking && !crouching && !jumping && !talking)
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);

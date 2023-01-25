@@ -49,6 +49,13 @@ public class DollPlayerModelView : MonoBehaviour
         Jump?.Invoke();
     }
 
+    public event Action Fall;
+
+    public void OnFall()
+    {
+        Fall?.Invoke();
+    }
+
     public event Action JumpUpAttack01;
 
     public void OnJumpUpAttack01()

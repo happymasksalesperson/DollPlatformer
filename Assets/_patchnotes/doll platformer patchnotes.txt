@@ -177,3 +177,11 @@ Add placeholder SFX
 -- added Rope object. Rope object will extend with Hanging Doll and be swung from later
 
 -- added Dpad support to controls
+
+3.2
+
+-- NPC05 HangingState now detects the player and moves towards a position while spotted, else it moves back to its point of origin.
+
+-- added an OnFall event for the Player
+
+-- added the track "Father"

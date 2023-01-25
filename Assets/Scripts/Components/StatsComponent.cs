@@ -20,6 +20,8 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     public float attack01Radius;
 
+    public bool isAlive=true;
+
     // // // // // //
     //
     // sightDistance determines how far Character can see
@@ -66,6 +68,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
         if (HP <= 0)
         {
+            isAlive = false;
             HP = 0;
             stateManager.ChangeStateString("death");
         }

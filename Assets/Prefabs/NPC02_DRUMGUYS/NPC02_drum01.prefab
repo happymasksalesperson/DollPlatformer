@@ -323,6 +323,7 @@ MonoBehaviour:
   _attackTime: 1
   attack01Power: -1
   attack01Radius: 100
+  isAlive: 1
   _sightDistance: 200
   _minDist: 100
   _patrolTime: 5
@@ -349,7 +350,7 @@ MonoBehaviour:
     m_Bits: 8
   wallMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   modelView: {fileID: 0}
 --- !u!114 &7351472035176131920
 MonoBehaviour:

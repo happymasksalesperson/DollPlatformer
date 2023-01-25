@@ -34,8 +34,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5858257352297611883}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35, y: 78.3, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5858257353523337049}
@@ -80,6 +80,9 @@ MonoBehaviour:
   _moveSpeed: 20
   _maxSpeed: 5
   _attackTime: 1
+  attack01Power: 0
+  attack01Radius: 0
+  isAlive: 1
   _sightDistance: 45
   _minDist: 0
   _patrolTime: 5

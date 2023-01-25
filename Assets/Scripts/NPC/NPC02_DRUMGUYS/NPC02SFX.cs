@@ -10,6 +10,9 @@ public class NPC02SFX : MonoBehaviour
     public List<GameObject> NPC02List = new List<GameObject>();
 
     public static AudioClip
+        
+        Father,
+        
         NPC02_Charge01,
         NPC02_Charge02,
         NPC02_Charge03,
@@ -29,6 +32,9 @@ public class NPC02SFX : MonoBehaviour
     {
         audioSrc = GetComponent<AudioSource>();
         //example = Resources.Load<AudioClip>("example");
+
+        Father = Resources.Load<AudioClip>("Father");
+        
         //doesn't need NPC_02 in string
         NPC02_Charge01 = Resources.Load<AudioClip>("NPC02_Charge01");
         NPC02_Charge02 = Resources.Load<AudioClip>("NPC02_Charge02");
@@ -42,6 +48,8 @@ public class NPC02SFX : MonoBehaviour
         NPC02_MidRoll = Resources.Load<AudioClip>("NPC02_MidRoll");
         NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02_SoftRoll01");
         NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
+        
+        PlaySound("Father");
     }
 
     public void AddToList(GameObject gameObject)
@@ -141,6 +149,10 @@ public class NPC02SFX : MonoBehaviour
     {
         switch (clipName)
         {
+            case "Father":
+                audioSrc.PlayOneShot(Father);
+                break;
+            
             case "NPC02_Charge01":
                 audioSrc.PlayOneShot(NPC02_Charge01);
                 break;

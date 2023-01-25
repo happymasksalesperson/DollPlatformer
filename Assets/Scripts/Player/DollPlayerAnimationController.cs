@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class DollPlayerAnimationController : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class DollPlayerAnimationController : MonoBehaviour
         modelView.JumpUpAttack01 += JumpUpAttack01;
         modelView.JumpNeutralAttack01 += JumpNeutralAttack01;
         modelView.JumpDownAttack01 += JumpDownAttack01;
+
+        modelView.Fall += Fall;
 
         modelView.Run += Run;
 
@@ -89,6 +92,10 @@ public class DollPlayerAnimationController : MonoBehaviour
         anim.Play("JumpDownAttack01");
     }
 
+    private void Fall()
+    {
+        anim.Play("Jump");
+    }
 
     private void Run()
     {
@@ -103,10 +110,12 @@ public class DollPlayerAnimationController : MonoBehaviour
 
     private void OnDisable()
     {
-        modelView.Jump += Jump;
-        modelView.JumpUpAttack01 += JumpUpAttack01;
-        modelView.JumpNeutralAttack01 += JumpNeutralAttack01;
-        modelView.JumpDownAttack01 += JumpDownAttack01;
+        modelView.Jump -= Jump;
+        modelView.JumpUpAttack01 -= JumpUpAttack01;
+        modelView.JumpNeutralAttack01 -= JumpNeutralAttack01;
+        modelView.JumpDownAttack01 -= JumpDownAttack01;
+
+        modelView.Fall -= Fall;
 
         modelView.Attack01 -= Attack01;
         modelView.Attack01Windup -= AttackWindup01;

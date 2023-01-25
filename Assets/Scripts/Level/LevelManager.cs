@@ -32,7 +32,8 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < spawnPoints.Count; i++)
         {
-            Instantiate(NPC[i % NPC.Count], spawnPoints[i].position, spawnPoints[i].rotation);
+            int prefabIndex = i % NPC.Count;
+            Instantiate(NPC[prefabIndex], spawnPoints[i].position, spawnPoints[i].rotation);
         }
     }
 }
