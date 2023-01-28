@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager { get; private set; }
-    public NPC02SFX SFX { get; private set; }
+    public NPCSFX SFX { get; private set; }
 
     //public EXAMPLESCRIPT ExampleRef { get; private set; }
 
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
 
         levelManager = this;
 
-        SFX = GetComponentInChildren<NPC02SFX>();
+        SFX = GetComponentInChildren<NPCSFX>();
 
         SpawnNPC();
     }

@@ -247,13 +247,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: NPC01
-  _maxHP: 3
+  maxHP: 0
+  HP: 0
   _moveSpeed: 100
   _maxSpeed: 50
   _attackTime: 3
+  bodyHitboxPower: 0
+  attack01Power: 0
+  attack01Radius: 0
+  isAlive: 1
+  armoured: 0
+  type: 1
   _sightDistance: 200
+  _minDist: 0
   _patrolTime: 3
   _idleTime: 2
+  modelView: {fileID: 0}
+  vulnerable: 0
+  conjoined: 0
+  facingDirection: 0
 --- !u!114 &7862248698248618459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,10 +278,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934d4fc3769e8074187577afc3496298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingState: {fileID: 0}
-  _currentState: {fileID: 0}
-  _patrolState: {fileID: 0}
-  _attackState: {fileID: 7862248698248618456}
+  startingState: {fileID: 0}
+  currentState: {fileID: 0}
+  crouchState: {fileID: 0}
+  idleState: {fileID: 0}
+  patrolState: {fileID: 0}
+  attackState: {fileID: 0}
+  jumpState: {fileID: 0}
+  takeDamageState: {fileID: 0}
+  deathState: {fileID: 0}
 --- !u!114 &7862248698248618456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,4 +299,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11635fff23f8bc468caa8c64b045941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolState: {fileID: 0}
+  attack01Time: 0
+  windup01Time: 0

@@ -9,14 +9,14 @@ public class NPCAnimationController : MonoBehaviour
 
     private HealthModelView healthModelView;
 
-    private SpriteRenderer _rend;
-
-    private Animator _anim;
+    private SpriteRenderer rend;
+    
+    private Animator anim;
 
     private void OnEnable()
     {
-        _rend = GetComponent<SpriteRenderer>();
-        _anim = GetComponent<Animator>();
+        rend = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         modelView = GetComponentInParent<NPCModelView>();
 
         modelView.Attack01 += Attack;
@@ -27,22 +27,22 @@ public class NPCAnimationController : MonoBehaviour
 
     private void Attack()
     {
-        _anim.Play("attack01");
+        anim.Play("Attack01");
     }
 
     private void Attack01Windup()
     {
-        _anim.Play("attack01windup");
+        anim.Play("Attack01Windup");
     }
 
     private void TakeDamage()
     {
-        _anim.Play("takeDamage");
+        anim.Play("TakeDamage");
     }
 
     private void Patrolling()
     {
-        _anim.Play("patrol");
+        anim.Play("Patrol");
     }
 
     private void OnDisable()

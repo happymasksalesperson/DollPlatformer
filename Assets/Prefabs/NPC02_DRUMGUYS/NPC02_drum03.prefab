@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC02_drum03
   maxHP: 1
+  HP: 0
   _moveSpeed: 250
   _maxSpeed: 200
   _attackTime: 1
@@ -266,6 +267,7 @@ MonoBehaviour:
   attack01Radius: 400
   isAlive: 1
   armoured: 0
+  type: 2
   _sightDistance: 200
   _minDist: 200
   _patrolTime: 3

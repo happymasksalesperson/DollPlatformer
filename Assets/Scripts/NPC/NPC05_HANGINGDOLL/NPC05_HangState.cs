@@ -46,6 +46,9 @@ public class NPC05_HangState : MonoBehaviour
 
     public bool active;
 
+    private BoxCollider boxCollider;
+    public float size;
+
     private void OnEnable()
     {
         active = true;
@@ -53,16 +56,19 @@ public class NPC05_HangState : MonoBehaviour
         stats = GetComponent<StatsComponent>();
         stats.vulnerable = true;
         moveSpeed = stats.MyMoveSpeed();
-        sightDistance = stats.MySightDistance();
+        sightDistance = stats.MySightDistance(); 
 
         spawnPoint = transform.position;
 
         LOSExtents = new Vector3(sightDistance/2, sightDistance, 5);
 
+        boxCollider = GetComponent<BoxCollider>();
+        size = boxCollider.size.y;
+
         RaycastHit hit;
         if (Physics.Raycast(spawnPoint, Vector3.down, out hit, sightDistance*2, groundLayer))
         {
-            groundPoint = hit.point;
+            groundPoint = new Vector3(hit.point.x, hit.point.y + size * 40, hit.point.z);
         }
 
         StartCoroutine(CheckForPlayer());
@@ -85,7 +91,7 @@ public class NPC05_HangState : MonoBehaviour
 
             Collider[] hits = new Collider[10];
             int numHits =
-                Physics.OverlapBoxNonAlloc(LOSPosition, LOSExtents, hits, Quaternion.identity, playerLayer);
+                Physics.OverlapBoxNonAlloc(LOSPosition, LOSExtents/2, hits, Quaternion.identity, playerLayer);
 
             bool foundPlayer = false;
             for (int i = 0; i < numHits; i++)

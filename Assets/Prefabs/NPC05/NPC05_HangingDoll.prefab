@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC05 -- Hanging Doll
   maxHP: 1
+  HP: 0
   _moveSpeed: 2000
   _maxSpeed: 500
   _attackTime: 1
@@ -228,6 +229,7 @@ MonoBehaviour:
   attack01Radius: 500
   isAlive: 1
   armoured: 0
+  type: 5
   _sightDistance: 1000
   _minDist: 100
   _patrolTime: 5
@@ -337,6 +339,7 @@ MonoBehaviour:
   groundPoint: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   active: 0
+  size: 0
 --- !u!114 &7988509043576051967
 MonoBehaviour:
   m_ObjectHideFlags: 0

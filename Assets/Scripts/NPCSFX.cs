@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NPC02SFX : MonoBehaviour
+public class NPCSFX : MonoBehaviour
 {
     private NPCModelView modelView;
     public List<GameObject> NPC02List = new List<GameObject>();
@@ -51,6 +51,16 @@ public class NPC02SFX : MonoBehaviour
         NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
         
       PlaySound("Father");
+    }
+    
+    public Dictionary<Type, GameObject> myDictionary = new Dictionary<Type, GameObject>();
+
+    public void AddToDictionary(Type type, GameObject gameObject)
+    {
+        myDictionary.Add(type, gameObject);
+        
+        if(type==Type.NPC02)
+            AddToList(gameObject);
     }
 
     public void AddToList(GameObject gameObject)

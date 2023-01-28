@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 5858257352297611807}
   - component: {fileID: 5858257352297611796}
   - component: {fileID: 5858257352297611797}
-  - component: {fileID: 5645776296058800589}
   m_Layer: 0
   m_Name: NPC03_CymbalMonkey
   m_TagString: Untagged
@@ -55,9 +54,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingState: {fileID: 5858257352297611798}
-  currentState: {fileID: 5858257352297611792}
+  currentState: {fileID: 0}
   crouchState: {fileID: 0}
-  idleState: {fileID: 5645776296058800589}
+  idleState: {fileID: 0}
   patrolState: {fileID: 5858257352297611798}
   attackState: {fileID: 5858257352297611792}
   jumpState: {fileID: 0}
@@ -77,14 +76,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC02
   maxHP: 1
-  _moveSpeed: 20
-  _maxSpeed: 5
-  _attackTime: 1
-  attack01Power: 0
-  attack01Radius: 0
+  HP: 0
+  _moveSpeed: 500
+  _maxSpeed: 400
+  _attackTime: 0.75
+  bodyHitboxPower: -1
+  attack01Power: -1
+  attack01Radius: 420
   isAlive: 1
-  _sightDistance: 45
-  _minDist: 0
+  armoured: 0
+  type: 3
+  _sightDistance: 700
+  _minDist: 400
   _patrolTime: 5
   _idleTime: 1
   modelView: {fileID: 0}
@@ -124,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torque: 100000
-  verticalDist: 1000
   horizontalDist: 100
+  verticalDist: 1000
   hitDir: -1
   facingDir: 0
 --- !u!114 &5858257352297611793
@@ -180,7 +183,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -196,20 +199,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4184105, y: 3.0219615, z: 1}
-  m_Center: {x: 0.02836876, y: 0.022899343, z: 0}
---- !u!114 &5645776296058800589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5858257352297611883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 2.4184105, y: 3.93, z: 1}
+  m_Center: {x: 0.02836876, y: -0.23, z: 0}
 --- !u!1 &5858257353523337050
 GameObject:
   m_ObjectHideFlags: 0

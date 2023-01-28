@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class StatsComponent : MonoBehaviour, ITakeDamage
 {
+    public Type type;
+    
     [SerializeField] private string _name;
 
     [SerializeField] private int maxHP;
-    private int HP;
+    public int HP;
 
     [SerializeField] private float _moveSpeed;
 
@@ -25,7 +27,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
     public bool isAlive = true;
 
     public bool armoured = false;
-
+    
     // // // // // //
     //
     // sightDistance determines how far Character can see
@@ -59,6 +61,8 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
         HP = maxHP;
 
         LevelManager.levelManager.SFX.AddToList(gameObj);
+        
+        //LevelManager.levelManager.SFX.AddToDictionary(type, gameObj);
     }
 
     //changes HP

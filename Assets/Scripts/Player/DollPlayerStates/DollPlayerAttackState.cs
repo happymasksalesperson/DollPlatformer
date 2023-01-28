@@ -101,7 +101,7 @@ public class DollPlayerAttackState : MonoBehaviour
         CheckOffset(transform, offsetDist, facingRight);
         {
             int playerLayer = 3;
-            int targetLayer = 8;
+            int targetLayer = 6;
 
             int layerMask = 1 << targetLayer;
             layerMask = ~(1 << playerLayer);
@@ -115,10 +115,14 @@ public class DollPlayerAttackState : MonoBehaviour
 
             for (int i = 0; i < numHits; i++)
             {
-                ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
-                if (damageable != null)
+                IPlayer player = hits[i].GetComponent<IPlayer>();
+                if (player == null)
                 {
-                    damageable.ChangeHP(attack01Power);
+                    ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
+                    if (damageable != null)
+                    {
+                        damageable.ChangeHP(attack01Power);
+                    }
                 }
             }
 

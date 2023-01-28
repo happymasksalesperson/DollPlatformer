@@ -75,6 +75,7 @@ MonoBehaviour:
   crouching: 0
   talking: 0
   disabled: 0
+  gracePeriod: 0
 --- !u!114 &845691806028509509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,13 +94,15 @@ MonoBehaviour:
   armoured: 0
   runSpeed: 500
   maxSpeed: 2000
-  jumpForce: 50000
-  jumpSpeedMultipler: 0.5
+  jumpForce: 50500
+  jumpSpeedMultipler: 1
   attack01Power: 1
-  attack01Radius: 6
+  attack01Radius: 10
   attack01Time: 1
   attack02Time: 1
   jumpAttack01Time: 0.25
+  takeDamageTime: 0
+  takeDamageGracePeriod: 0
 --- !u!114 &845691806028509508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,9 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2129c00b82dfb764e88e964ab350f675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 0
   horizontalDist: 7000
   verticalDist: 7000
-  disableTime: 0.75
 --- !u!114 &3598934413428729640
 MonoBehaviour:
   m_ObjectHideFlags: 0
