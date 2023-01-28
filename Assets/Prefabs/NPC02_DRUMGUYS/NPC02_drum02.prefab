@@ -83,10 +83,11 @@ MonoBehaviour:
   _maxSpeed: 50
   _attackTime: 1
   attack01Power: -1
-  attack01Radius: 100
+  attack01Radius: 300
   isAlive: 1
-  _sightDistance: 200
-  _minDist: 100
+  armoured: 0
+  _sightDistance: 1000
+  _minDist: 500
   _patrolTime: 5
   _idleTime: 1.5
   modelView: {fileID: 0}
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc42d836cd59d94a86fca885658389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDist: 5
+  _minDist: 25
   playerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -126,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torque: 100000
-  verticalDist: 1000
   horizontalDist: 100
+  verticalDist: 1000
   hitDir: -1
   facingDir: 0
 --- !u!114 &762725751722798984

@@ -20,13 +20,13 @@ public class NPCDeathState : MonoBehaviour
 
     //how much rb spins
     [SerializeField] private float torque;
-
-    //how much NPC "jumps" up on Death
-    [SerializeField] private float verticalDist;
-
+    
     //how far NPC travels horizontally
     //tie to hitDir
     [SerializeField] private float horizontalDist;
+
+    //how much NPC "jumps" up on Death
+    [SerializeField] private float verticalDist;
 
     //change direction depending on facing direction
     //change to direction of incoming hit?

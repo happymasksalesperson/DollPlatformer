@@ -16,11 +16,15 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     [SerializeField] private float _attackTime;
 
+    public int bodyHitboxPower;
+
     public int attack01Power;
 
     public float attack01Radius;
 
-    public bool isAlive=true;
+    public bool isAlive = true;
+
+    public bool armoured = false;
 
     // // // // // //
     //
@@ -36,7 +40,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
     [SerializeField] private HealthModelView modelView;
 
-    [SerializeField] public bool vulnerable;
+    public bool vulnerable;
 
     public bool conjoined;
 
@@ -60,17 +64,28 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
     //changes HP
     public void ChangeHP(int amount)
     {
-        HP += amount;
-        if (HP >= maxHP)
-            HP = maxHP;
-
-        modelView.OnChangeHealth(amount);
-
-        if (HP <= 0)
+        if (vulnerable)
         {
-            isAlive = false;
-            HP = 0;
-            stateManager.ChangeStateString("death");
+            HP += amount;
+
+            if (HP >= maxHP)
+                HP = maxHP;
+
+            modelView.OnChangeHealth(amount);
+
+            stateManager.ChangeStateString("takeDamage");
+
+            if (HP <= 0)
+            {
+                isAlive = false;
+                HP = 0;
+                stateManager.ChangeStateString("death");
+            }
+        }
+
+        if (amount > 0)
+        {
+            //heal
         }
     }
 

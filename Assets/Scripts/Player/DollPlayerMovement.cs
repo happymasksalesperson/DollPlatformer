@@ -47,7 +47,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         attack01,
         crouchAttack,
-        jumpAttack
+        jumpAttack,
+        
+        disabled
     }
 
     public PlayerState currentState;
@@ -104,7 +106,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // // // // // //
     // TALKING -- dialogue
     //
-    private bool talking;
+    public bool talking;
+    
+    // // // // // //
+    // DISABLED
+    // perhaps due to takeDamage
+    public bool disabled=false;
 
     private void Start()
     {
@@ -171,6 +178,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             grounded = _lastCheck;
         }
 
+        if(!disabled)
         HandleMovement();
 
         HandleGravity();
@@ -226,19 +234,22 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     public void Jump(InputAction.CallbackContext context)
     {
-        holdingJump = true;
-
-        if (currentState == PlayerState.idle || currentState == PlayerState.run)
+        if (!disabled)
         {
-            grounded = false;
-            _lastCheck = grounded;
-            
-            jumping = true;
+            holdingJump = true;
 
-            StartCoroutine(GroundCheckAfterJump());
+            if (currentState == PlayerState.idle || currentState == PlayerState.run)
+            {
+                grounded = false;
+                _lastCheck = grounded;
 
-            currentState = PlayerState.jump;
-            ChangeMovementState(currentState);
+                jumping = true;
+
+                StartCoroutine(GroundCheckAfterJump());
+
+                currentState = PlayerState.jump;
+                ChangeMovementState(currentState);
+            }
         }
     }
 

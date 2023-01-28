@@ -11,6 +11,8 @@ public class NPCTakeDamageState : MonoBehaviour
 
     private StateManager stateManager;
 
+    private StatsComponent stats;
+
     private void OnEnable()
     {
         modelView = GetComponentInChildren<NPCModelView>();
@@ -19,13 +21,21 @@ public class NPCTakeDamageState : MonoBehaviour
 
         modelView.OnTakeDamage();
 
+        stats = GetComponent<StatsComponent>();
+
+        stats.vulnerable = false;
+
         StartCoroutine(TakeDamage());
     }
 
     private IEnumerator TakeDamage()
     {
         yield return new WaitForSeconds(takeDamageTime);
-
         stateManager.ChangeStateString("patrol");
+    }
+
+    private void OnDisable()
+    {
+        stats.vulnerable = true;
     }
 }

@@ -43,23 +43,6 @@ public class NPCPatrolState : MonoBehaviour
 
     public NPCModelView modelView;
 
-    // //
-    //
-    private void Start()
-    {
-        _stats = GetComponent<StatsComponent>();
-
-        _maxSpeed = _stats.MyMaxSpeed();
-        _speed = _stats.MyMoveSpeed();
-        _idleTime = _stats.MyIdleTime();
-        _patrolTime = _stats.MyPatrolTime();
-        _minDist = _stats._minDist;
-
-        _sightDistance = _stats.MySightDistance();
-
-        StartCoroutine(Patrolling());
-    }
-
     // // // // // //
     // ON ENABLE / DISABLE
 
@@ -72,6 +55,19 @@ public class NPCPatrolState : MonoBehaviour
 
         modelView = GetComponentInChildren<NPCModelView>();
         modelView.OnPatrol();
+        
+        _stats = GetComponent<StatsComponent>();
+        _stats.vulnerable = true;
+
+        _maxSpeed = _stats.MyMaxSpeed();
+        _speed = _stats.MyMoveSpeed();
+        _idleTime = _stats.MyIdleTime();
+        _patrolTime = _stats.MyPatrolTime();
+        _minDist = _stats._minDist;
+
+        _sightDistance = _stats.MySightDistance();
+
+        StartCoroutine(Patrolling());
     }
 
     private void FixedUpdate()

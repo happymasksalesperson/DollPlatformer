@@ -1,16 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DollPlayerTakeDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private DollPlayerMovement playerMovement;
+
+    private DollPlayerStats stats;
+
+    private StateManager stateManager;
+
+    private Rigidbody rb;
+
+    private DollPlayerModelView modelView;
+    
+    private bool facingRight;
+
+    [Header("HOW FAR KNOCKED BACK HORIZONTAL")]
+    [SerializeField]
+    private float horizontalDist;
+    
+    [Header("HOW FAR KNOCKED BACK VERTICAL")]
+    [SerializeField]
+    private float verticalDist;
+
+    [Header("HOW LONG DISABLED FOR")]
+    [SerializeField]
+    private float disableTime;
+
+    private void OnEnable()
     {
+        stateManager = GetComponent<StateManager>();
+
+        stats = GetComponent<DollPlayerStats>();
+        stats.vulnerable = false;
+
+        modelView = GetComponentInChildren<DollPlayerModelView>();
+        
+        modelView.OnTakeDamage();
+
+        rb = GetComponent<Rigidbody>();
+        
+        playerMovement = GetComponent<DollPlayerMovement>();
+        playerMovement.disabled = true;
+        facingRight = playerMovement.facingRight;
+
+        StartCoroutine(Knockback());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator Knockback()
     {
+        if (!facingRight)
+        {
+            horizontalDist = -horizontalDist;
+        }
+
+        bool isArmoured = stats.armoured;
+        if(isArmoured)
+            rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
+        
+        yield return new WaitForSeconds(disableTime);
+
+        int HP = stats.HP;
+        if(HP==0)
+            stateManager.ChangeStateString("death");
+
+        else
+        {
+            playerMovement.disabled = false;
+            stats.vulnerable = true;
+            stateManager.ChangeStateString("idle");
+        }
     }
+
 }

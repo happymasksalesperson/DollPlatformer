@@ -73,6 +73,8 @@ MonoBehaviour:
   _disableGCTime: 0.25
   _jumpFallMultiply: 0
   crouching: 0
+  talking: 0
+  disabled: 0
 --- !u!114 &845691806028509509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,15 +89,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   HP: 0
+  vulnerable: 1
+  armoured: 0
   runSpeed: 500
   maxSpeed: 2000
   jumpForce: 50000
   jumpSpeedMultipler: 0.5
   attack01Power: 1
-  attack01Radius: 5
+  attack01Radius: 6
   attack01Time: 1
   attack02Time: 1
-  jumpAttack01Time: 1
+  jumpAttack01Time: 0.25
 --- !u!114 &845691806028509508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack01Time: 0
+  attack01Power: 0
   attack01Radius: 0
   offsetDist: 0
 --- !u!114 &2453433366020296675
@@ -208,6 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2129c00b82dfb764e88e964ab350f675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalDist: 5000
+  verticalDist: 5000
+  disableTime: 0.75
 --- !u!114 &3598934413428729640
 MonoBehaviour:
   m_ObjectHideFlags: 0

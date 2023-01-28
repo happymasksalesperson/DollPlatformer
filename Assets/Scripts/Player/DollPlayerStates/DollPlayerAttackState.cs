@@ -16,7 +16,7 @@ public class DollPlayerAttackState : MonoBehaviour
 
     public float attack01Time;
 
-    private int attack01Power;
+    public int attack01Power;
 
     public float attack01Radius;
 
@@ -32,11 +32,11 @@ public class DollPlayerAttackState : MonoBehaviour
     private Vector3 originalVelocity;
 
     private Gravity gravity;
-    
+
     //Attack dictionary stuff
     //currently in progress
     //ask Cam how to approach multiple attacks w/state machine style logic
-    
+
     /*private Dictionary<int, Action> attackDictionary = new Dictionary<int, Action>()
     {
         { 0, GroundAttack01 },
@@ -50,9 +50,9 @@ public class DollPlayerAttackState : MonoBehaviour
     private void OnEnable()
     {
         gravity = GetComponent<Gravity>();
-        
+
         rb = GetComponent<Rigidbody>();
-        
+
         stateManager = GetComponent<StateManager>();
 
         playerMovement = GetComponent<DollPlayerMovement>();
@@ -70,7 +70,9 @@ public class DollPlayerAttackState : MonoBehaviour
         attack01Radius = stats.attack01Radius;
 
         attack01Time = stats.attack01Time;
-        
+
+        stats.armoured = true;
+
         if (playerMovement.grounded)
         {
             rb.velocity = Vector3.zero;
@@ -81,7 +83,7 @@ public class DollPlayerAttackState : MonoBehaviour
             originalVelocity = rb.velocity;
             rb.velocity = Vector3.zero;
         }
-        
+
         StartCoroutine(GroundAttack01());
     }
 
@@ -89,7 +91,7 @@ public class DollPlayerAttackState : MonoBehaviour
     void CheckOffset(Transform transform, float offset, bool facingRight)
     {
         Vector3 offsetVector = Vector3.right * offset;
-        if(facingRight)
+        if (facingRight)
             offsetVector = -offsetVector;
         offsetPosition = transform.position + offsetVector;
     }
@@ -98,27 +100,26 @@ public class DollPlayerAttackState : MonoBehaviour
     {
         CheckOffset(transform, offsetDist, facingRight);
         {
-            
             int playerLayer = 3;
             int targetLayer = 8;
 
             int layerMask = 1 << targetLayer;
             layerMask = ~(1 << playerLayer);
-            
+
             // // // // //
             // note the 10 is the max amount of returns per overlapsphere
             // change at will
             Collider[] hits = new Collider[10];
-            
+
             int numHits = Physics.OverlapSphereNonAlloc(offsetPosition, attack01Radius, hits, layerMask);
-            
+
             for (int i = 0; i < numHits; i++)
             {
                 ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
-                    if (damageable != null)
-                    {
-                        damageable.ChangeHP(attack01Power);
-                    }
+                if (damageable != null)
+                {
+                    damageable.ChangeHP(attack01Power);
+                }
             }
 
             yield return new WaitForSeconds(attack01Time);
@@ -129,16 +130,19 @@ public class DollPlayerAttackState : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawSphere(offsetPosition, attack01Radius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(offsetPosition, attack01Radius);
     }
 
     private void OnDisable()
     {
         gravity.enabled = true;
         playerMovement.AttackEnd();
-        if(!playerMovement.grounded){
+        if (!playerMovement.grounded)
+        {
             rb.velocity = originalVelocity;
         }
+
+        stats.armoured = false;
     }
 }

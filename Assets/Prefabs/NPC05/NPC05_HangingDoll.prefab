@@ -157,10 +157,11 @@ GameObject:
   - component: {fileID: 4131308200362887921}
   - component: {fileID: 4131308200362887935}
   - component: {fileID: 4131308200362887924}
-  - component: {fileID: 4131308200362887925}
   - component: {fileID: 5384318314979877132}
   - component: {fileID: 1642381336049927255}
   - component: {fileID: 7988509043576051967}
+  - component: {fileID: 280906921478721032}
+  - component: {fileID: 769136449843361193}
   m_Layer: 10
   m_Name: NPC05_HangingDoll
   m_TagString: Untagged
@@ -219,13 +220,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: NPC05 -- Hanging Doll
   maxHP: 1
-  _moveSpeed: 1000
+  _moveSpeed: 2000
   _maxSpeed: 500
   _attackTime: 1
+  bodyHitboxPower: -1
   attack01Power: -1
   attack01Radius: 500
   isAlive: 1
-  _sightDistance: 10000
+  armoured: 0
+  _sightDistance: 1000
   _minDist: 100
   _patrolTime: 5
   _idleTime: 1
@@ -246,8 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torque: 100000
-  verticalDist: 1000
   horizontalDist: 100
+  verticalDist: 1000
   hitDir: -1
   facingDir: 0
 --- !u!114 &4131308200362887921
@@ -293,19 +296,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &4131308200362887925
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4131308200362887819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 4, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5384318314979877132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +328,8 @@ MonoBehaviour:
     m_Bits: 192
   sightDistance: 0
   LOSExtents: {x: 0, y: 0, z: 0}
+  extentsY: 0
+  LOSPosition: {x: 0, y: 0, z: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -357,3 +349,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &280906921478721032
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131308200362887819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 4, z: 5}
+  m_Center: {x: 0, y: -0.34, z: 0}
+--- !u!114 &769136449843361193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131308200362887819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f332a9b6ef28d54c89623a059867468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereRadius: 100
+  sphereAttackPower: 0
+  checkInterval: 0.25

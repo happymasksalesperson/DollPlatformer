@@ -7,8 +7,14 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     // // // // // //
     // DOLL STATS
 
-    [Header("HEALTH POINTS")] public int maxHP;
+    [Header("HEALTH POINTS & VULNERABLE STATUS")]
+    public int maxHP = 3;
+
     public int HP;
+
+    public bool vulnerable = true;
+
+    public bool armoured = false;
 
     [Header("RUN SPEED")] public float runSpeed;
     public float maxSpeed;
@@ -37,28 +43,48 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     // // // // // //
     // 
 
-    private void OnEnable()
+    private void Start()
     {
         modelView = GetComponentInChildren<HealthModelView>();
 
         stateManager = GetComponent<StateManager>();
-        
-        ChangeHP(maxHP);
+
+        HP = maxHP;
     }
 
     public void ChangeHP(int amount)
     {
-        HP += amount;
-        if (HP >= maxHP)
-            HP = maxHP;
-
-        modelView.OnChangeHealth(amount);
-
-        if (HP <= 0)
+        if (vulnerable)
         {
-            HP = 0;
-            modelView.OnYouDied();
-            stateManager.ChangeStateString("death");
+            //negative / take damage / die
+            if (amount < 0)
+            {
+                if (HP + amount <= 0)
+                {
+                    HP = 0;
+                }
+                else
+                {
+                    HP += amount;
+                }
+
+                if(!armoured && HP>0)
+                    stateManager.ChangeStateString("takeDamage");
+                else if (HP <= 0)
+                {
+                    stateManager.ChangeStateString("death");
+                }
+            }
         }
+        //healed
+        else if (amount > 0)
+        {
+            if (HP + amount >= maxHP)
+                HP = maxHP;
+            else
+                HP += amount;
+        }
+        modelView.OnChangeHealth(amount);
+        Debug.Log("HP: "+HP);
     }
 }

@@ -13,6 +13,7 @@ public class NPC02SFX : MonoBehaviour
         
         Father,
         
+        //NPC
         NPC02_Charge01,
         NPC02_Charge02,
         NPC02_Charge03,
@@ -49,7 +50,7 @@ public class NPC02SFX : MonoBehaviour
         NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02_SoftRoll01");
         NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
         
-        PlaySound("Father");
+      PlaySound("Father");
     }
 
     public void AddToList(GameObject gameObject)

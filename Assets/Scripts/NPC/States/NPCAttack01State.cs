@@ -21,6 +21,9 @@ public class NPCAttack01State : MonoBehaviour
     //
     private bool conjoined;
 
+    //tracks whether or not attack gets cancelled by OnDisable or continues
+    private bool isAttacking;
+
     private void OnEnable()
     {
         _stateManager = GetComponent<StateManager>();
@@ -36,25 +39,32 @@ public class NPCAttack01State : MonoBehaviour
 
         modelView = GetComponentInChildren<NPCModelView>();
 
+        isAttacking = true;
+
         StartCoroutine(Jab());
     }
 
     private IEnumerator Jab()
     {
-        modelView.OnAttack01Windup();
-
-        yield return new WaitForSeconds(windup01Time);
-
-        if (conjoined)
+        while (isAttacking)
         {
-            StartCoroutine(CojoinedAttack01());
-            yield break;
-        }
+            modelView.OnAttack01Windup();
 
-        modelView.OnAttack01();
-        
-        
-        
+            yield return new WaitForSeconds(windup01Time);
+
+            if (_stats.isAlive)
+            {
+                _stats.vulnerable = false;
+
+                if (conjoined)
+                {
+                    StartCoroutine(CojoinedAttack01());
+                    yield break;
+                }
+
+                modelView.OnAttack01();
+
+
                 //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 
                 //note the 10 is the max amount of returns per overlapsphere
@@ -68,9 +78,9 @@ public class NPCAttack01State : MonoBehaviour
                 // Iterate through the array of Colliders and do something with each one
                 for (int i = 0; i < numHits; i++)
                 {
-                        IPlayer player = hits[i].GetComponent<IPlayer>();
-                        if (player != null)
-                        {
+                    IPlayer player = hits[i].GetComponent<IPlayer>();
+                    if (player != null)
+                    {
                         ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
                         if (damageable != null)
                         {
@@ -78,7 +88,10 @@ public class NPCAttack01State : MonoBehaviour
                         }
                     }
                 }
+            }
 
+            isAttacking = false;
+        }
 
         yield return new WaitForSeconds(attack01Time);
 

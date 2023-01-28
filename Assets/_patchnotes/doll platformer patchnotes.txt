@@ -185,3 +185,19 @@ Add placeholder SFX
 -- added an OnFall event for the Player
 
 -- added the track "Father"
+
+3.3
+
+-- updated DollPlayerTakeDamageState.cs. Player now takes damage from incoming attacks, loses control and is knocked back. Added vulnerable to PlayerStats and disabled state to Player Movement. Doll Player takes damage only if vulnerable, and is only "knocked back" if not armoured (for example, attack states armour the Player, and Player is invulnerable and disabled while in TakeDamage state). 
+
+-- added vulnerable and armoured variables to NPCStats, etc.
+
+-- added a DamageComponent.cs. Works as an attack for whatever its attached to. Some enemies, like Hanging Doll, attack you passively with their bodies, hence damage component.
+
+-- fiddled with Player, NPC02 and NPC05
+
+-- added scene TestLevel01 to test platforming and enemy placement
+
+-- TO-DO: give Player more leeway to act after getting hit
+
+-- TO-DO: fix so each NPC only plays its own SFX

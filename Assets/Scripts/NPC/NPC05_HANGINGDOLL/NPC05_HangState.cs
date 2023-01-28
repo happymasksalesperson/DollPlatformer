@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class NPC05_HangState : MonoBehaviour
     // MovesTowards destination
 
     // else moves back to original pos
+
+    private BoxCollider hurtboxCollider;
+    private Vector3 hurtboxColliderSize;
+    private float hurtboxHeight;
 
     [SerializeField] private float checkInterval;
 
@@ -26,6 +31,10 @@ public class NPC05_HangState : MonoBehaviour
 
     // Line Of Sight box collider
     [SerializeField] private Vector3 LOSExtents;
+
+
+    public float extentsY;
+    public Vector3 LOSPosition;
 
     public LayerMask playerLayer;
 
@@ -42,12 +51,13 @@ public class NPC05_HangState : MonoBehaviour
         active = true;
 
         stats = GetComponent<StatsComponent>();
+        stats.vulnerable = true;
         moveSpeed = stats.MyMoveSpeed();
         sightDistance = stats.MySightDistance();
 
         spawnPoint = transform.position;
 
-        LOSExtents = new Vector3(50, sightDistance, 1);
+        LOSExtents = new Vector3(sightDistance/2, sightDistance, 5);
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, sightDistance, groundLayer))
@@ -68,12 +78,14 @@ public class NPC05_HangState : MonoBehaviour
         while (active)
         {
             yield return new WaitForSeconds(checkInterval);
+            
+            LOSPosition = transform.position + new Vector3(0, -(sightDistance / 2), 0);
 
             //Debug.Log("scanning");
 
             Collider[] hits = new Collider[10];
             int numHits =
-                Physics.OverlapBoxNonAlloc(transform.position, LOSExtents, hits, Quaternion.identity, playerLayer);
+                Physics.OverlapBoxNonAlloc(LOSPosition, LOSExtents, hits, Quaternion.identity, playerLayer);
 
             bool foundPlayer = false;
             for (int i = 0; i < numHits; i++)
@@ -126,11 +138,12 @@ public class NPC05_HangState : MonoBehaviour
     {
         StopCoroutine(CheckForPlayer());
         StopCoroutine(Move());
+        active = false;
     }
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position, LOSExtents);
-    }*/
+        Gizmos.DrawCube(LOSPosition, LOSExtents);
+    }
 }
