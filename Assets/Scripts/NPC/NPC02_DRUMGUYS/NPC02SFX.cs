@@ -34,7 +34,7 @@ public class NPC02SFX : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         //example = Resources.Load<AudioClip>("example");
 
-        Father = Resources.Load<AudioClip>("Father");
+        //Father = Resources.Load<AudioClip>("Father");
         
         //doesn't need NPC_02 in string
         NPC02_Charge01 = Resources.Load<AudioClip>("NPC02_Charge01");

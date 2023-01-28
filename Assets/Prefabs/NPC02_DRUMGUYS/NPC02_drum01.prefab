@@ -323,7 +323,7 @@ MonoBehaviour:
   _attackTime: 1
   bodyHitboxPower: 1
   attack01Power: -1
-  attack01Radius: 300
+  attack01Radius: 500
   isAlive: 1
   armoured: 0
   _sightDistance: 1000

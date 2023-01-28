@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2129c00b82dfb764e88e964ab350f675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalDist: 5000
-  verticalDist: 5000
+  horizontalDist: 7000
+  verticalDist: 7000
   disableTime: 0.75
 --- !u!114 &3598934413428729640
 MonoBehaviour:

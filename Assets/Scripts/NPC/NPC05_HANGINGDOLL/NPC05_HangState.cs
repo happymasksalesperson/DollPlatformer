@@ -60,7 +60,7 @@ public class NPC05_HangState : MonoBehaviour
         LOSExtents = new Vector3(sightDistance/2, sightDistance, 5);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, sightDistance, groundLayer))
+        if (Physics.Raycast(spawnPoint, Vector3.down, out hit, sightDistance*2, groundLayer))
         {
             groundPoint = hit.point;
         }

@@ -112,6 +112,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // DISABLED
     // perhaps due to takeDamage
     public bool disabled=false;
+    // invincibility after an attack
+    public float gracePeriod;
 
     private void Start()
     {
@@ -142,6 +144,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         playerStats = GetComponent<DollPlayerStats>();
         _runSpeed = playerStats.runSpeed;
         _maxSpeed = playerStats.maxSpeed;
+        gracePeriod = playerStats.takeDamageGracePeriod;
 
         modelView = GetComponentInChildren<DollPlayerModelView>();
 
@@ -341,6 +344,17 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         attacking = false;
         currentState = PlayerState.idle;
+    }
+
+    public void TakeDamageGracePeriod()
+    {
+        disabled = false;
+        StartCoroutine(TakeDamageGracePeriodTimer());
+        IEnumerator TakeDamageGracePeriodTimer()
+        {
+            yield return new WaitForSeconds(gracePeriod);
+            playerStats.vulnerable = true;
+        }
     }
 
     // // // // // //

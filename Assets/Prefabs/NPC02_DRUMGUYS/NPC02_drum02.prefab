@@ -82,8 +82,9 @@ MonoBehaviour:
   _moveSpeed: 40
   _maxSpeed: 50
   _attackTime: 1
+  bodyHitboxPower: 0
   attack01Power: -1
-  attack01Radius: 300
+  attack01Radius: 500
   isAlive: 1
   armoured: 0
   _sightDistance: 1000

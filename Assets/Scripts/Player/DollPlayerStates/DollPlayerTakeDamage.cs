@@ -15,7 +15,9 @@ public class DollPlayerTakeDamage : MonoBehaviour
 
     private DollPlayerModelView modelView;
     
-    private bool facingRight;
+    public bool facingRight;
+
+    private bool isArmoured;
 
     [Header("HOW FAR KNOCKED BACK HORIZONTAL")]
     [SerializeField]
@@ -24,9 +26,7 @@ public class DollPlayerTakeDamage : MonoBehaviour
     [Header("HOW FAR KNOCKED BACK VERTICAL")]
     [SerializeField]
     private float verticalDist;
-
-    [Header("HOW LONG DISABLED FOR")]
-    [SerializeField]
+    
     private float disableTime;
 
     private void OnEnable()
@@ -35,6 +35,7 @@ public class DollPlayerTakeDamage : MonoBehaviour
 
         stats = GetComponent<DollPlayerStats>();
         stats.vulnerable = false;
+        disableTime = stats.takeDamageGracePeriod;
 
         modelView = GetComponentInChildren<DollPlayerModelView>();
         
@@ -44,21 +45,28 @@ public class DollPlayerTakeDamage : MonoBehaviour
         
         playerMovement = GetComponent<DollPlayerMovement>();
         playerMovement.disabled = true;
+        rb.velocity = Vector3.zero;
+        
         facingRight = playerMovement.facingRight;
+
+        isArmoured = stats.armoured;
 
         StartCoroutine(Knockback());
     }
 
     private IEnumerator Knockback()
     {
-        if (!facingRight)
-        {
-            horizontalDist = -horizontalDist;
-        }
+        float dist;
 
-        bool isArmoured = stats.armoured;
-        if(isArmoured)
-            rb.AddForce(new Vector3(horizontalDist, verticalDist, 0), ForceMode.Impulse);
+        if (!facingRight)
+            dist = horizontalDist * -1;
+
+        else
+            dist = horizontalDist;
+        
+        
+        if(!isArmoured)
+            rb.AddForce(new Vector3(dist, verticalDist, 0), ForceMode.VelocityChange);
         
         yield return new WaitForSeconds(disableTime);
 
@@ -68,10 +76,12 @@ public class DollPlayerTakeDamage : MonoBehaviour
 
         else
         {
-            playerMovement.disabled = false;
-            stats.vulnerable = true;
             stateManager.ChangeStateString("idle");
         }
     }
 
+    private void OnDisable()
+    {
+        playerMovement.TakeDamageGracePeriod();
+    }
 }

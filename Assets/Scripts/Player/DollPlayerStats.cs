@@ -33,6 +33,11 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
 
     [Header("JUMP ATTACK TIMES")] public float jumpAttack01Time;
 
+    [Header("TAKE DAMAGE TIME AND SUBSEQUENT GRACE PERIOD")] [SerializeField]
+    public float takeDamageTime;
+
+    [SerializeField] public float takeDamageGracePeriod;
+
     private StateManager stateManager;
 
     // // // // // //

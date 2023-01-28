@@ -325,7 +325,7 @@ MonoBehaviour:
   playerSpotted: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 64
   sightDistance: 0
   LOSExtents: {x: 0, y: 0, z: 0}
   extentsY: 0
