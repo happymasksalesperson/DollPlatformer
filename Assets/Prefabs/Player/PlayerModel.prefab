@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 845691806028509625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 108.1, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7884119115657310806}
@@ -98,7 +98,7 @@ MonoBehaviour:
   jumpSpeedMultipler: 1
   attack01Power: 1
   attack01Radius: 10
-  attack01Time: 1
+  attack01Time: 0.75
   attack02Time: 1
   jumpAttack01Time: 0.25
   takeDamageTime: 0

@@ -2,50 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatsComponent : MonoBehaviour, ITakeDamage
 {
     public Type type;
+
+    public string myName;
+
+    [Header("HEALTH POINTS AND VULNERABLE STATUS")]
+    public int maxHP;
+    public int HP; 
     
-    [SerializeField] private string _name;
-
-    [SerializeField] private int maxHP;
-    public int HP;
-
-    [SerializeField] private float _moveSpeed;
-
-    [SerializeField] private float _maxSpeed;
-
-    [SerializeField] private float _attackTime;
-
-    public int bodyHitboxPower;
-
-    public int attack01Power;
-
-    public float attack01Radius;
+    public bool vulnerable;
 
     public bool isAlive = true;
 
     public bool armoured = false;
     
+    [Header("MOVESPEED")]
+
+    public float moveSpeed;
+
+    public float maxSpeed;
+    
+    [Header("ATTACK 01 POWER, RADIUS & TIME")]
+
+    public int attack01Power;
+
+    public float attack01Radius;
+    
+    public float attack01Time;
+
+    [Header("BODY HURTBOX ATTACK POWER")]
+    public int bodyHitboxPower;
+    
     // // // // // //
     //
     // sightDistance determines how far Character can see
     // minDist is used for triggering Attacks when in range
-    [SerializeField] private float _sightDistance;
+    [Header("SIGHT -- HOW FAR CHARACTER CAN SEE AND THE MINIMUM DISTANCE FOR ITS TARGET PROVOKE ATTACK")]
+    public float sightDistance;
 
-    public float _minDist;
+    public float minDist;
+    
+    [Header("HOW LONG SPENT PATROLLING AND IDLE")]
+    public float patrolTime;
 
-    [SerializeField] private float _patrolTime;
+    public float idleTime;
 
-    [SerializeField] private float _idleTime;
-
-    [SerializeField] private HealthModelView modelView;
-
-    public bool vulnerable;
+    public HealthModelView modelView;
 
     public bool conjoined;
 
+    [Header("TRACKS CURRENT FACING DIRECTION")]
     public bool facingDirection;
 
     private StateManager stateManager;
@@ -60,7 +70,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
         HP = maxHP;
 
-        LevelManager.levelManager.SFX.AddToList(gameObj);
+        LevelManager.levelManager.SFX.AddToList(gameObj, type);
         
         //LevelManager.levelManager.SFX.AddToDictionary(type, gameObj);
     }
@@ -77,65 +87,19 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
 
             modelView.OnChangeHealth(amount);
 
-            stateManager.ChangeStateString("takeDamage");
-
             if (HP <= 0)
             {
                 isAlive = false;
                 HP = 0;
                 stateManager.ChangeStateString("death");
             }
+            stateManager.ChangeStateString("takeDamage");
         }
 
         if (amount > 0)
         {
             //heal
         }
-    }
-
-    //kills NPC
-    private void YouDied()
-    {
-    }
-
-    public string MyName()
-    {
-        return (_name);
-    }
-
-    public float MyMaxHP()
-    {
-        return (maxHP);
-    }
-
-    public float MyMoveSpeed()
-    {
-        return (_moveSpeed);
-    }
-
-    public float MyMaxSpeed()
-    {
-        return (_maxSpeed);
-    }
-
-    public float MyAttackTime()
-    {
-        return (_attackTime);
-    }
-
-    public float MySightDistance()
-    {
-        return (_sightDistance);
-    }
-
-    public float MyPatrolTime()
-    {
-        return (_patrolTime);
-    }
-
-    public float MyIdleTime()
-    {
-        return (_idleTime);
     }
 
     //changes facing direction

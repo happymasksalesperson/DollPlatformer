@@ -101,10 +101,9 @@ public class DollPlayerAttackState : MonoBehaviour
         CheckOffset(transform, offsetDist, facingRight);
         {
             int playerLayer = 3;
-            int targetLayer = 6;
+            int allLayers = ~0; // all bits set to 1, represents all layers
 
-            int layerMask = 1 << targetLayer;
-            layerMask = ~(1 << playerLayer);
+            int layerMask = allLayers & ~(1 << playerLayer);
 
             // // // // //
             // note the 10 is the max amount of returns per overlapsphere
@@ -115,15 +114,11 @@ public class DollPlayerAttackState : MonoBehaviour
 
             for (int i = 0; i < numHits; i++)
             {
-                IPlayer player = hits[i].GetComponent<IPlayer>();
-                if (player == null)
-                {
                     ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
                     if (damageable != null)
                     {
                         damageable.ChangeHP(attack01Power);
                     }
-                }
             }
 
             yield return new WaitForSeconds(attack01Time);

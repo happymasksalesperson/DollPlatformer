@@ -16,8 +16,6 @@ GameObject:
   - component: {fileID: 581579837955721542}
   - component: {fileID: 581579837955721541}
   - component: {fileID: 581579837955721540}
-  - component: {fileID: 581579837955721544}
-  - component: {fileID: 581579837955721543}
   m_Layer: 6
   m_Name: Destructible Ground
   m_TagString: Untagged
@@ -33,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581579837955721534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.309, y: 0.026, z: 0}
-  m_LocalScale: {x: 0.5766553, y: 0.011239, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1000, y: 50, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 581579839799544309}
@@ -116,24 +114,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Destructible Ground
+  type: 7
+  myName: 
   maxHP: 1
   HP: 0
-  _moveSpeed: 0
-  _maxSpeed: 0
-  _attackTime: 0
-  bodyHitboxPower: 0
-  attack01Power: 0
-  attack01Radius: 0
+  vulnerable: 1
   isAlive: 1
   armoured: 0
-  type: 7
-  _sightDistance: 0
-  _minDist: 0
-  _patrolTime: 0
-  _idleTime: 0
+  moveSpeed: 0
+  maxSpeed: 0
+  attack01Power: 0
+  attack01Radius: 0
+  attack01Time: 0
+  bodyHitboxPower: 0
+  sightDistance: 0
+  minDist: 0
+  patrolTime: 0
+  idleTime: 0
   modelView: {fileID: 0}
-  vulnerable: 0
   conjoined: 0
   facingDirection: 0
 --- !u!114 &581579837955721542
@@ -149,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingState: {fileID: 581579837955721541}
-  currentState: {fileID: 0}
+  currentState: {fileID: 581579837955721540}
   crouchState: {fileID: 0}
   idleState: {fileID: 581579837955721541}
   patrolState: {fileID: 0}
@@ -181,38 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be96d04befd419044ab239c15f9309de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalDist: 0
-  verticalDist: 1000
---- !u!54 &581579837955721544
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581579837955721534}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!114 &581579837955721543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581579837955721534}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccab04390e7d08e4882919544813e2a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityScale: 0
-  globalGravity: 0
 --- !u!1 &581579839097330173
 GameObject:
   m_ObjectHideFlags: 0

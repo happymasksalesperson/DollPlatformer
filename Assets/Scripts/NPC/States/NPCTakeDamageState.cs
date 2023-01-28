@@ -31,6 +31,8 @@ public class NPCTakeDamageState : MonoBehaviour
     private IEnumerator TakeDamage()
     {
         yield return new WaitForSeconds(takeDamageTime);
+        
+        if(stats.isAlive)
         stateManager.ChangeStateString("patrol");
     }
 

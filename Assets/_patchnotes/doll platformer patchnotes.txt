@@ -201,3 +201,15 @@ Add placeholder SFX
 -- TO-DO: give Player more leeway to act after getting hit
 
 -- TO-DO: fix so each NPC only plays its own SFX
+
+3.4
+
+-- added songs Chase, Cymbal Boss, Somber and The Clocktower
+
+-- added Types.cs and Types to the Stat Component
+
+-- added "Types"
+
+-- fixed NPC SFX issue but it will need further refactoring in the future
+
+-- added Destructible Object. basically a part of the environment that can be destroyed

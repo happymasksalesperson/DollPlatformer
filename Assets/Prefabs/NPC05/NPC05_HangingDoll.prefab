@@ -218,24 +218,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: NPC05 -- Hanging Doll
+  type: 5
+  myName: 
   maxHP: 1
   HP: 0
-  _moveSpeed: 2000
-  _maxSpeed: 500
-  _attackTime: 1
-  bodyHitboxPower: -1
-  attack01Power: -1
-  attack01Radius: 500
+  vulnerable: 1
   isAlive: 1
   armoured: 0
-  type: 5
-  _sightDistance: 1000
-  _minDist: 100
-  _patrolTime: 5
-  _idleTime: 1
+  moveSpeed: 850
+  maxSpeed: 850
+  attack01Power: -1
+  attack01Radius: 500
+  attack01Time: 1
+  bodyHitboxPower: -1
+  sightDistance: 5000
+  minDist: 0
+  patrolTime: 0
+  idleTime: 0
   modelView: {fileID: 0}
-  vulnerable: 0
   conjoined: 0
   facingDirection: 0
 --- !u!114 &4131308200362887923

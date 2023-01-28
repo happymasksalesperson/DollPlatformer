@@ -35,7 +35,7 @@ public class NPCAttack01State : MonoBehaviour
 
         conjoined = _stats.conjoined;
 
-        attack01Time = _stats.MyAttackTime();
+        attack01Time = _stats.attack01Time;
 
         modelView = GetComponentInChildren<NPCModelView>();
 

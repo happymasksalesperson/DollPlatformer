@@ -9,8 +9,12 @@ public class NPCIdleState : MonoBehaviour
 
     private NPCModelView modelView;
 
+    private Rigidbody rb;
+
     private void OnEnable()
     {
+        rb.velocity = Vector3.zero;
+        
         modelView = GetComponentInChildren<NPCModelView>();
         modelView.OnIdle();
     }

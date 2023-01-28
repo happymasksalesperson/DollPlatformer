@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 5858257352297611807}
   - component: {fileID: 5858257352297611796}
   - component: {fileID: 5858257352297611797}
-  m_Layer: 0
+  - component: {fileID: -8054799560615422277}
+  m_Layer: 10
   m_Name: NPC03_CymbalMonkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +57,7 @@ MonoBehaviour:
   startingState: {fileID: 5858257352297611798}
   currentState: {fileID: 0}
   crouchState: {fileID: 0}
-  idleState: {fileID: 0}
+  idleState: {fileID: -8054799560615422277}
   patrolState: {fileID: 5858257352297611798}
   attackState: {fileID: 5858257352297611792}
   jumpState: {fileID: 0}
@@ -74,24 +75,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: NPC02
+  type: 3
+  myName: 
   maxHP: 1
   HP: 0
-  _moveSpeed: 500
-  _maxSpeed: 400
-  _attackTime: 0.75
-  bodyHitboxPower: -1
-  attack01Power: -1
-  attack01Radius: 420
+  vulnerable: 0
   isAlive: 1
   armoured: 0
-  type: 3
-  _sightDistance: 700
-  _minDist: 400
-  _patrolTime: 5
-  _idleTime: 1
+  moveSpeed: 500
+  maxSpeed: 400
+  attack01Power: -1
+  attack01Radius: 420
+  attack01Time: 1
+  bodyHitboxPower: -1
+  sightDistance: 500
+  minDist: 250
+  patrolTime: 3
+  idleTime: 3
   modelView: {fileID: 0}
-  vulnerable: 0
   conjoined: 0
   facingDirection: 0
 --- !u!114 &5858257352297611798
@@ -157,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11635fff23f8bc468caa8c64b045941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack01Time: 1
-  windup01Time: 1
+  attack01Time: 0.8
+  windup01Time: 0.25
 --- !u!114 &5858257352297611807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1916f34ea797a542aac039d092e61b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeDamageTime: 1.75
+  takeDamageTime: 1
 --- !u!54 &5858257352297611796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -201,6 +202,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4184105, y: 3.93, z: 1}
   m_Center: {x: 0.02836876, y: -0.23, z: 0}
+--- !u!114 &-8054799560615422277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858257352297611883}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5858257353523337050
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +225,7 @@ GameObject:
   - component: {fileID: 5858257353523337049}
   - component: {fileID: 5858257353523337048}
   - component: {fileID: 5858257353523337031}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +284,7 @@ GameObject:
   - component: {fileID: 5858257353709330241}
   - component: {fileID: 5858257353709330240}
   - component: {fileID: 5858257353709330255}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}

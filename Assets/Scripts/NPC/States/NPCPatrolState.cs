@@ -59,13 +59,13 @@ public class NPCPatrolState : MonoBehaviour
         _stats = GetComponent<StatsComponent>();
         _stats.vulnerable = true;
 
-        _maxSpeed = _stats.MyMaxSpeed();
-        _speed = _stats.MyMoveSpeed();
-        _idleTime = _stats.MyIdleTime();
-        _patrolTime = _stats.MyPatrolTime();
-        _minDist = _stats._minDist;
+        _maxSpeed = _stats.maxSpeed;
+        _speed = _stats.moveSpeed;
+        _idleTime = _stats.idleTime;
+        _patrolTime = _stats.patrolTime;
+        _minDist = _stats.minDist;
 
-        _sightDistance = _stats.MySightDistance();
+        _sightDistance = _stats.sightDistance;
 
         StartCoroutine(Patrolling());
     }
@@ -115,6 +115,7 @@ public class NPCPatrolState : MonoBehaviour
         yield return new WaitForSecondsRealtime(_patrolTime);
 
         _moving = false;
+        _rb.velocity = Vector3.zero;
 
         yield return new WaitForSecondsRealtime(_idleTime);
 
@@ -140,7 +141,7 @@ public class NPCPatrolState : MonoBehaviour
     private void HandleSight()
     {
         hitInfo = new RaycastHit();
-        bool hit = Physics.Raycast(transform.position, _facingDirVector, out hitInfo, _sightDistance, playerMask);
+        bool hit = Physics.Raycast(new Vector3(transform.position.x, transform.position.y-1, transform.position.z), _facingDirVector, out hitInfo, _sightDistance, playerMask);
 
         if (hit)
         {

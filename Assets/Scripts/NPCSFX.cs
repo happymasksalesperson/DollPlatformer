@@ -11,9 +11,14 @@ public class NPCSFX : MonoBehaviour
 
     public static AudioClip
         
+        //SONGS
+        Chase,
+        Cymbal_Boss,
         Father,
+        The_Clocktower,
+        Somber,
         
-        //NPC
+        //NPC 02
         NPC02_Charge01,
         NPC02_Charge02,
         NPC02_Charge03,
@@ -34,38 +39,50 @@ public class NPCSFX : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         //example = Resources.Load<AudioClip>("example");
 
-        //Father = Resources.Load<AudioClip>("Father");
+        Chase = Resources.Load<AudioClip>("Songs/Chase");
+        Cymbal_Boss = Resources.Load<AudioClip>("Songs/Cymbal_Boss");
+        Father = Resources.Load<AudioClip>("Songs/Father");
+        The_Clocktower = Resources.Load<AudioClip>("Songs/The_Clocktower");
+        Somber = Resources.Load<AudioClip>("Songs/Somber");
         
+        //change this later (not every level has to load every NPC sound)
         //doesn't need NPC_02 in string
-        NPC02_Charge01 = Resources.Load<AudioClip>("NPC02_Charge01");
-        NPC02_Charge02 = Resources.Load<AudioClip>("NPC02_Charge02");
-        NPC02_Charge03 = Resources.Load<AudioClip>("NPC02_Charge03");
-        NPC02_Death01 = Resources.Load<AudioClip>("NPC02_Death01");
-        NPC02_Death02 = Resources.Load<AudioClip>("NPC02_Death02");
-        NPC02_Death03 = Resources.Load<AudioClip>("NPC02_Death03");
-        NPC02_HardHit = Resources.Load<AudioClip>("NPC02_HardHit");
-        NPC02_HardRoll01 = Resources.Load<AudioClip>("NPC02_HardRoll01");
-        NPC02_HardRoll02 = Resources.Load<AudioClip>("NPC02_HardRoll02");
-        NPC02_MidRoll = Resources.Load<AudioClip>("NPC02_MidRoll");
-        NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02_SoftRoll01");
-        NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02_SoftRoll02");
+        NPC02_Charge01 = Resources.Load<AudioClip>("NPC02/NPC02_Charge01");
+        NPC02_Charge02 = Resources.Load<AudioClip>("NPC02/NPC02_Charge02");
+        NPC02_Charge03 = Resources.Load<AudioClip>("NPC02/NPC02_Charge03");
+        NPC02_Death01 = Resources.Load<AudioClip>("NPC02/NPC02_Death01");
+        NPC02_Death02 = Resources.Load<AudioClip>("NPC02/NPC02_Death02");
+        NPC02_Death03 = Resources.Load<AudioClip>("NPC02/NPC02_Death03");
+        NPC02_HardHit = Resources.Load<AudioClip>("NPC02/NPC02_HardHit");
+        NPC02_HardRoll01 = Resources.Load<AudioClip>("NPC02/NPC02_HardRoll01");
+        NPC02_HardRoll02 = Resources.Load<AudioClip>("NPC02/NPC02_HardRoll02");
+        NPC02_MidRoll = Resources.Load<AudioClip>("NPC02/NPC02_MidRoll");
+        NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02/NPC02_SoftRoll01");
+        NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02/NPC02_SoftRoll02");
         
-      PlaySound("Father");
+      PlaySound("The_Clocktower");
     }
     
-    public Dictionary<Type, GameObject> myDictionary = new Dictionary<Type, GameObject>();
+    /*public Dictionary<Type, GameObject> myDictionary = new Dictionary<Type, GameObject>();
 
     public void AddToDictionary(Type type, GameObject gameObject)
     {
-        myDictionary.Add(type, gameObject);
+        //myDictionary.Add(type, gameObject);
         
-        if(type==Type.NPC02)
-            AddToList(gameObject);
-    }
+      //  if(type==Type.NPC02)
+            //AddToList(gameObject);
+    }*/
 
-    public void AddToList(GameObject gameObject)
+    //refactor later
+    public void AddToList(GameObject gameObject, Type type)
     {
-        NPC02List.Add(gameObject);
+        switch (type)
+        {
+            case Type.NPC02:
+                NPC02List.Add(gameObject);
+                break;
+        }
+        
         Subscribe();
     }
 
@@ -160,8 +177,24 @@ public class NPCSFX : MonoBehaviour
     {
         switch (clipName)
         {
+            case "Chase":
+                audioSrc.PlayOneShot(Chase);
+                break;
+            
+            case "Cymbal_Boss":
+                audioSrc.PlayOneShot(Cymbal_Boss);
+                break;
+            
             case "Father":
                 audioSrc.PlayOneShot(Father);
+                break;
+            
+            case "The_Clocktower":
+                audioSrc.PlayOneShot(The_Clocktower);
+                break;
+            
+            case "Somber":
+                audioSrc.PlayOneShot(Somber);
                 break;
             
             case "NPC02_Charge01":

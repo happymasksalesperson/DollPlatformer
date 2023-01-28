@@ -55,12 +55,12 @@ public class NPC05_HangState : MonoBehaviour
 
         stats = GetComponent<StatsComponent>();
         stats.vulnerable = true;
-        moveSpeed = stats.MyMoveSpeed();
-        sightDistance = stats.MySightDistance(); 
+        moveSpeed = stats.moveSpeed;
+        sightDistance = stats.sightDistance; 
 
         spawnPoint = transform.position;
 
-        LOSExtents = new Vector3(sightDistance/2, sightDistance, 5);
+        LOSExtents = new Vector3(sightDistance/3, sightDistance, 5);
 
         boxCollider = GetComponent<BoxCollider>();
         size = boxCollider.size.y;

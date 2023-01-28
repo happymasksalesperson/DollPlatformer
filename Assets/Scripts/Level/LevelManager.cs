@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>();
 
     public List<GameObject> NPC = new List<GameObject>();
+    
+    public List<Transform> itemPoints = new List<Transform>();
+
+    public List<GameObject> item = new List<GameObject>();
 
     private void Awake()
     {
@@ -26,14 +30,24 @@ public class LevelManager : MonoBehaviour
         SFX = GetComponentInChildren<NPCSFX>();
 
         SpawnNPC();
+        SpawnItem();
     }
-
+    
     private void SpawnNPC()
     {
         for (int i = 0; i < spawnPoints.Count; i++)
         {
             int prefabIndex = i % NPC.Count;
             Instantiate(NPC[prefabIndex], spawnPoints[i].position, spawnPoints[i].rotation);
+        }
+    }
+
+    private void SpawnItem()
+    {
+        for (int i = 0; i < itemPoints.Count; i++)
+        {
+            int prefabIndex = i % item.Count;
+            Instantiate(item[prefabIndex], itemPoints[i].position, itemPoints[i].rotation);
         }
     }
 }
