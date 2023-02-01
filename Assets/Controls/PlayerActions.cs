@@ -80,6 +80,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""b17993ba-dd40-413c-ab00-eb6f649371ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -229,7 +238,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""73840e39-a1f9-4d46-b289-ff615659c53b"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -478,6 +487,28 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""631dc47d-39e5-4c72-a1f5-2a3b41445287"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0debb00-5b9f-4bcc-a383-742d4bf4e567"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -492,6 +523,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_InGamePlayer_Attack = m_InGamePlayer.FindAction("Attack", throwIfNotFound: true);
         m_InGamePlayer_Grapple = m_InGamePlayer.FindAction("Grapple", throwIfNotFound: true);
         m_InGamePlayer_Crouch = m_InGamePlayer.FindAction("Crouch", throwIfNotFound: true);
+        m_InGamePlayer_Talk = m_InGamePlayer.FindAction("Talk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -557,6 +589,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGamePlayer_Attack;
     private readonly InputAction m_InGamePlayer_Grapple;
     private readonly InputAction m_InGamePlayer_Crouch;
+    private readonly InputAction m_InGamePlayer_Talk;
     public struct InGamePlayerActions
     {
         private @PlayerActions m_Wrapper;
@@ -567,6 +600,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_InGamePlayer_Attack;
         public InputAction @Grapple => m_Wrapper.m_InGamePlayer_Grapple;
         public InputAction @Crouch => m_Wrapper.m_InGamePlayer_Crouch;
+        public InputAction @Talk => m_Wrapper.m_InGamePlayer_Talk;
         public InputActionMap Get() { return m_Wrapper.m_InGamePlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -594,6 +628,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Crouch.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnCrouch;
+                @Talk.started -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnTalk;
+                @Talk.performed -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnTalk;
+                @Talk.canceled -= m_Wrapper.m_InGamePlayerActionsCallbackInterface.OnTalk;
             }
             m_Wrapper.m_InGamePlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -616,6 +653,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @Talk.started += instance.OnTalk;
+                @Talk.performed += instance.OnTalk;
+                @Talk.canceled += instance.OnTalk;
             }
         }
     }
@@ -628,5 +668,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
     }
 }

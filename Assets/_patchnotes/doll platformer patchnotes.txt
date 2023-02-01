@@ -213,3 +213,29 @@ Add placeholder SFX
 -- fixed NPC SFX issue but it will need further refactoring in the future
 
 -- added Destructible Object. basically a part of the environment that can be destroyed
+
+3.5
+
+-- added NPC_Unknown. Added spawn logic. Unknown either fades into the scene or spawns in a random 360 spot around its spawn and then moves into place. NOTE: EXTREMELY HACK UPDATE LATER. TO-DO: Add more spawn ins
+
+-- Imported TMPro Essentials to the project 
+
+-- started adding dialogue using https://www.youtube.com/watch?v=2CmG7ZtrWso&
+
+-- added Dialogue class, DialogueBox, DialogueText, Dialogue Manager
+
+3.6
+
+-- added CrouchAttackState, added crouch attack stuff to viewmodel and PlayerStats. fixed Crouching / Uncrouching with PlayerInputs (.started = start of input, .cancelled kills it)
+
+-- added ITalk interface
+
+-- added sphere to PlayerIdle to detect talking targets
+
+-- added TalkState to Player. Added talk logic to Stats and Movement. Player turns to face whoever they're talking to.
+
+3.7
+
+-- added the ability to advance lines of dialogue. TO-DO: Refactor this (make new PlayerActions? make any button advance dialogue? etc)
+
+-- Added the ability to talk to the Unknown!

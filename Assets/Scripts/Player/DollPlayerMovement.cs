@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,6 +41,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     public enum PlayerState
     {
         idle,
+        
+        talk,
 
         run,
         crouch,
@@ -107,6 +110,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // TALKING -- dialogue
     //
     public bool talking;
+    public bool canTalk;
+    public bool talkTarget;
+    
+    RaycastHit hitInfo;
     
     // // // // // //
     // DISABLED
@@ -133,10 +140,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         _playerActions.InGamePlayer.Jump.performed += Jump;
         _playerActions.InGamePlayer.Jump.canceled += JumpCancel;
 
-        _playerActions.InGamePlayer.Crouch.performed += Crouch;
+        _playerActions.InGamePlayer.Crouch.started += Crouch;
         _playerActions.InGamePlayer.Crouch.canceled += CrouchCancel;
 
         _playerActions.InGamePlayer.Attack.performed += Attack01;
+
+        _playerActions.InGamePlayer.Talk.performed += Talk;
 
         _playerActions.InGamePlayer.Enable();
 
@@ -152,6 +161,48 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         ChangeMovementState(currentState);
         // _defaultGravity = 
+    }
+
+    private void OnEnable()
+    {
+        LevelEventManager.LevelEventInstance.CanTalk += CanTalk;
+
+        //event closes dialogue box and gives control back to player
+        LevelEventManager.LevelEventInstance.StopTalk += () =>
+        {
+            if (talking)
+            {
+                talking = false;
+                currentState = PlayerState.idle;
+                ChangeMovementState(currentState);
+            }
+        };
+    }
+
+    private void CanTalk(bool talkAllowed)
+    {
+        canTalk = talkAllowed;
+    }
+
+    private void Talk(InputAction.CallbackContext context)
+    {
+        if (canTalk && talkTarget &&!talking)
+        { 
+            talking = true;
+            _rb.velocity=Vector3.zero;
+           
+            currentState = PlayerState.talk;
+
+            ITalk talk = playerStats.talkerObj.GetComponent<ITalk>();
+            talk.Talk();
+            currentState = PlayerState.talk;
+            ChangeMovementState(currentState);
+        }
+
+        else if (talking)
+        {
+            DialogueManager.DialogueInstance.AdvanceDialogue();
+        }
     }
 
     private void ChangeMovementState(PlayerState state)
@@ -181,7 +232,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             grounded = _lastCheck;
         }
 
-        if(!disabled)
+        if(!disabled && !talking)
         HandleMovement();
 
         HandleGravity();
@@ -195,7 +246,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         if (!grounded && !attacking)
             modelView.OnFall();
         
-        if (grounded && !attacking && !crouching && !jumping && !talking)
+        if (grounded && !attacking && !crouching && !jumping)
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
 
@@ -281,7 +332,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         //
         // Crouch by holding down or S through PlayerActions
         //
-        if (currentState == PlayerState.idle)
+        if (currentState == PlayerState.idle && IsGrounded())
         {
             crouching = true;
             currentState = PlayerState.crouch;
@@ -305,13 +356,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     public void CrouchCancel(InputAction.CallbackContext context)
     {
-        if (currentState == PlayerState.crouch)
-        {
             crouching = false;
+            if(grounded && !attacking)
             currentState = PlayerState.idle;
-        }
     }
-
 
     private void HandleGravity()
     {
@@ -367,5 +415,10 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     public void DetectPosition()
     {
         //return transform.position;
+    }
+
+    private void OnDisable()
+    {
+        LevelEventManager.LevelEventInstance.CanTalk -= CanTalk;
     }
 }

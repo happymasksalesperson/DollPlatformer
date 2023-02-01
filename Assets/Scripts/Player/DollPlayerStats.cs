@@ -16,6 +16,8 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
 
     public bool armoured = false;
 
+    public bool canTalk = false;
+
     [Header("RUN SPEED")] public float runSpeed;
     public float maxSpeed;
 
@@ -24,14 +26,15 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     [Header("Horizontal Jump Speed Multiplier (0.5 sets speed to half)")]
     public float jumpSpeedMultipler;
 
-    [Header("ATTACK01 POWER")] public int attack01Power;
+    [Header("ATTACK01")] public int attack01Power;public float attack01Radius;public float attack01Time;
+    
+    [Header("CROUCH ATTACK01")] public float crouchAttack01Radius;public float crouchAttack01Time;
 
-    [Header("ATTACK01 RADIUS SIZE")] public float attack01Radius;
+    [Header("JUMP ATTACK01")] public float jumpAttack01Time;
 
-    [Header("ATTACK01 TIME VALUES")] public float attack01Time;
-    public float attack02Time;
+    [Header("TALK SIGHT RADIUS")] public float sightRadius;
 
-    [Header("JUMP ATTACK TIMES")] public float jumpAttack01Time;
+    public GameObject talkerObj;
 
     [Header("TAKE DAMAGE TIME AND SUBSEQUENT GRACE PERIOD")] [SerializeField]
     public float takeDamageTime;
@@ -48,7 +51,7 @@ public class DollPlayerStats : MonoBehaviour, ITakeDamage
     // // // // // //
     // 
 
-    private void Start()
+    private void OnEnable()
     {
         modelView = GetComponentInChildren<HealthModelView>();
 

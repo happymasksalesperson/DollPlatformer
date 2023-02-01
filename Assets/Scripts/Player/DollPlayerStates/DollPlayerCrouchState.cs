@@ -11,8 +11,6 @@ public class DollPlayerCrouchState : MonoBehaviour
 
     private DollPlayerMovement playerMovement;
 
-    private bool crouching = true;
-
     private void OnEnable()
     {
         modelView = GetComponentInChildren<DollPlayerModelView>();
@@ -23,21 +21,16 @@ public class DollPlayerCrouchState : MonoBehaviour
 
         modelView.OnCrouch();
 
-        StartCoroutine(Wait());
+        modelView.Attack01 += CrouchAttack;
     }
 
-    private IEnumerator Wait()
+    private void CrouchAttack()
     {
-        crouching = playerMovement.crouching;
-
-        while (crouching)
-            yield return null;
-
-        stateManager.ChangeStateString("idle");
+        if(playerMovement.grounded && playerMovement.crouching)
+        stateManager.ChangeStateString("crouchAttack01");
     }
-
+    
     private void OnDisable()
     {
-        crouching = false;
     }
 }

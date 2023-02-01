@@ -12,9 +12,13 @@ public class StateManager : MonoBehaviour
 
     public MonoBehaviour idleState;
 
+    public MonoBehaviour talkState;
+
     public MonoBehaviour patrolState;
 
-    public MonoBehaviour attackState;
+    public MonoBehaviour attack01State;
+
+    public MonoBehaviour crouchAttack01State;
 
     public MonoBehaviour jumpState;
 
@@ -59,13 +63,21 @@ public class StateManager : MonoBehaviour
             case ("idle"):
                 ChangeState(idleState);
                 break;
+            
+            case ("talk"):
+                ChangeState (talkState);
+                break;
 
             case ("patrol"):
                 ChangeState(patrolState);
                 break;
 
             case ("attack01"):
-                ChangeState(attackState);
+                ChangeState(attack01State);
+                break;
+            
+            case ("crouchAttack01"):
+                ChangeState(crouchAttack01State);
                 break;
 
             case ("takeDamage"):

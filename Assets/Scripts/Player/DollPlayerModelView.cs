@@ -28,7 +28,17 @@ public class DollPlayerModelView : MonoBehaviour
     {
         Crouch?.Invoke();
     }
+    
+    //crouchAttack01
+    public event Action CrouchAttack01;
 
+    public void OnCrouchAttack01()
+    {
+        CrouchAttack01?.Invoke();
+    }
+    
+    //crouchSlide
+    
     //idle
     public event Action Idle;
 

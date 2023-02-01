@@ -20,10 +20,17 @@ public class DollPlayerAttackState : MonoBehaviour
 
     public float attack01Radius;
 
+    [Header("PLAYER AIM FROM PLAYERMOVEMENT")] public Vector3 playerAimVector;
+
     //distance sphere appears from Player centre
     private Vector3 offsetPosition;
 
+    public float offsetDistX;
+    public float offsetDistY;
     public float offsetDist;
+
+    [Header("Velocity during Jump Attack")]
+    public float jumpAttack01Velocity;
 
     private bool facingRight;
 
@@ -72,6 +79,10 @@ public class DollPlayerAttackState : MonoBehaviour
         attack01Time = stats.attack01Time;
 
         stats.armoured = true;
+        
+        // 
+        
+
 
         if (playerMovement.grounded)
         {
@@ -81,7 +92,7 @@ public class DollPlayerAttackState : MonoBehaviour
         {
             gravity.enabled = false;
             originalVelocity = rb.velocity;
-            rb.velocity = Vector3.zero;
+            rb.velocity = originalVelocity / jumpAttack01Velocity;
         }
 
         StartCoroutine(GroundAttack01());
@@ -90,7 +101,7 @@ public class DollPlayerAttackState : MonoBehaviour
     //CHAT GPT wrote this for me! :)
     void CheckOffset(Transform transform, float offset, bool facingRight)
     {
-        Vector3 offsetVector = Vector3.right * offset;
+        Vector3 offsetVector = (Vector3.up * offset/2 + (Vector3.right * offset));
         if (facingRight)
             offsetVector = -offsetVector;
         offsetPosition = transform.position + offsetVector;

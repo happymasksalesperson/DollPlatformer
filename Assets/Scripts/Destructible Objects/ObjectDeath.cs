@@ -6,8 +6,12 @@ using Random = UnityEngine.Random;
 
 public class ObjectDeath : MonoBehaviour
 {
+   private HealthModelView modelView;
    private void OnEnable()
    {
+      modelView = GetComponentInChildren<HealthModelView>();
+      modelView.OnYouDied();
+      
       Destroy(gameObject);
    }
 }

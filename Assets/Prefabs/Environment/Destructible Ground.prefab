@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 581579837955721538}
   - component: {fileID: 581579837955721537}
   - component: {fileID: 581579837955721536}
-  - component: {fileID: 581579837955721539}
   - component: {fileID: 581579837955721542}
   - component: {fileID: 581579837955721541}
   - component: {fileID: 581579837955721540}
+  - component: {fileID: 1020519410125066649}
   m_Layer: 6
   m_Name: Destructible Ground
   m_TagString: Untagged
@@ -102,38 +102,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &581579837955721539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581579837955721534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 7
-  myName: 
-  maxHP: 1
-  HP: 0
-  vulnerable: 1
-  isAlive: 1
-  armoured: 0
-  moveSpeed: 0
-  maxSpeed: 0
-  attack01Power: 0
-  attack01Radius: 0
-  attack01Time: 0
-  bodyHitboxPower: 0
-  sightDistance: 0
-  minDist: 0
-  patrolTime: 0
-  idleTime: 0
-  modelView: {fileID: 0}
-  conjoined: 0
-  facingDirection: 0
 --- !u!114 &581579837955721542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +147,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be96d04befd419044ab239c15f9309de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1020519410125066649
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581579837955721534}
+  serializedVersion: 2
+  m_Mass: 1e+9
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1 &581579839097330173
 GameObject:
   m_ObjectHideFlags: 0

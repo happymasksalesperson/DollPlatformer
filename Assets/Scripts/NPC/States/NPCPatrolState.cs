@@ -157,7 +157,7 @@ public class NPCPatrolState : MonoBehaviour
         }
 
         wallInfo = new RaycastHit();
-        bool wallHit = Physics.Raycast(transform.position, _facingDirVector, out wallInfo, _sightDistance, wallMask);
+        bool wallHit = Physics.Raycast(transform.position, _facingDirVector, out wallInfo, _minDist, wallMask);
         if (wallHit)
         {
             Flip();
@@ -166,7 +166,7 @@ public class NPCPatrolState : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, _facingDirVector * _sightDistance, Color.white);
-        }
+        }   
     }
 
     // // // // // //

@@ -10,6 +10,7 @@ public enum Type
     NPC03,
     NPC04,
     NPC05,
+    NPCUNKNOWN,
     Item,
     DestructibleObject
 };

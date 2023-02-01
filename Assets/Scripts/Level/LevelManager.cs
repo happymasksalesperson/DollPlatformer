@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.PlayerConnection;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public NPCSFX SFX { get; private set; }
 
     //public EXAMPLESCRIPT ExampleRef { get; private set; }
+
+    public Transform playerSpawn;
+
+    public GameObject player;
 
     public List<Transform> spawnPoints = new List<Transform>();
 
@@ -29,10 +34,16 @@ public class LevelManager : MonoBehaviour
 
         SFX = GetComponentInChildren<NPCSFX>();
 
+        SpawnPlayer();
         SpawnNPC();
         SpawnItem();
     }
-    
+
+    private void SpawnPlayer()
+    {
+        Instantiate(player, playerSpawn.position, playerSpawn.rotation);
+    }
+
     private void SpawnNPC()
     {
         for (int i = 0; i < spawnPoints.Count; i++)
