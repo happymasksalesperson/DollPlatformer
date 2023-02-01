@@ -26,7 +26,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     private DollPlayerAnimationStates _animStates;
 
     //tracks player facing dir
-    private bool _facingRight;
+    public bool _facingRight;
 
     public bool FacingRight()
     {
@@ -275,7 +275,8 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     public CollisionManager grappleDetction;
 
-    private List<GameObject> grapples;
+    public List<GameObject> grapples;
+    public float grappleSpeed;
 
     // // // // // //
     // ON ENABLE / DISABLE
@@ -314,21 +315,26 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     public void Grapple(InputAction.CallbackContext context)
     {
-        Vector3 grapplePos = grapples[0].transform.position;
+        print("Attempting Grapple...");
+        
+        foreach (GameObject item in grapples)
+        {
+            Vector3 grapplePos = item.transform.position;
+            Vector3 playerPos = transform.position;
 
-        if ((grapplePos.x > transform.position.x && _facingRight) ||
-            (grapplePos.x < transform.position.x && !_facingRight))
-        {
-            Vector3.MoveTowards(grapplePos, grapplePos, 0.4f);
-        }
-        else
-        {
-            grapples.Remove(grapples[0]);
+            if ((grapplePos.x > playerPos.x && _facingRight) ||
+                (grapplePos.x < playerPos.x && !_facingRight))
+            {
+                print("Grappling");
+                _rb.AddForce(grappleSpeed,grappleSpeed * (grapplePos.y - playerPos.y), 0 );
+            }
         }
     }
 
     private void AddGrappleAnchor(Collider obj)
     {
+        print("Grapple found");
+        
         if (obj.GetComponent<GrapplePoint>() != null)
         {
             grapples.Add(obj.gameObject);
@@ -337,6 +343,8 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     private void RemoveGrappleAnchor(Collider obj)
     {
+        print("Grapple lost");
+        
         if (obj.GetComponent<GrapplePoint>() != null)
         {
             grapples.Remove(obj.gameObject);
