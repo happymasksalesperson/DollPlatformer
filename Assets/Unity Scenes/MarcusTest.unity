@@ -131,13 +131,13 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 845691806028509509, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: maxSpeed
-      value: 1000
+    - target: {fileID: 845691806028509508, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
+      propertyPath: gravityScale
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 845691806028509509, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: runSpeed
-      value: 250
+    - target: {fileID: 845691806028509508, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
+      propertyPath: globalGravity
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 845691806028509625, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
       propertyPath: m_Name
@@ -145,14 +145,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845691806028509626, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 845691806028509626, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 845691806028509626, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 845691806028509626, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
@@ -196,29 +188,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1246627364188257162, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: grappleDetction
-      value: 
-      objectReference: {fileID: 1244676169}
-    - target: {fileID: 3023682853592085883, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: _facingRight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4244204471109414980, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: attackState
-      value: 
+    - target: {fileID: 1246627364188257162, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
+      propertyPath: grappleSpeed
+      value: 10000
       objectReference: {fileID: 0}
-    - target: {fileID: 4244204471109414980, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-      propertyPath: crouchState
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1493524816523126797, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 2453433366020296675, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 4244204471109414980, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 6948418006845604370, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 4289461503325516007, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 4879205016625659362, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-    - {fileID: 3598934413428729640, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
 --- !u!1 &1055466556
@@ -318,17 +295,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1244676169 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1484551210773357758, guid: ca23d602a1a38bc48955682a74002f9b, type: 3}
-  m_PrefabInstance: {fileID: 22869290}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ff256e2451bd62449cc9fa2a70ff06a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1534855308
 GameObject:
   m_ObjectHideFlags: 0

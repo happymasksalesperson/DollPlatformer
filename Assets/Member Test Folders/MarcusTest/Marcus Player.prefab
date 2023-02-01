@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 845691806028509626}
   - component: {fileID: 1246627364188257162}
-  - component: {fileID: 845691806028509510}
   - component: {fileID: 845691806028509509}
   - component: {fileID: 845691806028509508}
   - component: {fileID: 845691806028509511}
@@ -63,36 +62,6 @@ MonoBehaviour:
   currentState: 0
   grappleDetction: {fileID: 1484551210773357758}
   grapples: []
---- !u!114 &845691806028509510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845691806028509625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f2620f8154517468a225d354bc8c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grounded: 0
-  facingRight: 0
-  currentState: 0
-  _aimVector: {x: 0, y: 0}
-  attacking: 0
-  running: 0
-  jumping: 0
-  _groundCheckHeight: 20
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  holdingJump: 0
-  _disableGCTime: 0.25
-  _jumpFallMultiply: 0
-  crouching: 0
-  talking: 0
-  disabled: 0
-  gracePeriod: 0
 --- !u!114 &845691806028509509
 MonoBehaviour:
   m_ObjectHideFlags: 0

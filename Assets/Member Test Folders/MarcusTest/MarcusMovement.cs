@@ -26,7 +26,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     private DollPlayerAnimationStates _animStates;
 
     //tracks player facing dir
-    private bool _facingRight;
+    public bool _facingRight;
 
     public bool FacingRight()
     {
@@ -276,6 +276,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
     public CollisionManager grappleDetction;
 
     public List<GameObject> grapples;
+    public float grappleSpeed;
 
     // // // // // //
     // ON ENABLE / DISABLE
@@ -314,14 +315,18 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     public void Grapple(InputAction.CallbackContext context)
     {
+        print("Attempting Grapple...");
+        
         foreach (GameObject item in grapples)
         {
             Vector3 grapplePos = item.transform.position;
+            Vector3 playerPos = transform.position;
 
-            while ((grapplePos.x > transform.position.x && _facingRight) ||
-                (grapplePos.x < transform.position.x && !_facingRight))
+            if ((grapplePos.x > playerPos.x && _facingRight) ||
+                (grapplePos.x < playerPos.x && !_facingRight))
             {
-                Vector3.MoveTowards(transform.position, grapplePos, 0.4f);
+                print("Grappling");
+                _rb.AddForce(grappleSpeed,grappleSpeed * (grapplePos.y - playerPos.y), 0 );
             }
         }
     }
