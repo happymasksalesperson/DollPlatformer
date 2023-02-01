@@ -275,7 +275,7 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     public CollisionManager grappleDetction;
 
-    private List<GameObject> grapples;
+    public List<GameObject> grapples;
 
     // // // // // //
     // ON ENABLE / DISABLE
@@ -314,21 +314,22 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     public void Grapple(InputAction.CallbackContext context)
     {
-        Vector3 grapplePos = grapples[0].transform.position;
+        foreach (GameObject item in grapples)
+        {
+            Vector3 grapplePos = item.transform.position;
 
-        if ((grapplePos.x > transform.position.x && _facingRight) ||
-            (grapplePos.x < transform.position.x && !_facingRight))
-        {
-            Vector3.MoveTowards(grapplePos, grapplePos, 0.4f);
-        }
-        else
-        {
-            grapples.Remove(grapples[0]);
+            while ((grapplePos.x > transform.position.x && _facingRight) ||
+                (grapplePos.x < transform.position.x && !_facingRight))
+            {
+                Vector3.MoveTowards(transform.position, grapplePos, 0.4f);
+            }
         }
     }
 
     private void AddGrappleAnchor(Collider obj)
     {
+        print("Grapple found");
+        
         if (obj.GetComponent<GrapplePoint>() != null)
         {
             grapples.Add(obj.gameObject);
@@ -337,6 +338,8 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     private void RemoveGrappleAnchor(Collider obj)
     {
+        print("Grapple lost");
+        
         if (obj.GetComponent<GrapplePoint>() != null)
         {
             grapples.Remove(obj.gameObject);
