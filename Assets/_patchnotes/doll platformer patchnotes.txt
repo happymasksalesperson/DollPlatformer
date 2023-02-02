@@ -239,3 +239,9 @@ Add placeholder SFX
 -- added the ability to advance lines of dialogue. TO-DO: Refactor this (make new PlayerActions? make any button advance dialogue? etc)
 
 -- Added the ability to talk to the Unknown!
+
+3.8
+
+-- created a new test level with some pre created dialogue and game instructions
+
+-- noticed the crouch allows the player to slide down a slope if there is an angled plane.
