@@ -10,6 +10,8 @@ public class UNKNOWNIDLE : MonoBehaviour, ITalk
     //refactor Dialogue later
     [SerializeField] private Dialogue dialogue;
 
+    private StateManager stateManager;
+
     public float moveDist;
 
     public float moveTime;
@@ -20,9 +22,21 @@ public class UNKNOWNIDLE : MonoBehaviour, ITalk
 
     private Vector3 circlePoint;
 
+    [Header("BODY PARTS")] public GameObject bodyParts;
+
     private void OnEnable()
     {
+        bodyParts.SetActive(true);
+        
+        stateManager = GetComponent<StateManager>();
+        
         LevelEventManager.LevelEventInstance.OnCanTalk(true);
+
+        LevelEventManager.LevelEventInstance.StopTalk += () =>
+        {
+            StopTalk();
+        };
+        
         origPos = transform.position;
         
         StartCoroutine(Bob());
@@ -63,8 +77,14 @@ public class UNKNOWNIDLE : MonoBehaviour, ITalk
         DialogueManager.DialogueInstance.ShowDialogue(dialogue);
     }
 
+    private void StopTalk()
+    {
+        stateManager.ChangeStateString("death");
+    }
+
     private void OnDisable()
     {
+        bodyParts.SetActive(false);
         LevelEventManager.LevelEventInstance.OnCanTalk(false);
     }
 }

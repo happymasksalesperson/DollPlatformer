@@ -22,6 +22,11 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     // // // // // //
     // PLAYER OBJECT
     private Rigidbody _rb;
+    
+    //
+    // player layer
+    public LayerMask playerLayer;
+    public LayerMask groundLayer;
 
     //
     // change size during different states
@@ -81,12 +86,11 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     public bool jumping;
 
     private Gravity _gravity;
+    
+    /*[SerializeField] private float _groundCheckHeight;
 
-    [SerializeField] private float _groundCheckHeight;
-
-    [SerializeField] private LayerMask _groundMask;
-
-
+    [SerializeField] private LayerMask _groundMask;*/
+    
     //tracks if the jump button is being held down by Player
     public bool holdingJump;
 
@@ -97,9 +101,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     [SerializeField] private float _jumpFallMultiply;
 
-    private bool _groundCheckEnabled = true;
-
-    private WaitForSeconds _jumpWait;
+    public bool _groundCheckEnabled = true;
 
     // // // // // //
     // CROUCHING
@@ -132,8 +134,6 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         _defaultGravity = _gravity.CurrentGravity();
 
         _boxCollider = GetComponent<BoxCollider>();
-
-        _jumpWait = new WaitForSeconds(_disableGCTime);
 
         _playerActions = new PlayerActions();
 
@@ -347,12 +347,19 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     }
 
     private IEnumerator GroundCheckAfterJump()
-    {
-        _groundCheckEnabled = false;
-        yield return _jumpWait;
-        jumping = false;
-        _groundCheckEnabled = true;
-    }
+    {   
+            int playerLayerValue = Mathf.Clamp(playerLayer.value, 0, 31);
+            int groundLayerValue = Mathf.Clamp(groundLayer.value, 0, 31);
+    
+            Physics.IgnoreLayerCollision(playerLayerValue, groundLayerValue, true);
+    
+            _groundCheckEnabled = false;
+            yield return new WaitForSeconds(_disableGCTime);
+            jumping = false;
+            _groundCheckEnabled = true;
+
+            Physics.IgnoreLayerCollision(playerLayerValue, groundLayerValue, false);
+        }
 
     public void CrouchCancel(InputAction.CallbackContext context)
     {

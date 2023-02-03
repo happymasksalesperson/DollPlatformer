@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    private Renderer rend;
+    public float pushMagnitude;
 
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        rend = this.GetComponent<Renderer>();
-    }
+        Rigidbody rb = collision.rigidbody;
+        if (rb == null)
+        {
+            return;
+        }
 
-    void OnEnable()
-    {
-        DollEventManager.DollSafeEvent += ChangeColour;
-    }
-
-    void OnDisable()
-    {
-        DollEventManager.DollSafeEvent -= ChangeColour;
-    }
-
-    private void ChangeColour()
-    {
-        rend.material.SetColor("_Color", Color.green);
+        Vector3 pushDirection = rb.velocity.normalized * pushMagnitude;
+        rb.AddForce(pushDirection, ForceMode.Impulse);
     }
 }
+    

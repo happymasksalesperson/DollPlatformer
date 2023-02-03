@@ -134,7 +134,13 @@ public class DollPlayerAttackState : MonoBehaviour
 
             yield return new WaitForSeconds(attack01Time);
 
+            if(playerMovement.grounded)
             stateManager.ChangeStateString("idle");
+
+            else
+            {
+                stateManager.ChangeStateString("fall");
+            }
         }
     }
 

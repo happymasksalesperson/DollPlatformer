@@ -22,6 +22,8 @@ public class StateManager : MonoBehaviour
 
     public MonoBehaviour jumpState;
 
+    public MonoBehaviour fallState;
+
     public MonoBehaviour takeDamageState;
 
     public MonoBehaviour deathState;
@@ -86,6 +88,10 @@ public class StateManager : MonoBehaviour
 
             case ("jump"):
                 ChangeState(jumpState);
+                break;
+            
+            case ("fall"):
+                ChangeState(fallState);
                 break;
 
             case ("death"):

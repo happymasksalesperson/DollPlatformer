@@ -37,8 +37,8 @@ public class UNKNOWNSPAWN : MonoBehaviour
 
     //
     public SpriteRenderer spr;
-    public float fadeSpeed;
     public float fadeDuration;
+    public float fadeSpeed;
 
     private void OnEnable()
     {

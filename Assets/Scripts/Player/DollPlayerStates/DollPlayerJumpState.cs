@@ -26,6 +26,9 @@ public class DollPlayerJumpState : MonoBehaviour
     private float timeElapsed;
 
     public bool grounded;
+    
+    public LayerMask playerLayer;
+    public LayerMask groundLayer;
 
     private void OnEnable()
     {
@@ -43,10 +46,12 @@ public class DollPlayerJumpState : MonoBehaviour
         modelView = GetComponentInChildren<DollPlayerModelView>();
         modelView.OnJump();
 
+        playerMovement.canTalk = false;
+
         jumpForce = playerStats.jumpForce;
 
         timeElapsed = 0f;
-
+        
         Jump();
         StartCoroutine(WaitForGrounded());
     }
@@ -71,6 +76,18 @@ public class DollPlayerJumpState : MonoBehaviour
             gravityScale = defaultScale * gravityMultiplier;
 
             gravity.ChangeGravity(gravityScale);
+        }
+        
+        int playerLayerIndex = LayerMask.NameToLayer("Player");
+        int groundLayerIndex = LayerMask.NameToLayer("Ground");
+        
+        if (rb.velocity.y > 0)
+        { 
+            Physics.IgnoreLayerCollision(playerLayerIndex, groundLayerIndex, true);
+        }
+        else
+        {
+            Physics.IgnoreLayerCollision(playerLayerIndex, groundLayerIndex, false);
         }
     }
 

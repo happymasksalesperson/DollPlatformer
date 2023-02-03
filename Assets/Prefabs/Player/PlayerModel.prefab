@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 515708071243029877}
   - component: {fileID: 80701525622162607}
   - component: {fileID: 5322295524137256759}
+  - component: {fileID: 2972325210454986756}
   m_Layer: 3
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -145,6 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f2620f8154517468a225d354bc8c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   grounded: 0
   facingRight: 0
   currentState: 0
@@ -152,12 +159,8 @@ MonoBehaviour:
   attacking: 0
   running: 0
   jumping: 0
-  _groundCheckHeight: 20
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
   holdingJump: 0
-  _disableGCTime: 0.5
+  _disableGCTime: 0.25
   _jumpFallMultiply: 1.75
   crouching: 0
   talking: 0
@@ -187,8 +190,8 @@ MonoBehaviour:
   jumpForce: 650000
   jumpSpeedMultipler: 50
   attack01Power: -1
-  attack01Radius: 100
-  attack01Time: 0.75
+  attack01Radius: 200
+  attack01Time: 0.5
   crouchAttack01Radius: 100
   crouchAttack01Time: 0.5
   jumpAttack01Time: 0.25
@@ -231,6 +234,7 @@ MonoBehaviour:
   attack01State: {fileID: 1493524816523126797}
   crouchAttack01State: {fileID: 80701525622162607}
   jumpState: {fileID: 4289461503325516007}
+  fallState: {fileID: 2972325210454986756}
   takeDamageState: {fileID: 4879205016625659362}
   deathState: {fileID: 3598934413428729640}
 --- !u!114 &1493524816523126797
@@ -321,6 +325,12 @@ MonoBehaviour:
   rb: {fileID: 0}
   holdingJump: 0
   grounded: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4879205016625659362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +452,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e48b47916f03c5c4fbf2335ab3707baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2972325210454986756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845691806028509625}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505827fd945e0084ca0c7b68b2450e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &845691806474937476
@@ -678,6 +700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LOSPos: {x: 0, y: 0, z: 0}
+  POSYValue: 0
+  LOSExtents: {x: 50, y: 100, z: 100}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

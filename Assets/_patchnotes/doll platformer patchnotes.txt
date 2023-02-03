@@ -245,3 +245,13 @@ Add placeholder SFX
 -- created a new test level with some pre created dialogue and game instructions
 
 -- noticed the crouch allows the player to slide down a slope if there is an angled plane.
+
+3.9
+
+-- added a Despawn state to Unknown. Turns off CanTalk and fades away~
+
+-- updated GroundCheck to use a more reliable box collider system
+
+-- updated Jump state. Doll now ignores Ground layer when jumping up to allow jumping through platforms to ascend. Will need a "roof" object to prevent jumping through things you don't want to jump through. Jump state now turns off canTalk.
+
+-- there's a problem where the Attack state will cancel groundCheck for some reason (and also enable a second jump?)
