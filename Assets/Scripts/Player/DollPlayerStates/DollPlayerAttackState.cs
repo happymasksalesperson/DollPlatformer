@@ -81,7 +81,7 @@ public class DollPlayerAttackState : MonoBehaviour
         stats.armoured = true;
         
         // 
-        
+        playerMovement._groundCheckEnabled = true;
 
 
         if (playerMovement.grounded)
@@ -134,13 +134,11 @@ public class DollPlayerAttackState : MonoBehaviour
 
             yield return new WaitForSeconds(attack01Time);
 
-            if(playerMovement.grounded)
+            if(playerMovement.IsGrounded())
             stateManager.ChangeStateString("idle");
-
-            else
-            {
+            
+            else 
                 stateManager.ChangeStateString("fall");
-            }
         }
     }
 
@@ -154,10 +152,8 @@ public class DollPlayerAttackState : MonoBehaviour
     {
         gravity.enabled = true;
         playerMovement.AttackEnd();
-        if (!playerMovement.grounded)
-        {
-            rb.velocity = originalVelocity;
-        }
+        
+        rb.velocity = originalVelocity;
 
         stats.armoured = false;
     }

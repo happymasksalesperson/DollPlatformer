@@ -93,6 +93,7 @@ public class StatsComponent : MonoBehaviour, ITakeDamage
                 HP = 0;
                 stateManager.ChangeStateString("death");
             }
+            else
             stateManager.ChangeStateString("takeDamage");
         }
 

@@ -13,6 +13,7 @@ public class NPCIdleState : MonoBehaviour
 
     private void OnEnable()
     {
+        rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         
         modelView = GetComponentInChildren<NPCModelView>();

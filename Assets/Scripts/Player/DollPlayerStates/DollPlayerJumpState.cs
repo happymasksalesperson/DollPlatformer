@@ -17,6 +17,8 @@ public class DollPlayerJumpState : MonoBehaviour
     private float defaultScale;
     public float gravityMultiplier;
 
+    private float horizontalMultiplier;
+
     public AnimationCurve jumpCurve;
     public float jumpForce;
     public float jumpTime;
@@ -40,6 +42,8 @@ public class DollPlayerJumpState : MonoBehaviour
 
         playerMovement = GetComponent<DollPlayerMovement>();
         playerStats = GetComponent<DollPlayerStats>();
+        horizontalMultiplier = playerStats.jumpSpeedMultipler;
+
         stateManager = GetComponent<StateManager>();
         gravity = GetComponent<Gravity>();
         defaultScale = gravity.CurrentGravity();
@@ -64,7 +68,6 @@ public class DollPlayerJumpState : MonoBehaviour
         }
 
         playerMovement.JumpEnd();
-        stateManager.ChangeStateString("idle");
     }
 
     void FixedUpdate()
@@ -82,7 +85,7 @@ public class DollPlayerJumpState : MonoBehaviour
         int groundLayerIndex = LayerMask.NameToLayer("Ground");
         
         if (rb.velocity.y > 0)
-        { 
+        {
             Physics.IgnoreLayerCollision(playerLayerIndex, groundLayerIndex, true);
         }
         else
@@ -97,7 +100,7 @@ public class DollPlayerJumpState : MonoBehaviour
         if (holdingJump && timeElapsed < jumpTime)
         {
             float jumpForceMultiplier = jumpCurve.Evaluate(timeElapsed / jumpTime);
-            rb.AddForce(Vector3.up * jumpForce * jumpForceMultiplier, ForceMode.Acceleration);
+            rb.AddForce(new Vector3(rb.velocity.x * horizontalMultiplier, jumpForce * jumpForceMultiplier, 0), ForceMode.Acceleration);
         }
     }
 

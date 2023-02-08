@@ -48,6 +48,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         idle,
         
         talk,
+        
+        fall,
 
         run,
         crouch,
@@ -159,7 +161,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         stateManager = GetComponent<StateManager>();
 
-        ChangeMovementState(currentState);
+        //ChangeMovementState(currentState);
         // _defaultGravity = 
     }
 
@@ -243,9 +245,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void HandleMovement()
     {
-        if (!grounded && !attacking)
+        if (!grounded && !attacking && !jumping)
+        {
             modelView.OnFall();
-        
+            currentState = PlayerState.fall;
+        }
+
         if (grounded && !attacking && !crouching && !jumping)
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
@@ -322,6 +327,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
         else
         currentState = PlayerState.idle;
+        
         ChangeMovementState(currentState);
     }
 
@@ -339,7 +345,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         grounded = _groundCheck.grounded;
         _lastCheck = grounded;
@@ -398,6 +404,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     public void AttackEnd()
     {
         attacking = false;
+        grounded = _lastCheck;
         currentState = PlayerState.idle;
     }
 

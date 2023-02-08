@@ -29,6 +29,8 @@ public class DollPlayerIdleState : MonoBehaviour
 
         playerMovement = GetComponent<DollPlayerMovement>();
 
+        playerMovement.canTalk = true;
+
         modelView = GetComponentInChildren<DollPlayerModelView>();
 
         modelView.OnIdle();

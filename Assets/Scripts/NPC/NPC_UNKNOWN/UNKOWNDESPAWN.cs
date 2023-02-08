@@ -14,6 +14,9 @@ public class UNKOWNDESPAWN : MonoBehaviour
 
     private void OnEnable()
     {
+        
+        //LevelEventManager.LevelEventInstance.OnCanTalk(false);
+        
         spr = GetComponentInChildren<SpriteRenderer>();
 
         StartCoroutine(Fade());
@@ -21,27 +24,25 @@ public class UNKOWNDESPAWN : MonoBehaviour
 
     private IEnumerator Fade()
     {
-            spr.color = new Color(1, 1, 1, 255);
+        spr.color = new Color(1, 1, 1, 255);
 
-            float elapsedTime = 0f;
+        float elapsedTime = 0f;
 
-            Color originalColor = spr.color;
-            Color targetColor = originalColor;
-            targetColor.a = 0f;
+        Color originalColor = spr.color;
+        Color targetColor = originalColor;
+        targetColor.a = 0f;
 
-            float fadeAmountPerSecond = 255f * fadeSpeed / fadeDuration;
+        float fadeAmountPerSecond = 255f * fadeSpeed / fadeDuration;
 
-            while (elapsedTime < fadeDuration)
-            {
-                spr.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeDuration);
-                elapsedTime += Time.deltaTime;
-                originalColor.a = Mathf.Max(0f, originalColor.a - fadeAmountPerSecond * elapsedTime);
-                yield return null;
-            }
+        while (elapsedTime < fadeDuration)
+        {
+            spr.color = Color.Lerp(originalColor, targetColor, elapsedTime / fadeDuration);
+            elapsedTime += Time.deltaTime;
+            targetColor.a = Mathf.Max(0f, originalColor.a - fadeAmountPerSecond * elapsedTime);
+            yield return null;
+        }
 
-            spr.color = targetColor;
-        
-        LevelEventManager.LevelEventInstance.OnCanTalk(false);
+        spr.color = targetColor;
         Destroy(gameObject);
     }
 }

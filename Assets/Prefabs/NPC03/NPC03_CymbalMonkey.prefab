@@ -58,9 +58,12 @@ MonoBehaviour:
   currentState: {fileID: 0}
   crouchState: {fileID: 0}
   idleState: {fileID: -8054799560615422277}
+  talkState: {fileID: 0}
   patrolState: {fileID: 5858257352297611798}
-  attackState: {fileID: 5858257352297611792}
+  attack01State: {fileID: 5858257352297611792}
+  crouchAttack01State: {fileID: 0}
   jumpState: {fileID: 0}
+  fallState: {fileID: 0}
   takeDamageState: {fileID: 5858257352297611807}
   deathState: {fileID: 5858257352297611795}
 --- !u!114 &5858257352297611880

@@ -58,6 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LOSPos: {x: 0, y: 0, z: 0}
+  POSYValue: 0
+  LOSExtents: {x: 0, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -299,9 +302,12 @@ MonoBehaviour:
   currentState: {fileID: 7351472035176131923}
   crouchState: {fileID: 0}
   idleState: {fileID: 8723694009031517838}
+  talkState: {fileID: 0}
   patrolState: {fileID: 7351472035176131925}
-  attackState: {fileID: 7351472035176131923}
+  attack01State: {fileID: 7351472035176131923}
+  crouchAttack01State: {fileID: 0}
   jumpState: {fileID: 0}
+  fallState: {fileID: 0}
   takeDamageState: {fileID: 7351472035176131932}
   deathState: {fileID: 7351472035176131920}
 --- !u!114 &7351472035176131883
@@ -316,24 +322,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: NPC02
+  type: 2
+  myName: 
   maxHP: 1
   HP: 0
-  _moveSpeed: 50
-  _maxSpeed: 50
-  _attackTime: 1
-  bodyHitboxPower: 1
-  attack01Power: -1
-  attack01Radius: 500
+  vulnerable: 0
   isAlive: 1
   armoured: 0
-  type: 2
-  _sightDistance: 1000
-  _minDist: 500
-  _patrolTime: 5
-  _idleTime: 1
+  moveSpeed: 500
+  maxSpeed: 500
+  attack01Power: -1
+  attack01Radius: 500
+  attack01Time: 0
+  bodyHitboxPower: 1
+  sightDistance: 1000
+  minDist: 250
+  patrolTime: 5
+  idleTime: 1
   modelView: {fileID: 0}
-  vulnerable: 0
   conjoined: 0
   facingDirection: 0
 --- !u!114 &7351472035176131925
@@ -386,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityScale: 100
-  globalGravity: -100
+  globalGravity: -200
 --- !u!114 &7351472035176131923
 MonoBehaviour:
   m_ObjectHideFlags: 0

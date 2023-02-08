@@ -15,11 +15,7 @@ public class UNKNOWNSPAWN : MonoBehaviour
     public float minValue;
     public float maxValue;
     private float randomWaitTime;
-
-    public float hangTime;
-    public float hangAmount;
-
-    public float travelTime;
+    
     public float moveSpeed;
     public float radius;
     private float randomAngle;
@@ -56,8 +52,8 @@ public class UNKNOWNSPAWN : MonoBehaviour
         if(coinFlip==0)
         {
             revealPoint = secondCentrePoint;
-            spr.flipX = false;
-        }
+            float xScale = gameObject.transform.localScale.x;
+            gameObject.transform.localScale = new Vector3(Mathf.Abs(xScale) * Mathf.Sign(xScale), gameObject.transform.localScale.y, gameObject.transform.localScale.z);        }
 
         else
         {
@@ -69,8 +65,10 @@ public class UNKNOWNSPAWN : MonoBehaviour
         {
             randomAngle = Random.Range(0.0f, 360.0f);
             if (randomAngle <= 180)
-                spr.flipX = false;
-            
+            {
+                float xScale = gameObject.transform.localScale.x;
+                gameObject.transform.localScale = new Vector3(Mathf.Abs(xScale) * Mathf.Sign(xScale), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            }
             circlePoint = transform.position + new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle), 0) * radius;
             transform.position = circlePoint;
             StartCoroutine(Move());
@@ -85,8 +83,6 @@ public class UNKNOWNSPAWN : MonoBehaviour
 
     private IEnumerator Move()
     {
-        spr.color = new Color(1, 1, 1, 255);
-
         randomWaitTime = Random.Range(minValue, maxValue);
         yield return new WaitForSeconds(randomWaitTime);
 

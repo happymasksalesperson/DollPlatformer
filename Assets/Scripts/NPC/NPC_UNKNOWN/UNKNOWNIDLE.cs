@@ -24,13 +24,17 @@ public class UNKNOWNIDLE : MonoBehaviour, ITalk
 
     [Header("BODY PARTS")] public GameObject bodyParts;
 
+    public bool canTalk;
+
     private void OnEnable()
     {
+        canTalk = true;
+        
         bodyParts.SetActive(true);
         
         stateManager = GetComponent<StateManager>();
         
-        LevelEventManager.LevelEventInstance.OnCanTalk(true);
+       // LevelEventManager.LevelEventInstance.OnCanTalk(true);
 
         LevelEventManager.LevelEventInstance.StopTalk += () =>
         {
@@ -74,17 +78,20 @@ public class UNKNOWNIDLE : MonoBehaviour, ITalk
 
     public void Talk()
     {
-        DialogueManager.DialogueInstance.ShowDialogue(dialogue);
+        if (canTalk)
+            DialogueManager.DialogueInstance.ShowDialogue(dialogue);
     }
 
     private void StopTalk()
     {
         stateManager.ChangeStateString("death");
+        canTalk = false;
     }
 
     private void OnDisable()
     {
+        //LevelEventManager.LevelEventInstance.StopTalk -= StopTalk;
         bodyParts.SetActive(false);
-        LevelEventManager.LevelEventInstance.OnCanTalk(false);
+        StopAllCoroutines();
     }
 }

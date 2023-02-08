@@ -18,15 +18,15 @@ public class DollPlayerFallState : MonoBehaviour
         modelView = GetComponentInChildren<DollPlayerModelView>();
         modelView.OnJump();
 
+        playerMovement = GetComponent<DollPlayerMovement>();
+
         stateManager = GetComponent<StateManager>();
     }
 
     private void FixedUpdate()
     {
-        
-        grounded = playerMovement.grounded;
-        if(!grounded)
-            //"land"
-            stateManager.ChangeStateString("idle");
+        grounded = playerMovement.IsGrounded();
+        if(grounded)
+            playerMovement.JumpEnd();
     }
 }

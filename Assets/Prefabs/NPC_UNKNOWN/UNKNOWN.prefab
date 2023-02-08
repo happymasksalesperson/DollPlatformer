@@ -527,7 +527,7 @@ MonoBehaviour:
   centrePoint: {x: 300, y: 650, z: 3}
   secondCentrePoint: {x: -450, y: 650, z: 3}
   spr: {fileID: 6740712614551048174}
-  fadeDuration: 5
+  fadeDuration: 3
   fadeSpeed: 0.25
 --- !u!65 &1916299980115557643
 BoxCollider:
@@ -560,8 +560,9 @@ MonoBehaviour:
     - Thrilling, isn't it?
   moveDist: 5
   moveTime: 0.1
-  hangTime: 5
+  hangTime: 0.5
   bodyParts: {fileID: 2146903519053715983}
+  canTalk: 0
 --- !u!114 &3130556583894852905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,8 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69666f25704ec764caa9de93aae620b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 500
-  fadeSpeed: 5
+  fadeDuration: 3
+  fadeSpeed: 0.25
 --- !u!1 &6740712615569414575
 GameObject:
   m_ObjectHideFlags: 0

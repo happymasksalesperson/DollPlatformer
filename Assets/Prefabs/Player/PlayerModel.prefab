@@ -162,9 +162,10 @@ MonoBehaviour:
   holdingJump: 0
   _disableGCTime: 0.25
   _jumpFallMultiply: 1.75
+  _groundCheckEnabled: 1
   crouching: 0
   talking: 0
-  canTalk: 0
+  canTalk: 1
   talkTarget: 0
   disabled: 0
   gracePeriod: 0.5
@@ -185,9 +186,9 @@ MonoBehaviour:
   vulnerable: 1
   armoured: 0
   canTalk: 0
-  runSpeed: 900
+  runSpeed: 1500
   maxSpeed: 3000
-  jumpForce: 650000
+  jumpForce: 400000
   jumpSpeedMultipler: 50
   attack01Power: -1
   attack01Radius: 200
@@ -300,8 +301,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.012500763
-      value: 0.4901123
+      time: -0.016719818
+      value: 0.7643738
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -309,8 +310,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.0252991
+      value: 0.9156456
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -374,7 +375,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 1
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -687,7 +688,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 5, z: 1}
-  m_Center: {x: 0, y: -0.1400165, z: 0}
+  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!114 &4253227359949173149
 MonoBehaviour:
   m_ObjectHideFlags: 0
