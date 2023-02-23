@@ -255,3 +255,13 @@ Add placeholder SFX
 -- updated Jump state. Doll now ignores Ground layer when jumping up to allow jumping through platforms to ascend. Will need a "roof" object to prevent jumping through things you don't want to jump through. Jump state now turns off canTalk.
 
 -- there's a problem where the Attack state will cancel groundCheck for some reason (and also enable a second jump?)
+
+4.0
+
+-- added moving platform
+
+-- created PlatformPoints as a prefab so you can have as many in one scene for a platform to travel to
+
+-- can go up or down
+
+-- groundcheck needs to be looked into because player falls through it and doesnt stick to platform
