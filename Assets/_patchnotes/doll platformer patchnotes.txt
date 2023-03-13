@@ -265,3 +265,13 @@ Add placeholder SFX
 -- can go up or down
 
 -- groundcheck needs to be looked into because player falls through it and doesnt stick to platform
+
+4.1
+
+-- made the elevator
+
+-- created a better moving platform
+
+-- prefabs haven't been created for these yet
+
+-- camera manipulation will be added next
