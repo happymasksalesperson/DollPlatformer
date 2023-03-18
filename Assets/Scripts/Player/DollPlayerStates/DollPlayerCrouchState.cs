@@ -20,16 +20,9 @@ public class DollPlayerCrouchState : MonoBehaviour
         playerMovement = GetComponent<DollPlayerMovement>();
 
         modelView.OnCrouch();
-
-        modelView.Attack01 += CrouchAttack;
+        modelView.OnChangeState(State.Crouch);
     }
 
-    private void CrouchAttack()
-    {
-        if(playerMovement.grounded && playerMovement.crouching)
-        stateManager.ChangeStateString("crouchAttack01");
-    }
-    
     private void OnDisable()
     {
     }

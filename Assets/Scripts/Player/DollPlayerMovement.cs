@@ -344,6 +344,13 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             currentState = PlayerState.crouch;
         }
     }
+    
+    public void CrouchCancel(InputAction.CallbackContext context)
+    {
+        crouching = false;
+        if(grounded && !attacking)
+            currentState = PlayerState.idle;
+    }
 
     public bool IsGrounded()
     {
@@ -367,12 +374,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
             Physics.IgnoreLayerCollision(playerLayerValue, groundLayerValue, false);
         }
 
-    public void CrouchCancel(InputAction.CallbackContext context)
-    {
-            crouching = false;
-            if(grounded && !attacking)
-            currentState = PlayerState.idle;
-    }
+
 
     private void HandleGravity()
     {
@@ -396,15 +398,29 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private void Attack01(InputAction.CallbackContext context)
     {
-        attacking = true;
+        if (crouching)
+        {
+            attacking = true;
+            currentState = PlayerState.crouchAttack;
+            stateManager.ChangeStateString("crouchAttack01");
+        }
+        else if (jumping)
+        {
+            attacking = true;
+            currentState = PlayerState.jumpAttack;
+        }
+        else
+        {
+            attacking = true;
 
-        currentState = PlayerState.attack01;
+            currentState = PlayerState.attack01;
+        }
     }
 
     public void AttackEnd()
     {
         attacking = false;
-        grounded = _lastCheck;
+        if(grounded)
         currentState = PlayerState.idle;
     }
 

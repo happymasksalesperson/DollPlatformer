@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class DollPlayerModelView : MonoBehaviour
 {
+    //Change State Event...
+    public event Action<State> ChangeState;
+
+    public void OnChangeState(State currentState)
+    {
+        ChangeState?.Invoke(currentState);
+    }
+
+
     //attack 01 wind up
     public event Action Attack01Windup;
 

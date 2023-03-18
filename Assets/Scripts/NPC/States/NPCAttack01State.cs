@@ -7,6 +7,8 @@ public class NPCAttack01State : MonoBehaviour
 {
     private StateManager _stateManager;
 
+    private DollPlayerModelView testModelView;
+
     private NPCModelView modelView;
     private StatsComponent _stats;
 
@@ -29,7 +31,9 @@ public class NPCAttack01State : MonoBehaviour
         _stateManager = GetComponent<StateManager>();
         _stats = GetComponent<StatsComponent>();
 
-        attack01Power = _stats.attack01Power;
+        testModelView = GetComponentInChildren<DollPlayerModelView>();
+
+            attack01Power = _stats.attack01Power;
 
         attack01Radius = _stats.attack01Radius;
 
@@ -63,7 +67,8 @@ public class NPCAttack01State : MonoBehaviour
                 }
 
                 modelView.OnAttack01();
-
+                
+                testModelView.OnChangeState(State.Attack01);
 
                 //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 

@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 80701525622162607}
   - component: {fileID: 5322295524137256759}
   - component: {fileID: 2972325210454986756}
+  - component: {fileID: 4498439753984233747}
+  - component: {fileID: 42712734293266366}
   m_Layer: 3
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -436,8 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slideForce: 5000
-  slideTime: 5
-  crouchAttack01Time: 5
+  slideTime: 3
   crouchAttack01Power: 5
   crouchAttack01Radius: 5
   playerAimVector: {x: 0, y: 0, z: 0}
@@ -467,6 +468,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505827fd945e0084ca0c7b68b2450e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4498439753984233747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845691806028509625}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cdebbea01af6f48bd43d1218f7c6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  runningBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  jumpBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  fallBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  takeDamageBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  attack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchAttack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  deathBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  currentState: 0
+--- !u!114 &42712734293266366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845691806028509625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ca60e3ca452a54198fd3190668734c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  runningBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  jumpBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  fallBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  takeDamageBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  attack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchAttack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  deathBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  currentState: 0
 --- !u!1 &845691806474937476
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +733,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7884119115657310806}
-  - component: {fileID: 4003724768354045085}
   - component: {fileID: 4253227359949173149}
   m_Layer: 3
   m_Name: GroundCheck
@@ -669,26 +749,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8473351235729773194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.82, z: 0}
+  m_LocalPosition: {x: 0, y: -4.44, z: 0}
   m_LocalScale: {x: 4, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845691806028509626}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4003724768354045085
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473351235729773194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 1}
-  m_Center: {x: 0, y: -0.15, z: 0}
 --- !u!114 &4253227359949173149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LOSPos: {x: 0, y: 0, z: 0}
   POSYValue: 0
-  LOSExtents: {x: 50, y: 100, z: 100}
+  LOSExtents: {x: 50, y: 25, z: 50}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

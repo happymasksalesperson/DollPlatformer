@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8991058806021622301}
+  - component: {fileID: 7756938170988288364}
   m_Layer: 0
   m_Name: ModelView
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 7862248698248618471}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7756938170988288364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275718372555608177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7a6e825166d424f930e4f0a385bdad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7862248698009601651
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +208,8 @@ GameObject:
   - component: {fileID: 7862248698248618458}
   - component: {fileID: 7862248698248618459}
   - component: {fileID: 7862248698248618456}
+  - component: {fileID: 2312124153085000184}
+  - component: {fileID: 2138720735092336235}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -246,24 +261,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b4fb95a3921847bb98c0d68862b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: NPC01
+  type: 1
+  myName: 
   maxHP: 0
   HP: 0
-  _moveSpeed: 100
-  _maxSpeed: 50
-  _attackTime: 3
-  bodyHitboxPower: 0
-  attack01Power: 0
-  attack01Radius: 0
+  vulnerable: 0
   isAlive: 1
   armoured: 0
-  type: 1
-  _sightDistance: 200
-  _minDist: 0
-  _patrolTime: 3
-  _idleTime: 2
+  moveSpeed: 0
+  maxSpeed: 0
+  attack01Power: 0
+  attack01Radius: 0
+  attack01Time: 0
+  bodyHitboxPower: 0
+  sightDistance: 0
+  minDist: 0
+  patrolTime: 0
+  idleTime: 0
   modelView: {fileID: 0}
-  vulnerable: 0
   conjoined: 0
   facingDirection: 0
 --- !u!114 &7862248698248618459
@@ -282,9 +297,12 @@ MonoBehaviour:
   currentState: {fileID: 0}
   crouchState: {fileID: 0}
   idleState: {fileID: 0}
+  talkState: {fileID: 0}
   patrolState: {fileID: 0}
-  attackState: {fileID: 0}
+  attack01State: {fileID: 0}
+  crouchAttack01State: {fileID: 0}
   jumpState: {fileID: 0}
+  fallState: {fileID: 0}
   takeDamageState: {fileID: 0}
   deathState: {fileID: 0}
 --- !u!114 &7862248698248618456
@@ -301,3 +319,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack01Time: 0
   windup01Time: 0
+--- !u!114 &2312124153085000184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862248698248618470}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ca60e3ca452a54198fd3190668734c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  runningBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  jumpBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  fallBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  takeDamageBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  attack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  crouchAttack01Box:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  deathBox:
+    size: {x: 1, y: 1, z: 1}
+    position: {x: 0, y: 0, z: 0}
+  currentState: 0
+--- !u!114 &2138720735092336235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7862248698248618470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cdebbea01af6f48bd43d1218f7c6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0

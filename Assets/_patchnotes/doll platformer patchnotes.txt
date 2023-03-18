@@ -275,3 +275,11 @@ Add placeholder SFX
 -- prefabs haven't been created for these yet
 
 -- camera manipulation will be added next
+
+4.2 
+
+-- added HitBoxTracker.cs and HurtBoxTracker.cs. identical scripts that track the hitbox and hurtbox for each character state-to-state. might need to expand to account for multiple boxes per state later
+
+-- added public enum State.cs. this may be useful for refactoring, for example changing ModelView to just ChangeState(State currentState) instead of listing all of them. But then this causes events that may return null? ask cam
+
+-- 
