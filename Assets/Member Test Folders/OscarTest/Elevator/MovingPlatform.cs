@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevator : MonoBehaviour
+public class MovingPlatform : MonoBehaviour
 {
     public Transform bottomLevel;
     public Transform topLevel;
@@ -10,7 +10,20 @@ public class Elevator : MonoBehaviour
 
     public bool isGoingUp = true;
     public Rigidbody rb;
-
+    
+    public bool CallElevator()
+    {
+        if (isGoingUp)
+        {
+            isGoingUp = false;
+        }
+        else
+        {
+            isGoingUp = true;
+        }
+        return isGoingUp;
+    }
+    
     void FixedUpdate()
     {
         Vector3 targetPosition;
@@ -27,7 +40,7 @@ public class Elevator : MonoBehaviour
         Vector3 direction = (targetPosition - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, targetPosition);
 
-        rb.AddForce(direction * (moveSpeed * distance));
+        rb.AddRelativeForce(direction * (moveSpeed * distance));
 
         if (distance < 0.1f)
         {
@@ -37,15 +50,5 @@ public class Elevator : MonoBehaviour
         {
             rb.constraints = ~RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         }
-    }
-
-    public bool ElevatorUp()
-    {
-        return isGoingUp = true;
-    }
-
-    public bool ElevatorDown()
-    {
-        return isGoingUp = false;  
     }
 }
