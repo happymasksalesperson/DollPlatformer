@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Elevator : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class Elevator : MonoBehaviour
     
     public bool isGoingUp = true;
     public Rigidbody rb;
+
+    public bool isFinished;
 
     void FixedUpdate()
     {
@@ -30,11 +34,12 @@ public class Elevator : MonoBehaviour
             Vector3 direction = (targetPosition - transform.position).normalized;
             float distance = Vector3.Distance(transform.position, targetPosition);
 
-            rb.AddForce(direction * (moveSpeed * distance));
+            rb.AddForce(direction * (moveSpeed * distance * 2));
 
             if (distance <= 1f)
             {
                 rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                isFinished = true;
             }
             else
             {
@@ -43,15 +48,21 @@ public class Elevator : MonoBehaviour
         }
     }
 
+    public static event Action ElevatorMoveEvent;
+
     public bool ElevatorUp()
     {
         insideElevator.players[0].gameObject.transform.parent = this.transform;
+        isFinished = false;
+        ElevatorMoveEvent?.Invoke();
         return isGoingUp = true;
     }
 
     public bool ElevatorDown()
     {
         insideElevator.players[0].gameObject.transform.parent = this.transform;
+        isFinished = false;
+        ElevatorMoveEvent?.Invoke();
         return isGoingUp = false;  
     }
 }
