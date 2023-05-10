@@ -11,7 +11,7 @@ public class MovingPlatform : MonoBehaviour
     public bool isGoingUp = true;
     public Rigidbody rb;
     
-    public bool CallElevator()
+    public bool ChangeDirection()
     {
         if (isGoingUp)
         {
@@ -40,15 +40,16 @@ public class MovingPlatform : MonoBehaviour
         Vector3 direction = (targetPosition - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, targetPosition);
 
-        rb.AddRelativeForce(direction * (moveSpeed * distance));
+        rb.AddRelativeForce(direction * (moveSpeed * distance * 2));
 
-        if (distance < 0.1f)
+        if (distance <= 1f)
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+            ChangeDirection();
         }
         else
         {
-            rb.constraints = ~RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+            rb.constraints = ~RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
     }
 }
