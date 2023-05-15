@@ -283,3 +283,7 @@ Add placeholder SFX
 -- added public enum State.cs. this may be useful for refactoring, for example changing ModelView to just ChangeState(State currentState) instead of listing all of them. But then this causes events that may return null? ask cam
 
 -- 
+
+4.3
+
+-- added Cogs.cs and CogsManager for rotating and start/stopping multiple background cogs
