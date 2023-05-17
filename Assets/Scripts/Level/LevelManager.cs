@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     public List<Transform> itemPoints = new List<Transform>();
 
     public List<GameObject> item = new List<GameObject>();
-
+    
     private void Awake()
     {
         if (levelManager != null && levelManager != this)
@@ -34,18 +34,15 @@ public class LevelManager : MonoBehaviour
         levelManager = this;
 
         SFX = GetComponentInChildren<NPCSFX>();
-
-        SpawnPlayer();
-        SpawnNPC();
-        SpawnItem();
+        
     }
 
-    private void SpawnPlayer()
+    public void SpawnPlayer()
     {
         Instantiate(player, playerSpawn.position, playerSpawn.rotation);
     }
 
-    private void SpawnNPC()
+    public void SpawnNPC()
     {
         if (spawnPoints.Any())
         {
@@ -57,7 +54,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void SpawnItem()
+    public void SpawnItem()
     {
         if (itemPoints.Any())
         {

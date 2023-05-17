@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   HP: 0
+  isAlive: 1
   invincibilityTime: 0.7
   canTakeDamage: 0
 --- !u!1 &845691806474937476
@@ -700,8 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a08791ef84484a9824e25c60ad8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSPos: {x: 0, y: 0, z: 0}
-  POSYValue: 0
+  LOSPos: {x: 5, y: 2, z: 10}
+  POSYValue: 1
   LOSExtents: {x: 5, y: 2, z: 10}
   groundLayer:
     serializedVersion: 2

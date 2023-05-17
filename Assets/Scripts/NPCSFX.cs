@@ -60,7 +60,6 @@ public class NPCSFX : MonoBehaviour
         NPC02_SoftRoll01 = Resources.Load<AudioClip>("NPC02/NPC02_SoftRoll01");
         NPC02_SoftRoll02 = Resources.Load<AudioClip>("NPC02/NPC02_SoftRoll02");
         
-      //PlaySound("Somber");
     }
     
     /*public Dictionary<Type, GameObject> myDictionary = new Dictionary<Type, GameObject>();

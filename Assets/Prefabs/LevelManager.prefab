@@ -185,28 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpawn: {fileID: 0}
   player: {fileID: 845691806028509625, guid: 61ee5cbb086af57469eb97ef1f105920, type: 3}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  NPC:
-  - {fileID: 7351472035176131880, guid: ff904f58bcc72b241a34078726c0c51c, type: 3}
-  - {fileID: 762725751722799090, guid: 42d8c61668301f54f95a21d93822bc4e, type: 3}
-  - {fileID: 4131308200362887819, guid: 5fe6e6d6fa0e03749940c2ae44b20356, type: 3}
-  - {fileID: 4131308200362887819, guid: 5fe6e6d6fa0e03749940c2ae44b20356, type: 3}
-  - {fileID: 4131308200362887819, guid: 5fe6e6d6fa0e03749940c2ae44b20356, type: 3}
-  - {fileID: 4131308200362887819, guid: 5fe6e6d6fa0e03749940c2ae44b20356, type: 3}
-  - {fileID: 6117092576193084004, guid: c1ad424b0412fac4c971ba6dd260ba4b, type: 3}
-  - {fileID: 6117092576193084004, guid: c1ad424b0412fac4c971ba6dd260ba4b, type: 3}
-  - {fileID: 6117092576193084004, guid: c1ad424b0412fac4c971ba6dd260ba4b, type: 3}
-  - {fileID: 4131308200362887819, guid: 5fe6e6d6fa0e03749940c2ae44b20356, type: 3}
+  spawnPoints: []
+  NPC: []
   itemPoints: []
   item: []
 --- !u!114 &7011682915271033811
