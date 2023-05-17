@@ -287,3 +287,7 @@ Add placeholder SFX
 4.3
 
 -- added Cogs.cs and CogsManager for rotating and start/stopping multiple background cogs
+
+4.4
+
+-- added RisingLava.cs, updated HealthModel.cs. Lava moves upwards at a set speed and does damage to Health Model
