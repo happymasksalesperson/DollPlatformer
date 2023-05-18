@@ -1,4 +1,5 @@
 using UnityEngine;
+using Oscar;
 
 public class CameraMovement : MonoBehaviour
 {

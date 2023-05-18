@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         levelManager = this;
 
         SFX = GetComponentInChildren<NPCSFX>();
-        
+        SpawnPlayer();
     }
 
     public void SpawnPlayer()

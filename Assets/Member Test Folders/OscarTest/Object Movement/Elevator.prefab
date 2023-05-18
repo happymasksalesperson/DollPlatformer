@@ -340,7 +340,7 @@ MonoBehaviour:
   insideElevator: {fileID: 8157131721732669001}
   bottomLevel: {fileID: 0}
   topLevel: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 20
   isGoingUp: 0
   rb: {fileID: 8157131722120319600}
   isFinished: 0
