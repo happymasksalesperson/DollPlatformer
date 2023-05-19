@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -27,7 +29,88 @@ public class MainMenu : MonoBehaviour
 
     public CogsManager cogsManager;
 
+    public Image gamepadEast;
+    public Image gamepadSouth;
+    
+    //sliders for music and SFX
+    //save this
+        //"PlayerPrefs"
+        public float musicVolume = 1f;
+    
+        public float SFXVolume = 1f;
+
+        public GameObject musicObj;
+        public Slider musicSlider;
+
+        public GameObject SFXObj;
+    public Slider SFXSlider;
+
+    public Dictionary<float, Slider> sliderSettings;
+
+    public float[] sliderFloats;
+    public int selectedSliderIndex = 0;
+
     public void Start()
+    {
+        StartMenu();
+        StartOptions();
+
+        if(cogsManager)
+            cogsManager.StopStartStop();
+    }
+
+    public void StartOptions()
+    {
+        musicObj = musicSlider.gameObject;
+        SFXObj = SFXSlider.gameObject;
+        
+        sliderFloats = new[] { musicVolume, SFXVolume };
+        
+        /*
+        sliderSettings = new Dictionary<float, Slider>()
+        {
+            { musicVolume, musicSlider },
+            { SFXVolume, SFXSlider }
+        };
+        */
+        
+        SetSliderValue(musicVolume, musicSlider);
+        SetSliderValue(SFXVolume, SFXSlider);
+
+    }
+
+    public void SetSliderValue(float newValue, Slider slider)
+    {
+        if (slider != null)
+        {
+            slider.value = newValue;
+        }
+    }
+
+    private void OnSliderNavigate(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            float inputDirection = context.ReadValue<float>();
+            
+            if (inputDirection > 0)
+            {
+                selectedSliderIndex--;
+
+                if (selectedSliderIndex < 0)
+                    selectedSliderIndex = sliderFloats.Length - 1;
+            }
+            else if (inputDirection < 0)
+            {
+                selectedSliderIndex++;
+                
+                if (selectedSliderIndex >= sliderFloats.Length)
+                    selectedSliderIndex = 0;
+            }
+        }
+    }
+    
+    public void StartMenu()
     {
         NPCSFX.PlaySound("Somber");
 
@@ -35,7 +118,9 @@ public class MainMenu : MonoBehaviour
 
         playerActions = new PlayerActions();
 
-        playerActions.MainMenu.Navigate.performed += OnMenuNavigate;
+        playerActions.MainMenu.NavigateUpDown.performed += OnMenuNavigate;
+        
+        playerActions.MainMenu.NavigateLeftRight.performed += OnSliderInteract;
 
         playerActions.MainMenu.Confirm.performed += OnConfirm;
 
@@ -52,7 +137,22 @@ public class MainMenu : MonoBehaviour
             { 2, QuitGame }
         };
         
-        cogsManager.StopStartAllCogs();
+        NeutralMenu();
+    }
+
+    private float prevMusVol;
+    
+    public void Update()
+    {
+        UpdateSlider(selectedTextIndex);
+
+        musicVolume = musicSlider.value;
+        
+        if(prevMusVol != musicVolume)
+        {
+            NPCSFX.ChangeVolume(musicSlider.value);
+            prevMusVol = musicVolume;
+        }
     }
 
     public void OnMenuNavigate(InputAction.CallbackContext context)
@@ -64,7 +164,7 @@ public class MainMenu : MonoBehaviour
             if (inputDirection > 0)
             {
                 selectedTextIndex--;
-                
+
                 if (confirmingExit && selectedTextIndex == 1)
                     selectedTextIndex = 0;
 
@@ -83,8 +183,37 @@ public class MainMenu : MonoBehaviour
             }
             
             UpdateSelectionColor();
+        }
+    }
+
+    private void UpdateSlider(float index)
+    {
+        if (confirmingOptions)
+        {
+            if (index == 0)
+            {
+                musicSlider.Select();
+            }
+
+            else if (index == 1)
+            {
+                SFXSlider.Select();
+            }
+
+
+            else
+            {
+                musicSlider.OnDeselect(new BaseEventData(EventSystem.current));
+                SFXSlider.OnDeselect(new BaseEventData(EventSystem.current));
+            }
+        }
+    }
+
+    public void OnSliderInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             
-            Debug.Log(inputDirection);
         }
     }
 
@@ -106,6 +235,9 @@ public class MainMenu : MonoBehaviour
 
     private void NeutralMenu()
     {
+        musicObj.SetActive(false);
+        SFXObj.SetActive(false);
+
         selectedTextIndex = 0;
         UpdateSelectionColor();
 
@@ -120,7 +252,12 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        if (confirmingExit || confirmingOptions)
+        if (confirmingOptions)
+        {
+            return;
+        }
+        
+        if (confirmingExit)
         {
             NeutralMenu();
         }
@@ -129,7 +266,8 @@ public class MainMenu : MonoBehaviour
         {
             canvas.enabled = false;
             
-            playerActions.MainMenu.Navigate.performed -= OnMenuNavigate;
+            playerActions.MainMenu.NavigateUpDown.performed -= OnMenuNavigate;
+            playerActions.MainMenu.NavigateLeftRight.performed -= OnSliderInteract;
             playerActions.MainMenu.Confirm.performed -= OnConfirm;
             playerActions.MainMenu.Cancel.performed -= OnCancel;
             
@@ -144,15 +282,22 @@ public class MainMenu : MonoBehaviour
 
     private void Options()
     {
+        if(confirmingOptions)
+            return;
+        
         selectedTextIndex = 0;
+        UpdateSlider(selectedTextIndex);
         UpdateSelectionColor();
+
+        musicObj.SetActive(true);
+        SFXObj.SetActive(true);
         
         if (!confirmingOptions)
         {
             confirmingOptions = true;
-            startText.text = "Come";
-            optionsText.text = "Back";
-            quitText.text = "Later";
+            startText.text = "MUSIC VOLUME";
+            optionsText.text = "SOUND EFFECTS VOLUME";
+            quitText.text = "I'M READY";
         }
         else
             NeutralMenu();

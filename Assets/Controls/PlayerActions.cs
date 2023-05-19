@@ -535,9 +535,18 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Navigate"",
+                    ""name"": ""NavigateUpDown"",
                     ""type"": ""Value"",
                     ""id"": ""73735913-fb77-4d87-b668-791b8dcdbf71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""NavigateLeftRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""b308b9bf-3627-406b-a6e0-0783c76b35c4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -607,7 +616,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -618,7 +627,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -629,7 +638,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -640,7 +649,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -651,7 +660,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -662,7 +671,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -673,7 +682,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -684,7 +693,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -695,7 +704,106 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""57c81aa4-9923-4e42-8d8e-b7ce6b712022"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""7cbc1a69-d8eb-4539-aa4d-b876b36f6cbc"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""61c754c7-a8b3-417e-a0b4-a29edce80915"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""0dcd91fe-7219-477d-8b7b-4d591fd1a3e5"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3062514c-6a29-4428-b3ec-30098aa69c2d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e1704f5c-54f4-438f-ba87-da0de7cfe634"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1c55f338-f3da-4b25-b6a7-6dea6a8238c1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""35acf45f-ec91-4e24-a7db-9fd4bf57c423"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9a2e9b75-4ebb-4e75-bbf5-eccf7811dffb"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateLeftRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -717,7 +825,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
         m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
         m_MainMenu_Confirm = m_MainMenu.FindAction("Confirm", throwIfNotFound: true);
-        m_MainMenu_Navigate = m_MainMenu.FindAction("Navigate", throwIfNotFound: true);
+        m_MainMenu_NavigateUpDown = m_MainMenu.FindAction("NavigateUpDown", throwIfNotFound: true);
+        m_MainMenu_NavigateLeftRight = m_MainMenu.FindAction("NavigateLeftRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -860,14 +969,16 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private IMainMenuActions m_MainMenuActionsCallbackInterface;
     private readonly InputAction m_MainMenu_Cancel;
     private readonly InputAction m_MainMenu_Confirm;
-    private readonly InputAction m_MainMenu_Navigate;
+    private readonly InputAction m_MainMenu_NavigateUpDown;
+    private readonly InputAction m_MainMenu_NavigateLeftRight;
     public struct MainMenuActions
     {
         private @PlayerActions m_Wrapper;
         public MainMenuActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_MainMenu_Cancel;
         public InputAction @Confirm => m_Wrapper.m_MainMenu_Confirm;
-        public InputAction @Navigate => m_Wrapper.m_MainMenu_Navigate;
+        public InputAction @NavigateUpDown => m_Wrapper.m_MainMenu_NavigateUpDown;
+        public InputAction @NavigateLeftRight => m_Wrapper.m_MainMenu_NavigateLeftRight;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -883,9 +994,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Confirm.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnConfirm;
                 @Confirm.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnConfirm;
                 @Confirm.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnConfirm;
-                @Navigate.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
-                @Navigate.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
-                @Navigate.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
+                @NavigateUpDown.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateUpDown;
+                @NavigateUpDown.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateUpDown;
+                @NavigateUpDown.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateUpDown;
+                @NavigateLeftRight.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateLeftRight;
+                @NavigateLeftRight.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateLeftRight;
+                @NavigateLeftRight.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigateLeftRight;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -896,9 +1010,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Confirm.started += instance.OnConfirm;
                 @Confirm.performed += instance.OnConfirm;
                 @Confirm.canceled += instance.OnConfirm;
-                @Navigate.started += instance.OnNavigate;
-                @Navigate.performed += instance.OnNavigate;
-                @Navigate.canceled += instance.OnNavigate;
+                @NavigateUpDown.started += instance.OnNavigateUpDown;
+                @NavigateUpDown.performed += instance.OnNavigateUpDown;
+                @NavigateUpDown.canceled += instance.OnNavigateUpDown;
+                @NavigateLeftRight.started += instance.OnNavigateLeftRight;
+                @NavigateLeftRight.performed += instance.OnNavigateLeftRight;
+                @NavigateLeftRight.canceled += instance.OnNavigateLeftRight;
             }
         }
     }
@@ -917,6 +1034,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     {
         void OnCancel(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
-        void OnNavigate(InputAction.CallbackContext context);
+        void OnNavigateUpDown(InputAction.CallbackContext context);
+        void OnNavigateLeftRight(InputAction.CallbackContext context);
     }
 }

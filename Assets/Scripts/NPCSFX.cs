@@ -9,6 +9,13 @@ public class NPCSFX : MonoBehaviour
     private NPCModelView modelView;
     public List<GameObject> NPC02List = new List<GameObject>();
 
+    public int[] soundTypes;
+    public int music = 0;
+    public int SFX = 1;
+
+    public float musicVolume;
+    public float SFXVolume;
+
     public static AudioClip
         
         //SONGS
@@ -34,9 +41,13 @@ public class NPCSFX : MonoBehaviour
 
     static AudioSource audioSrc;
 
+    public static string currentSong;
+    
     void Awake()
     {
-        audioSrc = GetComponent<AudioSource>();
+       soundTypes = new[] { music, SFX };
+
+       audioSrc = GetComponent<AudioSource>();
         //example = Resources.Load<AudioClip>("example");
 
         Chase = Resources.Load<AudioClip>("Songs/Chase");
@@ -172,10 +183,18 @@ public class NPCSFX : MonoBehaviour
             PlaySound("NPC02_Death03");
     }
 
+    public static void ChangeVolume(float amount)
+    {
+        audioSrc.volume = amount;
+    }
+
     public static void PlaySound(string clipName)
     {
+        currentSong = clipName;
+        
         switch (clipName)
         {
+            
             case "Chase":
                 audioSrc.PlayOneShot(Chase);
                 break;

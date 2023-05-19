@@ -22,6 +22,8 @@ public class CogsManager : MonoBehaviour
 
     private bool targetBool;
 
+    public bool initialised = false;
+
     public void Start()
     {
         foreach (Cogs managedCogs in cogsList)
@@ -34,6 +36,23 @@ public class CogsManager : MonoBehaviour
                 RotateAllCogsEvent += newCogs.ReverseRotation;
             }
         }
+
+        initialised = true;
+    }
+
+    public void StopStartStop()
+    {
+        StartCoroutine(StartStopStartCoro());
+    }
+
+    public IEnumerator StartStopStartCoro()
+    {
+        while (!initialised)
+        {
+            yield return null;
+        }
+        
+        StopStartAllCogs();
     }
 
     public void StopStartAllCogs()
@@ -41,7 +60,7 @@ public class CogsManager : MonoBehaviour
         spinAllCogs = !spinAllCogs;
         OnStopStartAllCogs(spinAllCogs);
     }
-    
+
     public void ReverseAllCogs()
     {
         OnRotateAllCogs(rotateLeft);

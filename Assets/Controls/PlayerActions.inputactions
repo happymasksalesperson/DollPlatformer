@@ -513,9 +513,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Navigate",
+                    "name": "NavigateUpDown",
                     "type": "Value",
                     "id": "73735913-fb77-4d87-b668-791b8dcdbf71",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "NavigateLeftRight",
+                    "type": "Value",
+                    "id": "b308b9bf-3627-406b-a6e0-0783c76b35c4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -585,7 +594,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -596,7 +605,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -607,7 +616,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -618,7 +627,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -629,7 +638,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -640,7 +649,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -651,7 +660,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -662,7 +671,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -673,7 +682,106 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "57c81aa4-9923-4e42-8d8e-b7ce6b712022",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "7cbc1a69-d8eb-4539-aa4d-b876b36f6cbc",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "61c754c7-a8b3-417e-a0b4-a29edce80915",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "0dcd91fe-7219-477d-8b7b-4d591fd1a3e5",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "3062514c-6a29-4428-b3ec-30098aa69c2d",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e1704f5c-54f4-438f-ba87-da0de7cfe634",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "1c55f338-f3da-4b25-b6a7-6dea6a8238c1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "35acf45f-ec91-4e24-a7db-9fd4bf57c423",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9a2e9b75-4ebb-4e75-bbf5-eccf7811dffb",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateLeftRight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
