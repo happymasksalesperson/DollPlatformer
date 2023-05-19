@@ -273,10 +273,14 @@ public class MainMenu : MonoBehaviour
             
             playerActions.MainMenu.Disable();
             
-            this.enabled = false;
+            LevelManager.levelManager.SpawnNPC();
             
-            LevelManager.levelManager.SpawnPlayer();
-            Destroy(idlePlayer);
+            GameObject playerObj = LevelManager.levelManager.SpawnPlayer();
+
+            CameraController.Instance.cam1TargetTransform = playerObj.transform;
+                CameraController.Instance.SetCam1Target();
+                
+                this.enabled = false;
         }
     }
 

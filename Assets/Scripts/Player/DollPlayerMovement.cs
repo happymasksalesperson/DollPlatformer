@@ -87,7 +87,7 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     public bool jumping;
 
-    private Gravity _gravity;
+    public Gravity _gravity;
     
     /*[SerializeField] private float _groundCheckHeight;
 
@@ -245,6 +245,19 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     //
     private void HandleMovement()
     {
+        if (crouching)
+        {
+            if (_movement.x > 0)
+            {
+                facingRight = false;
+            }
+
+            else if (_movement.x < 0)
+            {
+                facingRight = true;
+            }
+        }
+        
         if (!grounded && !attacking && !jumping)
         {
             modelView.OnFall();
@@ -285,6 +298,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
                 modelView.OnIdle();
             }
         }
+
+        if (!grounded)
+            _gravity.enabled = true;
 
         ChangeMovementState(currentState);
         modelView.OnFacingRight(facingRight);
@@ -421,8 +437,12 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     public void AttackEnd()
     {
         attacking = false;
-        if(grounded)
-        currentState = PlayerState.idle;
+
+        if (grounded && crouching)
+            currentState = PlayerState.crouch;
+
+        else if (grounded)
+            currentState = PlayerState.idle;
     }
 
     public void TakeDamageGracePeriod()

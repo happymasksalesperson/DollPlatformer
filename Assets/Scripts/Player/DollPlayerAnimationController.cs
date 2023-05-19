@@ -24,6 +24,7 @@ public class DollPlayerAnimationController : MonoBehaviour
         modelView.Attack01Windup += AttackWindup01;
 
         modelView.Crouch += Crouch;
+        modelView.CrouchAttack01 += CrouchAttack01;
 
         modelView.Idle += Idle;
 
@@ -65,6 +66,11 @@ public class DollPlayerAnimationController : MonoBehaviour
     private void Crouch()
     {
         anim.Play("Crouch");
+    }
+
+    private void CrouchAttack01()
+    {
+        anim.Play("CrouchAttack01");
     }
 
     private void Idle()

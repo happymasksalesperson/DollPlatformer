@@ -13,15 +13,18 @@ public class LevelManager : MonoBehaviour
 
     public Transform playerSpawn;
 
-    public GameObject player;
-
-    public List<Transform> spawnPoints = new List<Transform>();
-
-    public List<GameObject> NPC = new List<GameObject>();
+    public GameObject player; 
     
+    [Header("POTENTIAL NPC PREFABS IN LEVEL")]
+    public List<GameObject> NPC = new List<GameObject>();
+
+    [Header("NPC SPAWN POINTS")]
+    public List<Transform> NPCSpawnPoints = new List<Transform>();
+    
+    public List<GameObject> item = new List<GameObject>();
+
     public List<Transform> itemPoints = new List<Transform>();
 
-    public List<GameObject> item = new List<GameObject>();
     
     private void Awake()
     {
@@ -37,20 +40,21 @@ public class LevelManager : MonoBehaviour
        // SpawnPlayer();
     }
 
-    public void SpawnPlayer()
+    public GameObject SpawnPlayer()
     {
-        Instantiate(player, playerSpawn.position, playerSpawn.rotation);
+        GameObject playerInstance = Instantiate(player, playerSpawn.position, playerSpawn.rotation) as GameObject;
         playerSpawn.gameObject.SetActive(false);
+        return playerInstance;
     }
 
     public void SpawnNPC()
     {
-        if (spawnPoints.Any())
+        if (NPCSpawnPoints.Any())
         {
-            for (int i = 0; i < spawnPoints.Count; i++)
+            for (int i = 0; i < NPCSpawnPoints.Count; i++)
             {
                 int prefabIndex = i % NPC.Count;
-                Instantiate(NPC[prefabIndex], spawnPoints[i].position, spawnPoints[i].rotation);
+                Instantiate(NPC[prefabIndex], NPCSpawnPoints[i].position, NPCSpawnPoints[i].rotation);
             }
         }
     }

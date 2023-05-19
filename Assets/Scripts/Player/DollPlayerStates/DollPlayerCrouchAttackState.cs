@@ -37,6 +37,7 @@ public class DollPlayerCrouchAttackState : MonoBehaviour
 
     private Vector3 originalVelocity;
 
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,11 +55,11 @@ public class DollPlayerCrouchAttackState : MonoBehaviour
         modelView.OnCrouchAttack01();
 
         stats = GetComponent<DollPlayerStats>();
-        
-        //crouch is just stats attackPower
-        crouchAttack01Power = stats.attack01Power;
 
         crouchAttack01Radius = stats.crouchAttack01Radius;
+
+        //custom crouch shit later
+        crouchAttack01Power = stats.attack01Power;
 
         slideTime = stats.crouchAttack01Time;
 
@@ -71,8 +72,31 @@ public class DollPlayerCrouchAttackState : MonoBehaviour
     {
         float horizontalForce = facingRight ? -slideForce : slideForce;
         rb.AddForce(new Vector3(horizontalForce, 0, 0), ForceMode.Impulse);
+        
+        
 
         StartCoroutine(CrouchAttack01());
+    }
+
+    private void Update()
+    {
+        int playerLayer = 3;
+        int allLayers = ~0; // all bits set to 1, represents all layers
+
+        int layerMask = allLayers & ~(1 << playerLayer);
+        //copy/paste from Doll Play Attack State
+        Collider[] hits = new Collider[10];
+
+        int numHits = Physics.OverlapSphereNonAlloc(transform.position, crouchAttack01Radius, hits, layerMask);
+        
+        for (int i = 0; i < numHits; i++)
+        {
+            ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
+            if (damageable != null)
+            {
+                damageable.ChangeHP(crouchAttack01Power);
+            }
+        }
     }
 
     private IEnumerator CrouchAttack01()
@@ -81,16 +105,9 @@ public class DollPlayerCrouchAttackState : MonoBehaviour
             yield return new WaitForSeconds(slideTime);
             
             playerMovement.AttackEnd();
-
-            if(playerMovement.crouching)
-            stateManager.ChangeStateString("crouch");
-            
-            else
-                stateManager.ChangeStateString("idle");
     }
 
     private void OnDisable()
     {
-        
     }
 }

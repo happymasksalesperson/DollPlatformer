@@ -68,7 +68,7 @@ public class NPCAttack01State : MonoBehaviour
 
                 modelView.OnAttack01();
                 
-                testModelView.OnChangeState(State.Attack01);
+//                testModelView.OnChangeState(State.Attack01);
 
                 //Collider[] hitColliders = Physics.OverlapSphereNonAlloc(attackCenter, attackRadius, Quaternion.identity, 9999, QueryTriggerInteraction.Collide);
 

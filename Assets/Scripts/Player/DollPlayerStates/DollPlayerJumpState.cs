@@ -100,7 +100,7 @@ public class DollPlayerJumpState : MonoBehaviour
 
     private void Jump()
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(new Vector3(rb.velocity.x, 1 * jumpForce, 0), ForceMode.Impulse);
         /*timeElapsed += Time.deltaTime;
         if (holdingJump && timeElapsed < jumpTime)
         {

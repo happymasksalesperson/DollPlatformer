@@ -21,6 +21,8 @@ public class DollPlayerFallState : MonoBehaviour
         playerMovement = GetComponent<DollPlayerMovement>();
 
         stateManager = GetComponent<StateManager>();
+
+        playerMovement._gravity.enabled = true;
     }
 
     private void FixedUpdate()

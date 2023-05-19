@@ -41,9 +41,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2606115914721503035}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8206697646671095302
@@ -153,7 +161,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &6117092575864828452
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,7 +178,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6117092575864828453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +211,7 @@ GameObject:
   - component: {fileID: 6117092576193084006}
   - component: {fileID: 6117092576193084007}
   - component: {fileID: 380527723606808287}
+  - component: {fileID: 3383006590618539613}
   m_Layer: 10
   m_Name: NPC02_drum03
   m_TagString: Untagged
@@ -218,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 6117092576193084004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4847900247939493081}
@@ -269,14 +279,14 @@ MonoBehaviour:
   vulnerable: 0
   isAlive: 1
   armoured: 0
-  moveSpeed: 1000
-  maxSpeed: 1000
+  moveSpeed: 200
+  maxSpeed: 200
   attack01Power: -1
   attack01Radius: 400
   attack01Time: 0
   bodyHitboxPower: 0
-  sightDistance: 1000
-  minDist: 100
+  sightDistance: 100
+  minDist: 50
   patrolTime: 5
   idleTime: 0.25
   modelView: {fileID: 0}
@@ -367,10 +377,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6117092576193084004}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -384,9 +405,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6117092576193084004}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.4184105, y: 1.646917, z: 1}
   m_Center: {x: 0.02836876, y: -0.11244088, z: 0}
 --- !u!114 &380527723606808287
@@ -401,6 +430,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ddb7cf3b25b54abdc419a3967cbf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3383006590618539613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117092576193084004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccab04390e7d08e4882919544813e2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: 0
+  globalGravity: 0
 --- !u!1 &6117092576666666037
 GameObject:
   m_ObjectHideFlags: 0
