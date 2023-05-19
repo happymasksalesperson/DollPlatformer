@@ -34,12 +34,13 @@ public class LevelManager : MonoBehaviour
         levelManager = this;
 
         SFX = GetComponentInChildren<NPCSFX>();
-        SpawnPlayer();
+       // SpawnPlayer();
     }
 
     public void SpawnPlayer()
     {
         Instantiate(player, playerSpawn.position, playerSpawn.rotation);
+        playerSpawn.gameObject.SetActive(false);
     }
 
     public void SpawnNPC()

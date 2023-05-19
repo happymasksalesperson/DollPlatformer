@@ -291,3 +291,15 @@ Add placeholder SFX
 4.4
 
 -- added RisingLava.cs, updated HealthModel.cs. Lava moves upwards at a set speed and does damage to Health Model
+
+4.5
+
+-- added Main Menu scene and MainMenu.cs. added logic for selecting between Start / Options / Exit and Yes / No. 
+
+4.6
+
+-- added elevator and Rotating Eye
+
+4.7
+
+-- updated Main Menu. 

@@ -255,6 +255,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
 
+            _gravity.enabled = false;
+
             if (_rb.velocity.magnitude > _maxSpeed)
             {
                 _rb.velocity = _rb.velocity.normalized * _maxSpeed;
@@ -321,6 +323,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
     {
         jumping = false;
         _lastCheck = grounded;
+        
+        _gravity.enabled = false;
 
         if (running)
             currentState = PlayerState.run;
@@ -378,11 +382,8 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private void HandleGravity()
     {
-        _rb.useGravity = true;
-
         if (_groundCheckEnabled && IsGrounded())
         {
-            _rb.useGravity = false;
             jumping = false;
         }
 

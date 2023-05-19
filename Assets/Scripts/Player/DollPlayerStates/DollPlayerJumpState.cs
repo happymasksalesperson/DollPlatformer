@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +21,9 @@ public class DollPlayerJumpState : MonoBehaviour
     private float horizontalMultiplier;
 
     public AnimationCurve jumpCurve;
+    [ReadOnly]
     public float jumpForce;
+    [ReadOnly]
     public float jumpTime;
 
     public Rigidbody rb;
@@ -45,8 +48,9 @@ public class DollPlayerJumpState : MonoBehaviour
         horizontalMultiplier = playerStats.jumpSpeedMultipler;
 
         stateManager = GetComponent<StateManager>();
-        gravity = GetComponent<Gravity>();
-        defaultScale = gravity.CurrentGravity();
+       gravity = GetComponent<Gravity>();
+       gravity.enabled = true;
+       // defaultScale = gravity.CurrentGravity();
         modelView = GetComponentInChildren<DollPlayerModelView>();
         modelView.OnJump();
 
@@ -73,13 +77,13 @@ public class DollPlayerJumpState : MonoBehaviour
     void FixedUpdate()
     {
         grounded = playerMovement.grounded;
-        holdingJump = playerMovement.holdingJump;
+        /*holdingJump = playerMovement.holdingJump;
         if (holdingJump)
         {
             gravityScale = defaultScale * gravityMultiplier;
 
             gravity.ChangeGravity(gravityScale);
-        }
+        }*/
         
         int playerLayerIndex = LayerMask.NameToLayer("Player");
         int groundLayerIndex = LayerMask.NameToLayer("Ground");
@@ -96,18 +100,19 @@ public class DollPlayerJumpState : MonoBehaviour
 
     private void Jump()
     {
-        timeElapsed += Time.deltaTime;
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        /*timeElapsed += Time.deltaTime;
         if (holdingJump && timeElapsed < jumpTime)
         {
             float jumpForceMultiplier = jumpCurve.Evaluate(timeElapsed / jumpTime);
             rb.AddForce(new Vector3(rb.velocity.x * horizontalMultiplier, jumpForce * jumpForceMultiplier, 0), ForceMode.Acceleration);
-        }
+        }*/
     }
 
     private void OnDisable()
     {
         holdingJump = false;
         grounded = false;
-        gravity.ChangeGravity(defaultScale);
+//        gravity.ChangeGravity(defaultScale);
     }
 }
