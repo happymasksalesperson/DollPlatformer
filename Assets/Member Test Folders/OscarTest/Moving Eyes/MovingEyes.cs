@@ -16,9 +16,9 @@ namespace Oscar
 
         void Update()
         {
-            if (neighbours.player.Count <= 1)
+            if (neighbours.playerList.Count <= 1)
             {
-                target = neighbours.player[0];
+                target = neighbours.playerList[0];
             }
             if (target)
             {

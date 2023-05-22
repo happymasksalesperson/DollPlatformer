@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -105,7 +105,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2150
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5badcac5c79c04fa92105768bd3a2a
+      internalID: -1074263767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_1
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 2150
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e7d8c8c1089504e808774a904156bb
+      internalID: -516260427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_2
+      rect:
+        serializedVersion: 2
+        x: 3332
+        y: 2150
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0fe4800ef120b45bab672508a3475c
+      internalID: -1469832475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17db82a0a26aa8a4788fa70060c2771f
+      internalID: 894385466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_4
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 0
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b09e6c26e31594e864768873017960
+      internalID: -563822957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Test_GrassBase_Lrg1.1_5
+      rect:
+        serializedVersion: 2
+        x: 3332
+        y: 0
+        width: 1666.6666
+        height: 2150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abc54976db55af4bb908b5442a15da5
+      internalID: -283415555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -116,7 +242,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Test_GrassBase_Lrg1.1_0: -1074263767
+      Test_GrassBase_Lrg1.1_1: -516260427
+      Test_GrassBase_Lrg1.1_2: -1469832475
+      Test_GrassBase_Lrg1.1_3: 894385466
+      Test_GrassBase_Lrg1.1_4: -563822957
+      Test_GrassBase_Lrg1.1_5: -283415555
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
