@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Networking.PlayerConnection;
 
@@ -40,6 +41,7 @@ public class LevelManager : MonoBehaviour
        // SpawnPlayer();
     }
 
+    [Button]
     public GameObject SpawnPlayer()
     {
         GameObject playerInstance = Instantiate(player, playerSpawn.position, playerSpawn.rotation) as GameObject;
@@ -47,6 +49,7 @@ public class LevelManager : MonoBehaviour
         return playerInstance;
     }
 
+    [Button]
     public void SpawnNPC()
     {
         if (NPCSpawnPoints.Any())
@@ -59,6 +62,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    [Button]
     public void SpawnItem()
     {
         if (itemPoints.Any())

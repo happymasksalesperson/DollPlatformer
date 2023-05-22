@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class NPCAnimationController : MonoBehaviour
@@ -13,6 +14,9 @@ public class NPCAnimationController : MonoBehaviour
     
     private Animator anim;
 
+    [ReadOnly]
+    public bool facingRight;
+
     private void OnEnable()
     {
         rend = GetComponent<SpriteRenderer>();
@@ -23,6 +27,22 @@ public class NPCAnimationController : MonoBehaviour
         modelView.Attack01Windup += Attack01Windup;
         modelView.TakeDamage += TakeDamage;
         modelView.Patrol += Patrolling;
+        modelView.FacingRight += FlipSpriteX;
+    }
+
+    public void FlipSpriteX(bool newFacingRight)
+    {
+        if (newFacingRight)
+        {
+            rend.flipX = true;
+        }
+
+        else
+        {
+            rend.flipX = false;
+        }
+
+        facingRight = newFacingRight;
     }
 
     private void Attack()
@@ -51,5 +71,6 @@ public class NPCAnimationController : MonoBehaviour
         modelView.Attack01Windup -= Attack01Windup;
         modelView.TakeDamage -= TakeDamage;
         modelView.Patrol -= Patrolling;
+        modelView.FacingRight -= FlipSpriteX;
     }
 }

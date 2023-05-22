@@ -23,8 +23,6 @@ public class MarcusMovement : MonoBehaviour, IPlayer
 
     private DollPlayerStats playerStats;
 
-    private DollPlayerAnimationStates _animStates;
-
     //tracks player facing dir
     public bool _facingRight;
 
@@ -104,8 +102,6 @@ public class MarcusMovement : MonoBehaviour, IPlayer
         _groundCheck = GetComponentInChildren<GroundCheck>();
 
         currentState = PlayerState.Idling;
-
-        _animStates = GetComponentInChildren<DollPlayerAnimationStates>();
 
         //_animStates.ChangeMoveInt(0);
         // _defaultGravity = 

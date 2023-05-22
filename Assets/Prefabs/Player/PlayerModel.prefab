@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
-  horizontalDist: 500
-  verticalDist: 2500
+  horizontalDist: 10
+  verticalDist: 10
 --- !u!114 &3598934413428729640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +607,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5667789258009985026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOSPos: {x: 5, y: 2, z: 10}
-  POSYValue: 1
+  POSYValue: 0
   LOSExtents: {x: 5, y: 2, z: 10}
   groundLayer:
     serializedVersion: 2

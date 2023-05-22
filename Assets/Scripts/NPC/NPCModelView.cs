@@ -52,4 +52,11 @@ public class NPCModelView : MonoBehaviour
     {
         Death?.Invoke();
     }
+    
+    public event Action<bool> FacingRight;
+
+    public void OnFacingRight(bool facingRight)
+    {
+        FacingRight?.Invoke(facingRight);
+    }
 }
