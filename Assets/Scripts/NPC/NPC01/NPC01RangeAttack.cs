@@ -112,10 +112,14 @@ public class NPC01RangeAttack : MonoBehaviour
         counting = false;
         StopAllCoroutines();
         brain.rangeAttack = false;
+        
+        brain.lastPointOfInterest = targetTransform.position;
+        
+        brain.agitated = true;
     }
-
-
+    
     private void OnDisable()
     {
+        
     }
 }

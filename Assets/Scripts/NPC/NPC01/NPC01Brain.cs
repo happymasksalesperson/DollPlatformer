@@ -6,24 +6,36 @@ using UnityEngine.Rendering;
 
 public class NPC01Brain : MonoBehaviour
 {
+    public NPCType myType;
+    
     public GameObject currentState;
     public StateGameObjectManager stateManager;
 
     public GameObject spawnState;
+    public GameObject agitatedState;
     public GameObject rangeAttackState;
+    public GameObject meleeAttackState;
     public GameObject idleState;
+    public GameObject jumpState;
+    public GameObject jumpRangeAttackState;
 
     public GroundCheck groundCheck;
     public Gravity gravity;
 
     public Transform myTransform;
     public Transform targetTransform;
+
+    public Vector3 lastPointOfInterest;
+
+    public float pursueTimer;
     
     public enum allNPC01States
     {
         spawnState,
         idleState,
         patrolState,
+        jumpState,
+        jumpAttackState,
         agitatedState,
         meleeAttackState,
         rangeAttackState
@@ -53,7 +65,10 @@ public class NPC01Brain : MonoBehaviour
     {
         stateDictionary[allNPC01States.spawnState] = spawnState;
         stateDictionary[allNPC01States.idleState] = idleState;
+        stateDictionary[allNPC01States.meleeAttackState] = meleeAttackState;
         stateDictionary[allNPC01States.rangeAttackState] = rangeAttackState;
+        stateDictionary[allNPC01States.agitatedState] = agitatedState;
+        stateDictionary[allNPC01States.jumpState] = jumpState;
 
         myTransform = transform;
         
@@ -83,6 +98,12 @@ public class NPC01Brain : MonoBehaviour
     }
     
     public bool rangeAttack;
+    public bool meleeAttack;
+
+    public bool idle;
+    public bool agitated;
+    public bool patrolling;
+    public bool jumping;
 
     private IEnumerator CheckStateCoroutine()
     {
@@ -108,11 +129,28 @@ public class NPC01Brain : MonoBehaviour
                 {
                     currentGameObjectState = allNPC01States.rangeAttackState;
                 }
+                
+                else if (meleeAttack)
+                {
+                    currentGameObjectState = allNPC01States.meleeAttackState;
+                }
             }
 
-            else
+            if (jumping)
             {
-                currentGameObjectState = allNPC01States.idleState;
+                currentGameObjectState = allNPC01States.jumpState;
+            }
+
+            if (!rangeAttack && !meleeAttack && !patrolling &&!jumping)
+            {
+
+                if (agitated)
+                    currentGameObjectState = allNPC01States.agitatedState;
+
+                else if (idle)
+                {
+                    currentGameObjectState = allNPC01States.idleState;
+                }
             }
         }
 

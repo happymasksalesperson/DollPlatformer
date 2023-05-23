@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6494874882752339212
+--- !u!1 &7855771198260729885
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6646847504759541384}
-  - component: {fileID: 6012932701690348827}
+  - component: {fileID: 7855771198260729887}
+  - component: {fileID: 7855771198260729886}
   m_Layer: 0
-  m_Name: IdleState
+  m_Name: JumpAttackState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6646847504759541384
+--- !u!4 &7855771198260729887
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6494874882752339212}
+  m_GameObject: {fileID: 7855771198260729885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2940513, y: 28.5975, z: 0}
+  m_LocalPosition: {x: 14.281979, y: 32.08296, z: 15.412157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6012932701690348827
+--- !u!114 &7855771198260729886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6494874882752339212}
+  m_GameObject: {fileID: 7855771198260729885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475be8f44ded33a4384de805f56b223d, type: 3}
+  m_Script: {fileID: 11500000, guid: bb82e91b5513eca44a4d22c2943962a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originTransform: {fileID: 0}
+  targetTransform: {fileID: 0}
+  projectile: {fileID: 0}
+  shootForce: 0
+  rb: {fileID: 0}
+  aimTime: 0
+  aimTimeThresh: 0
+  counting: 0
+  brain: {fileID: 0}

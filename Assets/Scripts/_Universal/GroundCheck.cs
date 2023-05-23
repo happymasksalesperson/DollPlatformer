@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
@@ -11,6 +12,7 @@ public class GroundCheck : MonoBehaviour
     public LayerMask groundLayer;
 
     public bool grounded;
+    public bool trueGround;
 
     private void Start()
     {
@@ -23,6 +25,18 @@ public class GroundCheck : MonoBehaviour
         {
             Collider[] hits = Physics.OverlapBox(new Vector3(transform.position.x, transform.position.y-POSYValue, transform.position.z), LOSExtents / 2, Quaternion.identity, groundLayer);
             grounded = hits.Length > 0;
+            
+            trueGround = false;
+            
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].gameObject.layer == LayerMask.NameToLayer("UnpassableGround"))
+                {
+                    trueGround = true;
+                    break;
+                }
+            }
+
             yield return new WaitForFixedUpdate();
         }
     }

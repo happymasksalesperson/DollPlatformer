@@ -303,3 +303,25 @@ Add placeholder SFX
 4.7
 
 -- updated Main Menu. 
+
+4.8
+
+-- updated NPC01:
+-- added NPC01Needle.cs and prefab
+
+-- added WeaponScriptableObject.cs. Not very well done will need redoing
+
+-- added StateGameObjectManager.cs. just a state machine but it takes GameObjects as states a la AnthillAI.
+
+-- added NPC01Brain.cs. Decides what state to be depending on input from hearing and sight. Attacks the Player on sight.
+-- added Idle, Melee Attack, Range Attack, Agitated State
+-- NPC01 Jab. NPC01 waits, then lunges forward. returns to agitated state.
+-- NPC01 RangeAttack. NPC01 fires a Needle projectile at the Player. returns to agitated state.
+-- added logic for equipping/unequipping weapons. For now, just fire infinite Needles.
+-- Needle has an active state wherein it can do damage to the Player. Needle will fly through the air when fire, and cease movement when it hits a wall or the ground.
+-- NPC01 AgitatedState. NPC01 turns towards the lastPointOfInterest vector. If it detects the Player, attacks again. Else, depending on it's type, Idles or Patrols.
+-- NPC01 Jump. NPC01 Jumps upwards
+
+TODO: Increase complexity, decide on projectile logic, view, SFX
+
+-- added UnpassableGround to differentiate between platform "Ground" and ground ground. You can jump up and down thru Ground, but not UnpassableGround.

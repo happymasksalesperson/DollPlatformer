@@ -25,6 +25,7 @@ public class NPCAnimationController : MonoBehaviour
 
         modelView.Attack01 += Attack;
         modelView.Attack01Windup += Attack01Windup;
+        modelView.Idle += Idle;
         modelView.TakeDamage += TakeDamage;
         modelView.Patrol += Patrolling;
         modelView.FacingRight += FlipSpriteX;
@@ -53,6 +54,11 @@ public class NPCAnimationController : MonoBehaviour
     private void Attack01Windup()
     {
         anim.Play("Attack01Windup");
+    }
+
+    private void Idle()
+    {
+        anim.Play("Idle");
     }
 
     private void TakeDamage()

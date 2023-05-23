@@ -36,6 +36,9 @@ public class NPC01SpawnState : MonoBehaviour
         spawned = true;
 
         brain.spawned = true;
+
+        //change idle / patrol 
+        brain.idle = true;
         
         Debug.Log("Spawned");
     }

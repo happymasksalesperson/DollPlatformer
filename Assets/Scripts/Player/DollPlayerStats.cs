@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DollPlayerStats : MonoBehaviour, ITakeDamage
+public class DollPlayerStats : MonoBehaviour, ITakeDamage, IPlayer
 {
     // // // // // //
     // DOLL STATS

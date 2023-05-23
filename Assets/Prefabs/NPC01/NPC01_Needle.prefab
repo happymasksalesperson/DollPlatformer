@@ -147,7 +147,7 @@ MonoBehaviour:
   LOSExtents: {x: 6, y: 1, z: 5}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 196608
   grounded: 0
 --- !u!1 &8198841173691236505
 GameObject:
@@ -287,7 +287,7 @@ MonoBehaviour:
   active: 0
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   bounce: {fileID: 0}
 --- !u!135 &8937816643288220978
 SphereCollider:
