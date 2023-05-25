@@ -20,6 +20,12 @@ public class NPC01MeleeAttack : MonoBehaviour
     public float windupTime;
     public float attackTime;
 
+    public bool jabbing=false;
+
+    public int jabAttackPower;
+
+    public Vector3 attackBox;
+
     public void OnEnable()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -27,36 +33,61 @@ public class NPC01MeleeAttack : MonoBehaviour
         modelView = brain.modelView;
 
         facingRight = brain.facingRight;
-        
+        brain.FacingRight(facingRight);
+
         modelView.OnAttack01();
 
         StartCoroutine(JabWindup());
     }
 
+    private void Update()
+    {
+        if (jabbing)
+        {
+            Collider[] hits = new Collider[100];
+            int hitsCount = Physics.OverlapBoxNonAlloc(transform.position, attackBox, hits, Quaternion.identity);
+
+            for (int i = 0; i < hitsCount; i++)
+            {
+                Collider collider = hits[i];
+
+                ITakeDamage damageable = collider.GetComponent<ITakeDamage>();
+                if (damageable != null)
+                {
+                    Debug.Log("Hit " + collider.gameObject + " for " + jabAttackPower);
+
+                    damageable.ChangeHP(jabAttackPower);
+                }
+            }
+        }
+    }
+
     private IEnumerator JabWindup()
-    {
-        yield return new WaitForSeconds(windupTime);
-        StartCoroutine(Jab());
+        {
+            yield return new WaitForSeconds(windupTime);
+            StartCoroutine(Jab());
+        }
+
+        private IEnumerator Jab()
+        {
+            jabbing = true;
+            
+            if (facingRight)
+                rb.AddForce(Vector3.right * pushForce, ForceMode.Impulse);
+            else
+                rb.AddForce(Vector3.left * pushForce, ForceMode.Impulse);
+
+            yield return new WaitForSeconds(attackTime);
+
+            Finish();
+        }
+
+        private void Finish()
+        {
+            brain.meleeAttack = false;
+
+            jabbing = false;
+
+            brain.agitated = true;
+        }
     }
-
-    private IEnumerator Jab()
-    {
-        if (facingRight)
-            rb.AddForce(Vector3.right * pushForce, ForceMode.Impulse);
-        else
-            rb.AddForce(Vector3.left * pushForce, ForceMode.Impulse);
-
-        yield return new WaitForSeconds(attackTime);
-
-        Finish();
-    }
-
-    private void Finish()
-    {
-        rb.velocity = Vector3.zero;
-        brain.meleeAttack = false;
-        
-        //change to agitated later
-        brain.idle = true;
-    }
-}

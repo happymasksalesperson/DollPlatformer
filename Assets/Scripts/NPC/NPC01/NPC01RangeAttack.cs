@@ -14,6 +14,7 @@ public class NPC01RangeAttack : MonoBehaviour
     /// adds force to projectile and unequips it
     /// 
     /// </summary>
+    
     public Transform originTransform;
 
     public Transform targetTransform;
@@ -30,20 +31,31 @@ public class NPC01RangeAttack : MonoBehaviour
     public bool counting;
 
     public NPC01Brain brain;
+    
+    public Vector3 targetVector;
 
     public void OnEnable()
     {
         brain = GetComponentInParent<NPC01Brain>();
         originTransform = brain.myTransform;
+        targetTransform = brain.oscarVision.PlayerTransform();
 
         Aim();
         StartTimer();
     }
 
     [Button]
-    private void Aim()
+    public void Aim()
     {
-        Ray ray = new Ray(originTransform.position, targetTransform.position - originTransform.position);
+        if (targetTransform == null)
+        {
+            targetVector = brain.lastPointOfInterest;
+        }
+        else
+        {
+            targetVector = targetTransform.position;
+        }
+        Ray ray = new Ray(originTransform.position, targetVector - originTransform.position);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -62,7 +74,7 @@ public class NPC01RangeAttack : MonoBehaviour
 
     public void Shoot()
     {
-        Vector3 direction = targetTransform.position - originTransform.position;
+        Vector3 direction = targetVector - originTransform.position;
         direction.Normalize();
 
         GameObject newBullet = Instantiate(projectile, originTransform.position, Quaternion.identity);
@@ -113,6 +125,7 @@ public class NPC01RangeAttack : MonoBehaviour
         StopAllCoroutines();
         brain.rangeAttack = false;
         
+        if(targetTransform!=null)
         brain.lastPointOfInterest = targetTransform.position;
         
         brain.agitated = true;

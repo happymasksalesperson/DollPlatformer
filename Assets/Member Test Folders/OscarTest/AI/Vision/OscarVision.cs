@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Oscar;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,7 +12,9 @@ public class OscarVision : MonoBehaviour
 
 	public float sightRefreshTime = 2f;
 	
-	public List<DynamicObject> aiInSight = new List<DynamicObject>();	
+	public List<DynamicObject> aiInSight = new List<DynamicObject>();
+
+	public bool seesPlayer;
 	
 	public List<DynamicObject> playerInSight = new List<DynamicObject>();
 	
@@ -68,6 +71,30 @@ public class OscarVision : MonoBehaviour
 	#endregion
 
 	#region OnTriggerStay
+
+	public void Update()
+	{
+		if (playerInSight.Any())
+		{
+			seesPlayer = true;
+		}
+		else
+		{
+			seesPlayer = false;
+		}
+	}
+
+	public Transform PlayerTransform()
+	{
+		if (playerInSight.Any())
+		{
+			return playerInSight[0].transform;
+		}
+		else
+		{
+			return null;
+		}
+	}
 
 	private IEnumerator CheckStillVisible()
 	{

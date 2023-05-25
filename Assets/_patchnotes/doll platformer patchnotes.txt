@@ -325,3 +325,9 @@ Add placeholder SFX
 TODO: Increase complexity, decide on projectile logic, view, SFX
 
 -- added UnpassableGround to differentiate between platform "Ground" and ground ground. You can jump up and down thru Ground, but not UnpassableGround.
+
+4.9
+
+-- made the Doll and NPC01 Dynamic Objects
+-- updated NPC01 Patrol state
+-- added LedgeEdge.cs and LedgeEdge prefab for detecting ledges

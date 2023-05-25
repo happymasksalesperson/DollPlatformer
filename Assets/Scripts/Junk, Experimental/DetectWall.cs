@@ -6,8 +6,10 @@ public class DetectWall : MonoBehaviour
     public float detectionRange = 1f;
     public Vector3 boxSize = new Vector3(5, 5, 5);
 
+    public float ledgeDetectionRange = 50f;
+
     private int needleAttackPower = -1;
-    
+
     private void Update()
     {
         DetectWalls();
@@ -15,20 +17,16 @@ public class DetectWall : MonoBehaviour
 
     private void DetectWalls()
     {
-        Collider[] colliders = new Collider[10]; // Adjust the size as needed
-        int numColliders = Physics.OverlapBoxNonAlloc(transform.position, boxSize / 2f, colliders, Quaternion.identity);
-
-        for (int i = 0; i < numColliders; i++)
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.right, out hit, ledgeDetectionRange))
         {
-            Collider collider = colliders[i];
-
-            ITakeDamage damageable = collider.GetComponent<ITakeDamage>();
-            if (damageable != null)
+            if (hit.collider.gameObject.layer == wallLayer)
             {
-                Debug.Log("Hit "+collider.gameObject+" for " + needleAttackPower);
-
-                damageable.ChangeHP(needleAttackPower);
+                Debug.Log("Hit wall");
             }
         }
+
+       // Color rayColor = hit.collider != null && hit.collider.gameObject.layer==wallLayer ? Color.red : Color.green;
+        //Debug.DrawRay(transform.position, transform.right * ledgeDetectionRange, rayColor);
     }
 }

@@ -28,7 +28,6 @@ public class NPC01Jump : MonoBehaviour
         checking = false;
         brain = GetComponentInParent<NPC01Brain>();
         gravity = brain.gravity;
-        brain.jumping = true;
         rb = GetComponentInParent<Rigidbody>();
 
         playerLayerIndex = LayerMask.NameToLayer("NPC");
@@ -54,6 +53,7 @@ public class NPC01Jump : MonoBehaviour
             if (grounded)
             {
                 brain.jumping = false;
+                brain.jumpAttacking = false;
             }
         }
     }

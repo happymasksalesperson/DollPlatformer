@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1163880644604644474
+--- !u!1 &1987095741339882450
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1163880644604644475}
-  - component: {fileID: 8183124186896683612}
+  - component: {fileID: 7592249540415464251}
+  - component: {fileID: 8930487275983864812}
   m_Layer: 0
-  m_Name: RangeAttack
+  m_Name: NPC01Patrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1163880644604644475
+--- !u!4 &7592249540415464251
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163880644604644474}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.3, y: 0, z: 0}
+  m_GameObject: {fileID: 1987095741339882450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 73.130554, y: 60.36162, z: 65.13952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8183124186896683612
+--- !u!114 &8930487275983864812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163880644604644474}
+  m_GameObject: {fileID: 1987095741339882450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb82e91b5513eca44a4d22c2943962a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5075355059dad4e4fa36643a596ede87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originTransform: {fileID: 0}
-  targetTransform: {fileID: 0}
-  projectile: {fileID: 0}
-  shootForce: 25
-  rb: {fileID: 0}
-  aimTime: 0
-  aimTimeThresh: 3
-  counting: 0
   brain: {fileID: 0}
+  rb: {fileID: 0}
+  gravity: {fileID: 0}
+  ledgeDetectionRange: 50
+  facingRight: 0
+  facingDirVector: {x: 0, y: 0, z: 0}
+  patrolSpeed: 15
+  maxSpeed: 25

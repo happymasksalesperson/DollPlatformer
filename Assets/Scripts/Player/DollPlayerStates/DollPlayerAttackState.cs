@@ -20,7 +20,8 @@ public class DollPlayerAttackState : MonoBehaviour
 
     public float attack01Radius;
 
-    [Header("PLAYER AIM FROM PLAYERMOVEMENT")] public Vector3 playerAimVector;
+    [Header("PLAYER AIM FROM PLAYERMOVEMENT")]
+    public Vector3 playerAimVector;
 
     //distance sphere appears from Player centre
     private Vector3 offsetPosition;
@@ -79,7 +80,7 @@ public class DollPlayerAttackState : MonoBehaviour
         attack01Time = stats.attack01Time;
 
         stats.armoured = true;
-        
+
         // 
         playerMovement._groundCheckEnabled = true;
 
@@ -98,61 +99,49 @@ public class DollPlayerAttackState : MonoBehaviour
         StartCoroutine(GroundAttack01());
     }
 
-    //CHAT GPT wrote this for me! :)
-    void CheckOffset(Transform transform, float offset, bool facingRight)
-    {
-        Vector3 offsetVector = (Vector3.up * offset/2 + (Vector3.right * offset));
-        if (facingRight)
-            offsetVector = -offsetVector;
-        offsetPosition = transform.position + offsetVector;
-    }
-
     private IEnumerator GroundAttack01()
     {
-        CheckOffset(transform, offsetDist, facingRight);
+        int playerLayer = 3;
+        int allLayers = ~0; // all bits set to 1, represents all layers
+
+        int layerMask = allLayers & ~(1 << playerLayer);
+
+        // // // // //
+        // note the 10 is the max amount of returns per overlapsphere
+        // change at will
+        Collider[] hits = new Collider[10];
+
+        int numHits = Physics.OverlapSphereNonAlloc(transform.position, attack01Radius, hits, layerMask);
+
+        for (int i = 0; i < numHits; i++)
         {
-            int playerLayer = 3;
-            int allLayers = ~0; // all bits set to 1, represents all layers
-
-            int layerMask = allLayers & ~(1 << playerLayer);
-
-            // // // // //
-            // note the 10 is the max amount of returns per overlapsphere
-            // change at will
-            Collider[] hits = new Collider[10];
-
-            int numHits = Physics.OverlapSphereNonAlloc(offsetPosition, attack01Radius, hits, layerMask);
-
-            for (int i = 0; i < numHits; i++)
+            ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
+            if (damageable != null)
             {
-                    ITakeDamage damageable = hits[i].GetComponent<ITakeDamage>();
-                    if (damageable != null)
-                    {
-                        damageable.ChangeHP(attack01Power);
-                    }
+                damageable.ChangeHP(attack01Power);
             }
-
-            yield return new WaitForSeconds(attack01Time);
-
-            if(playerMovement.IsGrounded())
-            stateManager.ChangeStateString("idle");
-            
-            else 
-                stateManager.ChangeStateString("fall");
         }
+
+        yield return new WaitForSeconds(attack01Time);
+
+        if (playerMovement.IsGrounded())
+            stateManager.ChangeStateString("idle");
+
+        else
+            stateManager.ChangeStateString("fall");
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(offsetPosition, attack01Radius);
+        Gizmos.DrawSphere(transform.position, attack01Radius);
     }
 
     private void OnDisable()
     {
         gravity.enabled = true;
         playerMovement.AttackEnd();
-        
+
         rb.velocity = originalVelocity;
 
         stats.armoured = false;

@@ -15,12 +15,16 @@ public class NPC01SpawnState : MonoBehaviour
     public GameObject NPC01;
 
     public WeaponScriptableObject myWep;
+
+    public NPCType myType;
     
     private void OnEnable()
     {
         //initiate spawn animation
         
         brain = GetComponentInParent<NPC01Brain>();
+
+        myType = brain.myType;
 
         GameObject myProjectile = Instantiate(NPC01NeedlePrefab, NPC01.transform) as GameObject;
 
@@ -38,8 +42,10 @@ public class NPC01SpawnState : MonoBehaviour
         brain.spawned = true;
 
         //change idle / patrol 
+        if(myType == NPCType.Idle)
         brain.idle = true;
         
-        Debug.Log("Spawned");
+        else if (myType == NPCType.Patrol)
+            brain.patrolling = true;
     }
 }

@@ -64,6 +64,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f2620f8154517468a225d354bc8c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  isAI: 0
+  isPlayer: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -607,6 +618,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5667789258009985026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,5 +738,6 @@ MonoBehaviour:
   LOSExtents: {x: 5, y: 2, z: 10}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 268435520
   grounded: 0
+  trueGround: 0

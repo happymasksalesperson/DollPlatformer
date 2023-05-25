@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3818465521257218284}
   - component: {fileID: 3818465521257218287}
   - component: {fileID: 3864357275080897844}
-  m_Layer: 17
+  m_Layer: 28
   m_Name: UnpassableGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}

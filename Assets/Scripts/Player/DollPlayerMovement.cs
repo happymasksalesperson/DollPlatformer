@@ -6,7 +6,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DollPlayerMovement : MonoBehaviour, IPlayer
+public class DollPlayerMovement : DynamicObject, IPlayer
 {
     //
     // Player controls
@@ -128,6 +128,9 @@ public class DollPlayerMovement : MonoBehaviour, IPlayer
 
     private void Start()
     {
+        isPlayer = true;
+        isAI = false;
+        
         _rb = GetComponent<Rigidbody>();
 
         _groundCheck = GetComponentInChildren<GroundCheck>();

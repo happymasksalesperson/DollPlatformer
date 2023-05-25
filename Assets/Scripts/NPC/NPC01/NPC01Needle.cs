@@ -125,16 +125,16 @@ public class NPC01Needle : MonoBehaviour
             ITakeDamage damageable = collider.GetComponent<ITakeDamage>();
             if (damageable != null)
             {
-                Debug.Log("Hit "+collider.gameObject+" for " + needleAttackPower);
+                //Debug.Log("Hit "+collider.gameObject+" for " + needleAttackPower);
 
                 damageable.ChangeHP(needleAttackPower);
-                
+                active = false;
                 bounce.Bounce();
             }
 
             else if (wallLayer == (wallLayer | (1 << hits[i].gameObject.layer)))
                 {
-                    Debug.Log("Hit wall" + hitsCount);
+                    //Debug.Log("Hit wall" + hitsCount);
 
                     CeaseActive(); 
                 }
@@ -145,7 +145,6 @@ public class NPC01Needle : MonoBehaviour
     {
         if (active)
         {
-            Debug.Log("ceased");
             active = false;
             pickupCollider.enabled = true;
             gravity.enabled = false;
@@ -163,7 +162,7 @@ public class NPC01Needle : MonoBehaviour
 
         needle.ChangeEquip(true, equipTransform);
 
-        Debug.Log(equipTransform + " equipped " + transform);
+        //Debug.Log(equipTransform + " equipped " + transform);
 
         needle.ChangeNeedleState(equipTransform, true, false, facingRight);
     }
@@ -183,6 +182,6 @@ public class NPC01Needle : MonoBehaviour
 
         needle.ChangeEquip(false, null);
 
-        Debug.Log("unequip");
+        //Debug.Log("unequip");
     }
 }
