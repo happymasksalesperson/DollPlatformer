@@ -182,10 +182,10 @@ public class NPC01Brain : DynamicObject
             }
         }
 
-        SetNewCurrentGameObject(currentGameObjectState);
+        SetNewCurrentState(currentGameObjectState);
     }
 
-    private void SetNewCurrentGameObject(allNPC01States enumValue)
+    public void SetNewCurrentState(allNPC01States enumValue)
     {
         GameObject result;
         if (stateDictionary.TryGetValue(enumValue, out result))

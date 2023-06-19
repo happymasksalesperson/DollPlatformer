@@ -331,3 +331,10 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- made the Doll and NPC01 Dynamic Objects
 -- updated NPC01 Patrol state
 -- added LedgeEdge.cs and LedgeEdge prefab for detecting ledges
+-- added Oscar Vision to NPC01
+
+5.0
+
+-- added Player 2.0 Sprites and animation, started a new GameObject state based Player
+-- added eight states to Player 2.0
+-- added HitboxGenerator.cs and HitboxCustomiser. Customiser is used by the dev to create visual representations of hitboxes that HitboxGenerator will make boxcolliders for
