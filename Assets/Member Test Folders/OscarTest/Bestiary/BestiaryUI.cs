@@ -37,23 +37,23 @@ public class BestiaryUI : MonoBehaviour
     {
         ClearCharacterEntries();
 
-        foreach (GameObject character in Bestiary.encounteredCharacters)
-        {
-            // Instantiate a new character entry from the prefab
-            GameObject entry = Instantiate(characterEntryPrefab, bestiaryPanel.transform);
-            
-            // Set character information in the entry (e.g., name, image, etc.)
-            // ...
-            
-            // Add event listener for hover effect
-            EventTrigger trigger = entry.GetComponent<EventTrigger>();
-            EventTrigger.Entry entryEvent = new EventTrigger.Entry();
-            entryEvent.eventID = EventTriggerType.PointerEnter;
-            entryEvent.callback.AddListener((eventData) => { OnCharacterEntryHover(entry); });
-            trigger.triggers.Add(entryEvent);
-            
-            characterEntries.Add(entry);
-        }
+        // foreach (GameObject character in Bestiary.encounteredCharacters)
+        // {
+        //     // Instantiate a new character entry from the prefab
+        //     GameObject entry = Instantiate(characterEntryPrefab, bestiaryPanel.transform);
+        //     
+        //     // Set character information in the entry (e.g., name, image, etc.)
+        //     // ...
+        //     
+        //     // Add event listener for hover effect
+        //     EventTrigger trigger = entry.GetComponent<EventTrigger>();
+        //     EventTrigger.Entry entryEvent = new EventTrigger.Entry();
+        //     entryEvent.eventID = EventTriggerType.PointerEnter;
+        //     entryEvent.callback.AddListener((eventData) => { OnCharacterEntryHover(entry); });
+        //     trigger.triggers.Add(entryEvent);
+        //     
+        //     characterEntries.Add(entry);
+        // }
     }
 
     // Method to clear existing character entries

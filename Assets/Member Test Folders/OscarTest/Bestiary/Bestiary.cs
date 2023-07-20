@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Bestiary : MonoBehaviour
 {
-    public static List<GameObject> encounteredCharacters = new List<GameObject>();
-    
-    public static void addCharacterToBestiary(GameObject characterFound)
+    public List<BestiaryCharacter.Character> bestiaryEntries = new List<BestiaryCharacter.Character>();
+
+    public void DisplayCharacterToBestiary(BestiaryCharacter characterFound)
     {
-        if (!encounteredCharacters.Contains(characterFound))
+        if (!bestiaryEntries.Contains(characterFound.typeOfCharacter))
         {
-            encounteredCharacters.Add(characterFound);
+            bestiaryEntries.Add(characterFound.typeOfCharacter);
         }
     }
 }
