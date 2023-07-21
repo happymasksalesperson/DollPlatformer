@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class HackedTestBestiary : MonoBehaviour
 {
-    public Bestiary bestiary;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<BestiaryCharacter>())
         {
-            bestiary.DisplayCharacterToBestiary(other.GetComponent<BestiaryCharacter>());
+            Bestiary.instance.DisplayCharacterToBestiary(other.GetComponent<BestiaryCharacter>());
         }
     }
     
