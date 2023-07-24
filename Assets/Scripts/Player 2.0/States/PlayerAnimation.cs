@@ -24,6 +24,7 @@ public class PlayerAnimation : MonoBehaviour
         animationDictionary.Add(PlayerStates.StandMeleeAttack01, "standMeleeAttack01");
         animationDictionary.Add(PlayerStates.StandRangeAttack01, "standRangeAttack01");
         animationDictionary.Add(PlayerStates.Jump, "jump");
+        animationDictionary.Add(PlayerStates.Fall, "jump");
         animationDictionary.Add(PlayerStates.TakeDamage, "takeDamage");
         
         sprend = GetComponent<SpriteRenderer>();

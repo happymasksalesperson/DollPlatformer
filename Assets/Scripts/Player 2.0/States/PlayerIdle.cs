@@ -1,21 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIdle : MonoBehaviour
 {
+    public PlayerControls controls;
+
     public PlayerStateManager stateManager;
 
-    public PlayerModelView modelView;
+    public GroundCheck groundCheck;
 
-    public void Start()
+    public bool grounded;
+    
+    public void Update()
     {
-        stateManager = GetComponentInParent<PlayerStateManager>();
-    }
-
-    public void OnEnable()
-    {
-        modelView = stateManager.modelView;
-        modelView.OnChangeState(PlayerStates.Idle);
+        grounded = groundCheck.grounded;
+        
+        if(!grounded)
+            stateManager.ChangeState(PlayerStates.Fall);
+        
+        else if(controls.aimInput <0)
+            stateManager.ChangeState(PlayerStates.Crouch);
     }
 }

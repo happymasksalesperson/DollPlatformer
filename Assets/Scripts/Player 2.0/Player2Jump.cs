@@ -21,6 +21,10 @@ public class Player2Jump : MonoBehaviour
 
     public float timer;
 
+    public GroundCheck groundCheck;
+
+    public bool grounded;
+
     private void Start()
     {
         playerControls.JumpEvent += StartJump;
@@ -28,7 +32,7 @@ public class Player2Jump : MonoBehaviour
 
     public void StartJump()
     {
-        if (jumping)
+        if (jumping || !grounded)
             return;
 
         jumping = true;
@@ -36,29 +40,33 @@ public class Player2Jump : MonoBehaviour
         StartCoroutine(JumpRoutine());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(jumping)
-            timer += Time.deltaTime;
-
-        else
-        {
-            timer = 0;
-        }
+        if(groundCheck!=null)
+        grounded = groundCheck.grounded;
     }
 
     private IEnumerator JumpRoutine()
     {
         rb.velocity = Vector2.zero;
-
+           timer = 0;
         while (playerControls.jumpHeld && timer < jumpTime)
         {
             float proportionCompleted = timer / jumpTime;
             Vector2 thisFrameJumpVector = Vector2.Lerp(jumpVector, Vector2.zero, proportionCompleted);
             rb.AddForce(thisFrameJumpVector);
-            yield return null;
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
         jumping = false;
+        
+        if(grounded)
+            stateManager.ChangeState(PlayerStates.Idle);
+
+        else
+        {
+            stateManager.ChangeState(PlayerStates.Fall);
+        }
     }
 }

@@ -6,16 +6,15 @@ public class PlayerRun : MonoBehaviour
 {
     public PlayerStateManager stateManager;
     
-    public PlayerModelView modelView;
-    
-    public void Start()
+    public GroundCheck groundCheck;
+
+    private bool grounded;
+
+    public void Update()
     {
-        stateManager = GetComponentInParent<PlayerStateManager>();
-    }
-    
-    public void OnEnable()
-    {
-        modelView = stateManager.modelView;
-        modelView.OnChangeState(PlayerStates.Run);
+        grounded = groundCheck.grounded;
+
+        if (!grounded)
+            stateManager.ChangeState(PlayerStates.Fall);
     }
 }

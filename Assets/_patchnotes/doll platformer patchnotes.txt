@@ -338,3 +338,9 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- added Player 2.0 Sprites and animation, started a new GameObject state based Player
 -- added eight states to Player 2.0
 -- added HitboxGenerator.cs and HitboxCustomiser. Customiser is used by the dev to create visual representations of hitboxes that HitboxGenerator will make boxcolliders for
+
+5.1 
+
+-- updated PlayerState Manager to display new sprites
+-- added Player2Jump and Player2Run, PlayerInputs action map, PlayerControls, and PlayerControlsMiddleMan.cs trying to improve jump and run logic
+-- added FastScriptReload plugin

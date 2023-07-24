@@ -10,12 +10,17 @@ public class PlayerStateManager : MonoBehaviour
 
     public GameObject idle;
     public GameObject run;
+    
+    public GameObject jump;
+    public GameObject fall;
+    
     public GameObject standMeleeAttack01;
     public GameObject standRangeAttack01;
+    
     public GameObject crouch;
     public GameObject slide;
+    
     public GameObject takeDamage;
-    public GameObject jump;
 
     public PlayerModelView modelView;
 
@@ -34,6 +39,7 @@ public class PlayerStateManager : MonoBehaviour
         stateDictionary.Add(PlayerStates.Slide, slide);
         stateDictionary.Add(PlayerStates.TakeDamage, takeDamage);
         stateDictionary.Add(PlayerStates.Jump, jump);
+        stateDictionary.Add(PlayerStates.Fall, fall);
         
         ChangeState(PlayerStates.Idle);
     }
@@ -51,6 +57,8 @@ public class PlayerStateManager : MonoBehaviour
             newState.SetActive(true);
             currentState = key;
             currentObj = newState;
+            
+            modelView.OnChangeState(key);
         }
         else
         {
