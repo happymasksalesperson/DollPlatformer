@@ -22,7 +22,7 @@ public class DollPlayerFallState : MonoBehaviour
 
         stateManager = GetComponent<StateManager>();
 
-        playerMovement._gravity.enabled = true;
+    //    playerMovement._gravity.enabled = true;
     }
 
     private void FixedUpdate()

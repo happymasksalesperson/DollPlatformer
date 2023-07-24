@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class HitboxGenerator : MonoBehaviour
@@ -22,6 +21,7 @@ public class HitboxGenerator : MonoBehaviour
 
             collider.center = data.position;
             collider.size = data.size;
+            collider.isTrigger = true;
 
             hitboxes.Add(collider);
         }
@@ -34,6 +34,7 @@ public class HitboxGenerator : MonoBehaviour
 
             collider.center = data.position;
             collider.size = data.size;
+            collider.isTrigger = true;
 
             hurtboxes.Add(collider);
         }

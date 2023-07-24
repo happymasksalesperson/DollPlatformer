@@ -87,7 +87,7 @@ public class DollPlayerMovement : DynamicObject, IPlayer
     //
     public bool jumping;
 
-    public Gravity _gravity;
+    //public Gravity _gravity;
     
     /*[SerializeField] private float _groundCheckHeight;
 
@@ -135,8 +135,8 @@ public class DollPlayerMovement : DynamicObject, IPlayer
 
         _groundCheck = GetComponentInChildren<GroundCheck>();
 
-        _gravity = GetComponent<Gravity>();
-        _defaultGravity = _gravity.CurrentGravity();
+       // _gravity = GetComponent<Gravity>();
+        //_defaultGravity = _gravity.CurrentGravity();
 
         _boxCollider = GetComponent<BoxCollider>();
 
@@ -271,7 +271,7 @@ public class DollPlayerMovement : DynamicObject, IPlayer
         {
             _rb.velocity = new Vector3(_movement.x * _runSpeed, _movement.y);
 
-            _gravity.enabled = false;
+           // _gravity.enabled = false;
 
             if (_rb.velocity.magnitude > _maxSpeed)
             {
@@ -302,8 +302,8 @@ public class DollPlayerMovement : DynamicObject, IPlayer
             }
         }
 
-        if (!grounded)
-            _gravity.enabled = true;
+       // if (!grounded)
+         //   _gravity.enabled = true;
 
         ChangeMovementState(currentState);
         modelView.OnFacingRight(facingRight);
@@ -343,7 +343,7 @@ public class DollPlayerMovement : DynamicObject, IPlayer
         jumping = false;
         _lastCheck = grounded;
         
-        _gravity.enabled = false;
+      //  _gravity.enabled = false;
 
         if (running)
             currentState = PlayerState.run;
@@ -408,11 +408,11 @@ public class DollPlayerMovement : DynamicObject, IPlayer
 
         else if (jumping && _rb.velocity.y > 0f)
         {
-            _gravity.ChangeGravity(_defaultGravity * _jumpFallMultiply);
+        //    _gravity.ChangeGravity(_defaultGravity * _jumpFallMultiply);
         }
         else
         {
-            _gravity.ChangeGravity(_defaultGravity);
+        //    _gravity.ChangeGravity(_defaultGravity);
         }
     }
 

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class ShootProjectile : MonoBehaviour
@@ -14,7 +13,6 @@ public class ShootProjectile : MonoBehaviour
 
     public Rigidbody rb;
     
-    [Button]
     private void Aim()
     {
         Ray ray = new Ray(originTransform.position, targetTransform.position - originTransform.position);

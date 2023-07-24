@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class NPC01RangeAttack : MonoBehaviour
@@ -44,7 +43,6 @@ public class NPC01RangeAttack : MonoBehaviour
         StartTimer();
     }
 
-    [Button]
     public void Aim()
     {
         if (targetTransform == null)

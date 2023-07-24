@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +19,6 @@ public class PlayerStateManager : MonoBehaviour
 
     public PlayerModelView modelView;
 
-    [ShowInInspector]
     public Dictionary<PlayerStates, GameObject> stateDictionary;
 
     private void Awake()
@@ -40,7 +38,6 @@ public class PlayerStateManager : MonoBehaviour
         ChangeState(PlayerStates.Idle);
     }
 
-    [Button]
     public void ChangeState(PlayerStates key)
     {
         if (key == currentState)
