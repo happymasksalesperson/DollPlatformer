@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControls : MonoBehaviour, IPlayer
+public class PlayerControls : MonoBehaviour, IPlayer, IDataPersistence
 {
     private PlayerInputs playerInputs;
 
@@ -54,5 +54,15 @@ public class PlayerControls : MonoBehaviour, IPlayer
     {
         playerInputs.InGame.Jump.performed -= JumpHeld;
         playerInputs.InGame.Jump.canceled -= JumpLetGo;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPos;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPos = this.transform.position;
     }
 }
