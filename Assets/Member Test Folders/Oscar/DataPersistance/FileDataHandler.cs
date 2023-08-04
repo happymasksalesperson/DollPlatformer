@@ -10,10 +10,14 @@ public class FileDataHandler
 
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirectoryPath, string dataFileName)
+    private bool useEncryption = false;
+    private readonly string encryptedCodeWord = "DollPlatformer";
+
+    public FileDataHandler(string dataDirectoryPath, string dataFileName, bool useEncryption)
     {
         this.dataDirectoryPath = dataDirectoryPath;
         this.dataFileName = dataFileName;
+        this.useEncryption = useEncryption;
     }
 
     public GameData Load()
@@ -33,6 +37,11 @@ public class FileDataHandler
                     {
                         dataToLoad = reader.ReadToEnd();
                     }
+                }
+
+                if (useEncryption)
+                {
+                    dataToLoad = EncryptDecrypt(dataToLoad);
                 }
                 
                 //data from json to c# objects
@@ -57,6 +66,11 @@ public class FileDataHandler
             
             // turn c# data to JSON
             string dataToStore = JsonUtility.ToJson(data, true);
+
+            if (useEncryption)
+            {
+                dataToStore = EncryptDecrypt(dataToStore);
+            }
             
             // write data to file
             using (FileStream stream = new FileStream(fullPath,FileMode.Create))
@@ -73,4 +87,14 @@ public class FileDataHandler
         }
     }
     
+    private string EncryptDecrypt(string data)
+    {
+        string modifiedData = "";
+        for (int i = 0; i < data.Length; i++)
+        {
+            modifiedData += (char)(data[i] ^ encryptedCodeWord[i % encryptedCodeWord.Length]);
+        }
+
+        return modifiedData;
+    }
 }
