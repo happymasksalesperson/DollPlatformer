@@ -22,6 +22,8 @@ public class PlayerStateManager : MonoBehaviour
     
     public GameObject takeDamage;
 
+    public GameObject death;
+
     public PlayerModelView modelView;
 
     public Dictionary<PlayerStates, GameObject> stateDictionary;
@@ -40,6 +42,7 @@ public class PlayerStateManager : MonoBehaviour
         stateDictionary.Add(PlayerStates.TakeDamage, takeDamage);
         stateDictionary.Add(PlayerStates.Jump, jump);
         stateDictionary.Add(PlayerStates.Fall, fall);
+        stateDictionary.Add(PlayerStates.Death, death);
         
         ChangeState(PlayerStates.Idle);
     }
@@ -64,5 +67,10 @@ public class PlayerStateManager : MonoBehaviour
         {
             Debug.LogError("State not found in the stateDictionary.");
         }
+    }
+
+    public void DeclareMoment(PlayerMoments newMoment)
+    {
+        modelView.OnDeclarePlayerEvent(newMoment);
     }
 }

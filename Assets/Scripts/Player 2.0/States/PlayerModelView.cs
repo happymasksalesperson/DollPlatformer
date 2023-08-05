@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class PlayerModelView : MonoBehaviour
 {
+    public event Action<PlayerMoments> DeclarePlayerMoment;
+
+    public void OnDeclarePlayerEvent(PlayerMoments newMoment)
+    {
+        DeclarePlayerMoment?.Invoke(newMoment);
+    }
+
     public event Action<PlayerStates> ChangeStateEvent;
 
     public void OnChangeState(PlayerStates newState)

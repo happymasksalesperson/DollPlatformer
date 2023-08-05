@@ -56,6 +56,9 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public void JumpState()
     {
+        if (stateManager.currentState == PlayerStates.Jump || stateManager.currentState == PlayerStates.Fall)
+            return;
+
         stateManager.ChangeState(PlayerStates.Jump);
     }
 

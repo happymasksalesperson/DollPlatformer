@@ -23,7 +23,7 @@ public class Player2Attack : MonoBehaviour
         
         else if (stateManager.currentState == PlayerStates.Idle)
         {
-            stateManager.ChangeState(PlayerStates.StandRangeAttack01);
+            stateManager.ChangeState(PlayerStates.StandMeleeAttack01);
         }
     }
 

@@ -18,6 +18,7 @@ public class HitboxGenerator : MonoBehaviour
             GameObject hitboxObject = new GameObject("Hitbox");
             BoxCollider collider = hitboxObject.AddComponent<BoxCollider>();
             hitboxObject.transform.SetParent(transform);
+            hitboxObject.transform.position = transform.position;
 
             collider.center = data.position;
             collider.size = data.size;

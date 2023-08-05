@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4392751964467796067
+--- !u!1 &7648485080301018787
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2744971570999159170}
-  - component: {fileID: 2903139969107041371}
+  - component: {fileID: 4706779320799776681}
+  - component: {fileID: 1066379072923379405}
   m_Layer: 0
-  m_Name: StandRangeAttack01
+  m_Name: CrouchState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2744971570999159170
+--- !u!4 &4706779320799776681
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392751964467796067}
+  m_GameObject: {fileID: 7648485080301018787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2903139969107041371
+--- !u!114 &1066379072923379405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4392751964467796067}
+  m_GameObject: {fileID: 7648485080301018787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150becaefb19b1942af39dcf7c1a10f2, type: 3}
+  m_Script: {fileID: 11500000, guid: fa1af935a901e29408b73f4fb169d033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modelView: {fileID: 0}

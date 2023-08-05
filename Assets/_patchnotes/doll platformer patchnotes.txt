@@ -344,3 +344,17 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- updated PlayerState Manager to display new sprites
 -- added Player2Jump and Player2Run, PlayerInputs action map, PlayerControls, and PlayerControlsMiddleMan.cs trying to improve jump and run logic
 -- added FastScriptReload plugin
+
+5.2 
+
+-- Added GameData.cs, DataPersistenceManager.cs, FileDataHandler.cs and IDataPersistence
+
+5.3
+
+-- added PlayerSFX.cs and 16 audio SFX clips
+
+-- added PlayerMoments.cs. PlayerMoments are events that don't change state but still require reactions from model/view. For example, landing will trigger a moment, and landing from a high height will trigger another moment. Another application I can think of is triggering idle animations when the Player is idle for too long
+
+-- added PlayerStateManagerEditor.cs and made buttons to switch states and test moments
+
+-- added logic that pushes the player down during fall for snappier movement, also tracks how long you fall to determine hard/soft landing

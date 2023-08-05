@@ -11,5 +11,7 @@ public enum PlayerStates
     Crouch,
     Slide,
 
-    TakeDamage
+    TakeDamage,
+
+    Death
 }

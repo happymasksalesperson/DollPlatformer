@@ -25,16 +25,13 @@ public class Player2Jump : MonoBehaviour
 
     public bool grounded;
 
-    private void Start()
+    public void OnEnable()
     {
-        playerControls.JumpEvent += StartJump;
+        StartJump();    
     }
 
     public void StartJump()
     {
-        if (jumping || !grounded)
-            return;
-
         jumping = true;
         jumpVector = new Vector2(0, jumpForce);
         StartCoroutine(JumpRoutine());
