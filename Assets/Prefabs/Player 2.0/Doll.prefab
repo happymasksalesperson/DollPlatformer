@@ -328,7 +328,6 @@ GameObject:
   - component: {fileID: 4435036922663003672}
   - component: {fileID: 7622586282593176551}
   - component: {fileID: 2683405166065376606}
-  - component: {fileID: 8204351514730545053}
   m_Layer: 0
   m_Name: Doll
   m_TagString: Untagged
@@ -387,7 +386,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &927983013910895130
 MonoBehaviour:
@@ -482,6 +481,7 @@ MonoBehaviour:
   grounded: 0
   facingRight: 0
   rb: {fileID: 1849811963992487702}
+  boxCollider: {fileID: 4093924083048607298}
 --- !u!114 &4435036922663003672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,8 +515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1849811963992487702}
-  runSpeed: 120
-  maxSpeed: 120
+  runSpeed: 100
+  maxSpeed: 100
   playerControls: {fileID: 1498546878730015440}
   stateManager: {fileID: 927983013910895130}
   groundCheck: {fileID: 4435036922663003672}
@@ -536,19 +536,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 927983013910895130}
+  middleMan: {fileID: 1784714320604723810}
   controls: {fileID: 1498546878730015440}
---- !u!114 &8204351514730545053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7398899372810278984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16127973f61b68b42963192f4f40aecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  facingRight: 0
+  attackDetectionDistance: 5
+  damageLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  xOffset: 5
 --- !u!1001 &4135674344166168900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +596,14 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1849811963992487702}
+    - target: {fileID: 2369548891358146885, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
+      propertyPath: jumpTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369548891358146885, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
+      propertyPath: jumpForce
+      value: 2000000
+      objectReference: {fileID: 0}
     - target: {fileID: 2369548891358146885, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
       propertyPath: groundCheck
       value: 
@@ -1193,7 +1196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
       propertyPath: fallSpeedMultiplier
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

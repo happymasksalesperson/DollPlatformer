@@ -21,6 +21,8 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public Rigidbody rb;
 
+    public BoxCollider boxCollider;
+
     public void OnEnable()
     {
         playerControls.JumpEvent += JumpState;
@@ -52,6 +54,12 @@ public class PlayerControlsMiddleMan : MonoBehaviour
                 modelView.OnFacingRight(previous);
             }
         }
+
+        if (!grounded && rb.velocity.y > 0)
+            boxCollider.enabled = false;
+
+        else
+            boxCollider.enabled = true;
     }
 
     public void JumpState()

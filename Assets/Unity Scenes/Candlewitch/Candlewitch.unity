@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 90512070}
   - component: {fileID: 90512071}
   - component: {fileID: 90512072}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,6 +228,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1784714320604723810, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 678135212}
+    - target: {fileID: 1839309019809458177, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: jumpTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839309019809458177, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: jumpForce
+      value: 2000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849811963992487702, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683405166065376606, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: xOffset
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683405166065376606, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: middleMan
+      value: 
+      objectReference: {fileID: 678135206}
+    - target: {fileID: 2683405166065376606, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: damageLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683405166065376606, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: attackDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572776417175461056, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: fallSpeedMultiplier
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 4988842286486905172, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -271,6 +307,14 @@ PrefabInstance:
     - target: {fileID: 7398899372810278984, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_Name
       value: Doll
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622586282593176551, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: maxSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622586282593176551, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: runSpeed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -387,7 +431,7 @@ GameObject:
   - component: {fileID: 360651517}
   - component: {fileID: 360651518}
   - component: {fileID: 360651519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,6 +660,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4988842286486905172, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
   m_PrefabInstance: {fileID: 164317803}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &678135206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1784714320604723810, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+  m_PrefabInstance: {fileID: 164317803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b3437d6c674a24d9d0d42cf0c634fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &678135212 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4093924083048607298, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+  m_PrefabInstance: {fileID: 164317803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &725469284
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +789,8 @@ GameObject:
   - component: {fileID: 759310683}
   - component: {fileID: 759310684}
   - component: {fileID: 759310685}
-  m_Layer: 0
+  - component: {fileID: 759310686}
+  m_Layer: 10
   m_Name: CandleWitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,6 +876,27 @@ MonoBehaviour:
   isAlive: 1
   invincibilityTime: 0
   canTakeDamage: 0
+--- !u!65 &759310686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759310681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 60, z: 10}
+  m_Center: {x: 0, y: 40, z: 0}
 --- !u!4 &833300571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6906898268586318583, guid: 0a6b56bca54e33a4db59ca46ec21e495, type: 3}
@@ -1489,6 +1571,10 @@ PrefabInstance:
       value: DeathState
       objectReference: {fileID: 0}
     - target: {fileID: 7832362664844794869, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832362664844794869, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1606,6 +1692,10 @@ PrefabInstance:
       value: StartFightState
       objectReference: {fileID: 0}
     - target: {fileID: 7561514360800837705, guid: 8147ef0ed7152714c8e383fc938e37f7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7561514360800837705, guid: 8147ef0ed7152714c8e383fc938e37f7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1625,6 +1715,10 @@ PrefabInstance:
     - target: {fileID: 7444240460126264398, guid: 07d413e90bcf28a48af86328843cd845, type: 3}
       propertyPath: m_Name
       value: TeleportState
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444240460126264398, guid: 07d413e90bcf28a48af86328843cd845, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7835519118443443781, guid: 07d413e90bcf28a48af86328843cd845, type: 3}
       propertyPath: brain
@@ -1700,6 +1794,10 @@ PrefabInstance:
       value: Attack01State
       objectReference: {fileID: 0}
     - target: {fileID: 2668142330767521954, guid: ef2dc7053d8ac2640891033abacfb4bc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668142330767521954, guid: ef2dc7053d8ac2640891033abacfb4bc, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1759,6 +1857,10 @@ PrefabInstance:
     - target: {fileID: 2117358624352511371, guid: d180f9e428f6ca24688f2cd10097a816, type: 3}
       propertyPath: m_Name
       value: VanishState
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117358624352511371, guid: d180f9e428f6ca24688f2cd10097a816, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6452943744962263836, guid: d180f9e428f6ca24688f2cd10097a816, type: 3}
       propertyPath: m_LocalPosition.x

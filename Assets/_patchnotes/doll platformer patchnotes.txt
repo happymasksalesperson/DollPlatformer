@@ -366,3 +366,9 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- added StartFightState, DeathState, Attack01State, TeleportState, VanishState
 
 -- added Teleport logic. Candlewitch teleports itself between 5 random spots. Candlewitch just knows where the Player Doll is and turns to face them
+
+-- added logic to determine if the Player should range attack or melee. tweaked jump stuff
+
+-- renamed NPC layer to ITakeDamage
+
+-- updated unity project to 2023.1.5f
