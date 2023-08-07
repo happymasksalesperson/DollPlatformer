@@ -358,3 +358,11 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- added PlayerStateManagerEditor.cs and made buttons to switch states and test moments
 
 -- added logic that pushes the player down during fall for snappier movement, also tracks how long you fall to determine hard/soft landing
+
+5.4
+
+-- started the Candlewitch fight. Added placeholder sprites. Added CandlewitchStateBase.cs, ModelView, View and Brain
+
+-- added StartFightState, DeathState, Attack01State, TeleportState, VanishState
+
+-- added Teleport logic. Candlewitch teleports itself between 5 random spots. Candlewitch just knows where the Player Doll is and turns to face them

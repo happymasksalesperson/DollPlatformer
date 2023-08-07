@@ -12,6 +12,13 @@ public class HealthModelView : MonoBehaviour
         ChangeHealth?.Invoke(x);
     }
 
+    public event Action<bool> DeclareInvincibilityState;
+
+    public void OnChangeInvincibilityState(bool input)
+    {
+        DeclareInvincibilityState?.Invoke(input);
+    }
+
     public event Action YouDied;
 
     public void OnYouDied()

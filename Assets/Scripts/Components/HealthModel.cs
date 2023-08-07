@@ -13,7 +13,7 @@ public class HealthModel : MonoBehaviour, ITakeDamage
     private HealthModelView modelView;
 
     [SerializeField] private float invincibilityTime;
-    [SerializeField] private bool canTakeDamage;
+    [SerializeField] public bool canTakeDamage;
 
     private void OnEnable()
     {

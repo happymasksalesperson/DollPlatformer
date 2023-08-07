@@ -13,7 +13,7 @@ public class NPC01Brain : DynamicObject
     public OscarVision oscarVision;
     
     public GameObject currentState;
-    public StateGameObjectManager stateManager;
+    public GameObjectStateManager stateManager;
 
     public GameObject spawnState;
     public GameObject agitatedState;
@@ -92,7 +92,7 @@ public class NPC01Brain : DynamicObject
         
         modelView = GetComponentInChildren<NPCModelView>();
 
-        stateManager = GetComponent<StateGameObjectManager>();
+        stateManager = GetComponent<GameObjectStateManager>();
 
         currentGameObjectState = allNPC01States.spawnState;
         

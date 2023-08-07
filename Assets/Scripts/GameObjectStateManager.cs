@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateGameObjectManager : MonoBehaviour
+public class GameObjectStateManager : MonoBehaviour
 {
     public GameObject currentState;
+    public GameObject defaultState;
 
     public void ChangeState(GameObject newState)
     {
