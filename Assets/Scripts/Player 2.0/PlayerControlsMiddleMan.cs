@@ -21,6 +21,12 @@ public class PlayerControlsMiddleMan : MonoBehaviour
     
     private bool previous;
 
+    public bool canJump;
+
+    public bool canRangeAttack = true;
+
+    public bool moving = false;
+
     public Rigidbody rb;
 
     public BoxCollider boxCollider;
@@ -47,6 +53,7 @@ public class PlayerControlsMiddleMan : MonoBehaviour
                     transform.rotation = new Quaternion(0, 0, 0, 0);
                     facingRight = false;
                     previous = false;
+                    moving = true;
                     modelView.OnFacingRight(previous);
                 }
             }
@@ -58,9 +65,12 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
                     facingRight = true;
                     previous = true;
+                    moving = true;
                     modelView.OnFacingRight(previous);
                 }
             }
+            else
+                moving = false;
         }
 
         if (!grounded && rb.velocity.y > 0)
@@ -72,7 +82,7 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public void JumpState()
     {
-        if (stateManager.currentState == PlayerStates.Jump || stateManager.currentState == PlayerStates.Fall)
+        if (!canJump)
             return;
 
         if(inControl)

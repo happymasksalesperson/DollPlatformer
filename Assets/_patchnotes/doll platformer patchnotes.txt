@@ -380,3 +380,7 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- now shoots a pooled projectile prefab
 
 -- you can buffer range attacks to fire continuously
+
+-- left a trail of hacks behind to fix later
+
+-- updated Fall State to push against the Doll when it preemptively senses the ground to prevent sinkage

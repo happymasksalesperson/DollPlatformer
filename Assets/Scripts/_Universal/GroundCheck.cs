@@ -14,49 +14,34 @@ public class GroundCheck : MonoBehaviour
     public bool grounded;
     public bool trueGround;
 
-    private void Start()
+    private void FixedUpdate()
     {
-        StartCoroutine(GroundScan());
+        GroundScan();
     }
 
-    private IEnumerator GroundScan()
+    private void GroundScan()
     {
-        while (true)
-        {
-            Collider[] hits = Physics.OverlapBox(new Vector3(transform.position.x, transform.position.y-POSYValue, transform.position.z), LOSExtents / 2, Quaternion.identity, groundLayer);
-            grounded = hits.Length > 0;
-            
-            trueGround = false;
-            
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (hits[i].gameObject.layer == LayerMask.NameToLayer("UnpassableGround"))
-                {
-                    trueGround = true;
-                    break;
-                }
-            }
+        Collider[] hits = Physics.OverlapBox(
+            new Vector3(transform.position.x, transform.position.y - POSYValue, transform.position.z), LOSExtents / 2,
+            Quaternion.identity, groundLayer);
+        grounded = hits.Length > 0;
 
-            yield return new WaitForFixedUpdate();
+        trueGround = false;
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].gameObject.layer == LayerMask.NameToLayer("UnpassableGround"))
+            {
+                trueGround = true;
+                break;
+            }
         }
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y - POSYValue, transform.position.z), LOSExtents);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y - POSYValue, transform.position.z),
+            LOSExtents);
     }
-    /*[SerializeField] private LayerMask groundLayer;
-
-    public bool grounded;
-
-    private void OnTriggerStay(Collider col)
-    {
-        grounded = col != null && (((1 << col.gameObject.layer) * groundLayer != 0));
-    }
-
-    private void OnTriggerExit(Collider col)
-    {
-        grounded = false;
-    }*/
 }

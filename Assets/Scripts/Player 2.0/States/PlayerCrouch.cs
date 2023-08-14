@@ -9,6 +9,18 @@ public class PlayerCrouch : MonoBehaviour
 
    public PlayerStateManager stateManager;
 
+   public PlayerControlsMiddleMan middleMan;
+
+   public void OnEnable()
+   {
+       middleMan.canRangeAttack = false;
+   }
+
+   public void OnDisable()
+   {
+       middleMan.canRangeAttack = true;
+   }
+
    private void Update()
    {
       if (controls.aimInput >= 0)

@@ -25,11 +25,15 @@ public class Player2Jump : MonoBehaviour
 
     public bool grounded;
 
+    public PlayerControlsMiddleMan middleMan;
+
     public void OnEnable()
     {
-        StartJump();    
+        middleMan.canRangeAttack = false;
+        middleMan.canJump = false;
+        StartJump();
     }
-
+    
     public void StartJump()
     {
         jumping = true;
@@ -39,8 +43,9 @@ public class Player2Jump : MonoBehaviour
 
     private void Update()
     {
-        if(groundCheck!=null)
         grounded = groundCheck.grounded;
+        if (!grounded)
+            middleMan.canRangeAttack = true;
     }
 
     private IEnumerator JumpRoutine()
