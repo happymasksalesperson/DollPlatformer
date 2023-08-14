@@ -24,6 +24,7 @@ public class PlayerSlide : MonoBehaviour
 
     public void OnEnable()
     {
+        middleMan.inControl = false;
         slideStartTime = 0;
         facingRight = middleMan.facingRight;
         Slide();
@@ -54,6 +55,8 @@ public class PlayerSlide : MonoBehaviour
         }
 
         isSliding = false;
+
+        middleMan.inControl = true;
 
         if (!middleMan.grounded)
             stateManager.ChangeState(PlayerStates.Fall);

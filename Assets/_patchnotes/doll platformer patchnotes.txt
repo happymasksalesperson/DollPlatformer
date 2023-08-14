@@ -372,3 +372,11 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- renamed NPC layer to ITakeDamage
 
 -- updated unity project to 2023.1.5f
+
+5.5
+
+-- updated Player Range Attack
+
+-- now shoots a pooled projectile prefab
+
+-- you can buffer range attacks to fire continuously

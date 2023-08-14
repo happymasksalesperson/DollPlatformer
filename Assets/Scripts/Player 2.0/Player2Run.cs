@@ -9,6 +9,7 @@ namespace Player_2._0
         public float runSpeed;
         public float maxSpeed;
         public PlayerControls playerControls;
+        public PlayerControlsMiddleMan middleMan;
         public PlayerStateManager stateManager;
         public GroundCheck groundCheck;
         private bool grounded;
@@ -26,25 +27,29 @@ namespace Player_2._0
 
             grounded = groundCheck.grounded;
 
-            rb.velocity = new Vector3(playerControls.movementInput * runSpeed, 0, 0);
-
-            isMoving = playerControls.movementInput != 0;
-
-            if (grounded && !wasMoving && isMoving)
+            if (middleMan.inControl)
             {
-                stateManager.ChangeState(PlayerStates.Run);
-            }
 
-            else if (grounded && wasMoving && !isMoving)
-            {
-                stateManager.ChangeState(PlayerStates.Idle);
-            }
+                rb.velocity = new Vector3(playerControls.movementInput * runSpeed, 0, 0);
 
-            wasMoving = isMoving;
+                isMoving = playerControls.movementInput != 0;
 
-            if (rb.velocity.magnitude > maxSpeed)
-            {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
+                if (grounded && !wasMoving && isMoving)
+                {
+                    stateManager.ChangeState(PlayerStates.Run);
+                }
+
+                else if (grounded && wasMoving && !isMoving)
+                {
+                    stateManager.ChangeState(PlayerStates.Idle);
+                }
+
+                wasMoving = isMoving;
+
+                if (rb.velocity.magnitude > maxSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * maxSpeed;
+                }
             }
         }
     }

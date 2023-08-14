@@ -19,8 +19,6 @@ namespace Candlewitch
                 teleportSpot.position.z);
             brain.transform.position = transformPosition;
 
-            Debug.Log(transformPosition);
-
             modelView.OnFlipFacingRight(brain.CalculatePlayerPosition());
 
             modelView.OnFadeInFadeOut(true, brain.fadeTime);

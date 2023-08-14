@@ -51,7 +51,6 @@ namespace Candlewitch
         public Transform ChooseRandomTransform()
         {
             int randomIndex = Random.Range(0, teleportPositions.Count);
-            Debug.Log(randomIndex);
             selectedTransform = teleportPositions[randomIndex];
             return selectedTransform;
         }

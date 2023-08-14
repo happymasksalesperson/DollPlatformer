@@ -13,6 +13,8 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public GroundCheck groundCheck;
 
+    public bool inControl=true;
+
     public bool grounded;
 
     public bool facingRight;
@@ -35,23 +37,29 @@ public class PlayerControlsMiddleMan : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
-        
-        if (playerControls.movementInput < 0)
+
+        if (inControl)
         {
-            if (previous)
+            if (playerControls.movementInput < 0)
             {
-                facingRight = false;
-                previous = false;
-                modelView.OnFacingRight(previous);
+                if (previous)
+                {
+                    transform.rotation = new Quaternion(0, 0, 0, 0);
+                    facingRight = false;
+                    previous = false;
+                    modelView.OnFacingRight(previous);
+                }
             }
-        }
-        else if (playerControls.movementInput > 0)
-        {
-            if (!previous)
+            else if (playerControls.movementInput > 0)
             {
-                facingRight = true;
-                previous = true;
-                modelView.OnFacingRight(previous);
+                if (!previous)
+                {
+                    transform.rotation = new Quaternion(0, 180, 0, 0);
+
+                    facingRight = true;
+                    previous = true;
+                    modelView.OnFacingRight(previous);
+                }
             }
         }
 
@@ -67,6 +75,7 @@ public class PlayerControlsMiddleMan : MonoBehaviour
         if (stateManager.currentState == PlayerStates.Jump || stateManager.currentState == PlayerStates.Fall)
             return;
 
+        if(inControl)
         stateManager.ChangeState(PlayerStates.Jump);
     }
 

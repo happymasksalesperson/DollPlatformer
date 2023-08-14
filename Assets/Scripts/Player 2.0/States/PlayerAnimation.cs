@@ -47,13 +47,13 @@ public class PlayerAnimation : MonoBehaviour
 
     public void FlipSpriteX(bool facingRight)
     {
-        if (facingRight)
+        /*if (facingRight)
             sprend.flipX = true;
 
         else
         {
             sprend.flipX = false;
-        }
+        }*/
     }
 
     private void OnDisable()
