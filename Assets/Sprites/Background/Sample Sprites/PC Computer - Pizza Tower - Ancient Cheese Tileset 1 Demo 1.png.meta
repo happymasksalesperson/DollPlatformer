@@ -1,0 +1,596 @@
+fileFormatVersion: 2
+guid: 258a0a9328647f84d8f66ec8473bb462
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3092869c10d084c8a85300e87b9172
+      internalID: 199328852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27b028c48e6747498629018a3459383
+      internalID: -852994691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 191
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05c43602e76d8c4f9161ec96c48779e
+      internalID: 1967321676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 159
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb4e591f6f507b94eb620154d587dc9a
+      internalID: -407655954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 159
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2e4bc70b240c1f48a134c843f1c87cf
+      internalID: 1567768991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90eec7400d695940ab68228437d2c8a
+      internalID: -1296087837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 95
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c5e696c7445ba4c85175c9f2dbeb4b
+      internalID: -1857422526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_7
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 44
+        width: 28
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ef8b03e970f03948a1e1d3c6d1a2835
+      internalID: -2123777814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 68
+        width: 93
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272c3a26b6810fb4ebf14f383c583766
+      internalID: 1454697652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_9
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 56
+        width: 25
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6defd69627254f48810d602a86d17a7
+      internalID: 2143809811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_10
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 7
+        width: 88
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a839656565963c74a8ecdeef05aec559
+      internalID: 1871224102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_11
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45f110757895b6745a266ddc1e268b90
+      internalID: -1242982853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_12
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf9c282c06170f4e90464bf7f657474
+      internalID: -117680713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_16
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 0
+        width: 89
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70c74c3f7486334da716f1bfab45978
+      internalID: 32847048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_18
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 146
+        width: 97
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9333ed9c2ec4cf84e833143540b6dd37
+      internalID: -244215211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9abd542301af7bd43b259618fbb3e130
+      internalID: 1832854389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_13
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 129
+        width: 96
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16de0a5f7e2ac9b488bd391400663198
+      internalID: 90708994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_14
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 64
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f17ad670bc66c8479c8103467725749
+      internalID: -1251063615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_15
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 64
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762e28ae179c261498c247a658a0b043
+      internalID: 692670794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f12659850c10d44b25efeeea722c13
+      internalID: 1619711714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba1fcb9eba2ba44fbbb0cfe706994a3
+      internalID: 646188632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 96
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0552b4e36b652254aa993c859d68f634
+      internalID: 110862893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b8ef3a273f2b55c468a6a81c59e2e2b8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_0: 199328852
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_1: -852994691
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_10: 1871224102
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_11: -1242982853
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_12: -117680713
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_13: 90708994
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_14: -1251063615
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_15: 692670794
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_16: 32847048
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_17: 646188632
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_18: -244215211
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_19: 1832854389
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_2: 1967321676
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_20: 1619711714
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_21: 110862893
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_3: -407655954
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_4: 1567768991
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_5: -1296087837
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_6: -1857422526
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_7: -2123777814
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_8: 1454697652
+      PC Computer - Pizza Tower - Ancient Cheese Tileset 1 Demo_9: 2143809811
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
