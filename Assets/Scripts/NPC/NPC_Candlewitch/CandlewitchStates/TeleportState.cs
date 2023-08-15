@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Candlewitch
 {
+    //this state picks a random spot to teleport into, and then picks a random next move in DecideNextMove()
     public class TeleportState : CandlewitchStateBase
     {
         public Transform teleportSpot;
 
         public float yOffset;
+
+        public float decisionTime;
+
+        private CandlewitchAttackEnum attackEnum;
 
         public void OnEnable()
         {
@@ -19,11 +26,34 @@ namespace Candlewitch
                 teleportSpot.position.z);
             brain.transform.position = transformPosition;
 
-            modelView.OnFlipFacingRight(brain.CalculatePlayerPosition());
+            brain.CalculatePlayerPosition();
 
             modelView.OnFadeInFadeOut(true, brain.fadeTime);
 
-            StartCoroutine(TeleportIn());
+            DecideNextMove();
+        }
+
+        private void DecideNextMove()
+        {
+            CandlewitchAttackEnum[] attackValues =
+                (CandlewitchAttackEnum[])Enum.GetValues(typeof(CandlewitchAttackEnum));
+
+            int randomIndex = Random.Range(0, attackValues.Length);
+
+            CandlewitchAttackEnum randomAttack = attackValues[randomIndex];
+
+            switch (randomAttack)
+            {
+                case CandlewitchAttackEnum.ShootFireball:
+                    brain.stateManager.ChangeState(brain.shootFireballState);
+                    break;
+                case CandlewitchAttackEnum.FloorFirePillar:
+                    StartCoroutine(TeleportIn());
+                    break;
+                case CandlewitchAttackEnum.Teleport:
+                    StartCoroutine(TeleportIn());
+                    break;
+            }
         }
 
         private IEnumerator TeleportIn()
@@ -32,7 +62,5 @@ namespace Candlewitch
 
             brain.stateManager.ChangeState(brain.vanishState);
         }
-
-
     }
 }

@@ -20,7 +20,9 @@ namespace Candlewitch
         
         public GameObject startFightState;
 
-        public GameObject attack01State;
+        public GameObject shootFireballState;
+
+        public GameObject summonFirePillarState;
 
         public GameObject teleportState;
 
@@ -35,7 +37,7 @@ namespace Candlewitch
 
         //flips facing right depending on the playerTransform position in relation to myself
         //only flips facing right if not already
-        public bool CalculatePlayerPosition()
+        public void CalculatePlayerPosition()
         {
             float targetX = playerTransform.position.x;
             float myX = transform.position.x;
@@ -45,7 +47,11 @@ namespace Candlewitch
                 facingRight = !facingRight;
             }
 
-            return facingRight;
+            if (facingRight)
+                transform.rotation = new Quaternion(0, 180, 0, 0);
+
+            else
+                transform.rotation = new Quaternion(0, 0, 0, 0);
         }
 
         public Transform ChooseRandomTransform()

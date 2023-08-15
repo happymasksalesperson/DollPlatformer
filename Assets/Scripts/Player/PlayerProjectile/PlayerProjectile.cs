@@ -28,13 +28,12 @@ public class PlayerProjectile : IPooledObject
             damageTaker.ChangeHP(-1);
         }
 
-        Debug.Log("Hit something: " + col.gameObject.name);
+        //Debug.Log("Hit something: " + col.gameObject.name);
         OnHit();
     }
 
     private void OnHit()
     {
-
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         owner.AddObjectToPool(gameObject);

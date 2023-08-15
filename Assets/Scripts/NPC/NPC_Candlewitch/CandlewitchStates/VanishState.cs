@@ -6,7 +6,6 @@ namespace Candlewitch
 {
     public class VanishState : CandlewitchStateBase
     {
-
         public void OnEnable()
         {
             StartCoroutine(FadeOut());
