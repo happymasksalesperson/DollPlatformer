@@ -352,6 +352,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 420196444358288488, guid: 21a5de2d9ef5f89438f035e579b0b8f4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6587016718493284675, guid: 21a5de2d9ef5f89438f035e579b0b8f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -395,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 7420049366310794259, guid: 21a5de2d9ef5f89438f035e579b0b8f4, type: 3}
       propertyPath: m_Name
       value: CameraScrollingModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420049366310794259, guid: 21a5de2d9ef5f89438f035e579b0b8f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

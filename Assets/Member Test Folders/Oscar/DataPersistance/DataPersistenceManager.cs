@@ -10,6 +10,8 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
 
     [SerializeField] private bool useEncryption;
+
+    public bool autoSave;
     
     private GameData gameData;
     
@@ -77,7 +79,10 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        if (autoSave)
+        {
+            SaveGame();
+        }
     }
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {

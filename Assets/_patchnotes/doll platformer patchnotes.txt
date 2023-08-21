@@ -384,3 +384,11 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- left a trail of hacks behind to fix later
 
 -- updated Fall State to push against the Doll when it preemptively senses the ground to prevent sinkage
+
+5.6
+
+-- Checkpoint saves player position on the map
+
+-- Multiple save positions will save the position on the map to wherever the player hit previously
+
+-- Need to discuss with group what will need to be saved overall and weigh up the pros and cons
