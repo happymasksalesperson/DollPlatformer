@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3572776417175461056, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: raycastDistance
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3572776417175461056, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: fallSpeedMultiplier

@@ -45,22 +45,22 @@ namespace Candlewitch
             switch (randomAttack)
             {
                 case CandlewitchAttackEnum.ShootFireball:
-                    brain.stateManager.ChangeState(brain.shootFireballState);
+                    StartCoroutine(ChangeToDecidedState(brain.shootFireballState));
                     break;
                 case CandlewitchAttackEnum.FloorFirePillar:
-                    StartCoroutine(TeleportIn());
+                    StartCoroutine(ChangeToDecidedState(brain.vanishState));
                     break;
                 case CandlewitchAttackEnum.Teleport:
-                    StartCoroutine(TeleportIn());
+                    StartCoroutine(ChangeToDecidedState(brain.vanishState));
                     break;
             }
         }
 
-        private IEnumerator TeleportIn()
+        private IEnumerator ChangeToDecidedState(GameObject newState)
         {
             yield return new WaitForSeconds(brain.fadeTime);
 
-            brain.stateManager.ChangeState(brain.vanishState);
+            brain.stateManager.ChangeState(newState);
         }
     }
 }
