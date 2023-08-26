@@ -392,3 +392,15 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- Multiple save positions will save the position on the map to wherever the player hit previously
 
 -- Need to discuss with group what will need to be saved overall and weigh up the pros and cons
+
+5.7
+
+-- Added flamewheel and fireball prefab
+
+-- fireball has a game manager with 4 states. added animation logic.
+
+-- flamewheel uses object pool to summon fireballs and spins them
+
+-- TODO: make it work with moving (probably have to change the spin method? transform.rotate doesn't cut it)
+
+-- updated ObjectGameManager and ObjectPool

@@ -5,21 +5,37 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    public Transform spawnPoint;
+
     public GameObject objectToPool;
-    public int initialPoolSize = 10;
+    public int initialPoolSize;
 
     private List<GameObject> pooledObjects = new List<GameObject>();
 
-    private void Awake()
+    public void ClearPool()
     {
+        foreach (GameObject obj in pooledObjects)
+        {
+            Destroy(obj);
+        }
+
+        pooledObjects.Clear();
+    }
+
+    public void SetPoolSizeAndCreate(GameObject poolObj, int poolSize)
+    {
+        objectToPool = poolObj;
+        initialPoolSize = poolSize;
         CreatePool();
     }
 
-    private void CreatePool()
+    public void CreatePool()
     {
         for (int i = 0; i < initialPoolSize; i++)
         {
             GameObject obj = Instantiate(objectToPool);
+
+            obj.transform.position = spawnPoint.position;
 
             IPooledObject pooledObj = objectToPool.GetComponent<IPooledObject>();
             pooledObj.owner = this;
@@ -36,6 +52,7 @@ public class ObjectPool : MonoBehaviour
             if (!obj.activeInHierarchy)
             {
                 obj.SetActive(true);
+                obj.transform.position = spawnPoint.position;
                 return obj;
             }
         }
