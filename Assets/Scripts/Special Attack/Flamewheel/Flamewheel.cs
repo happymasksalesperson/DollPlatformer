@@ -6,6 +6,8 @@ public class FlameWheel : MonoBehaviour
 {
     public Transform midpoint;
 
+    public SpinTransform spinner;
+
     public ObjectPool objectPool;
 
     public GameObject prefabFireball;
@@ -23,7 +25,7 @@ public class FlameWheel : MonoBehaviour
     private IEnumerator spawningFireballs;
 
     //you can save ienumerators as variables to target them with start/stop
-    void Start()
+    public void StartSpinning()
     {
         spawningFireballs = SpawnFireballs();
 
@@ -55,7 +57,7 @@ public class FlameWheel : MonoBehaviour
             GameObject fireball = objectPool.GetPooledObject();
             listFireballs.Add(fireball);
             SpreadObjectsInCircle();
-            fireball.transform.SetParent(midpoint);
+            fireball.transform.SetParent(transform);
             i++;
         }
     }

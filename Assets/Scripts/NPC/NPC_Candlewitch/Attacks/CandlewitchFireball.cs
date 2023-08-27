@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Candlewitch
 {
-    public class CandlewitchFireball : IPooledObject
+    public class CandlewitchFireball : PooledObject
     {
         public CandlewitchFireballView view;
 

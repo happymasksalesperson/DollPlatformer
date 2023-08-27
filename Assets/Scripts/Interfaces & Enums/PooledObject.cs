@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IPooledObject : MonoBehaviour
+public class PooledObject : MonoBehaviour
 {
     public ObjectPool owner;
     public Transform spawnPosition;
@@ -19,7 +19,7 @@ public class IPooledObject : MonoBehaviour
         active = newActive;
 
         if (!active)
-            gameObject.transform.position = spawnPosition.position;
+            owner.AddObjectBackToPool(gameObject);
 
             gameObject.SetActive(active);
     }

@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectToPool;
     public int initialPoolSize;
 
-    public Dictionary<IPooledObject, GameObject> poolDictionary = new Dictionary<IPooledObject, GameObject>();
+    public Dictionary<PooledObject, GameObject> poolDictionary = new Dictionary<PooledObject, GameObject>();
 
     public void ClearPool()
     {
@@ -35,7 +35,7 @@ public class ObjectPool : MonoBehaviour
             GameObject obj = Instantiate(objectToPool);
             obj.transform.position = spawnPoint.position;
 
-            IPooledObject pooledObj = obj.GetComponent<IPooledObject>();
+            PooledObject pooledObj = obj.GetComponent<PooledObject>();
             pooledObj.owner = this;
             pooledObj.spawnPosition = spawnPoint;
             pooledObj.ChangeActive(false);
@@ -48,7 +48,7 @@ public class ObjectPool : MonoBehaviour
     {
         foreach (var keyValuePair in poolDictionary)
         {
-            IPooledObject poolObj = keyValuePair.Key;
+            PooledObject poolObj = keyValuePair.Key;
             GameObject obj = keyValuePair.Value;
 
             if (!obj.activeInHierarchy)
@@ -64,10 +64,9 @@ public class ObjectPool : MonoBehaviour
 
     public void AddObjectBackToPool(GameObject obj)
     {
-        IPooledObject poolObj = obj.GetComponent<IPooledObject>();
+        PooledObject poolObj = obj.GetComponent<PooledObject>();
         if (poolObj != null)
         {
-            poolObj.ChangeActive(false);
             poolDictionary[poolObj] = obj;
         }
     }

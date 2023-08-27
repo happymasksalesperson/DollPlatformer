@@ -7,40 +7,22 @@ namespace Candlewitch
 {
     public class CandlewitchShootFireballState : CandlewitchStateBase
     {
-        public Transform targetTransform;
+        public float timeBetweenAttacks;
 
-        public Transform shootTransform;
-
-        public ObjectPool pool;
-
-        public GameObject fireball;
-
-        public float shootForce;
+        public FlameWheel flameWheel;
 
         public void OnEnable()
         {
-            targetTransform = brain.playerTransform;
-            ShootFireball();
+            flameWheel.numFireballs = brain.numberOfFireballs;
+
+            flameWheel.spinner.direction = brain.facingRight;
+
+            flameWheel.StartSpinning();
         }
 
-        public void ShootFireball()
+        public void OnDisable()
         {
-            fireball = pool.GetPooledObject();
-            fireball.transform.position = shootTransform.position;
-            Rigidbody rb = fireball.GetComponent<Rigidbody>();
 
-            Vector3 directionToTarget = (targetTransform.position - shootTransform.position).normalized;
-
-            rb.AddForce(directionToTarget * shootForce, ForceMode.VelocityChange);
-
-            StartCoroutine(Vanish());
-        }
-
-        private IEnumerator Vanish()
-        {
-            yield return new WaitForSeconds(brain.fadeTime * 2);
-
-            brain.stateManager.ChangeState(brain.vanishState);
         }
     }
 }

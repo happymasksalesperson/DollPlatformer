@@ -12,8 +12,10 @@ public class HealthModel : MonoBehaviour, ITakeDamage
 
     private HealthModelView modelView;
 
-    [SerializeField] private float invincibilityTime;
-    [SerializeField] public bool canTakeDamage;
+    public float invincibilityTime;
+    public bool canTakeDamage;
+
+    public int testAmount;
 
     private void OnEnable()
     {
@@ -24,6 +26,22 @@ public class HealthModel : MonoBehaviour, ITakeDamage
         ChangeHP(maxHP);
     }
 
+    public void Resurrect()
+    {
+        isAlive = true;
+        ChangeHP(maxHP);
+    }
+
+    public void Death()
+    {
+        ChangeHP(-maxHP);
+    }
+
+    public void TestChangeHealth()
+    {
+        ChangeHP(testAmount);
+    }
+
     public void ChangeHP(int amount)
     {
         if (isAlive && canTakeDamage)
@@ -32,6 +50,7 @@ public class HealthModel : MonoBehaviour, ITakeDamage
 
             if (amount < 0)
             {
+                modelView.OnChangeInvincibilityState(true);
                 StartCoroutine(TakeDamageInvincibility());
             }
 
@@ -57,5 +76,7 @@ public class HealthModel : MonoBehaviour, ITakeDamage
         
         if(isAlive)
         canTakeDamage = true;
+
+        modelView.OnChangeInvincibilityState(false);
     }
 }

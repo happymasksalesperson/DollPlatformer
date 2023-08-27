@@ -1,20 +1,19 @@
+using Candlewitch;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(FireballBrain))]
-public class GameObjectStateManagerEditor : Editor
+[CustomEditor(typeof(CandlewitchBrain))]
+public class CandleWitchEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        FireballBrain fireballBrain = (FireballBrain)target;
+        CandlewitchBrain candleWitch = (CandlewitchBrain)target;
 
         DrawDefaultInspector();
 
-        EditorGUILayout.LabelField("Current Test State: " + fireballBrain.testState);
-
         if (GUILayout.Button("Change State"))
         {
-            fireballBrain.TestChangeState();
+            candleWitch.TestChangeState();
         }
 
         if (GUI.changed)
@@ -23,4 +22,3 @@ public class GameObjectStateManagerEditor : Editor
         }
     }
 }
-

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FireballBrain : MonoBehaviour
 {
+    public Transform targetTransform;
+
     public enum FireballStateEnum
     {
         Summon,

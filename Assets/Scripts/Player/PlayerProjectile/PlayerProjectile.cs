@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class PlayerProjectile : IPooledObject
+public class PlayerProjectile : PooledObject
 {
     public void Start()
     {
@@ -37,15 +37,5 @@ public class PlayerProjectile : IPooledObject
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         owner.AddObjectBackToPool(gameObject);
-    }
-
-    public void SetObjectPoolOwner(ObjectPool owner)
-    {
-
-    }
-
-    public void SetActiveObject(bool active)
-    {
-        throw new System.NotImplementedException();
     }
 }

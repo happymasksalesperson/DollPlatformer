@@ -10,6 +10,8 @@ namespace Candlewitch
 
         public void OnEnable()
         {
+            healthModel.Resurrect();
+
             modelView.OnFadeInFadeOut(true, brain.fadeTime);
 
             StartCoroutine(Intimidate());
