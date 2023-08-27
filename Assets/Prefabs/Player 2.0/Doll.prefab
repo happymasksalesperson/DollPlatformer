@@ -274,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6243505416889988619}
   - component: {fileID: 5171440491060851811}
+  - component: {fileID: 8574390588426329663}
   m_Layer: 0
   m_Name: ModelView
   m_TagString: Untagged
@@ -308,6 +309,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65be751080d4fda49bb4b94aebbf0527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8574390588426329663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199710817907811514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c819772454a85ab4796d207b848527fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7057171296430224472
@@ -360,6 +373,7 @@ GameObject:
   - component: {fileID: 2683405166065376606}
   - component: {fileID: 1803847812141603423}
   - component: {fileID: 1484260177640702725}
+  - component: {fileID: 4582366814722740822}
   m_Layer: 0
   m_Name: Doll
   m_TagString: Untagged
@@ -580,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
   objectToPool: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
   initialPoolSize: 10
 --- !u!114 &1484260177640702725
@@ -603,9 +618,28 @@ MonoBehaviour:
   pool: {fileID: 1803847812141603423}
   shootTransform: {fileID: 2480861597593256472}
   projectile: {fileID: 0}
+  numPooledProjectiles: 0
   rb: {fileID: 0}
   buffered: 0
   isAttacking: 0
+--- !u!114 &4582366814722740822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398899372810278984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580ee3fd5dfc6b045bd6ff1f03878509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  HP: 0
+  isAlive: 1
+  invincibilityTime: 1
+  canTakeDamage: 1
+  testAmount: 0
 --- !u!1001 &4135674344166168900
 PrefabInstance:
   m_ObjectHideFlags: 0

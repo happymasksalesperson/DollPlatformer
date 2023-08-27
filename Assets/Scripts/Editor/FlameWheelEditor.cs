@@ -15,6 +15,11 @@ public class FlameWheelEditor : Editor
             flameWheel.ChangeFireballNumber();
         }
 
+        if (GUILayout.Button("Shoot Fireball"))
+        {
+            flameWheel.Shoot();
+        }
+
         if (GUI.changed)
         {
             serializedObject.ApplyModifiedProperties();

@@ -13,12 +13,11 @@ public class FlamewheelShoot : MonoBehaviour
     public ObjectPool pool;
     
 
-    public void ShootFireball()
+    public void ShootFireball(GameObject fireballObj)
     {
-        GameObject fireObj = pool.GetPooledObject();
-
-        FireballBrain fireball = fireObj.GetComponent<FireballBrain>();
-
-        fireball.ChangeState(FireballBrain.FireballStateEnum.Projectile);
+        FireballBrain fireballBrain = fireballObj.GetComponent<FireballBrain>();
+        fireballBrain.targetTransform = target;
+        fireballBrain.shootPointTransform = transform;
+        fireballBrain.ChangeState(FireballBrain.FireballStateEnum.Projectile);
     }
 }

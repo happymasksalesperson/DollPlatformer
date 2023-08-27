@@ -158,7 +158,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   spawnPosition: {fileID: 0}
   active: 0
-  rb: {fileID: 0}
+  rb: {fileID: 3993353959909555750}
 --- !u!54 &3993353959909555750
 Rigidbody:
   m_ObjectHideFlags: 0

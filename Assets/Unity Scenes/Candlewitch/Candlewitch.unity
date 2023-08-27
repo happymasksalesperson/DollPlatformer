@@ -752,6 +752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball
       objectReference: {fileID: 0}
+    - target: {fileID: 705598861943792587, guid: 1560aefb06b0d8e44b62debb24a19ca3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2490512512291952099, guid: 1560aefb06b0d8e44b62debb24a19ca3, type: 3}
       propertyPath: targetTransform
       value: 
@@ -2255,6 +2259,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2887470447949412320, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232079486422363670, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: shooter
+      value: 
+      objectReference: {fileID: 2802741158079569504}
+    - target: {fileID: 4219326513264464571, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: initialPoolSize
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517999491390918628, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
@@ -2323,6 +2335,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 297e432bf38fe6f47925f1a93eb01ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2802741158079569504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6517999491390918628, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+  m_PrefabInstance: {fileID: 2802741158079569501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888a4d6167a9f934bb90e2ecc684522f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

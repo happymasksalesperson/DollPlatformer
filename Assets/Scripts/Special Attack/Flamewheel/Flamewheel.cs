@@ -6,11 +6,15 @@ public class FlameWheel : MonoBehaviour
 {
     public Transform midpoint;
 
+    public FlamewheelShoot shooter;
+
     public SpinTransform spinner;
 
     public ObjectPool objectPool;
 
     public GameObject prefabFireball;
+
+    private GameObject fireBall;
 
     public int numFireballs;
 
@@ -30,6 +34,16 @@ public class FlameWheel : MonoBehaviour
         spawningFireballs = SpawnFireballs();
 
         ChangeFireballNumber();
+    }
+
+    public void Shoot()
+    {
+        if (listFireballs.Count > 0)
+        {
+            fireBall = listFireballs[0];
+            listFireballs.Remove(fireBall);
+            shooter.ShootFireball(fireBall);
+        }
     }
 
     //spawns fireball prefab thru object pool
