@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class FireballBrain : MonoBehaviour
 {
+    public bool facingRight;
+
     public Transform targetTransform;
+
+    public Transform shootPointTransform;
 
     public enum FireballStateEnum
     {
@@ -29,7 +33,9 @@ public class FireballBrain : MonoBehaviour
 
     public GameObject deathState;
 
-    public event Action<FireballStateEnum> declareStateEvent;
+    public event Action<FireballStateEnum> DeclareStateEvent;
+
+    public event Action<bool> DeclareFacingRight;
 
     public Dictionary<FireballStateEnum, GameObject> fireballStateDictionary =
         new Dictionary<FireballStateEnum, GameObject>();
@@ -47,6 +53,12 @@ public class FireballBrain : MonoBehaviour
         }
     }
 
+    public void FacingRight(bool input)
+    {
+        facingRight = input;
+        DeclareFacingRight?.Invoke(input);
+    }
+
     public void TestChangeState()
     {
         ChangeState(testState);
@@ -58,7 +70,7 @@ public class FireballBrain : MonoBehaviour
         {
             stateManager.ChangeState(newStateObject);
             state = newState;
-            declareStateEvent?.Invoke(newState);
+            DeclareStateEvent?.Invoke(newState);
         }
         else
         {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1498835623805472144}
   - component: {fileID: 1124688098639750948}
   - component: {fileID: 1859733677328833417}
-  - component: {fileID: 1941911129167051703}
+  - component: {fileID: 8734028847110440662}
   m_Layer: 0
   m_Name: Flamewheel
   m_TagString: Untagged
@@ -60,13 +60,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297e432bf38fe6f47925f1a93eb01ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midpoint: {fileID: 7916463605249812987}
+  midpoint: {fileID: 0}
+  spinner: {fileID: 0}
   objectPool: {fileID: 1859733677328833417}
   prefabFireball: {fileID: 705598861943792587, guid: 1560aefb06b0d8e44b62debb24a19ca3, type: 3}
   numFireballs: 25
   listFireballs: []
   timeBetweenSpawn: 0.25
-  circleSize: 5
+  circleSize: 45
   distanceBetweenObjects: 1
 --- !u!114 &1859733677328833417
 MonoBehaviour:
@@ -83,7 +84,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 7916463605249812987}
   objectToPool: {fileID: 5439915611127223627}
   initialPoolSize: 10
---- !u!114 &1941911129167051703
+--- !u!114 &8734028847110440662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5439915611127223627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373e2c2964b36024eaee7a751bf2f67b, type: 3}
+  m_Script: {fileID: 11500000, guid: 888a4d6167a9f934bb90e2ecc684522f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  direction: 1
+  isPlayer: 0
+  target: {fileID: 0}
+  flameWheel: {fileID: 0}
+  pool: {fileID: 0}

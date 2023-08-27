@@ -13,22 +13,21 @@ public class HealthModel : MonoBehaviour, ITakeDamage
     private HealthModelView modelView;
 
     public float invincibilityTime;
-    public bool canTakeDamage;
+    public bool canTakeDamage = true;
 
     public int testAmount;
 
     private void OnEnable()
     {
         modelView = GetComponentInChildren<HealthModelView>();
-
-        canTakeDamage = true;
         
-        ChangeHP(maxHP);
+        Resurrect();
     }
 
     public void Resurrect()
     {
         isAlive = true;
+        canTakeDamage = true;
         ChangeHP(maxHP);
     }
 

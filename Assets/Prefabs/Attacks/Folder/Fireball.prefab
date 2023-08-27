@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5a79350128f5d4bb40df6c1e7c0067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brain: {fileID: 2490512512291952099}
+  damager: {fileID: 4302189731897529500}
   fireballTransform: {fileID: 3468053077886963902}
 --- !u!1 &705598861943792587
 GameObject:
@@ -56,10 +58,10 @@ GameObject:
   - component: {fileID: 3468053077886963902}
   - component: {fileID: 495712915072483689}
   - component: {fileID: 2490512512291952099}
-  - component: {fileID: 5530199152016299363}
   - component: {fileID: 4302189731897529500}
   - component: {fileID: 6300436932656398103}
-  - component: {fileID: 4399061749721639105}
+  - component: {fileID: 3993353959909555750}
+  - component: {fileID: 8564183354191989508}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -77,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1905184031445156910}
@@ -112,34 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f7bf4fb25bec547aa74c98403f24f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 0
+  targetTransform: {fileID: 0}
+  shootPointTransform: {fileID: 0}
   state: 0
-  testState: 0
+  testState: 1
   stateManager: {fileID: 495712915072483689}
   summonState: {fileID: 242246857402863580}
   projectileState: {fileID: 4698001279922380176}
   lingerState: {fileID: 1821163657875221015}
   deathState: {fileID: 4890010069382611969}
---- !u!135 &5530199152016299363
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705598861943792587}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.81799257
-  m_Center: {x: 0, y: -0.31799257, z: 0}
 --- !u!114 &4302189731897529500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,10 +138,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4294967295
+  multiHit: 0
   damageAmount: 5
   active: 1
-  timeBetweenDamageTicks: 0
+  timeBetweenDamageTicks: 1
 --- !u!114 &6300436932656398103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,8 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  rb: {fileID: 4399061749721639105}
---- !u!54 &4399061749721639105
+  spawnPosition: {fileID: 0}
+  active: 0
+  rb: {fileID: 0}
+--- !u!54 &3993353959909555750
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,6 +186,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8564183354191989508
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705598861943792587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1821163657875221015
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8341709589584446043}
+  - component: {fileID: 6312599050021511288}
   m_Layer: 0
   m_Name: Linger
   m_TagString: Untagged
@@ -230,6 +239,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3468053077886963902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6312599050021511288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821163657875221015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4dd6e51c99df734f8b53b0cd7259527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 2490512512291952099}
+  damager: {fileID: 4302189731897529500}
+  lingerTime: 5
 --- !u!1 &4698001279922380176
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2796624153860017371}
+  - component: {fileID: 7109313364836213121}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -261,6 +286,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3468053077886963902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7109313364836213121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4698001279922380176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2c494a4eaf2b24ebb8baf7b315fe9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 2490512512291952099}
+  damager: {fileID: 4302189731897529500}
+  targetTransform: {fileID: 0}
+  rb: {fileID: 3993353959909555750}
+  shootForce: 75
+  damageAmount: 5
 --- !u!1 &4890010069382611969
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228254000548414889}
+  - component: {fileID: 6108948578282081450}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -292,6 +336,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3468053077886963902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6108948578282081450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890010069382611969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c0740ef883db14082279443c5e886f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 2490512512291952099}
+  damager: {fileID: 4302189731897529500}
+  deathTime: 1
+  pooledObj: {fileID: 6300436932656398103}
 --- !u!1 &5992398966963761687
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 69249658685508214}
   brain: {fileID: 2490512512291952099}
+  spr: {fileID: 6648868730970043882}
 --- !u!95 &69249658685508214
 Animator:
   serializedVersion: 7

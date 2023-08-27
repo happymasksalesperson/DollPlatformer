@@ -408,3 +408,13 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 5.8
 
 -- updated ObjectPool, fixed Player Range Attack, updated FlameWheel
+
+5.9
+
+-- candlewitch now summons flamewheel, flamewheel follows target and spins. 
+
+-- updated ObjectPool
+
+6.0
+
+-- updated Fireball Projectile, Linger, Death state. Works through Damager.cs. Successfully shoots at targets and deals damage to ITakeDamage targets. "Dies" on hit of ITakeDamage and Lingers if it hits anything else. Lingering fireballs are static and do damage where they land before dying.

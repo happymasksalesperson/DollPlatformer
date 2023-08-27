@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,24 +8,47 @@ public class Damager : MonoBehaviour
 {
     public LayerMask targetLayers;
 
+    public bool multiHit = false;
+
     public int damageAmount;
 
     public bool active = true;
 
     public float timeBetweenDamageTicks;
 
+    public event Action HitITakeDamageEvent;
+
+    public event Action HitEnvironmentEvent;
+
     private void OnCollisionEnter(Collision collision)
+    {
+        HandleCollision(collision.collider);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleCollision(other);
+    }
+
+    private void HandleCollision(Collider col)
     {
         if (active)
         {
-            if ((targetLayers.value & (1 << collision.gameObject.layer)) != 0)
+            if ((targetLayers.value & (1 << col.gameObject.layer)) != 0)
             {
-                if (collision.gameObject.GetComponent<ITakeDamage>() != null)
+                if (col.GetComponent<ITakeDamage>() != null)
                 {
-                    ITakeDamage victim = collision.gameObject.GetComponent<ITakeDamage>();
-                    victim.ChangeHP(damageAmount);
-                    StartCoroutine(ActiveCooldown());
+                    ITakeDamage damageTaker = col.GetComponent<ITakeDamage>();
+                    damageTaker.ChangeHP(-damageAmount);
+                    HitITakeDamageEvent?.Invoke();
                 }
+                else
+                {
+                    HitEnvironmentEvent?.Invoke();
+                }
+
+                if (multiHit)
+                    StartCoroutine(ActiveCooldown());
             }
         }
     }

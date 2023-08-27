@@ -8,14 +8,23 @@ public class FireballView : MonoBehaviour
 
     public FireballBrain brain;
 
+    public SpriteRenderer spr;
+
     public void OnEnable()
     {
-        brain.declareStateEvent += HandleStateChange;
+        brain.DeclareStateEvent += HandleStateChange;
+        brain.DeclareFacingRight += FlipSprite;
     }
 
     public void OnDisable()
     {
-        brain.declareStateEvent -= HandleStateChange;
+        brain.DeclareStateEvent -= HandleStateChange;
+        brain.DeclareFacingRight -= FlipSprite;
+    }
+
+    private void FlipSprite(bool input)
+    {
+        spr.flipX = input;
     }
 
     public void HandleStateChange(FireballBrain.FireballStateEnum newState)

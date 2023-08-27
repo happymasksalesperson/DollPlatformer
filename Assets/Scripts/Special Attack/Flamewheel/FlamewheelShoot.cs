@@ -10,15 +10,15 @@ public class FlamewheelShoot : MonoBehaviour
 
     public FlameWheel flameWheel;
 
-    public List<GameObject> fireballs;
-
-    public void SetFireballs()
-    {
-        fireballs = flameWheel.listFireballs;
-    }
+    public ObjectPool pool;
+    
 
     public void ShootFireball()
     {
+        GameObject fireObj = pool.GetPooledObject();
 
+        FireballBrain fireball = fireObj.GetComponent<FireballBrain>();
+
+        fireball.ChangeState(FireballBrain.FireballStateEnum.Projectile);
     }
 }
