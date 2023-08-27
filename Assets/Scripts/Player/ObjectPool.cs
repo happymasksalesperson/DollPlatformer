@@ -1,25 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
     public Transform spawnPoint;
-
     public GameObject objectToPool;
     public int initialPoolSize;
 
-    private List<GameObject> pooledObjects = new List<GameObject>();
+    public Dictionary<IPooledObject, GameObject> poolDictionary = new Dictionary<IPooledObject, GameObject>();
 
     public void ClearPool()
     {
-        foreach (GameObject obj in pooledObjects)
+        foreach (var keyValuePair in poolDictionary)
         {
+            GameObject obj = keyValuePair.Value;
             Destroy(obj);
         }
 
-        pooledObjects.Clear();
+        poolDictionary.Clear();
     }
 
     public void SetPoolSizeAndCreate(GameObject poolObj, int poolSize)
@@ -34,24 +33,27 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < initialPoolSize; i++)
         {
             GameObject obj = Instantiate(objectToPool);
-
             obj.transform.position = spawnPoint.position;
 
-            IPooledObject pooledObj = objectToPool.GetComponent<IPooledObject>();
+            IPooledObject pooledObj = obj.GetComponent<IPooledObject>();
             pooledObj.owner = this;
-            
-            obj.SetActive(false);
-            pooledObjects.Add(obj);
+            pooledObj.spawnPosition = spawnPoint;
+            pooledObj.ChangeActive(false);
+
+            poolDictionary[pooledObj] = obj;
         }
     }
 
     public GameObject GetPooledObject()
     {
-        foreach (GameObject obj in pooledObjects)
+        foreach (var keyValuePair in poolDictionary)
         {
+            IPooledObject poolObj = keyValuePair.Key;
+            GameObject obj = keyValuePair.Value;
+
             if (!obj.activeInHierarchy)
             {
-                obj.SetActive(true);
+                poolObj.ChangeActive(true);
                 obj.transform.position = spawnPoint.position;
                 return obj;
             }
@@ -60,11 +62,13 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
-    public void AddObjectToPool(GameObject obj)
+    public void AddObjectBackToPool(GameObject obj)
     {
-        obj.SetActive(false);
-
-        if(!pooledObjects.Contains(obj))
-        pooledObjects.Add(obj);
+        IPooledObject poolObj = obj.GetComponent<IPooledObject>();
+        if (poolObj != null)
+        {
+            poolObj.ChangeActive(false);
+            poolDictionary[poolObj] = obj;
+        }
     }
 }

@@ -53,8 +53,6 @@ public class Player2Attack : MonoBehaviour
                     }
                 }
             }
-            
-            stateManager.ChangeState(PlayerStates.StandRangeAttack01);
         }
     }
 

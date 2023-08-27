@@ -404,3 +404,7 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- TODO: make it work with moving (probably have to change the spin method? transform.rotate doesn't cut it)
 
 -- updated ObjectGameManager and ObjectPool
+
+5.8
+
+-- updated ObjectPool, fixed Player Range Attack, updated FlameWheel

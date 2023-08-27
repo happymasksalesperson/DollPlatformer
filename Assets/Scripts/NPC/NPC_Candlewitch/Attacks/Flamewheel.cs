@@ -22,6 +22,7 @@ public class FlameWheel : MonoBehaviour
 
     private IEnumerator spawningFireballs;
 
+    //you can save ienumerators as variables to target them with start/stop
     void Start()
     {
         spawningFireballs = SpawnFireballs();
@@ -29,7 +30,7 @@ public class FlameWheel : MonoBehaviour
         ChangeFireballNumber();
     }
 
-
+    //spawns fireball prefab thru object pool
     public void ChangeFireballNumber()
     {
         if (spawningFireballs != null)
@@ -56,6 +57,21 @@ public class FlameWheel : MonoBehaviour
             SpreadObjectsInCircle();
             fireball.transform.SetParent(midpoint);
             i++;
+        }
+    }
+
+    private IEnumerator DecreaseFireballs()
+    {
+        int i = numFireballs;
+        while (0 < numFireballs)
+        {
+            yield return new WaitForSeconds(timeBetweenSpawn);
+
+            GameObject fireballToRemove = listFireballs[0];
+
+            objectPool.AddObjectBackToPool(fireballToRemove);
+
+            listFireballs.RemoveAt(0);
         }
     }
 

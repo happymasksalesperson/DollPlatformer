@@ -36,6 +36,16 @@ public class PlayerProjectile : IPooledObject
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        owner.AddObjectToPool(gameObject);
+        owner.AddObjectBackToPool(gameObject);
+    }
+
+    public void SetObjectPoolOwner(ObjectPool owner)
+    {
+
+    }
+
+    public void SetActiveObject(bool active)
+    {
+        throw new System.NotImplementedException();
     }
 }

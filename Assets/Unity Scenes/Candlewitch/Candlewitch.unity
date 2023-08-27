@@ -141,6 +141,14 @@ PrefabInstance:
       propertyPath: castTime
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1484260177640702725, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
+    - target: {fileID: 1484260177640702725, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: numPooledProjectiles
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1784714320604723810, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: inControl
       value: 1
@@ -149,6 +157,10 @@ PrefabInstance:
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 678135212}
+    - target: {fileID: 1803847812141603423, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 611154594}
     - target: {fileID: 1803847812141603423, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: initialPoolSize
       value: 15
@@ -172,6 +184,18 @@ PrefabInstance:
     - target: {fileID: 2317054145431214663, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480861597593256472, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480861597593256472, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480861597593256472, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598329773839576571, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_Layer
@@ -295,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7398899372810278984, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7615159030378622736, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_Layer
@@ -1172,12 +1196,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1488102773}
     - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: circleSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 1488102774}
     - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: numFireballs
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: prefabFireball
@@ -1195,6 +1223,10 @@ PrefabInstance:
       propertyPath: objectToPool
       value: 
       objectReference: {fileID: 1488102772}
+    - target: {fileID: 1941911129167051703, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1941911129167051703, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1246,7 +1278,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5439915611127223627, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1488102778}
   m_SourcePrefab: {fileID: 100100000, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
 --- !u!1 &1488102772 stripped
 GameObject:
@@ -1269,6 +1304,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1488102778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488102772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d360091de713aaf4f9cb502dfb0882ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 611154594}
 --- !u!4 &1516058928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3818465521257218286, guid: 3cdb2fde92b7cb64e91c7ced3baf9b91, type: 3}

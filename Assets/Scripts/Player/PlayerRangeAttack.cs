@@ -22,6 +22,8 @@ public class PlayerRangeAttack : MonoBehaviour
 
     public GameObject projectile;
 
+    public int numPooledProjectiles;
+
     public Rigidbody rb;
 
     public bool buffered = false;
@@ -54,6 +56,7 @@ public class PlayerRangeAttack : MonoBehaviour
     private void OnEnable()
     {
         controls.AttackEvent += OnAttack;
+        pool.SetPoolSizeAndCreate(projectile, numPooledProjectiles);
     }
 
     private void OnDisable()
