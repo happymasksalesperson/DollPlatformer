@@ -50,10 +50,10 @@ public class Bestiary : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OpenBestiary();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     OpenBestiary();
+        // }
     }
 
     public void OpenBestiary()
