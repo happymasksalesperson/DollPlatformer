@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7398899372810278984, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7615159030378622736, guid: 2ccc8072630386b4c965156a21e5e165, type: 3}
       propertyPath: m_Layer
@@ -708,7 +708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 533127500}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 1186135639}
   - component: {fileID: 1186135640}
   - component: {fileID: 1186135641}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,7 +1438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1411163759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1558,6 +1558,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 296492246}
     m_Modifications:
     - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: shooter
+      value: 
+      objectReference: {fileID: 1937618285}
+    - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: spinner
       value: 
       objectReference: {fileID: 1186135641}
@@ -1569,9 +1573,21 @@ PrefabInstance:
       propertyPath: circleSize
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: player.m_Bits
+      value: 268435656
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124688098639750948, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: ITakeDamage.m_Bits
+      value: 268436672
+      objectReference: {fileID: 0}
     - target: {fileID: 5439915611127223627, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: m_Name
       value: Flamewheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439915611127223627, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7916463605249812987, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,6 +1628,22 @@ PrefabInstance:
     - target: {fileID: 7916463605249812987, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734028847110440662, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: pool
+      value: 
+      objectReference: {fileID: 1937618284}
+    - target: {fileID: 8734028847110440662, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: flameWheel
+      value: 
+      objectReference: {fileID: 1488102776}
+    - target: {fileID: 8734028847110440662, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: player.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734028847110440662, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+      propertyPath: ITakeDamage.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1758,6 +1790,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937618284 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1859733677328833417, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+  m_PrefabInstance: {fileID: 1488102771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1937618285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8734028847110440662, guid: 68f7a4231593ebd41a0d54ec6aea69fa, type: 3}
+  m_PrefabInstance: {fileID: 1488102771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888a4d6167a9f934bb90e2ecc684522f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1950514098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3818465521257218286, guid: 2a641f431a7eeff429c0d65bf9f2b154, type: 3}
@@ -2007,17 +2061,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1083200871324404289, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1898277767655943817, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898277767655943817, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 611154594}
+    - target: {fileID: 2832768558581484669, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5271467013326817228, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179258493626472402, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179258493626472402, guid: 6823fc726888ae247ac8b1f906e3b5ca, type: 3}
+      propertyPath: orthographic size
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2075,6 +2145,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3558234999884651470, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364702423968751638, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4467738850676269417, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: currentState
       value: 
@@ -2085,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 996580803}
     - target: {fileID: 6738767677263709800, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: testing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6738767677263709800, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: testState
@@ -2145,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480975780289026619, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: pool
@@ -2179,6 +2257,26 @@ PrefabInstance:
       propertyPath: shootTransform
       value: 
       objectReference: {fileID: 533127500}
+    - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: vulnerableTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: phase01Fireballs
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: phase02Fireballs
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: phase03Fireballs
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8518790188501521083, guid: fb52a995f092751488eb3b437f2d0cb3, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -2257,14 +2355,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlamewheelPoint
       objectReference: {fileID: 0}
-    - target: {fileID: 2887470447949412320, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3232079486422363670, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
       propertyPath: shooter
       value: 
       objectReference: {fileID: 2802741158079569504}
+    - target: {fileID: 3232079486422363670, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: player.m_Bits
+      value: 268435656
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232079486422363670, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: ITakeDamage.m_Bits
+      value: 268436672
+      objectReference: {fileID: 0}
     - target: {fileID: 4219326513264464571, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
       propertyPath: initialPoolSize
       value: 0
@@ -2281,6 +2383,14 @@ PrefabInstance:
       propertyPath: flameWheel
       value: 
       objectReference: {fileID: 2802741158079569502}
+    - target: {fileID: 6517999491390918628, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: player.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517999491390918628, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
+      propertyPath: ITakeDamage.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 7002729065595738997, guid: ae3f5ada971050b488741f1ebca9a16f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

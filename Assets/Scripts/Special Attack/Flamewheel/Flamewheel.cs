@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class FlameWheel : MonoBehaviour
 {
+    public bool isPlayer=false;
+
+    public LayerMask player;
+
+    public LayerMask ITakeDamage;
+
     public Transform midpoint;
+
+    public Transform targetTransform;
 
     public FlamewheelShoot shooter;
 
@@ -26,20 +34,21 @@ public class FlameWheel : MonoBehaviour
 
     public float distanceBetweenObjects;
 
+    public bool initialised=false;
+
     private IEnumerator spawningFireballs;
 
     //you can save ienumerators as variables to target them with start/stop
-    public void StartSpinning()
+    public void Start()
     {
         spawningFireballs = SpawnFireballs();
-
-        ChangeFireballNumber();
     }
 
     public void Shoot()
     {
-        if (listFireballs.Count > 0)
+        if (listFireballs.Count > 0 && initialised)
         {
+            shooter.target = targetTransform;
             fireBall = listFireballs[0];
             listFireballs.Remove(fireBall);
             shooter.ShootFireball(fireBall);
@@ -49,6 +58,8 @@ public class FlameWheel : MonoBehaviour
     //spawns fireball prefab thru object pool
     public void ChangeFireballNumber()
     {
+        initialised = false;
+
         if (spawningFireballs != null)
             StopCoroutine(spawningFireballs);
 
@@ -70,17 +81,33 @@ public class FlameWheel : MonoBehaviour
 
             GameObject fireball = objectPool.GetPooledObject();
             listFireballs.Add(fireball);
+
+            FireballBrain fireballBrain = fireball.GetComponent<FireballBrain>();
+            fireballBrain.ChangeState(FireballBrain.FireballStateEnum.Summon);
+
+            Damager damager = fireball.GetComponent<Damager>();
+
+            //Hack?
+            if (isPlayer)
+                damager.targetLayers = ITakeDamage;
+            else
+                damager.targetLayers = player;
+
             SpreadObjectsInCircle();
             fireball.transform.SetParent(transform);
             i++;
         }
+
+        initialised = true;
     }
 
     private IEnumerator DecreaseFireballs()
     {
+        initialised = false;
         int i = numFireballs;
         while (0 < numFireballs)
         {
+
             yield return new WaitForSeconds(timeBetweenSpawn);
 
             GameObject fireballToRemove = listFireballs[0];
@@ -88,7 +115,10 @@ public class FlameWheel : MonoBehaviour
             objectPool.AddObjectBackToPool(fireballToRemove);
 
             listFireballs.RemoveAt(0);
+
         }
+
+        initialised = true;
     }
 
     void SpreadObjectsInCircle()

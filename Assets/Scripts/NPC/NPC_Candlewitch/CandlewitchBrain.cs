@@ -18,10 +18,16 @@ namespace Candlewitch
             TakeDamage,
             ShootFireball,
             FirePillar,
-            Death
+            Death,
+
+            Phase01,
+            Phase02,
+            Phase03
         }
 
         public CandlewitchStateEnum testState;
+
+        public CandlewitchStateEnum currentPhase;
 
         public GameObjectStateManager stateManager;
 
@@ -49,22 +55,15 @@ namespace Candlewitch
 
         public GameObject deathState;
 
-        [ReadOnly(true)]
-        public int numberOfFireballs;
-
-        public int startFightFireballs;
-        public int midFightFireballs;
-        public int endFightFireballs;
-
         public HealthModelView health;
 
         public Dictionary<CandlewitchStateEnum, GameObject> candlewitchStateDictionary =
             new Dictionary<CandlewitchStateEnum, GameObject>();
 
-
-
         public void OnEnable()
         {
+            currentPhase = CandlewitchStateEnum.Phase01;
+
             if (candlewitchStateDictionary.Count == 0)
             {
                 candlewitchStateDictionary.Add(CandlewitchStateEnum.StartFight, startFightState);
@@ -74,8 +73,7 @@ namespace Candlewitch
                 candlewitchStateDictionary.Add(CandlewitchStateEnum.FirePillar, summonFirePillarState);
                 candlewitchStateDictionary.Add(CandlewitchStateEnum.Death, deathState);
             }
-
-            numberOfFireballs = startFightFireballs;
+            
             health.ChangeHealth += UpdateHealth;
 
             if(!testing)
@@ -142,17 +140,17 @@ namespace Candlewitch
 
             if (healthVal <= 25)
             {
-                numberOfFireballs = endFightFireballs;
+                currentPhase = CandlewitchStateEnum.Phase03;
                 return;
             }
 
             if (healthVal <= 75)
             {
-                numberOfFireballs = midFightFireballs;
+                currentPhase = CandlewitchStateEnum.Phase02;
                 return;
             }
 
-            numberOfFireballs = startFightFireballs;
+            currentPhase = CandlewitchStateEnum.Phase01;
         }
     }
 }

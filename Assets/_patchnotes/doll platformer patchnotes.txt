@@ -420,3 +420,9 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- updated Fireball Projectile, Linger, Death state. Works through Damager.cs. Successfully shoots at targets and deals damage to ITakeDamage targets. "Dies" on hit of ITakeDamage and Lingers if it hits anything else. Lingering fireballs are static and do damage where they land before dying.
 
 -- flamewheel now shoots fireballs
+
+6.1
+
+-- Candlewitch now shoots fireballs at the Player
+
+-- Fireball and FlameWheel updates
