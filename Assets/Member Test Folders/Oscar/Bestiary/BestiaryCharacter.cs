@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BestiaryCharacter : MonoBehaviour
 {
@@ -20,8 +21,12 @@ public class BestiaryCharacter : MonoBehaviour
       Needle,
       CymbolMonkey
    }
+
+   [Header("Image of Character Entry")] 
+   [Space(10)]
+   public Image characterImage;
    
-   [Header("type of Character Entry")]
+   [Header("Type of Character Entry")]
    [Space(10)]
    public Character typeOfCharacter;
    

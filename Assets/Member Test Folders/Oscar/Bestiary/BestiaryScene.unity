@@ -67,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -204,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71333e900a970b046949fd6f2c61e5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 0}
   typeOfCharacter: 0
   name: big donny
   dificultyLevel: 1
@@ -267,13 +265,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687839521}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 264.54, y: 69.20096, z: -73.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838325139
 GameObject:
@@ -366,13 +364,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838325139}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 260.04, y: 72.81, z: -73.8}
   m_LocalScale: {x: 1.978731, y: 1.978731, z: 1.978731}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &838325146
 SphereCollider:
@@ -417,7 +415,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -541,13 +539,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846254954}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 261.82864, y: 66.93, z: -74.035645}
   m_LocalScale: {x: 4.8626, y: 4.8626, z: 4.8626}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003275668
 GameObject:
@@ -578,7 +576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f2f88279fdb314691441c4f8453739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestiaryEntries: 
+  bestiaryEntries: []
+  bestiaryView: {fileID: 0}
 --- !u!4 &1003275670
 Transform:
   m_ObjectHideFlags: 0
@@ -586,13 +585,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003275668}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 262.21503, y: 69.20096, z: -73.775566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135567503
 GameObject:
@@ -675,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71333e900a970b046949fd6f2c61e5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 0}
   typeOfCharacter: 2
   name: big donny
   dificultyLevel: 1
@@ -738,13 +738,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135567503}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 251.32, y: 69.20096, z: -73.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365884396
 GameObject:
@@ -832,14 +832,79 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365884396}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1557050737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4065596040292574016, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538414607171758363, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_Name
+      value: BestiaryModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969222498006890015, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: bestiaryView
+      value: 
+      objectReference: {fileID: 1923250506}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 260.74976
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 68.22832
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -74.71571
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010050696525040710, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
 --- !u!1 &1897561853
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,14 +989,19 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897561853}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1923250506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4065596040292574016, guid: 55b40f7020c389d4e86f4d8a1ebd3b7e, type: 3}
+  m_PrefabInstance: {fileID: 1557050737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052140995
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71333e900a970b046949fd6f2c61e5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 0}
   typeOfCharacter: 5
   name: pp man
   dificultyLevel: 1
@@ -1028,13 +1099,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052140995}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 260.101, y: 69.20096, z: -73.745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2052141001
 BoxCollider:
@@ -1165,6 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71333e900a970b046949fd6f2c61e5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 0}
   typeOfCharacter: 5
   name: big donny
   dificultyLevel: 1
@@ -1228,11 +1300,25 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112677751}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 255.85, y: 69.20096, z: -73.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1897561856}
+  - {fileID: 1365884398}
+  - {fileID: 1003275670}
+  - {fileID: 838325145}
+  - {fileID: 2052141000}
+  - {fileID: 2112677757}
+  - {fileID: 846254958}
+  - {fileID: 687839527}
+  - {fileID: 1135567509}
+  - {fileID: 1557050737}
