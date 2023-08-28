@@ -426,3 +426,13 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- Candlewitch now shoots fireballs at the Player
 
 -- Fireball and FlameWheel updates
+
+6.2
+
+-- updated Player rb mass and force amounts
+
+-- fixed PlayerSlide. TODO: fix sliding off ledges
+
+-- added PlayerStandMeleeAttack01 state logic. the Player can buffer attacks like they can the range attack
+
+-- added the ability for the Player to move through Ground by pressing Crouch+Jump. Doesn't work for Unpassable Ground

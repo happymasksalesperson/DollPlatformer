@@ -27,7 +27,7 @@ public class PlayerSlide : MonoBehaviour
         middleMan.inControl = false;
         slideStartTime = 0;
         facingRight = middleMan.facingRight;
-        Slide();
+        StartCoroutine(Slide());
     }
 
     private void Update()
@@ -36,21 +36,14 @@ public class PlayerSlide : MonoBehaviour
             stateManager.ChangeState(PlayerStates.Fall);
     }
 
-    private void Slide()
+    private IEnumerator Slide()
     {
         isSliding = true;
         slideStartTime = Time.time;
-
-        float horizontalForce = facingRight ? slideForce : -slideForce;
-        rb.AddForce(horizontalForce,0,0, ForceMode.VelocityChange);
-
-        StartCoroutine(CrouchSlide());
-    }
-
-    private IEnumerator CrouchSlide()
-    {
         while (Time.time < slideStartTime + slideTime)
         {
+            float horizontalForce = facingRight ? slideForce : -slideForce;
+            rb.AddForce(horizontalForce, 0, 0, ForceMode.Acceleration);
             yield return null;
         }
 
@@ -63,7 +56,7 @@ public class PlayerSlide : MonoBehaviour
 
         else if (middleMan.grounded && controls.aimInput < 0)
             stateManager.ChangeState(PlayerStates.Crouch);
-        
+
         else
             stateManager.ChangeState(PlayerStates.Idle);
     }

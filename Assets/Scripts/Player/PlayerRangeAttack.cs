@@ -30,6 +30,11 @@ public class PlayerRangeAttack : MonoBehaviour
 
     public bool isAttacking = false;
 
+    private void OnEnable()
+    {
+        pool.SetPoolSizeAndCreate(projectile, numPooledProjectiles);
+    }
+    
     public void OnAttack()
     {
         if (!middleMan.canRangeAttack)
@@ -51,17 +56,6 @@ public class PlayerRangeAttack : MonoBehaviour
         modelView.OnChangeState(PlayerStates.StandRangeAttack01);
 
         StartCoroutine(RangeAttack());
-    }
-
-    private void OnEnable()
-    {
-        controls.AttackEvent += OnAttack;
-        pool.SetPoolSizeAndCreate(projectile, numPooledProjectiles);
-    }
-
-    private void OnDisable()
-    {
-        controls.AttackEvent -= OnAttack;
     }
 
     private IEnumerator RangeAttack()

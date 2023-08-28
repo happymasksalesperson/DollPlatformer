@@ -11,6 +11,8 @@ public class Player2Attack : MonoBehaviour
 
     public PlayerControls controls;
 
+    public PlayerRangeAttack rangeAttack;
+
     public bool facingRight;
 
     public float attackDetectionDistance;
@@ -19,25 +21,30 @@ public class Player2Attack : MonoBehaviour
 
     public float xOffset;
 
+    public int attackDamage;
+
+    public bool canSlide=true;
+
     public void Start()
     {
         controls.AttackEvent += Attack;
     }
 
-    private void Attack()
+    public void Attack()
     {
         facingRight = middleMan.facingRight;
 
-        if (stateManager.currentState == PlayerStates.Crouch)
+        if (stateManager.currentState == PlayerStates.Crouch && canSlide)
         {
             stateManager.ChangeState(PlayerStates.Slide);
         }
-        else if (stateManager.currentState == PlayerStates.Idle)
+
+        else if (stateManager.currentState == PlayerStates.Idle || stateManager.currentState == PlayerStates.Run)
         {
             Vector3 boxPosition = transform.position + new Vector3(xOffset * (facingRight ? 1 : -1), 0f, 0f);
             Vector3 boxHalfExtents = new Vector3(attackDetectionDistance, attackDetectionDistance, attackDetectionDistance);
 
-            RaycastHit[] hits = new RaycastHit[5];
+            RaycastHit[] hits = new RaycastHit[10];
             int numCollisions = Physics.BoxCastNonAlloc(boxPosition, boxHalfExtents, Vector3.forward, hits, Quaternion.identity, 0f, damageLayer, QueryTriggerInteraction.Collide);
 
             if (numCollisions > 0)
@@ -48,11 +55,14 @@ public class Player2Attack : MonoBehaviour
                     ITakeDamage damageReceiver = hit.collider.GetComponent<ITakeDamage>();
                     if (damageReceiver != null)
                     {
+                        damageReceiver.ChangeHP(-attackDamage);
                         stateManager.ChangeState(PlayerStates.StandMeleeAttack01);
                         return;
                     }
                 }
             }
+
+            rangeAttack.OnAttack();
         }
     }
 

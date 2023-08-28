@@ -48,7 +48,7 @@ namespace Candlewitch
                     StartCoroutine(ChangeToDecidedState(brain.shootFireballState));
                     break;
                 case CandlewitchAttackEnum.FloorFirePillar:
-                    StartCoroutine(ChangeToDecidedState(brain.vanishState));
+                    StartCoroutine(ChangeToDecidedState(brain.summonFirePillarState));
                     break;
                 case CandlewitchAttackEnum.Teleport:
                     StartCoroutine(ChangeToDecidedState(brain.vanishState));

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8449429953270718884}
   - component: {fileID: 7041876077295364511}
   - component: {fileID: 9014184993334029688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 7317329836227499555}
   - component: {fileID: 8582798668857238940}
   - component: {fileID: 8606928520218191584}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 6243505416889988619}
   - component: {fileID: 5171440491060851811}
   - component: {fileID: 8574390588426329663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ModelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2480861597593256472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 7057171296430224472}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.000082, y: 5.196789, z: -0.03760303}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 1803847812141603423}
   - component: {fileID: 1484260177640702725}
   - component: {fileID: 4582366814722740822}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Doll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7398899372810278984}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -514,7 +514,7 @@ MonoBehaviour:
   inControl: 1
   grounded: 0
   facingRight: 0
-  canJump: 0
+  canJump: 1
   canRangeAttack: 1
   moving: 0
   rb: {fileID: 1849811963992487702}
@@ -576,12 +576,15 @@ MonoBehaviour:
   stateManager: {fileID: 927983013910895130}
   middleMan: {fileID: 1784714320604723810}
   controls: {fileID: 1498546878730015440}
+  rangeAttack: {fileID: 1484260177640702725}
   facingRight: 0
-  attackDetectionDistance: 5
+  attackDetectionDistance: 15
   damageLayer:
     serializedVersion: 2
     m_Bits: 1024
-  xOffset: 5
+  xOffset: 7.5
+  attackDamage: 15
+  canSlide: 1
 --- !u!114 &1803847812141603423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,9 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 4988842286486905172}
   objectToPool: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
-  initialPoolSize: 10
+  initialPoolSize: 15
 --- !u!114 &1484260177640702725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,12 +616,12 @@ MonoBehaviour:
   modelView: {fileID: 5171440491060851811}
   middleMan: {fileID: 1784714320604723810}
   controls: {fileID: 1498546878730015440}
-  castTime: 0.15
+  castTime: 0.25
   projectileForce: 25000
   pool: {fileID: 1803847812141603423}
   shootTransform: {fileID: 2480861597593256472}
-  projectile: {fileID: 0}
-  numPooledProjectiles: 0
+  projectile: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
+  numPooledProjectiles: 15
   rb: {fileID: 0}
   buffered: 0
   isAttacking: 0
@@ -698,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369548891358146885, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
       propertyPath: jumpForce
-      value: 2000000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2369548891358146885, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
       propertyPath: middleMan
@@ -723,6 +726,10 @@ PrefabInstance:
     - target: {fileID: 3130681625164953402, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
       propertyPath: m_Name
       value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130681625164953402, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3130681625164953402, guid: d8cdef533c6a98e4f8d2cfbb57fc6a2f, type: 3}
       propertyPath: m_IsActive
@@ -752,9 +759,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 4988842286486905172}
     m_Modifications:
     - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: doll
+      value: 
+      objectReference: {fileID: 4988842286486905172}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: attack
+      value: 
+      objectReference: {fileID: 2683405166065376606}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
       propertyPath: controls
       value: 
       objectReference: {fileID: 1498546878730015440}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: moveTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: middleMan
+      value: 
+      objectReference: {fileID: 1784714320604723810}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: yDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 4435036922663003672}
     - target: {fileID: 1066379072923379405, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
       propertyPath: stateManager
       value: 
@@ -808,6 +839,10 @@ PrefabInstance:
       value: Crouch
       objectReference: {fileID: 0}
     - target: {fileID: 7648485080301018787, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648485080301018787, guid: c080bbbff5bb9164e884e59816cef003, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -837,6 +872,10 @@ PrefabInstance:
     - target: {fileID: 5910591293881409018, guid: ae58e62fbd3813b45b013dd522b5a734, type: 3}
       propertyPath: m_Name
       value: PlayerDeathState
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910591293881409018, guid: ae58e62fbd3813b45b013dd522b5a734, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7758212880654909594, guid: ae58e62fbd3813b45b013dd522b5a734, type: 3}
       propertyPath: m_LocalPosition.x
@@ -906,8 +945,32 @@ PrefabInstance:
       value: StandMeleeAttack01
       objectReference: {fileID: 0}
     - target: {fileID: 341278822070978949, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 341278822070978949, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: attack
+      value: 
+      objectReference: {fileID: 2683405166065376606}
+    - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1498546878730015440}
+    - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: middleman
+      value: 
+      objectReference: {fileID: 1784714320604723810}
+    - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: modelView
+      value: 
+      objectReference: {fileID: 5171440491060851811}
+    - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
+      propertyPath: attackTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3628271817165625819, guid: 73aec16c3a1598b40a02665c1c5eb756, type: 3}
       propertyPath: stateManager
@@ -999,6 +1062,10 @@ PrefabInstance:
     - target: {fileID: 4065137718933945974, guid: 411d05ab4a0ec6a458ab65d83e7d7a82, type: 3}
       propertyPath: m_Name
       value: Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065137718933945974, guid: 411d05ab4a0ec6a458ab65d83e7d7a82, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4065137718933945974, guid: 411d05ab4a0ec6a458ab65d83e7d7a82, type: 3}
       propertyPath: m_IsActive
@@ -1116,12 +1183,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: modelView
+      value: 
+      objectReference: {fileID: 5171440491060851811}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: stateManager
       value: 
       objectReference: {fileID: 927983013910895130}
     - target: {fileID: 8089035470108219210, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: m_Name
       value: TakeDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089035470108219210, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8089035470108219210, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: m_IsActive
@@ -1202,6 +1277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fall
       objectReference: {fileID: 0}
+    - target: {fileID: 3225098078133837088, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
       propertyPath: rb
       value: 
@@ -1227,16 +1306,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 927983013910895130}
     - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
+      propertyPath: slowFallForce
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 1498546878730015440}
+    - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
+      propertyPath: raycastDistance
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
       propertyPath: fallTimeThreshold
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
       propertyPath: fallSpeedMultiplier
-      value: 2000
+      value: 3500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429241444988350192, guid: 03e29faec96365343bbba0ee9127199d, type: 3}
+      propertyPath: slowFallLayer.m_Bits
+      value: 268435520
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1276,6 +1367,10 @@ PrefabInstance:
     - target: {fileID: 7807377759721137731, guid: d646648831279984b828892552693da8, type: 3}
       propertyPath: m_Name
       value: Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807377759721137731, guid: d646648831279984b828892552693da8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7807377759721137731, guid: d646648831279984b828892552693da8, type: 3}
       propertyPath: m_IsActive
@@ -1425,6 +1520,10 @@ PrefabInstance:
       value: StandRangeAttack01
       objectReference: {fileID: 0}
     - target: {fileID: 4392751964467796067, guid: 043459beff3336947806b0da9cafae65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392751964467796067, guid: 043459beff3336947806b0da9cafae65, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1465,7 +1564,7 @@ PrefabInstance:
       objectReference: {fileID: 1784714320604723810}
     - target: {fileID: 581233034273380576, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: slideTime
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 581233034273380576, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: crouchTime
@@ -1473,7 +1572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 581233034273380576, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: slideForce
-      value: 500
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 581233034273380576, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: stateManager
@@ -1482,6 +1581,10 @@ PrefabInstance:
     - target: {fileID: 6383146537243554666, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: m_Name
       value: Slide
+      objectReference: {fileID: 0}
+    - target: {fileID: 6383146537243554666, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6383146537243554666, guid: 7c01960d1e8e0c04b86cb0f39bdf694f, type: 3}
       propertyPath: m_IsActive
