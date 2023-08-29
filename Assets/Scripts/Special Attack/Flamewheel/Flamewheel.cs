@@ -16,8 +16,6 @@ public class FlameWheel : MonoBehaviour
 
     public FlamewheelShoot shooter;
 
-    public SpinTransform spinner;
-
     public ObjectPool objectPool;
 
     public GameObject prefabFireball;

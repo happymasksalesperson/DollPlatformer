@@ -9,6 +9,8 @@ namespace Candlewitch
     {
         public FlameWheel flameWheel;
 
+        public SpinTransform spinner;
+
         public float timeBetweenShots;
 
         public float vulnerableTime;
@@ -43,7 +45,7 @@ namespace Candlewitch
 
             flameWheel.targetTransform = brain.playerTransform;
 
-            flameWheel.spinner.direction = brain.facingRight;
+            spinner.ChangeDirection(brain.facingRight);
 
             flameWheel.ChangeFireballNumber();
 

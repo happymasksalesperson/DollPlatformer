@@ -1,10 +1,9 @@
-
 namespace Candlewitch
 {
     public enum CandlewitchAttackEnum
     {
-        ShootFireball,
-        FloorFirePillar,
+        FlameWheel,
+        FlamePillar,
         Teleport
     }
 }

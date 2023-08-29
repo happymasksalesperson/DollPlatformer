@@ -436,3 +436,11 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- added PlayerStandMeleeAttack01 state logic. the Player can buffer attacks like they can the range attack
 
 -- added the ability for the Player to move through Ground by pressing Crouch+Jump. Doesn't work for Unpassable Ground
+
+6.3
+
+-- updated FlamePillar to grow/remain active/shrink then destroy itself
+
+-- updated CandlewitchSummonFlamePillarState. Candlewitch summons a variable number of FlamePillars randomly between two points. The amount changes based 
+
+BUG: FlameWheel should spin different depending on facingRight (SpinTransform.cs). The logic works but direction only changes thru inspector, not code.

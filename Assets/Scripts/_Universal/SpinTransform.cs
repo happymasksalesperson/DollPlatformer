@@ -7,6 +7,11 @@ public class SpinTransform : MonoBehaviour
 
     public Transform target;
 
+    public void ChangeDirection(bool newDirection)
+    {
+        direction = newDirection;
+    }
+
     void Update()
     {
         int rotationDirection = direction ? 1 : -1;

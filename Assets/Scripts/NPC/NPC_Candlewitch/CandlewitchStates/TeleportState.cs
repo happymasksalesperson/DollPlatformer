@@ -44,10 +44,10 @@ namespace Candlewitch
 
             switch (randomAttack)
             {
-                case CandlewitchAttackEnum.ShootFireball:
+                case CandlewitchAttackEnum.FlameWheel:
                     StartCoroutine(ChangeToDecidedState(brain.shootFireballState));
                     break;
-                case CandlewitchAttackEnum.FloorFirePillar:
+                case CandlewitchAttackEnum.FlamePillar:
                     StartCoroutine(ChangeToDecidedState(brain.summonFirePillarState));
                     break;
                 case CandlewitchAttackEnum.Teleport:
