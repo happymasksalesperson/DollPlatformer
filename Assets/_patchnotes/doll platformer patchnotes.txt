@@ -444,3 +444,10 @@ TODO: Increase complexity, decide on projectile logic, view, SFX
 -- updated CandlewitchSummonFlamePillarState. Candlewitch summons a variable number of FlamePillars randomly between two points. The amount changes based 
 
 BUG: FlameWheel should spin different depending on facingRight (SpinTransform.cs). The logic works but direction only changes thru inspector, not code.
+
+6.4
+
+-- CameraManipulationTests scene created for examples of what the cinemachine will do.
+
+-- Camera can now track x, y, x and y or neither axis and will lock to it with a transition now rather than the snapping harsh transition
+
