@@ -19,6 +19,7 @@ public class PlayerStateManager : MonoBehaviour
     
     public GameObject crouch;
     public GameObject slide;
+    public GameObject grapple;
     
     public GameObject takeDamage;
 
@@ -43,6 +44,7 @@ public class PlayerStateManager : MonoBehaviour
         stateDictionary.Add(PlayerStates.Jump, jump);
         stateDictionary.Add(PlayerStates.Fall, fall);
         stateDictionary.Add(PlayerStates.Death, death);
+        stateDictionary.Add(PlayerStates.Grapple, grapple);
         
         ChangeState(PlayerStates.Idle);
     }

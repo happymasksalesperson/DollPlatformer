@@ -10,6 +10,7 @@ public enum PlayerStates
 
     Crouch,
     Slide,
+    Grapple,
 
     TakeDamage,
 

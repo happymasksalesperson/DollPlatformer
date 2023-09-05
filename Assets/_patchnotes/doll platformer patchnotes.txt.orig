@@ -453,13 +453,17 @@ BUG: FlameWheel should spin different depending on facingRight (SpinTransform.cs
 
 6.5
 
--- Set up basis for Grappling States in GrappleState.cs
+<<<<<<< Updated upstream
 -- tweaked Fireball. Fireball now ignores Ground layer (not impassable ground) and PlayerProjectile
 
 -- added TakeDamage state to the Player (temporary)
+=======
+-- Set up basis for Grappling States in GrappleState.cs
+
 -- Added grapple stuff to PlayerStates.cs and PlayerStateManager.cs
 
 -- Added Grapple to player inputs as [G]
 
 TODO: Finish hookup of GrappleEvent logic in PlayerControlsMiddleMan.cs
 TODO: Actually code movement logic
+>>>>>>> Stashed changes

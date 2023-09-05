@@ -36,10 +36,13 @@ public class PlayerControlsMiddleMan : MonoBehaviour
     public void OnEnable()
     {
         playerControls.JumpEvent += JumpState;
-        playerControls.GrappleEvent += EnterGrappleState;
+<<<<<<< Updated upstream
         health.ChangeHealthEvent += TakeDamage;
+=======
+        playerControls.GrappleEvent += EnterGrappleState;
+>>>>>>> Stashed changes
     }
-    
+
     public void Update()
     {
         grounded = groundCheck.grounded;
@@ -92,15 +95,16 @@ public class PlayerControlsMiddleMan : MonoBehaviour
         if(inControl)
         stateManager.ChangeState(PlayerStates.Jump);
     }
+    
+    private void EnterGrappleState()
+    {
+        //if Grapple point is in range, allow the action to continue
+    }
 
     public void TakeDamage(float amount)
     {
         if(amount < 0)
             stateManager.ChangeState(PlayerStates.TakeDamage);
-    
-    private void EnterGrappleState()
-    {
-        //if Grapple point is in range, allow the action to continue
     }
 
     public void OnDisable()

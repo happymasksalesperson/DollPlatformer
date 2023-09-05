@@ -16,6 +16,8 @@ public class PlayerControls : MonoBehaviour, IPlayer, IDataPersistence
 
     public event Action AttackEvent;
 
+    public event Action GrappleEvent;
+
     private void Start()
     {
         playerInputs = new PlayerInputs();
@@ -24,6 +26,8 @@ public class PlayerControls : MonoBehaviour, IPlayer, IDataPersistence
 
         playerInputs.InGame.Jump.performed += JumpHeld;
         playerInputs.InGame.Jump.canceled += JumpLetGo;
+
+        playerInputs.InGame.Grapple.performed += Grapple;
         
         playerInputs.Enable();
     }
@@ -42,6 +46,11 @@ public class PlayerControls : MonoBehaviour, IPlayer, IDataPersistence
     private void JumpLetGo(InputAction.CallbackContext context)
     {
         jumpHeld = false;
+    }
+
+    private void Grapple(InputAction.CallbackContext context)
+    {
+        GrappleEvent?.Invoke();
     }
 
     private void FixedUpdate()
