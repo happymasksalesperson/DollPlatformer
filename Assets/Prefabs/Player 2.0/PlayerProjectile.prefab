@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3800342705684802332}
   - component: {fileID: 197170291709215203}
   - component: {fileID: 2859882892994195757}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: PlayerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  spawnPosition: {fileID: 0}
+  active: 0
   rb: {fileID: 2859882892994195757}
 --- !u!54 &2859882892994195757
 Rigidbody:

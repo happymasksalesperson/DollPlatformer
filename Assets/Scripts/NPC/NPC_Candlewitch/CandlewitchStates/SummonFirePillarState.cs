@@ -22,6 +22,9 @@ namespace Candlewitch
 
         public float vulnerableTime;
 
+        public List<Vector3> spawnedPositions = new List<Vector3>();
+
+
         private void OnEnable()
         {
             if (brain.currentPhase == CandlewitchBrain.CandlewitchStateEnum.Phase01)
@@ -43,15 +46,47 @@ namespace Candlewitch
         {
             for (int i = 0; i < numberOfPillars; i++)
             {
-                float randomX = Random.Range(leftPoint.position.x + distanceApart,
-                    rightPoint.position.x - distanceApart);
-                Vector3 spawnPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+                Vector3 spawnPosition = GetValidSpawnPosition();
 
                 GameObject spawnedObject = pool.GetPooledObject();
                 spawnedObject.transform.position = spawnPosition;
+
+                spawnedPositions.Add(spawnPosition);
             }
 
             StartCoroutine(Vulnerable());
+        }
+
+        Vector3 GetValidSpawnPosition()
+        {
+            Vector3 spawnPosition;
+            bool isValidPosition = false;
+
+            do
+            {
+                float randomX = Random.Range(leftPoint.position.x + distanceApart,
+                    rightPoint.position.x - distanceApart);
+                spawnPosition = new Vector3(randomX, transform.position.y, transform.position.z);
+
+                // Check if the new position is far enough from existing positions
+                isValidPosition = IsPositionValid(spawnPosition);
+            }
+            while (!isValidPosition);
+
+            return spawnPosition;
+        }
+
+        bool IsPositionValid(Vector3 position)
+        {
+            foreach (Vector3 existingPosition in spawnedPositions)
+            {
+                // Check the distance between the new position and existing positions
+                if (Vector3.Distance(position, existingPosition) < distanceApart)
+                {
+                    return false; // Position is too close to an existing one
+                }
+            }
+            return true; // Position is valid
         }
 
         private IEnumerator Vulnerable()

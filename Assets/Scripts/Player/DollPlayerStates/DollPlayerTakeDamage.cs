@@ -66,7 +66,7 @@ public class DollPlayerTakeDamage : MonoBehaviour
         
         
         if(!isArmoured)
-            rb.AddForce(new Vector3(dist, verticalDist, 0), ForceMode.VelocityChange);
+            rb.AddForce(new Vector3(dist, verticalDist, 0), ForceMode.Acceleration);
         
         yield return new WaitForSeconds(disableTime);
 

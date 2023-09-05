@@ -29,7 +29,6 @@ public class Player2Jump : MonoBehaviour
 
     public void OnEnable()
     {
-        middleMan.canRangeAttack = false;
         middleMan.canJump = false;
         StartJump();
     }
@@ -44,8 +43,6 @@ public class Player2Jump : MonoBehaviour
     private void Update()
     {
         grounded = groundCheck.grounded;
-        if (!grounded)
-            middleMan.canRangeAttack = true;
     }
 
     private IEnumerator JumpRoutine()

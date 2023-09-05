@@ -15,6 +15,10 @@ public class HealthModel : MonoBehaviour, ITakeDamage
     public float invincibilityTime;
     public bool canTakeDamage = true;
 
+    public event Action<float> ChangeHealthEvent;
+
+    public event Action<bool> CanTakeDamageEvent;
+
     public int testAmount;
 
     private void OnEnable()
@@ -64,6 +68,8 @@ public class HealthModel : MonoBehaviour, ITakeDamage
                 canTakeDamage = false;
             }
 
+            ChangeHealthEvent?.Invoke(amount);
+
             modelView.OnChangeHealth(HP);
         }
     }
@@ -71,11 +77,13 @@ public class HealthModel : MonoBehaviour, ITakeDamage
     private IEnumerator TakeDamageInvincibility()
     {
         canTakeDamage = false;
+        CanTakeDamageEvent?.Invoke(canTakeDamage);
         yield return new WaitForSeconds(invincibilityTime);
         
         if(isAlive)
         canTakeDamage = true;
 
         modelView.OnChangeInvincibilityState(false);
+        CanTakeDamageEvent?.Invoke(canTakeDamage);
     }
 }

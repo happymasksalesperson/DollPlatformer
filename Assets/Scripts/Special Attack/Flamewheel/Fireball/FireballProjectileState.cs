@@ -9,13 +9,19 @@ public class FireballProjectileState : FireballStateBase
 
     public Rigidbody rb;
 
+    [Header("How fast the fireball is initially shot")]
     public float shootForce;
+
+    /*[Header("How much the fireball drifts towards target")]
+    public float driftForce;*/
 
     public int damageAmount;
 
     private void OnEnable()
     {
         targetTransform = brain.targetTransform;
+
+        //damager.IgnoreTheseLayers();
 
         damager.HitITakeDamageEvent += HitVictim;
         damager.HitEnvironmentEvent += HitEnvironment;
@@ -34,6 +40,15 @@ public class FireballProjectileState : FireballStateBase
         }
         rb.AddForce(directionToTarget * shootForce, ForceMode.VelocityChange);
     }
+
+    /*private void Update()
+    {
+        Vector3 directionToTarget = targetTransform.position - transform.position;
+
+        Vector3 yDirection = Vector3.up * directionToTarget.y;
+
+        rb.AddForce(directionToTarget * driftForce);
+    }*/
 
     private void HitVictim()
     {

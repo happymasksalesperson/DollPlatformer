@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 7057171296430224472}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -364,16 +364,16 @@ GameObject:
   m_Component:
   - component: {fileID: 4988842286486905172}
   - component: {fileID: 1849811963992487702}
+  - component: {fileID: 4093924083048607298}
+  - component: {fileID: 4582366814722740822}
   - component: {fileID: 927983013910895130}
   - component: {fileID: 1498546878730015440}
-  - component: {fileID: 4093924083048607298}
   - component: {fileID: 1784714320604723810}
   - component: {fileID: 4435036922663003672}
   - component: {fileID: 7622586282593176551}
   - component: {fileID: 2683405166065376606}
-  - component: {fileID: 1803847812141603423}
   - component: {fileID: 1484260177640702725}
-  - component: {fileID: 4582366814722740822}
+  - component: {fileID: 1803847812141603423}
   m_Layer: 3
   m_Name: Doll
   m_TagString: Untagged
@@ -435,6 +435,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!65 &4093924083048607298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398899372810278984}
+  m_Material: {fileID: 13400000, guid: ea0fcf5b3e570c146bc8fe0061d492f6, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 13, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4582366814722740822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398899372810278984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580ee3fd5dfc6b045bd6ff1f03878509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  HP: 0
+  isAlive: 1
+  invincibilityTime: 1
+  canTakeDamage: 1
+  testAmount: 0
 --- !u!114 &927983013910895130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,27 +513,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimInput: 0
   movementInput: 0
---- !u!65 &4093924083048607298
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7398899372810278984}
-  m_Material: {fileID: 13400000, guid: ea0fcf5b3e570c146bc8fe0061d492f6, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 13, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1784714320604723810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +537,7 @@ MonoBehaviour:
   moving: 0
   rb: {fileID: 1849811963992487702}
   boxCollider: {fileID: 4093924083048607298}
+  health: {fileID: 4582366814722740822}
 --- !u!114 &4435036922663003672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,21 +604,6 @@ MonoBehaviour:
   xOffset: 7.5
   attackDamage: 15
   canSlide: 1
---- !u!114 &1803847812141603423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7398899372810278984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 4988842286486905172}
-  objectToPool: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
-  initialPoolSize: 15
 --- !u!114 &1484260177640702725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +629,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   buffered: 0
   isAttacking: 0
---- !u!114 &4582366814722740822
+--- !u!114 &1803847812141603423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -634,15 +638,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7398899372810278984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580ee3fd5dfc6b045bd6ff1f03878509, type: 3}
+  m_Script: {fileID: 11500000, guid: 89bbfc4c1c1546f40a30568389428855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  HP: 0
-  isAlive: 1
-  invincibilityTime: 1
-  canTakeDamage: 1
-  testAmount: 0
+  spawnPoint: {fileID: 4988842286486905172}
+  objectToPool: {fileID: 7295314676956636268, guid: 7abebd3a9abfa6d47a126a6819dd4149, type: 3}
+  initialPoolSize: 15
 --- !u!1001 &4135674344166168900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1183,13 +1184,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1849811963992487702}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: middleMan
+      value: 
+      objectReference: {fileID: 1784714320604723810}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: modelView
       value: 
       objectReference: {fileID: 5171440491060851811}
     - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: disableTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: stateManager
       value: 
       objectReference: {fileID: 927983013910895130}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: verticalDist
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758921451552149503, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
+      propertyPath: horizontalDist
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8089035470108219210, guid: c77ac913e4072df4295c7ef1d4293842, type: 3}
       propertyPath: m_Name
       value: TakeDamage

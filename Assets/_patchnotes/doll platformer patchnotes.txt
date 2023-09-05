@@ -451,3 +451,8 @@ BUG: FlameWheel should spin different depending on facingRight (SpinTransform.cs
 
 -- Camera can now track x, y, x and y or neither axis and will lock to it with a transition now rather than the snapping harsh transition
 
+6.5
+
+-- tweaked Fireball. Fireball now ignores Ground layer (not impassable ground) and PlayerProjectile
+
+-- added TakeDamage state to the Player (temporary)

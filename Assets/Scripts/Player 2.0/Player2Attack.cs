@@ -39,7 +39,7 @@ public class Player2Attack : MonoBehaviour
             stateManager.ChangeState(PlayerStates.Slide);
         }
 
-        else if (stateManager.currentState == PlayerStates.Idle || stateManager.currentState == PlayerStates.Run)
+        else if (stateManager.currentState == PlayerStates.Idle || stateManager.currentState == PlayerStates.Run || stateManager.currentState == PlayerStates.Jump || stateManager.currentState == PlayerStates.Fall)
         {
             Vector3 boxPosition = transform.position + new Vector3(xOffset * (facingRight ? 1 : -1), 0f, 0f);
             Vector3 boxHalfExtents = new Vector3(attackDetectionDistance, attackDetectionDistance, attackDetectionDistance);

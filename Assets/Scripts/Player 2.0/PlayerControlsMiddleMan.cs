@@ -31,9 +31,12 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public BoxCollider boxCollider;
 
+    public HealthModel health;
+
     public void OnEnable()
     {
         playerControls.JumpEvent += JumpState;
+        health.ChangeHealthEvent += TakeDamage;
     }
     
     public void Update()
@@ -87,6 +90,12 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
         if(inControl)
         stateManager.ChangeState(PlayerStates.Jump);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if(amount < 0)
+            stateManager.ChangeState(PlayerStates.TakeDamage);
     }
 
     public void OnDisable()

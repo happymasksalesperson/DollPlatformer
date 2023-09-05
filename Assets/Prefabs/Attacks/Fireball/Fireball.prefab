@@ -139,6 +139,9 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 320
   multiHit: 0
   damageAmount: 5
   active: 1
@@ -302,7 +305,7 @@ MonoBehaviour:
   damager: {fileID: 4302189731897529500}
   targetTransform: {fileID: 0}
   rb: {fileID: 3993353959909555750}
-  shootForce: 75
+  shootForce: 100
   damageAmount: 5
 --- !u!1 &4890010069382611969
 GameObject:
