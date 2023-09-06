@@ -138,7 +138,7 @@ public class FlameWheel : MonoBehaviour
             GameObject obj = listFireballs[i];
 
             // Convert the local position to world space and set it as the object's position.
-            obj.transform.position = midpoint.TransformPoint(localPosition);
+            obj.transform.position = midpoint.TransformPoint(localPosition.x,localPosition.y,0f);
         }
     }
 }
