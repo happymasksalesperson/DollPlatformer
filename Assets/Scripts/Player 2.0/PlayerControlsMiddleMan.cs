@@ -95,9 +95,11 @@ public class PlayerControlsMiddleMan : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        if(amount < 0)
+        if (amount < 0)
             stateManager.ChangeState(PlayerStates.TakeDamage);
-    
+
+    }
+
     private void EnterGrappleState()
     {
         //if Grapple point is in range, allow the action to continue
