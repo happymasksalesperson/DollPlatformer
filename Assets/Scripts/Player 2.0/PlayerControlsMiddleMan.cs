@@ -77,11 +77,11 @@ public class PlayerControlsMiddleMan : MonoBehaviour
                 moving = false;
         }
 
-        if (!grounded && rb.velocity.y > 0)
-            boxCollider.enabled = false;
-
-        else
-            boxCollider.enabled = true;
+        // if (!grounded && rb.velocity.y > 0)
+        //     boxCollider.enabled = false;
+        //
+        // else
+        //     boxCollider.enabled = true;
     }
 
     public void JumpState()

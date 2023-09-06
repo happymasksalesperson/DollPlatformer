@@ -67,11 +67,11 @@ public class PlayerControls : MonoBehaviour, IPlayer, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.transform.position = data.playerPos;
+        transform.position = data.playerPos;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.playerPos = this.transform.position;
+        data.playerPos = transform.position;
     }
 }
