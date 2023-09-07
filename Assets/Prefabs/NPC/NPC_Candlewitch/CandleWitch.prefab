@@ -286,7 +286,7 @@ MonoBehaviour:
   teleportState: {fileID: 1995341822540993755}
   vanishState: {fileID: 5505651979924142764}
   deathState: {fileID: 2657549425821185914}
-  health: {fileID: 7255230307006430899}
+  health: {fileID: 0}
 --- !u!114 &129706942580799679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 8047227060983319055, guid: ef2dc7053d8ac2640891033abacfb4bc, type: 3}
       propertyPath: modelView
       value: 
-      objectReference: {fileID: 8143064569913580117}
+      objectReference: {fileID: 0}
     - target: {fileID: 8047227060983319055, guid: ef2dc7053d8ac2640891033abacfb4bc, type: 3}
       propertyPath: flameWheel
       value: 
@@ -619,7 +619,7 @@ PrefabInstance:
     - target: {fileID: 7034474848349420981, guid: 8147ef0ed7152714c8e383fc938e37f7, type: 3}
       propertyPath: modelView
       value: 
-      objectReference: {fileID: 8143064569913580117}
+      objectReference: {fileID: 0}
     - target: {fileID: 7034474848349420981, guid: 8147ef0ed7152714c8e383fc938e37f7, type: 3}
       propertyPath: healthModel
       value: 
@@ -682,7 +682,7 @@ PrefabInstance:
     - target: {fileID: 7238585176411710478, guid: c5dc3efd9d530824fa711bec3727a340, type: 3}
       propertyPath: modelView
       value: 
-      objectReference: {fileID: 8143064569913580117}
+      objectReference: {fileID: 0}
     - target: {fileID: 7238585176411710478, guid: c5dc3efd9d530824fa711bec3727a340, type: 3}
       propertyPath: healthModel
       value: 
@@ -944,13 +944,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7832362664844794869, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8770358612193801344}
   m_SourcePrefab: {fileID: 100100000, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
 --- !u!1 &2657549425821185914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7832362664844794869, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
   m_PrefabInstance: {fileID: 5211693120622062735}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8770358612193801344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657549425821185914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86616923b5bc2d42a92d76ecae43f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 6738767677263709800}
+  modelView: {fileID: 8143064569913580117}
+  healthModel: {fileID: 129706942580799679}
 --- !u!4 &4415557908992710745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8436528263436383446, guid: 1b6f2ab37f280cf43bdbe0603862fb00, type: 3}
@@ -1019,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 7819285944861805573, guid: d180f9e428f6ca24688f2cd10097a816, type: 3}
       propertyPath: modelView
       value: 
-      objectReference: {fileID: 8143064569913580117}
+      objectReference: {fileID: 0}
     - target: {fileID: 7819285944861805573, guid: d180f9e428f6ca24688f2cd10097a816, type: 3}
       propertyPath: healthModel
       value: 
@@ -1066,7 +1084,7 @@ PrefabInstance:
     - target: {fileID: 7835519118443443781, guid: 07d413e90bcf28a48af86328843cd845, type: 3}
       propertyPath: modelView
       value: 
-      objectReference: {fileID: 8143064569913580117}
+      objectReference: {fileID: 0}
     - target: {fileID: 7835519118443443781, guid: 07d413e90bcf28a48af86328843cd845, type: 3}
       propertyPath: healthModel
       value: 

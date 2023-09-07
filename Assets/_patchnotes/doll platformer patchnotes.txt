@@ -463,3 +463,11 @@ BUG: FlameWheel should spin different depending on facingRight (SpinTransform.cs
 
 TODO: Finish hookup of GrappleEvent logic in PlayerControlsMiddleMan.cs
 TODO: Actually code movement logic
+
+6.6
+
+-- created Helpful functions script with useful functions added
+
+-- created modular StateMachine with use of gameobjects instead of enums or strings
+
+-- edited controls however until tested they wont be pushed yet
