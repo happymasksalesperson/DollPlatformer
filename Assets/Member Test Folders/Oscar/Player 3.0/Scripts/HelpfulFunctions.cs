@@ -15,7 +15,7 @@ public class HelpfulFunctions : MonoBehaviour
 
     public Rigidbody rb;
     
-    private float speed;
+    public float speed;
 
     private float desiredVelocity;
     private float velocityChange;
@@ -30,63 +30,38 @@ public class HelpfulFunctions : MonoBehaviour
     public LayerMask damageLayer;
     public float checkSphereRadius;
     
-    
-    public void Movement(float moveDirection, float maxSpeed)
+    public void Movement(float moveDirection)
     {
-        desiredVelocity = moveDirection * maxSpeed;
+        desiredVelocity = moveDirection * speed;
 
         velocityChange = desiredVelocity - rb.velocity.x;
 
         rb.AddForce(new Vector2(velocityChange * rb.mass / Time.fixedDeltaTime, 0f));
     }
-
     
-
     /// <isGrounded>
     /// Can be used to check if it is grounded or not
     /// </isGrounded>
     /// <Transform="transformLoc"></Transform>
     /// <returns>Bool for whether its grounded or not</returns>
-    private bool isGrounded(Transform transformLoc)
+    public bool isGrounded(Vector3 position)
     {
-        return Physics.CheckSphere(transformLoc.position, checkSphereRadius, groundLayer);
+        return Physics.CheckSphere(position, checkSphereRadius, groundLayer);
     }
 
     /// <Jump>
     /// Can be used for anything that needs to jump
     /// </Jump>
     /// <Bool="jumpBool"> Can the player jump or not</Bool>
-    public void Jump(bool jumpBool)
+    public void Jump()
     {
-        jumpCoroutine = StartCoroutine(JumpRoutine(jumpBool));
-    }
-    
-    private IEnumerator JumpRoutine(bool jumpHeld)
-    {
-        // might remove the jumpHeld bool if the stop coroutine works well.
-        rb.velocity = Vector2.zero;
+        //rb.velocity = Vector2.zero;
         timer = 0;
-        while (jumpHeld && timer < jumpTime)
+        while (timer < jumpTime)
         {
-            float proportionCompleted = timer / jumpTime;
-            Vector2 thisFrameJumpVector = Vector2.Lerp(jumpVector, Vector2.zero, proportionCompleted);
-            rb.AddForce(thisFrameJumpVector);
+            rb.velocity = new Vector2(rb.velocity.x,jumpForce);
             timer += Time.deltaTime;
-            yield return new WaitForFixedUpdate();
         }
-    }
-
-    /// <Fall>
-    /// Can be used for when the players are falling
-    /// </Fall>
-    public void Fall()
-    {
-        // I'm unsure what needs to go here but I know something else need sto go here.
-        if (jumpCoroutine != null)
-        {
-            StopCoroutine(jumpCoroutine);
-        }
-        // Probably slow falling
     }
 
     /// <CloseAttack>
@@ -116,6 +91,4 @@ public class HelpfulFunctions : MonoBehaviour
             }
         }
     }
-    
-    
 }
